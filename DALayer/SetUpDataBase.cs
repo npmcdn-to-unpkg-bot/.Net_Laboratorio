@@ -56,18 +56,12 @@ namespace DALayer
             {
                 try
                 {
-                    dbConn.Open();
-                    using (SqlTransaction dbTrans = dbConn.BeginTransaction())
-                    {
+                    dbConn.Open();  
+                    using (SqlCommand dbCommand = new SqlCommand(command, dbConn))
+                    { 
+                        dbCommand.ExecuteNonQuery();
+                    } 
                      
-                        using (SqlCommand dbCommand = new SqlCommand(command, dbConn))
-                        {
-                            dbCommand.Transaction = dbTrans;
-                            dbCommand.ExecuteNonQuery();
-                        } 
-
-                        dbTrans.Commit();
-                    }
                 }
                 catch (Exception e)
                 {
@@ -90,7 +84,7 @@ namespace DALayer
             execMultiple(commands);
         }
         private static void createDataBase() {
-            string createDataBase = String.Format("CREATE DATABASE {0};", DATA_BASE_NAME);
+            string createDataBase = String.Format("CREATE DATABASE [{0}]", DATA_BASE_NAME);
             exec(createDataBase, setUpConnection);
         }
         

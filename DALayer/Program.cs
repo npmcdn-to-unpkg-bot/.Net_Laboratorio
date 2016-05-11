@@ -13,44 +13,14 @@ namespace DALayer
         {
 
              SetUpDataBase.checkIfExist();
-
-
-
-
-            /**
-                      AdminContext dbAdmin = new AdminContext();
-           Entities.SolicitudJuego sj = new Entities.SolicitudJuego();
-           sj.email = "rodrigo.rossi.trabal@gmail.com";
-           sj.user =  Guid.NewGuid().ToString();
-           sj.password = Guid.NewGuid().ToString();
-           sj.token = DateTime.Now.ToString();
-           dbAdmin.SolicitudJuegos.Add(sj);
-           dbAdmin.SaveChangesAsync().Wait();
-             var connection = new SqlConnectionFactory().CreateConnection("Admin");
-             TenantContext.ProvisionTenant("ogame", connection);
-             TenantContext.ProvisionTenant("ogame2", connection);
-             var ctx = TenantContext.Create("ogame", connection);
-             var ctx2 = TenantContext.Create("ogame2", connection);
-
-
-             using (var db2 = new TenantContext("t1","orgame"))
-             {
-                 db2.Jugador.Add(new Entities.Jugador());
-                 db2.SaveChangesAsync().Wait();
-             }
-             using (var db3 = new TenantContext("t2", "osrgame"))
-             {
-                 db3.Jugador.Add(new Entities.Jugador());
-                 db3.SaveChangesAsync().Wait();
-             }
-                 */
-
-
+            var ADMIN = "ADMIN";
             var tennant = "atenant" + DateTime.Now.Millisecond;
             var tennant1 = "atenant2" + DateTime.Now.Millisecond;
-            // createTenant(tennant);
-            // createTenant(tennant1);
-            
+            using (var db2 = new TenantContext(createTenant(tennant1), tennant1))
+            {
+                db2.Jugador.Add(new Entities.Jugador());
+                db2.SaveChangesAsync().Wait();
+            }
             using (var db = new TenantContext(createTenant(tennant), tennant))
             {
                 db.Jugador.Add(new Entities.Jugador());
