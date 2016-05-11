@@ -13,6 +13,6 @@ namespace SharedEntities.Entities
         public String password;
         public String token;
         public DateTime expirationTime;
-
+        
     }
 }

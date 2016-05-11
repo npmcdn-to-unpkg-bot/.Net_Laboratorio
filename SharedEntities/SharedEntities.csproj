@@ -40,12 +40,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="DataTypes\RecursoInfo.cs" />
     <Compile Include="Entities\Admin.cs" />
+    <Compile Include="Entities\Alianza.cs" />
+    <Compile Include="Entities\Destacamento.cs" />
+    <Compile Include="Entities\Edificio.cs" />
+    <Compile Include="Entities\Flota.cs" />
+    <Compile Include="Entities\Investigacion.cs" />
     <Compile Include="Entities\Juego.cs" />
     <Compile Include="Entities\Jugador.cs" />
+    <Compile Include="Entities\MapaNode.cs" />
+    <Compile Include="Entities\Recurso.cs" />
     <Compile Include="Entities\SolicitudJuego.cs" />
+    <Compile Include="Entities\Dependencia.cs" />
+    <Compile Include="Entities\Unidad.cs" />
     <Compile Include="Entities\Usuario.cs" />
+    <Compile Include="Interfaces\IFlota.cs" />
+    <Compile Include="Interfaces\IInteraccion.cs" />
+    <Compile Include="Interfaces\IEntidadInteraccion.cs" />
+    <Compile Include="Interfaces\IEntidadConfig.cs" />
+    <Compile Include="Interfaces\IInvestigacion.cs" />
+    <Compile Include="Interfaces\IProductorRecursos.cs" />
+    <Compile Include="Interfaces\IRecursoInfo.cs" />
+    <Compile Include="Interfaces\IDependencias.cs" />
+    <Compile Include="Interfaces\IUnidad.cs" />
+    <Compile Include="Interfaces\IUnidadMapa.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

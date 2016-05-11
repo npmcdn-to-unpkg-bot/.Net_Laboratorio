@@ -10,6 +10,7 @@ namespace SharedEntities.Entities
     {
         public String name;
         public String apellidos;
+        public String email;
         public DateTime fnac;
         public String usuario;
         public String password;
