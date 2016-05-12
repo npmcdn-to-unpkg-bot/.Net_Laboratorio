@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DALayer
 {
-    public class SetUpDataBase
+    public class DBHandler
     {
 
         public static string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["Admin"].ConnectionString;
@@ -48,20 +48,45 @@ namespace DALayer
                 dbConn.Close();
             }
         }
-        private static void exec(string command, string connectionStr = null)
+        public static string getTenantConnectionString(string tenantName) {
+            return String.Format(passwordConnectionString, getTenantUser(tenantName), getTenantPass(tenantName));
+        }
+        public static string getTenantUser(string tenantName) {
+
+            return String.Format("user_{0}", tenantName);
+        }
+
+        public static string getTenantPass(string tenantName) {
+
+            return String.Format("pass_{0}", tenantName);
+        }
+        public static void createTenant(string tenantID)
         {
-            connectionStr = connectionStr == null ? connectionString : connectionStr;
-            SqlConnection connection = new SqlConnection(connectionStr);
+            string loginName = getTenantPass(tenantID);
+            string userName = getTenantUser(tenantID);
+
+            string loginSql = String.Format("use {0};CREATE LOGIN {1} WITH PASSWORD = '{2}'", DATA_BASE_NAME,  tenantID, loginName);
+            string userSql = String.Format("use {0}; CREATE USER {1} FOR LOGIN {2}", DATA_BASE_NAME, userName, tenantID);
+            string tenantSql = String.Format("CREATE SCHEMA {0} AUTHORIZATION {1}", tenantID, userName);
+            string[] commands = { loginSql, userSql, tenantSql };
+            execMultiple(commands);
+        }
+
+
+        /*Esto no se va a usar pero no lo borren aun*/
+        private static void createDataBase() {
+            string createDataBase = String.Format("CREATE DATABASE [{0}]", DATA_BASE_NAME);
+            SqlConnection connection = new SqlConnection(setUpConnection);
             using (SqlConnection dbConn = connection)
             {
                 try
                 {
-                    dbConn.Open();  
-                    using (SqlCommand dbCommand = new SqlCommand(command, dbConn))
-                    { 
+                    dbConn.Open();
+                    using (SqlCommand dbCommand = new SqlCommand(createDataBase, dbConn))
+                    {
                         dbCommand.ExecuteNonQuery();
-                    } 
-                     
+                    }
+
                 }
                 catch (Exception e)
                 {
@@ -72,23 +97,7 @@ namespace DALayer
                 dbConn.Close();
             }
         }
-        private static void createTenant(string tenantID)
-        {
-            string loginName = String.Format("pass_{0}", tenantID);
-            string userName = String.Format("user_{0}", tenantID);
-
-            string loginSql = String.Format("use atlas;CREATE LOGIN {0} WITH PASSWORD = '{1}'", tenantID, loginName);
-            string userSql = String.Format("use atlas; CREATE USER {0} FOR LOGIN {1}", userName, tenantID);
-            string tenantSql = String.Format("CREATE SCHEMA {0} AUTHORIZATION {1}", tenantID, userName);
-            string[] commands = { loginSql, userSql, tenantSql };
-            execMultiple(commands);
-        }
-        private static void createDataBase() {
-            string createDataBase = String.Format("CREATE DATABASE [{0}]", DATA_BASE_NAME);
-            exec(createDataBase, setUpConnection);
-        }
-        
-        public static void checkIfExist() {
+        private static void checkDBExist() {
             string checkDB = String.Format("SELECT COUNT(*) FROM master.dbo.sysdatabases WHERE name = '{0}';", DATA_BASE_NAME);
            
             SqlConnection connection = new SqlConnection(setUpConnection);
