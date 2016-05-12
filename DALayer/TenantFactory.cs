@@ -11,7 +11,7 @@ namespace DALayer
     {
         /*Esto hace magia :P*/
         public static TenantContext getTenantCxt(string tenant) {
-            using (var ctx = new AdminContext()) {
+            using (var ctx = AdminFactory.getAdminCtx()) {
                 var juego = from j in ctx.Juego
                               where j.nombreJuego.Equals(tenant)
                               select j;
@@ -21,6 +21,7 @@ namespace DALayer
                         DBHandler.createTenant(tenant);
                         /*Esto debe llamar a la funcion de creacion de Juego del DJuego*/
                         Juego newJuego = new Juego();
+                        newJuego.id = Guid.NewGuid();
                         newJuego.dominio = "domino" + tenant;
                         newJuego.nombreJuego = tenant;
                         ctx.Juego.Add(newJuego);

@@ -55,7 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Admin.cs" />
+    <Compile Include="AdminFactory.cs" />
     <Compile Include="Contexts\TenantContext.cs" />
     <Compile Include="Contexts\AdminContext.cs" />
     <Compile Include="Entities\Admin.cs" />

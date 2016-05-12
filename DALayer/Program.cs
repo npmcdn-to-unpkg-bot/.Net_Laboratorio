@@ -22,7 +22,7 @@ namespace DALayer
               TenantContext tctxt = new TenantContext(DBHandler.getTenantConnectionString(tenant), tenant);
               tctxt.Jugador.Add(new Jugador());
               tctxt.SaveChangesAsync();*/
-            TenantContext tctxt = TenantFactory.getTenantCxt("newtenant22");
+            TenantContext tctxt = TenantFactory.getTenantCxt("sabeloPelo");
             Jugador s = new Jugador();
             s.apellido = DateTime.Now.Millisecond.ToString();
             s.Id = Guid.NewGuid();
