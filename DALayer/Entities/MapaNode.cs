@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace DALayer.Entities
 {
-    class MapaNode
+    public class MapaNode
     {
+        public string nombre { get; set; }
+        public int nivel { get; set; }
+        public int cantidad { get; set; }
     }
 }

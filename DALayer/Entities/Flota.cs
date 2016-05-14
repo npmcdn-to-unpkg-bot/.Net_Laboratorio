@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DALayer.Entities
 {
-    class Flota
+    public class Flota
     {
         String typoNave { get; set; }
         int cantidad { get; set; }

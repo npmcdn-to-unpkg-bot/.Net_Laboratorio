@@ -11,5 +11,7 @@ namespace DALayer.Entities
         public String nombreJuego { get; set; }
         public String dominio { get; set; }
         public Guid id { get; set; }
+        public Boolean estado { get; set; }
+        public string descripcion { get; set; }
     }
 }

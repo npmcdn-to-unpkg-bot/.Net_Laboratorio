@@ -60,6 +60,9 @@
     <Compile Include="Contexts\AdminContext.cs" />
     <Compile Include="Entities\Admin.cs" />
     <Compile Include="Entities\Alianza.cs" />
+    <Compile Include="Entities\EstadoInicialJuego.cs" />
+    <Compile Include="Entities\HistorialVentas.cs" />
+    <Compile Include="Entities\PaquetePaypal.cs" />
     <Compile Include="Entities\Dependencia.cs" />
     <Compile Include="Entities\Destacamento.cs" />
     <Compile Include="Entities\Edificio.cs" />

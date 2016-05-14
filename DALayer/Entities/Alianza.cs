@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace DALayer.Entities
 {
-    class Alianza
+    public class Alianza
     {
         public List<Jugador> miembros{get; set;}
         public List<Jugador> admins{get; set;}
