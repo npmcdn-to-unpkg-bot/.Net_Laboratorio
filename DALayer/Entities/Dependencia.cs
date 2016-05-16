@@ -10,7 +10,5 @@ namespace DALayer.Entities
         public String nombre { get; set; }
         public int level { get; set; }
         List<Dependencia> dependencias { get; set; }
-
-
     }
 }

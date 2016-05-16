@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace DALayer.Entities
 {
     public class Unidad
     {
+        [Key]
+        public Guid id { get; set; }
         /*nombre recurso, factor prod por nivel*/
         public string descripcion { get; set; }
         public byte[] foto { get; set; }

@@ -11,3 +11,10 @@ D:\Workspace\.Net_Laboratorio\DALayer\obj\Debug\DALayer.csprojResolveAssemblyRef
 D:\Tecnologo\TSI1\Laboratorio\DALayer\bin\Debug\DALayer.exe.config
 D:\Tecnologo\TSI1\Laboratorio\DALayer\obj\Debug\DALayer.exe
 D:\Tecnologo\TSI1\Laboratorio\DALayer\obj\Debug\DALayer.pdb
+D:\Tecnologo\TSI1\Laboratorio\DALayer\bin\Debug\DALayer.exe
+D:\Tecnologo\TSI1\Laboratorio\DALayer\bin\Debug\DALayer.pdb
+D:\Tecnologo\TSI1\Laboratorio\DALayer\bin\Debug\EntityFramework.dll
+D:\Tecnologo\TSI1\Laboratorio\DALayer\bin\Debug\EntityFramework.SqlServer.dll
+D:\Tecnologo\TSI1\Laboratorio\DALayer\bin\Debug\EntityFramework.xml
+D:\Tecnologo\TSI1\Laboratorio\DALayer\bin\Debug\EntityFramework.SqlServer.xml
+D:\Tecnologo\TSI1\Laboratorio\DALayer\obj\Debug\DALayer.csprojResolveAssemblyReference.cache

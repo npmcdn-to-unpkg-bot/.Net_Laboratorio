@@ -8,7 +8,7 @@ namespace DALayer.Entities
 {
     public class Destacamento: Unidad
     {
-        float velocidad { get; set; }
-        Boolean enMision { get; set; }
+        public float velocidad { get; set; }
+        public Boolean enMision { get; set; }
     }
 }

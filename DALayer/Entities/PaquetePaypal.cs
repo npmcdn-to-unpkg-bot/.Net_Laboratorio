@@ -10,10 +10,10 @@ namespace DALayer.Entities
     public class PaquetePaypal
     {
         [Key]
-        string nombreOferta { get; set; }
-        string producto { get; set; }
-        int cantidad { get; set; }
-        int precio { get; set; }
-        Boolean ofertaActiva { get; set; }
+        public string nombreOferta { get; set; }
+        public string producto { get; set; }
+        public int cantidad { get; set; }
+        public int precio { get; set; }
+        public Boolean ofertaActiva { get; set; }
     }
 }

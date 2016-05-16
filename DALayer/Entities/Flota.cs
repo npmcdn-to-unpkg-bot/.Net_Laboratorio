@@ -8,7 +8,8 @@ namespace DALayer.Entities
 {
     public class Flota
     {
-        String typoNave { get; set; }
-        int cantidad { get; set; }
+        public Guid id { get; set; }
+        public String typoNave { get; set; }
+        public int cantidad { get; set; }
     }
 }

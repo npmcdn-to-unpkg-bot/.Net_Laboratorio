@@ -8,9 +8,9 @@ namespace DALayer.Entities
 {
     public class HistorialVentas
     {
-        Guid id { get; set; }
-        int idusuario { get; set; }
-        string nombreOferta { get; set; }
-        DateTime fechaCompra { get; set; }
+        public Guid id { get; set; }
+        public int idusuario { get; set; }
+        public string nombreOferta { get; set; }
+        public DateTime fechaCompra { get; set; }
     }
 }
