@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameBuildPortal", "GameBuildPortal\GameBuildPortal.csproj", "{98267A3C-E26B-4589-BECE-BE6E883A7D1B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{6E97060F-E9F2-4B9A-A295-194573C8CF89} = {6E97060F-E9F2-4B9A-A295-194573C8CF89}
+		{730C64C0-B03B-4706-9116-058C34F66C42} = {730C64C0-B03B-4706-9116-058C34F66C42}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameBuildPortal.Tests", "GameBuildPortal.Tests\GameBuildPortal.Tests.csproj", "{0A7AB6F4-63B3-4E1D-8AFC-A2BE8658D9AC}"
 EndProject

@@ -12,14 +12,23 @@ namespace BLayer.Admin
     {
         private IApi builder;
         private String tenantId = null;
+
         public GameBuilderController(string tId, IApi gc) {
             builder = gc;
             builder.setTenant(tId);
         }
+
+        public List<Recurso> getAllRecursos()
+        {
+            //return builder.getRecursoHandler().getAllRecursos();
+
+            GameBuilderController gbc = new GameBuilderController("nuevojuego", new DALayer.Api.EFApi());
+            return gbc.getAllRecursos();
+        }
+
         public void createRecurso(string name, string description, byte[] photo)
         {
-            
-            builder.getRecursoHandler().CreateRecurso(new Recurso(name, description, photo));
+            builder.getRecursoHandler().createRecurso(new Recurso(name, description, photo));
         }
     }
 }

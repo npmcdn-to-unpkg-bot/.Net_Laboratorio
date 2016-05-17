@@ -12,3 +12,4 @@ D:\Workspace\.Net_Laboratorio\BLayer2\obj\Debug\BLayer2.exe
 D:\Workspace\.Net_Laboratorio\BLayer2\obj\Debug\BLayer2.pdb
 D:\Workspace\.Net_Laboratorio\BLayer2\bin\Debug\EntityFramework.SqlServer.dll
 D:\Workspace\.Net_Laboratorio\BLayer2\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Andrulo\Desktop\.Net_Laboratorio\BLayer2\obj\Debug\BLayer.csprojResolveAssemblyReference.cache

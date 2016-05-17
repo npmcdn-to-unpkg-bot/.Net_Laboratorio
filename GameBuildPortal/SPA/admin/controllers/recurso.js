@@ -4,12 +4,10 @@
 
     function recursoCtrl($scope, $routeParams, recursoService) {
         $scope.recursos     = [];
-        $scope.showAlert    = false;
-
-        console.log($routeParams);
 
         recursoService.getAll().then(function (data) {
-            $scope.recursos = data;
+            console.log('data', data);
+            $scope.recursos.push(data);
         });
 
         $scope.add = function(){
