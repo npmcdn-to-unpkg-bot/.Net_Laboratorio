@@ -55,7 +55,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdminFactory.cs" />
+    <Compile Include="Api\EFApi.cs" />
+    <Compile Include="Fatories\AdminFactory.cs" />
     <Compile Include="Contexts\TenantContext.cs" />
     <Compile Include="Contexts\AdminContext.cs" />
     <Compile Include="Entities\Admin.cs" />
@@ -76,15 +77,24 @@
     <Compile Include="Entities\SuperAdmin.cs" />
     <Compile Include="Entities\Unidad.cs" />
     <Compile Include="Entities\Usuario.cs" />
+    <Compile Include="Handlers\RecursosHandlerEF.cs" />
+    <Compile Include="Interfaces\IApi.cs" />
+    <Compile Include="Interfaces\IRecursoHandler.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="DBHandler.cs" />
+    <Compile Include="Handlers\SchemaHandler.cs" />
     <Compile Include="System\Web\Configuration.cs" />
-    <Compile Include="TenantFactory.cs" />
+    <Compile Include="Fatories\TenantFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SharedEntities\SharedEntities.csproj">
+      <Project>{730c64c0-b03b-4706-9116-058c34f66c42}</Project>
+      <Name>SharedEntities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
