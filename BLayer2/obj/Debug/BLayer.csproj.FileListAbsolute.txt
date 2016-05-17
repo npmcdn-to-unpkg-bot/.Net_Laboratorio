@@ -1,0 +1,14 @@
+D:\Workspace\.Net_Laboratorio\BLayer2\bin\Debug\BLayer2.exe.config
+D:\Workspace\.Net_Laboratorio\BLayer2\bin\Debug\BLayer2.exe
+D:\Workspace\.Net_Laboratorio\BLayer2\bin\Debug\BLayer2.pdb
+D:\Workspace\.Net_Laboratorio\BLayer2\bin\Debug\DALayer.exe
+D:\Workspace\.Net_Laboratorio\BLayer2\bin\Debug\SharedEntities.dll
+D:\Workspace\.Net_Laboratorio\BLayer2\bin\Debug\EntityFramework.dll
+D:\Workspace\.Net_Laboratorio\BLayer2\bin\Debug\DALayer.pdb
+D:\Workspace\.Net_Laboratorio\BLayer2\bin\Debug\SharedEntities.pdb
+D:\Workspace\.Net_Laboratorio\BLayer2\bin\Debug\EntityFramework.xml
+D:\Workspace\.Net_Laboratorio\BLayer2\obj\Debug\BLayer.csprojResolveAssemblyReference.cache
+D:\Workspace\.Net_Laboratorio\BLayer2\obj\Debug\BLayer2.exe
+D:\Workspace\.Net_Laboratorio\BLayer2\obj\Debug\BLayer2.pdb
+D:\Workspace\.Net_Laboratorio\BLayer2\bin\Debug\EntityFramework.SqlServer.dll
+D:\Workspace\.Net_Laboratorio\BLayer2\bin\Debug\EntityFramework.SqlServer.xml

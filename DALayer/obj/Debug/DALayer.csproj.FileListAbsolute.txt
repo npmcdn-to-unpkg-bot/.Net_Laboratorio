@@ -18,3 +18,5 @@ D:\Tecnologo\TSI1\Laboratorio\DALayer\bin\Debug\EntityFramework.SqlServer.dll
 D:\Tecnologo\TSI1\Laboratorio\DALayer\bin\Debug\EntityFramework.xml
 D:\Tecnologo\TSI1\Laboratorio\DALayer\bin\Debug\EntityFramework.SqlServer.xml
 D:\Tecnologo\TSI1\Laboratorio\DALayer\obj\Debug\DALayer.csprojResolveAssemblyReference.cache
+D:\Workspace\.Net_Laboratorio\DALayer\bin\Debug\SharedEntities.dll
+D:\Workspace\.Net_Laboratorio\DALayer\bin\Debug\SharedEntities.pdb
