@@ -18,3 +18,6 @@ D:\Tecnologo\TSI1\Laboratorio\DALayer\bin\Debug\EntityFramework.SqlServer.dll
 D:\Tecnologo\TSI1\Laboratorio\DALayer\bin\Debug\EntityFramework.xml
 D:\Tecnologo\TSI1\Laboratorio\DALayer\bin\Debug\EntityFramework.SqlServer.xml
 D:\Tecnologo\TSI1\Laboratorio\DALayer\obj\Debug\DALayer.csprojResolveAssemblyReference.cache
+C:\Users\Andrulo\Desktop\.Net_Laboratorio\DALayer\bin\Debug\DALayer.exe.config
+C:\Users\Andrulo\Desktop\.Net_Laboratorio\DALayer\obj\Debug\DALayer.exe
+C:\Users\Andrulo\Desktop\.Net_Laboratorio\DALayer\obj\Debug\DALayer.pdb
