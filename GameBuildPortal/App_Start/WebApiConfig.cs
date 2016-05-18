@@ -5,6 +5,7 @@ using System.Web.Http;
 using Microsoft.Practices.Unity;
 using Microsoft.Practices.Unity.Configuration;
 using BLayer.Interfaces;
+using DALayer.Interfaces;
 
 namespace GameBuildPortal
 {
@@ -16,8 +17,10 @@ namespace GameBuildPortal
             // Web API configuration and services
             IUnityContainer container = new UnityContainer();
             container.LoadConfiguration();
-            blHandler = container.Resolve<IGameBuilder>();
 
+            blHandler = container.Resolve<IGameBuilder>(new ParameterOverrides { { "tId", "orgaaszm2o" },{ "IApi", container.Resolve<IApi>() } });
+
+            container.Resolve<IGameBuilder>(new ParameterOverrides { { "tId", "orgaasasszm2o" }, { "IApi", container.Resolve<IApi>() } });
             // Web API routes
             config.MapHttpAttributeRoutes();
 

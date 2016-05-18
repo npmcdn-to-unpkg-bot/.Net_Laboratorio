@@ -15,7 +15,7 @@ namespace DALayer.Handlers
         public RecursosHandlerEF(TenantContext tc) {
             ctx = tc;
         }
-        public void CreateRecurso(Recurso recTmp)
+        public void createRecurso(Recurso recTmp)
         {
 
             Entities.Recurso rec = new Entities.Recurso();
@@ -46,7 +46,7 @@ namespace DALayer.Handlers
 
         }
 
-        public void DeleteRecurso(string nombreTmp)
+        public void deleteRecurso(string nombreTmp)
         {
             var rec = (from c in ctx.Recurso
                                     where c.nombre == nombreTmp
@@ -62,7 +62,7 @@ namespace DALayer.Handlers
             }
         }
 
-        public List<Recurso> GetAllRecursos()
+        public List<Recurso> getAllRecursos()
         {
             List<Recurso> recursos = new List<Recurso>();
             try
@@ -81,12 +81,12 @@ namespace DALayer.Handlers
             }
         }
 
-        public void GetRecursoByUser()
+        public void getRecursoByUser()
         {
             throw new NotImplementedException();
         }
 
-        public void UpdateRecurso(Recurso rec)
+        public void updateRecurso(Recurso rec)
         {
             try
             {
@@ -107,7 +107,7 @@ namespace DALayer.Handlers
             }
         }
 
-        public void UpdateRecursoByUser()
+        public void updateRecursoByUser()
         {
             throw new NotImplementedException();
         }

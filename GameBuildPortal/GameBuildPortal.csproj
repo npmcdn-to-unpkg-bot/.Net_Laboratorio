@@ -595,6 +595,10 @@
       <Project>{6E97060F-E9F2-4B9A-A295-194573C8CF89}</Project>
       <Name>BLayer</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DALayer\DALayer.csproj">
+      <Project>{1771106e-4b5f-421d-96f1-a07436f59a56}</Project>
+      <Name>DALayer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SharedEntities\SharedEntities.csproj">
       <Project>{730C64C0-B03B-4706-9116-058C34F66C42}</Project>
       <Name>SharedEntities</Name>
