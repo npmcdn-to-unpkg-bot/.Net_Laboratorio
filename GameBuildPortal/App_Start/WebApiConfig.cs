@@ -23,7 +23,7 @@ namespace GameBuildPortal
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
+                routeTemplate: "admin/api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
         }

@@ -7,13 +7,13 @@
         var getAll = function(){
             var defer = $q.defer();
 
-             $http.get('api/recursos')
-	    	 .success(function (employees) {
-	    	     defer.resolve(employees);
-	    	 })
-	    	 .error(function(){
-	    	     defer.reject('server error')
-	    	 });
+            $http.get('/admin/api/recursos')
+            .success(function (employees) {
+                defer.resolve(employees);
+            })
+            .error(function(){
+                defer.reject('server error')
+            });
 
             return defer.promise;
         };

@@ -3,7 +3,7 @@
     angular.module('atlas2').controller('recursoCtrl', ['$scope', '$routeParams', 'recursoService', recursoCtrl]);
 
     function recursoCtrl($scope, $routeParams, recursoService) {
-        $scope.recursos     = [];
+        $scope.recursos = [];
 
         recursoService.getAll().then(function (data) {
             console.log('data', data);
