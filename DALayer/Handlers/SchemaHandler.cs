@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace DALayer
 {
-    public class DBHandler
+    public class SchemaHandler
     {
 
         public static string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["Admin"].ConnectionString;
         public static string setUpConnection = System.Configuration.ConfigurationManager.ConnectionStrings["setUp"].ConnectionString; 
-        public static string passwordConnectionString = connectionString + ";User ID = {0}; Password = {1}";
+        public static string passwordConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["authorizedString"].ConnectionString;
         public const string DATA_BASE_NAME = "Atlas";
         private static bool checkDataBase() {
 
@@ -48,27 +48,30 @@ namespace DALayer
                 dbConn.Close();
             }
         }
-        public static string getTenantConnectionString(string tenantName) {
-            return String.Format(passwordConnectionString, getTenantUser(tenantName), getTenantPass(tenantName));
+        public static String getTenantConnectionString(string tenantName) {
+            return String.Format(passwordConnectionString, tenantName, getTenantPass(tenantName));
         }
         public static string getTenantUser(string tenantName) {
 
-            return String.Format("user_{0}", tenantName);
+            return String.Format("user{0}", tenantName);
         }
 
         public static string getTenantPass(string tenantName) {
 
-            return String.Format("pass_{0}", tenantName);
+            return String.Format("pass{0}", tenantName);
         }
         public static void createTenant(string tenantID)
         {
             string loginName = getTenantPass(tenantID);
             string userName = getTenantUser(tenantID);
 
-            string loginSql = String.Format("use {0};CREATE LOGIN {1} WITH PASSWORD = '{2}'", DATA_BASE_NAME,  tenantID, loginName);
-            string userSql = String.Format("use {0}; CREATE USER {1} FOR LOGIN {2}", DATA_BASE_NAME, userName, tenantID);
+            string loginSql = String.Format("CREATE LOGIN {0} WITH PASSWORD = '{1}', DEFAULT_DATABASE=[{2}]", tenantID, loginName, DATA_BASE_NAME);
+            string userSql = String.Format("CREATE USER {0} for login {1}", userName, tenantID);
+            string grantRoleSql = String.Format("ALTER ROLE[db_owner] ADD MEMBER[{0}]", userName);
             string tenantSql = String.Format("CREATE SCHEMA {0} AUTHORIZATION {1}", tenantID, userName);
-            string[] commands = { loginSql, userSql, tenantSql };
+            string defaultSchemaSql = String.Format("ALTER USER {0} WITH DEFAULT_SCHEMA = {1}", userName, tenantID);
+            /*loginSql createRoleSql, grantRoleSql, */
+            string[] commands = { loginSql ,userSql, grantRoleSql, tenantSql , defaultSchemaSql };
             execMultiple(commands);
         }
 

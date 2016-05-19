@@ -28,7 +28,7 @@ namespace BLayer.Admin
 
         public void createRecurso(string name, string description, byte[] photo)
         {
-            builder.getRecursoHandler().createRecurso(new Recurso(name, description, photo));
+            builder.getRecursoHandler().CreateRecurso(new Recurso(name, description, photo));
         }
     }
 }

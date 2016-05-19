@@ -16,13 +16,20 @@ namespace BLayer
 
         static void Main(string[] args)
         {
-            IUnityContainer container = new UnityContainer();
-            container.LoadConfiguration();
+ 
+            //IUnityContainer container = new UnityContainer();
+            //container.LoadConfiguration();
 
-            blHandler = container.Resolve<IGameBuilder>();
+           // blHandler = container.Resolve<IGameBuilder>();
             
             //GameBuilderController gbc = new GameBuilderController("nuevojuego", new DALayer.Api.EFApi());
             //gbc.createRecurso("Etherium", "un recurso", null);
+ 
+            GameBuilderController gbc = new GameBuilderController("nuevojuego", new DALayer.Api.EFApi());
+            gbc.createRecurso("Etherium", "un recurso", null);
+            GameBuilderController gbc2 = new GameBuilderController("nuevojuego2", new DALayer.Api.EFApi());
+            gbc2.createRecurso("Etherium2", "un recurso", null);
+ 
         }
     }
 }
