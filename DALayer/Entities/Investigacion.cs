@@ -14,7 +14,7 @@ namespace DALayer.Entities
         public string descripcion { get; set; }
         public byte[] foto { get; set; }
         public Dictionary<String, float> costo{get; set;}
-        public float factorCostoNivel{get; set;}
+        public Dictionary<String, float> factorCostoNivel{get; set;}
         public int nivel{get; set;}
     }
 }

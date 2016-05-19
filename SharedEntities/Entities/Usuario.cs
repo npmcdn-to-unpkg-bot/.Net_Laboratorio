@@ -14,5 +14,7 @@ namespace SharedEntities.Entities
         public DateTime fnac;
         public String usuario;
         public String password;
+        public byte[] foto;
+        public Guid Id;
     }
 }
