@@ -12,6 +12,8 @@ namespace DALayer.Api
     {
         private TenantContext ctx;
         private RecursosHandlerEF recursosHanlder;
+        private MapaNodeHandlerEF mapaHandler;
+        
         public IRecursoHandler getRecursoHandler()
         {
             if (ctx == null) {
@@ -21,6 +23,19 @@ namespace DALayer.Api
                 recursosHanlder = new RecursosHandlerEF(ctx);
             }
             return recursosHanlder;
+        }
+
+        public IMapaNodeHandler getMapaNodeHandler()
+        {
+            if (ctx == null)
+            {
+                throw new Exception("Tenes que llamar a la funcion setTenant despues de inicializar esta clase");
+            }
+            if (mapaHandler == null)
+            {
+                mapaHandler = new MapaNodeHandlerEF(ctx);
+            }
+            return mapaHandler;
         }
 
         public void setTenant(string tid)

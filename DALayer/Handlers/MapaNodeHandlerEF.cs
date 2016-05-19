@@ -1,29 +1,29 @@
-﻿using DALayer.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DALayer.Interfaces;
 using SharedEntities.Entities;
 using System.Data.Entity.Validation;
 
 namespace DALayer.Handlers
 {
-    public class RecursosHandlerEF : IRecursoHandler
+    public class MapaNodeHandlerEF : IMapaNodeHandler
     {
         TenantContext ctx;
-        public RecursosHandlerEF(TenantContext tc) {
+        public MapaNodeHandlerEF(TenantContext tc)
+        {
             ctx = tc;
         }
-        public void CreateRecurso(Recurso recTmp)
+        public void CreateMapa(MapaNode mapa)
         {
+            Entities.MapaNode mapaE = new Entities.MapaNode();
+            mapaE.nombre = mapa.nombre;
+            mapaE.nivel = mapa.nivel;
+            mapaE.cantidad = mapa.cantidad;
 
-            Entities.Recurso rec = new Entities.Recurso();
-            rec.descripcion = recTmp.descripcion;
-            rec.foto = recTmp.foto;
-            rec.nombre = recTmp.nombre;
-
-            ctx.Recurso.Add(rec);
+            ctx.MapaNode.Add(mapaE);
             try
             {
 
@@ -43,17 +43,16 @@ namespace DALayer.Handlers
                 }
                 throw;
             }
-
         }
 
-        public void DeleteRecurso(string nombreTmp)
+        public void DeleteMapa(string nombreTmp)
         {
-            var rec = (from c in ctx.Recurso
-                                    where c.nombre == nombreTmp
-                                    select c).SingleOrDefault();
+            var mapaE = (from c in ctx.MapaNode
+                       where c.nombre == nombreTmp
+                       select c).SingleOrDefault();
             try
             {
-                ctx.Recurso.Remove(rec);
+                ctx.MapaNode.Remove(mapaE);
                 ctx.SaveChangesAsync().Wait();
             }
             catch (Exception ex)
@@ -62,18 +61,18 @@ namespace DALayer.Handlers
             }
         }
 
-        public List<Recurso> GetAllRecursos()
+        public List<MapaNode> GetAllMapas()
         {
-            List<Recurso> recursos = new List<Recurso>();
+            List<MapaNode> mapas = new List<MapaNode>();
             try
             {
-                List<Entities.Recurso> recursosTmp = ctx.Recurso.ToList();
-                foreach (Entities.Recurso item in recursosTmp)
+                List<Entities.MapaNode> mapasE = ctx.MapaNode.ToList();
+                foreach (Entities.MapaNode item in mapasE)
                 {
-                    Recurso rec = new Recurso(item.nombre, item.descripcion, item.foto);
-                    recursos.Add(rec);
+                    MapaNode map = new MapaNode(item.nombre, item.nivel, item.cantidad);
+                    mapas.Add(map);
                 }
-                return recursos;
+                return mapas;
             }
             catch (Exception ex)
             {
@@ -81,23 +80,18 @@ namespace DALayer.Handlers
             }
         }
 
-        public void GetRecursoByUser()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UpdateRecurso(Recurso rec)
+        public void UpdateMapa(MapaNode mapa)
         {
             try
             {
-                var recT = ctx.Recurso
-                    .Where(w => w.nombre == rec.nombre)
+                var mapaE = ctx.MapaNode
+                    .Where(w => w.nombre == mapa.nombre)
                     .SingleOrDefault();
 
-                if (recT != null)
+                if (mapaE != null)
                 {
-                    recT.descripcion = rec.descripcion;
-                    recT.foto = rec.foto;
+                    mapaE.nivel = mapa.nivel;
+                    mapaE.cantidad = mapa.cantidad;
                     ctx.SaveChangesAsync().Wait();
                 }
             }
@@ -105,11 +99,6 @@ namespace DALayer.Handlers
             {
                 throw ex;
             }
-        }
-
-        public void UpdateRecursoByUser()
-        {
-            throw new NotImplementedException();
         }
     }
 }

@@ -9,6 +9,7 @@ namespace DALayer.Interfaces
     public interface IApi
     {
         IRecursoHandler getRecursoHandler();
+        IMapaNodeHandler getMapaNodeHandler();
         void setTenant(string tid);
     }
 }

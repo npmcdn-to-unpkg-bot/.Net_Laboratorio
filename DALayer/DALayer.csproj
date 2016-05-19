@@ -77,8 +77,10 @@
     <Compile Include="Entities\SuperAdmin.cs" />
     <Compile Include="Entities\Unidad.cs" />
     <Compile Include="Entities\Usuario.cs" />
+    <Compile Include="Handlers\MapaNodeHandlerEF.cs" />
     <Compile Include="Handlers\RecursosHandlerEF.cs" />
     <Compile Include="Interfaces\IApi.cs" />
+    <Compile Include="Interfaces\IMapaNodeHandler.cs" />
     <Compile Include="Interfaces\IRecursoHandler.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
