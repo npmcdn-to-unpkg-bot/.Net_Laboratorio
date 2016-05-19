@@ -25,9 +25,9 @@ namespace BLayer
             //GameBuilderController gbc = new GameBuilderController("nuevojuego", new DALayer.Api.EFApi());
             //gbc.createRecurso("Etherium", "un recurso", null);
  
-            GameBuilderController gbc = new GameBuilderController("nuevojuego", new DALayer.Api.EFApi());
+            GameBuilderController gbc = new GameBuilderController("orgame", new DALayer.Api.EFApi());
             gbc.createRecurso("Etherium", "un recurso", null);
-            GameBuilderController gbc2 = new GameBuilderController("nuevojuego2", new DALayer.Api.EFApi());
+            GameBuilderController gbc2 = new GameBuilderController("orgame2", new DALayer.Api.EFApi());
             gbc2.createRecurso("Etherium2", "un recurso", null);
  
         }
