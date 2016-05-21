@@ -69,7 +69,7 @@ namespace GameBuildPortal.ControllersApi
                 blHandler.createRecurso(recurso);
 
                 HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, recurso);
-                response.Headers.Location = new Uri(Url.Link("RecursoApi", new { controller = "Admin" }));
+                response.Headers.Location = new Uri(Url.Link("DefaultApi", new { controller = "Admin" }));
                 return response;
             }
             else

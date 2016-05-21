@@ -7,7 +7,7 @@
         $scope.recurso  = null;
         $scope.saving   = false;
 
-        console.log($routeParams)
+        console.log($routeParams, $routeParams['id'])
 
         var initialize = function(){
             var id = $routeParams && $routeParams['id'] ? $routeParams['id'] : null
@@ -31,7 +31,8 @@
                     $scope.recursos.push(data);
                     $scope.saving = false;
                 
-                    mostrarNotificacion('success');                    
+                    mostrarNotificacion('success');
+                    window.history.back();
                 }, function() {
                     $scope.saving = false;
 
@@ -48,7 +49,8 @@
                 function (data) {
                     $scope.saving = false;
 
-                    mostrarNotificacion('success');                    
+                    mostrarNotificacion('success');
+                    window.history.back();
                 }, function() {
                     $scope.saving = false;
 
@@ -57,22 +59,30 @@
             );
         }
 
-        $scope.borrar = function(id){
+        $scope.borrar = function () {
             $scope.saving   = true;
-            var recurso     = this.recurso;
+            var recurso = this.recurso;
 
-            recursoService.borrar(id).then(
-                function (data) {
-                    $scope.recursos.pop(data);
-                    $scope.saving = false;
+            console.log(this.recurso);
 
-                    mostrarNotificacion('success');                    
-                }, function() {
-                    $scope.saving = false;
+            //var index = $scope.recursos.indexOf(item);
+            //$scope.recursos.splice(index, 1);
 
-                    mostrarNotificacion('error');
-                }
-            );
+            var r = confirm("Esta seguro?");
+            if (r == true) {
+                recursoService.borrar(recurso.nombre).then(
+                 function (data) {
+                     $scope.recursos.pop(data);
+                     $scope.saving = false;
+
+                     mostrarNotificacion('success');
+                 }, function () {
+                     $scope.saving = false;
+
+                     mostrarNotificacion('error');
+                 }
+             );
+            }
         }
 
         var mostrarNotificacion = function(tipo){
@@ -81,8 +91,8 @@
 
             if(tipo == 'success'){
                 var title   = 'Exito!';
-                var text    = 'Recurso borrado con exito.';
-            }else if(tipo == 'success'){
+                var text    = 'Acción realizada con exito.';
+            }else if(tipo == 'error'){
                 var title   = 'Oh No!';
                 var text    = 'Ha ocurrido un error.';
             }

@@ -78,7 +78,7 @@
             getAll  : getAll,
             getId   : getId,
             add     : add,
-            delete  : borrar,
+            borrar  : borrar,
             edit    : edit,
         }
 
