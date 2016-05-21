@@ -13,12 +13,12 @@ namespace SharedEntities.Entities
         public string descripcion;
         public byte[] foto; 
 
-        public Recurso(Guid id,string name, string description, byte[] photo)
+        public Recurso(Guid id, string nombre, string description, byte[] foto)
         {
             this.id = id;
-            this.nombre = name;
+            this.nombre = nombre;
             this.descripcion = description;
-            this.foto = photo;
+            this.foto = foto;
         }
     }
 }

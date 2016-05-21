@@ -40,11 +40,10 @@
         }
 
         $scope.edit = function () {
-            var id = $routeParams && $routeParams['id'] ? $routeParams['id'] : null
             $scope.saving   = true;
             var recurso     = this.recurso;
 
-            recursoService.edit(id, recurso).then(
+            recursoService.edit(recurso).then(
                 function (data) {
                     $scope.saving = false;
 
@@ -64,7 +63,7 @@
 
             var r = confirm("Seguro que quiere borrar?");
             if (r == true) {
-                recursoService.borrar(recurso.nombre).then(
+                recursoService.borrar(recurso.id).then(
                  function (data) {
                      $scope.recursos.pop(data);
                      $scope.saving = false;

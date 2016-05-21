@@ -19,9 +19,9 @@ namespace GameBuildPortal.ControllersApi
         }
 
         [HttpGet]
-        public Recurso Get(string nombre)
+        public Recurso Get(Guid id)
         {
-            Recurso recurso = blHandler.getRecurso(nombre);
+            Recurso recurso = blHandler.getRecurso(id);
             if (recurso == null)
             {
                 throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.NotFound));
@@ -37,14 +37,14 @@ namespace GameBuildPortal.ControllersApi
         }
 
         [HttpPut]
-        public HttpResponseMessage Put(string nombre, Recurso recurso)
+        public HttpResponseMessage Put(Guid id, Recurso recurso)
         {
             if (!ModelState.IsValid)
             {
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
             }
 
-            if (nombre != recurso.nombre)
+            if (id != recurso.id)
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest);
             }
@@ -79,9 +79,9 @@ namespace GameBuildPortal.ControllersApi
         }
 
         [HttpDelete]
-        public HttpResponseMessage Delete(string nombre)
+        public HttpResponseMessage Delete(Guid id)
         {
-            Recurso recurso = blHandler.getRecurso(nombre);
+            Recurso recurso = blHandler.getRecurso(id);
             if (recurso == null)
             {
                 return Request.CreateResponse(HttpStatusCode.NotFound);

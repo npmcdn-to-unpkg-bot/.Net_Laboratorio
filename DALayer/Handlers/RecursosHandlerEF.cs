@@ -24,28 +24,16 @@ namespace DALayer.Handlers
             rec.descripcion = recTmp.descripcion;
             rec.foto = recTmp.foto;
             rec.nombre = recTmp.nombre;
-            
-            ctx.Recurso.Add(rec);
-            ctx.SaveChanges();
+            try
+            {
+                ctx.Recurso.Add(rec);
+                ctx.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
 
-            //try
-            //{
-                
-            //}
-            //catch (DbEntityValidationException e)
-            //{
-            //    foreach (var eve in e.EntityValidationErrors)
-            //    {
-            //        Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
-            //            eve.Entry.Entity.GetType().Name, eve.Entry.State);
-            //        foreach (var ve in eve.ValidationErrors)
-            //        {
-            //            Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
-            //                ve.PropertyName, ve.ErrorMessage);
-            //        }
-            //    }
-            //    throw;
-            //}
         }
 
         public void deleteRecurso(Recurso recurso)

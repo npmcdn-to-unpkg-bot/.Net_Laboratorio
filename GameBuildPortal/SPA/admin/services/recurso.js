@@ -32,10 +32,10 @@
             return defer.promise;
         };
 
-        var edit = function(id, recurso){
+        var edit = function(recurso){
             var defer = $q.defer();
 
-            $http.put('/admin/api/recurso?nombre=' + id, recurso)
+            $http.put('/admin/api/recurso?id=' + recurso.id, recurso)
             .success(function (recurso) {
                 defer.resolve(recurso);
             })
@@ -49,7 +49,7 @@
         var borrar = function(id){
             var defer = $q.defer();
 
-            $http.delete('/admin/api/recurso?nombre=' + id)
+            $http.delete('/admin/api/recurso?id=' + id)
             .success(function (recurso) {
                 defer.resolve(recurso);
             })
@@ -63,7 +63,7 @@
         var getId = function(id){
             var defer = $q.defer();
 
-            $http.get('/admin/api/recurso?nombre='+id)
+            $http.get('/admin/api/recurso?id='+id)
             .success(function (recurso) {
                 defer.resolve(recurso);
             })

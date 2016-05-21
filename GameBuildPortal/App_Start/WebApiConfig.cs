@@ -17,8 +17,8 @@ namespace GameBuildPortal
             // Web API configuration and services
             IUnityContainer container = new UnityContainer();
             container.LoadConfiguration();
-            blHandler = container.Resolve<IGameBuilder>(new ParameterOverrides { { "tId", "ogame1" },{ "IApi", container.Resolve<IApi>() } });
-            container.Resolve<IGameBuilder>(new ParameterOverrides { { "tId", "clashofclan1" }, { "IApi", container.Resolve<IApi>() } });
+            blHandler = container.Resolve<IGameBuilder>(new ParameterOverrides { { "tId", "olgame2" },{ "IApi", container.Resolve<IApi>() } });
+            container.Resolve<IGameBuilder>(new ParameterOverrides { { "tId", "orgame2" }, { "IApi", container.Resolve<IApi>() } });
 
             // Web API routes
             config.MapHttpAttributeRoutes();
