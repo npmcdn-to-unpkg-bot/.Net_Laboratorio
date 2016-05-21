@@ -78,10 +78,12 @@
     <Compile Include="Entities\Unidad.cs" />
     <Compile Include="Entities\Usuario.cs" />
     <Compile Include="Handlers\AlianzaHandlerEF.cs" />
+    <Compile Include="Handlers\FlotaHandlerEF.cs" />
     <Compile Include="Handlers\InvestigacionHandlerEF.cs" />
     <Compile Include="Handlers\MapaNodeHandlerEF.cs" />
     <Compile Include="Handlers\RecursosHandlerEF.cs" />
     <Compile Include="Interfaces\IApi.cs" />
+    <Compile Include="Interfaces\IFlotaHandler.cs" />
     <Compile Include="Interfaces\IMapaNodeHandler.cs" />
     <Compile Include="Interfaces\IInvestigacionHandler.cs" />
     <Compile Include="Interfaces\IAlianzaHandler.cs" />

@@ -6,8 +6,17 @@ using System.Threading.Tasks;
 
 namespace SharedEntities.Entities
 {
-    class Flota
+    public class Flota
     {
-        Dictionary<Destacamento, float> naves;
+        public Guid id;
+        public String typoNave;
+        public int cantidad;
+
+        public Flota (Guid ident, string tynave, int cant)
+        {
+            this.id = ident;
+            this.typoNave = tynave;
+            this.cantidad= cant;
+        }
     }
 }
