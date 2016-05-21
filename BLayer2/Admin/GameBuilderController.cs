@@ -22,19 +22,19 @@ namespace BLayer.Admin
             return builder.getRecursoHandler().getAllRecursos();
         }
 
-        public Recurso getRecurso(string nombre)
+        public Recurso getRecurso(Guid id)
         {
-            return builder.getRecursoHandler().getRecurso(nombre);
+            return builder.getRecursoHandler().getRecurso(id);
         }
 
-        public Recurso createRecurso(Recurso recurso)
+        public void createRecurso(Recurso recurso)
         {
-            return builder.getRecursoHandler().createRecurso(recurso);
+            builder.getRecursoHandler().createRecurso(recurso);
         }
 
-        public Recurso updateRecurso(Recurso recurso)
+        public void updateRecurso(Recurso recurso)
         {
-            return builder.getRecursoHandler().updateRecurso(recurso);
+            builder.getRecursoHandler().updateRecurso(recurso);
         }
 
         public void deleteRecurso(Recurso recurso)

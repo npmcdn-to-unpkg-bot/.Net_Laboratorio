@@ -9,9 +9,9 @@ namespace BLayer.Interfaces
     public interface IGameBuilder
     {
         List<Recurso> getAllRecursos();
-        Recurso createRecurso(Recurso recurso);
+        void createRecurso(Recurso recurso);
         void deleteRecurso(Recurso recurso);
-        Recurso updateRecurso(Recurso recurso);
-        Recurso getRecurso(string nombre);
+        void updateRecurso(Recurso recurso);
+        Recurso getRecurso(Guid id);
     }
 }
