@@ -41,7 +41,8 @@
             );
         }
 
-        $scope.edit = function(){
+        $scope.edit = function () {
+            var id = $routeParams && $routeParams['id'] ? $routeParams['id'] : null
             $scope.saving   = true;
             var recurso     = this.recurso;
 
