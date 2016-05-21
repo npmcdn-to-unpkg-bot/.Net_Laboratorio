@@ -7,8 +7,6 @@
         $scope.recurso  = null;
         $scope.saving   = false;
 
-        console.log($routeParams, $routeParams['id'])
-
         var initialize = function(){
             var id = $routeParams && $routeParams['id'] ? $routeParams['id'] : null
             if(id){
@@ -64,12 +62,7 @@
             $scope.saving   = true;
             var recurso = this.recurso;
 
-            console.log(this.recurso);
-
-            //var index = $scope.recursos.indexOf(item);
-            //$scope.recursos.splice(index, 1);
-
-            var r = confirm("Esta seguro?");
+            var r = confirm("Seguro que quiere borrar?");
             if (r == true) {
                 recursoService.borrar(recurso.nombre).then(
                  function (data) {
