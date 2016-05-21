@@ -7,9 +7,9 @@
         var getAll = function(){
             var defer = $q.defer();
 
-            $http.get('/admin/api/recursos')
-            .success(function (employees) {
-                defer.resolve(employees);
+            $http.get('/admin/api/recurso')
+            .success(function (recursos) {
+                defer.resolve(recursos);
             })
             .error(function(){
                 defer.reject('server error')
