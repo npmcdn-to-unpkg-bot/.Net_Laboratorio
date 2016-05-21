@@ -17,19 +17,16 @@ namespace DALayer.Handlers
             ctx = tc;
         }
 
-        public Recurso createRecurso(Recurso recTmp)
+        public void createRecurso(Recurso recTmp)
         {
             Entities.Recurso rec = new Entities.Recurso();
+            rec.id = recTmp.id;
             rec.descripcion = recTmp.descripcion;
             rec.foto = recTmp.foto;
             rec.nombre = recTmp.nombre;
             
-ctx.Recurso.Add(rec);
-                ctx.SaveChanges();
-
-                Recurso recurso = new Recurso(rec.nombre, rec.descripcion, rec.foto);
-
-                return recurso;
+            ctx.Recurso.Add(rec);
+            ctx.SaveChanges();
 
             //try
             //{
@@ -54,7 +51,7 @@ ctx.Recurso.Add(rec);
         public void deleteRecurso(Recurso recurso)
         {
             var rec = (from c in ctx.Recurso
-                        where c.nombre == recurso.nombre
+                        where c.id == recurso.id
                         select c).SingleOrDefault();
             try
             {
@@ -75,7 +72,7 @@ ctx.Recurso.Add(rec);
                 List<Entities.Recurso> recursosTmp = ctx.Recurso.ToList();
                 foreach (Entities.Recurso item in recursosTmp)
                 {
-                    Recurso rec = new Recurso(item.nombre, item.descripcion, item.foto);
+                    Recurso rec = new Recurso(item.id, item.nombre, item.descripcion, item.foto);
                     recursos.Add(rec);
                 }
 
@@ -87,15 +84,15 @@ ctx.Recurso.Add(rec);
             }
         }
 
-        public Recurso getRecurso(string nombre)
+        public Recurso getRecurso(Guid id)
         {
             try
             {
                 var rec = (from c in ctx.Recurso
-                           where c.nombre == nombre
+                           where c.id == id
                            select c).SingleOrDefault();
 
-                Recurso recurso = new Recurso(rec.nombre, rec.descripcion, rec.foto);
+                Recurso recurso = new Recurso(rec.id, rec.nombre, rec.descripcion, rec.foto);
                 return recurso;
             }
             catch (Exception ex)
@@ -104,23 +101,22 @@ ctx.Recurso.Add(rec);
             }
         }
 
-        public Recurso updateRecurso(Recurso rec)
+        public void updateRecurso(Recurso rec)
         {
             try
             {
                 var recT = ctx.Recurso
-                    .Where(w => w.nombre == rec.nombre)
+                    .Where(w => w.id == rec.id)
                     .SingleOrDefault();
 
                 if (recT != null)
                 {
+                    recT.nombre = rec.nombre;
                     recT.descripcion = rec.descripcion;
                     recT.foto = rec.foto;
                     ctx.SaveChangesAsync().Wait();
                 }
-
-                Recurso recurso = new Recurso(recT.nombre, recT.descripcion, recT.foto);
-                return recurso;
+                
             }
             catch (Exception ex)
             {

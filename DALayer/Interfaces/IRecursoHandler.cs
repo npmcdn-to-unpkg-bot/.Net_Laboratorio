@@ -9,10 +9,10 @@ namespace DALayer.Interfaces
 {
     public interface IRecursoHandler
     {
-        Recurso createRecurso(Recurso rec);
+        void createRecurso(Recurso rec);
         void deleteRecurso(Recurso rec);
-        Recurso updateRecurso(Recurso rec);
+        void updateRecurso(Recurso rec);
         List<Recurso> getAllRecursos();
-        Recurso getRecurso(string nombre);
+        Recurso getRecurso(Guid id);
     }
 }
