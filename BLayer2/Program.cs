@@ -18,16 +18,16 @@ namespace BLayer
         static void Main(string[] args)
         {
  
-            IUnityContainer container = new UnityContainer();
-            container.LoadConfiguration();
+            //IUnityContainer container = new UnityContainer();
+            //container.LoadConfiguration();
             //public static IGameBuilder blHandler;
             //GameBuilderController gbc = new GameBuilderController("nuevojuego", new DALayer.Api.EFApi());
             //gbc.createRecurso("Etherium", "un recurso", null);
 
-            GameBuilderController gbc = new GameBuilderController("orgame", container.Resolve<IApi>());
-            gbc.createRecurso("Nitrogeno", "un recurso", null);
-            GameBuilderController gbc2 = new GameBuilderController("orgame2", container.Resolve<IApi>());
-            gbc2.createRecurso("Nitrogeno", "un recurso", null);
+            //GameBuilderController gbc = new GameBuilderController("orgame", container.Resolve<IApi>());
+            //gbc.createRecurso("Nitrogeno", "un recurso", null);
+            //GameBuilderController gbc2 = new GameBuilderController("orgame2", container.Resolve<IApi>());
+            // gbc2.createRecurso("Nitrogeno", "un recurso", null);
  
         }
     }

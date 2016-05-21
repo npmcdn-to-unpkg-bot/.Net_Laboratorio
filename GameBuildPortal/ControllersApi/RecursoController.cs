@@ -18,33 +18,85 @@ namespace GameBuildPortal.ControllersApi
             blHandler = WebApiConfig.blHandler;
         }
 
-        public Recurso Get(int id)
+        [HttpGet]
+        public Recurso Get(string nombre)
         {
-            //return blHandler.getRecurso(idEmployee);
-            throw new NotImplementedException();
+            Recurso recurso = blHandler.getRecurso(nombre);
+            if (recurso == null)
+            {
+                throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.NotFound));
+            }
+
+            return recurso;
         }
 
+        [HttpGet]
         public IEnumerable<Recurso> Get()
         {
             return blHandler.getAllRecursos();
         }
 
-        public bool Put(int id, [FromBody]string value)
+        [HttpPut]
+        public HttpResponseMessage Put(string nombre, Recurso recurso)
         {
-            //blHandler.updateRecurso(value); 
-            throw new NotImplementedException();
+            if (!ModelState.IsValid)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+            }
+
+            if (nombre != recurso.nombre)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
+
+            try
+            {
+                blHandler.updateRecurso(recurso);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, ex);
+            }
+
+            return Request.CreateResponse(HttpStatusCode.OK);
         }
 
-        public bool Post(int id, [FromBody]string value)
+        [HttpPost]
+        public HttpResponseMessage Post(Recurso recurso)
         {
-            throw new NotImplementedException();
+            if (ModelState.IsValid)
+            {
+                blHandler.createRecurso(recurso);
+
+                HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, recurso);
+                response.Headers.Location = new Uri(Url.Link("RecursoApi", new { controller = "Admin" }));
+                return response;
+            }
+            else
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+            }
         }
 
-        public bool Delete(int id)
+        [HttpDelete]
+        public HttpResponseMessage Delete(string nombre)
         {
-            throw new NotImplementedException();
-            //blHandler.deleteRecurso(id);
-            //return true;
+            Recurso recurso = blHandler.getRecurso(nombre);
+            if (recurso == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            
+            try
+            {
+                blHandler.deleteRecurso(recurso);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, ex);
+            }
+
+            return Request.CreateResponse(HttpStatusCode.OK, recurso);
         }
     }
 }

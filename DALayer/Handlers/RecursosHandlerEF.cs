@@ -12,22 +12,26 @@ namespace DALayer.Handlers
     public class RecursosHandlerEF : IRecursoHandler
     {
         TenantContext ctx;
+
         public RecursosHandlerEF(TenantContext tc) {
             ctx = tc;
         }
-        public void createRecurso(Recurso recTmp)
-        {
 
+        public Recurso createRecurso(Recurso recTmp)
+        {
             Entities.Recurso rec = new Entities.Recurso();
             rec.descripcion = recTmp.descripcion;
             rec.foto = recTmp.foto;
             rec.nombre = recTmp.nombre;
-
-            ctx.Recurso.Add(rec);
+            
             try
             {
-
+                ctx.Recurso.Add(rec);
                 ctx.SaveChanges();
+
+                Recurso recurso = new Recurso(rec.nombre, rec.descripcion, rec.foto);
+
+                return recurso;
             }
             catch (DbEntityValidationException e)
             {
@@ -43,14 +47,13 @@ namespace DALayer.Handlers
                 }
                 throw;
             }
-
         }
 
-        public void deleteRecurso(string nombreTmp)
+        public void deleteRecurso(Recurso recurso)
         {
             var rec = (from c in ctx.Recurso
-                                    where c.nombre == nombreTmp
-                                    select c).SingleOrDefault();
+                        where c.nombre == recurso.nombre
+                        select c).SingleOrDefault();
             try
             {
                 ctx.Recurso.Remove(rec);
@@ -73,6 +76,7 @@ namespace DALayer.Handlers
                     Recurso rec = new Recurso(item.nombre, item.descripcion, item.foto);
                     recursos.Add(rec);
                 }
+
                 return recursos;
             }
             catch (Exception ex)
@@ -81,12 +85,24 @@ namespace DALayer.Handlers
             }
         }
 
-        public void getRecursoByUser()
+        public Recurso getRecurso(string nombre)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var rec = (from c in ctx.Recurso
+                           where c.nombre == nombre
+                           select c).SingleOrDefault();
+
+                Recurso recurso = new Recurso(rec.nombre, rec.descripcion, rec.foto);
+                return recurso;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
-        public void updateRecurso(Recurso rec)
+        public Recurso updateRecurso(Recurso rec)
         {
             try
             {
@@ -100,11 +116,19 @@ namespace DALayer.Handlers
                     recT.foto = rec.foto;
                     ctx.SaveChangesAsync().Wait();
                 }
+
+                Recurso recurso = new Recurso(recT.nombre, recT.descripcion, recT.foto);
+                return recurso;
             }
             catch (Exception ex)
             {
                 throw ex;
             }
+        }
+
+        public void getRecursoByUser()
+        {
+            throw new NotImplementedException();
         }
 
         public void updateRecursoByUser()

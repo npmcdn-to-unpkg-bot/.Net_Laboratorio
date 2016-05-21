@@ -20,14 +20,26 @@ namespace BLayer.Admin
         public List<Recurso> getAllRecursos()
         {
             return builder.getRecursoHandler().getAllRecursos();
-
-            //GameBuilderController gbc = new GameBuilderController("nuevojuego", new DALayer.Api.EFApi());
-            //return gbc.getAllRecursos();
         }
 
-        public void createRecurso(string name, string description, byte[] photo)
+        public Recurso getRecurso(string nombre)
         {
-            builder.getRecursoHandler().createRecurso(new Recurso(name, description, photo));
+            return builder.getRecursoHandler().getRecurso(nombre);
+        }
+
+        public Recurso createRecurso(Recurso recurso)
+        {
+            return builder.getRecursoHandler().createRecurso(recurso);
+        }
+
+        public Recurso updateRecurso(Recurso recurso)
+        {
+            return builder.getRecursoHandler().updateRecurso(recurso);
+        }
+
+        public void deleteRecurso(Recurso recurso)
+        {
+            builder.getRecursoHandler().deleteRecurso(recurso);
         }
     }
 }

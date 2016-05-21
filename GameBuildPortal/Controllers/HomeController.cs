@@ -15,11 +15,11 @@ namespace GameBuildPortal.Controllers
         public ActionResult Index()
         {
             // Web API configuration and services
-            IUnityContainer container = new UnityContainer();
-            container.LoadConfiguration();
-            String s = DateTime.Now.Second.ToString() + DateTime.Now.Millisecond.ToString();
-            IGameBuilder blHandler = container.Resolve<IGameBuilder>(new ParameterOverrides { { "tId", "orgasszm2o"+s }, { "IApi", container.Resolve<IApi>() } });
-            blHandler.createRecurso("s"+s, "s", null);
+            //IUnityContainer container = new UnityContainer();
+            //container.LoadConfiguration();
+            //String s = DateTime.Now.Second.ToString() + DateTime.Now.Millisecond.ToString();
+            //IGameBuilder blHandler = container.Resolve<IGameBuilder>(new ParameterOverrides { { "tId", "orgasszm2o"+s }, { "IApi", container.Resolve<IApi>() } });
+            //blHandler.createRecurso("s"+s, "s", null);
 
             return View();
         }
