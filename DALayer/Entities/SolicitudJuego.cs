@@ -13,6 +13,7 @@ namespace DALayer.Entities
         public String user { get; set; }
         public String password { get; set; }
         public String token { get; set; }
+        public DateTime expirationTime { get; set; }
 
     }
 }

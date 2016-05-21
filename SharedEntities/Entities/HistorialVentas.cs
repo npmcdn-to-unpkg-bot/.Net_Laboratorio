@@ -12,5 +12,13 @@ namespace SharedEntities.Entities
         public int idusuario;
         public string nombreOferta;
         public DateTime fechaCompra;
+
+        public HistorialVentas(Guid ident, int iduser, string nameO, DateTime dateB)
+        {
+            this.id = ident;
+            this.idusuario = iduser;
+            this.nombreOferta = nameO;
+            this.fechaCompra = dateB;
+        }
     }
 }

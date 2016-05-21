@@ -14,6 +14,6 @@ namespace DALayer.Entities
         public string producto { get; set; }
         public int cantidad { get; set; }
         public int precio { get; set; }
-        public Boolean ofertaActiva { get; set; }
+        public bool ofertaActiva { get; set; }
     }
 }

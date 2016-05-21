@@ -12,6 +12,15 @@ namespace SharedEntities.Entities
         public string producto;
         public int cantidad;
         public int precio;
-        public Boolean ofertaActiva;
+        public bool ofertaActiva;
+
+        public PaquetePaypal(string nameO, string product, int cant, int price, bool active)
+        {
+            this.nombreOferta = nameO;
+            this.producto = product;
+            this.cantidad = cant;
+            this.precio = price;
+            this.ofertaActiva = active;
+        }
     }
 }
