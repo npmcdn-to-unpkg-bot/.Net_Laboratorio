@@ -13,6 +13,7 @@ namespace DALayer.Api
         private TenantContext ctx;
         private RecursosHandlerEF recursosHanlder;
         private MapaNodeHandlerEF mapaHandler;
+        private UnidadHandlerEF unidadHandler;
         
         public IRecursoHandler getRecursoHandler()
         {
@@ -41,6 +42,19 @@ namespace DALayer.Api
         public void setTenant(string tid)
         {
             ctx = TenantFactory.getTenantCxt(tid);
+        }
+
+        public IUnidadHandler getUnidadHandller()
+        {
+            if (ctx == null)
+            {
+                throw new Exception("Tenes que llamar a la funcion setTenant despues de inicializar esta clase");
+            }
+            if (unidadHandler == null)
+            {
+                unidadHandler = new UnidadHandlerEF(ctx);
+            }
+            return unidadHandler;
         }
     }
 }

@@ -8,7 +8,23 @@ namespace SharedEntities.Entities
 {
     public class Destacamento: Unidad
     {
-        float velocidad;
+        public float velocidad;
+        public Boolean enMision;
+
+        public Destacamento(Guid id, string description, byte[] photo, float capacidadI, float ataque, float escudo,
+            float efectividadAtaque, float vida, float velocidad, Boolean enMission)
+        {
+            this.id = id;
+            this.descripcion = description;
+            this.foto = photo;
+            this.capacidadInicial = capacidadI;
+            this.ataque = ataque;
+            this.escudo = escudo;
+            this.efectividadAtaque = efectividadAtaque;
+            this.vida = vida;
+            this.velocidad = velocidad;
+            this.enMision = enMission;
+        }
 
     }
 }

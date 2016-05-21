@@ -82,12 +82,14 @@
     <Compile Include="Handlers\InvestigacionHandlerEF.cs" />
     <Compile Include="Handlers\MapaNodeHandlerEF.cs" />
     <Compile Include="Handlers\RecursosHandlerEF.cs" />
+    <Compile Include="Handlers\UnidadHandlerEF.cs" />
     <Compile Include="Interfaces\IApi.cs" />
     <Compile Include="Interfaces\IFlotaHandler.cs" />
     <Compile Include="Interfaces\IMapaNodeHandler.cs" />
     <Compile Include="Interfaces\IInvestigacionHandler.cs" />
     <Compile Include="Interfaces\IAlianzaHandler.cs" />
     <Compile Include="Interfaces\IRecursoHandler.cs" />
+    <Compile Include="Interfaces\IUnidadHandler.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Handlers\SchemaHandler.cs" />

@@ -10,6 +10,7 @@ namespace DALayer.Interfaces
     {
         IRecursoHandler getRecursoHandler();
         IMapaNodeHandler getMapaNodeHandler();
+        IUnidadHandler getUnidadHandller();
         void setTenant(string tid);
     }
 }

@@ -6,16 +6,19 @@ using System.Threading.Tasks;
 
 namespace SharedEntities.Entities
 {
-    public class Unidad
+    public abstract class Unidad
     {
-        /*nombre recurso, facor prod por nivel*/
+        public Guid id;
+        /*nombre recurso, factor prod por nivel*/
+        public string descripcion;
+        public byte[] foto;
         Dictionary<String, float> factoresProdRecursos;
-        float capacidadInicial;
-        float ataque;
-        float defensa;
-        float escudo;
-        float efectividadAtaque;
-        float vida;
+        public float capacidadInicial;
+        public float ataque;
+        //float defensa{get; set;} creo que sobra
+        public float escudo;
+        public float efectividadAtaque;
+        public float vida;
 
     }
 }

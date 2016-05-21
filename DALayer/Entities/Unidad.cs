@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace DALayer.Entities
 {
-    public class Unidad
+    public abstract class Unidad
     {
         [Key]
         public Guid id { get; set; }
@@ -15,12 +15,12 @@ namespace DALayer.Entities
         public string descripcion { get; set; }
         public byte[] foto { get; set; }
         Dictionary<String, float> factoresProdRecursos{get; set;}
-        float capacidadInicial{get; set;}
-        float ataque{get; set;}
+        public float capacidadInicial{get; set;}
+        public float ataque {get; set;}
         //float defensa{get; set;} creo que sobra
-        float escudo{get; set;}
-        float efectividadAtaque{get; set;}
-        float vida{get; set;}
+        public float escudo {get; set;}
+        public float efectividadAtaque {get; set;}
+        public float vida {get; set;}
 
     }
 }
