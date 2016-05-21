@@ -21,10 +21,8 @@ namespace DALayer.Handlers
 
             Entities.Flota fleet = new Entities.Flota();
             fleet.id = fleetTmp.id;
-
-            //fleet.naves = fleetTmp.naves; 
-            //como paso el diccionario "naves" de SharedEntities a DALayer??            
-
+            fleet.cantidad = fleetTmp.cantidad;
+            fleet.typoNave = fleetTmp.typoNave;             
 
             ctx.Flota.Add(fleet);
             try
@@ -70,13 +68,12 @@ namespace DALayer.Handlers
             List<Flota> fleetList = new List<Flota>();
             try
             {
-                //List<Entities.Flota> fleetTmp = ctx.Flota.ToList();
-                //foreach (Entities.Flota item in fleetTmp)
-                //{
-                //    como paso el diccionario "naves" de SharedEntities a DALayer??  
-                //    Recurso fl = new Flota(item.id, item.naves);
-                //    fleet.Add(fl);
-                //}
+                List<Entities.Flota> fleetTmp = ctx.Flota.ToList();
+                foreach (Entities.Flota item in fleetTmp)
+                {
+                    Flota flot = new Flota(item.id, item.typoNave, item.cantidad);
+                    fleetList.Add(flot);
+                }
                 return fleetList;
             }
             catch (Exception ex)
@@ -95,8 +92,9 @@ namespace DALayer.Handlers
 
                 if (fleetTmp != null)
                 {
-                    //como paso el diccionario "naves" de SharedEntities a DALayer??
-                    //fleetTmp.naves = fleet.naves;
+                    fleetTmp.typoNave = fleet.typoNave;
+                    fleetTmp.cantidad = fleet.cantidad;
+
                     ctx.SaveChangesAsync().Wait();
                 }
             }
