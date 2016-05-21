@@ -6,8 +6,7 @@
         $scope.recursos = [];
 
         recursoService.getAll().then(function (data) {
-            console.log('data', data);
-            $scope.recursos.push(data);
+            $scope.recursos = data;
         });
 
         $scope.add = function(){
@@ -17,6 +16,12 @@
         $scope.edit = function(){
         	console.log('aaaddd')
         }
+
+        new PNotify({
+            title: 'Regular Success',
+            text: 'That thing that you were trying to do worked!',
+            type: 'success'
+        });
 
     }
 
