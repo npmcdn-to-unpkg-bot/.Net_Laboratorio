@@ -18,8 +18,68 @@
             return defer.promise;
         };
 
+        var add = function(recurso){
+            var defer = $q.defer();
+
+            $http.post('/admin/api/recurso', recurso)
+            .success(function (recurso) {
+                defer.resolve(recurso);
+            })
+            .error(function(){
+                defer.reject('server error')
+            });
+
+            return defer.promise;
+        };
+
+        var edit = function(id, recurso){
+            var defer = $q.defer();
+
+            $http.post('/admin/api/recurso', { id : id, recurso : recurso })
+            .success(function (recurso) {
+                defer.resolve(recurso);
+            })
+            .error(function(){
+                defer.reject('server error')
+            });
+
+            return defer.promise;
+        };
+
+        var borrar = function(id){
+            var defer = $q.defer();
+
+            $http.post('/admin/api/recurso', { id : id })
+            .success(function (recurso) {
+                defer.resolve(recurso);
+            })
+            .error(function(){
+                defer.reject('server error')
+            });
+
+            return defer.promise;
+        };
+
+        var getId = function(id){
+            var defer = $q.defer();
+
+            $http.get('/admin/api/recurso', { id : id })
+            .success(function (recurso) {
+                defer.resolve(recurso);
+            })
+            .error(function(){
+                defer.reject('server error')
+            });
+
+            return defer.promise;
+        };
+
         return {
-            getAll : getAll
+            getAll  : getAll,
+            getId   : getId,
+            add     : add,
+            delete  : borrar,
+            edit    : edit,
         }
 
     }

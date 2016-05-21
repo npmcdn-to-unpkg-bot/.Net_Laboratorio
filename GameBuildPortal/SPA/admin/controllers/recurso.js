@@ -4,24 +4,100 @@
 
     function recursoCtrl($scope, $routeParams, recursoService) {
         $scope.recursos = [];
+        $scope.recurso  = null;
+        $scope.saving   = false;
 
-        recursoService.getAll().then(function (data) {
-            $scope.recursos = data;
-        });
+        console.log($routeParams)
+
+        var initialize = function(){
+            var id = $routeParams && $routeParams['id'] ? $routeParams['id'] : null
+            if(id){
+                recursoService.getId(id).then(function (data) {
+                    $scope.recurso = data;
+                });
+            }else{
+                recursoService.getAll().then(function (data) {
+                    $scope.recursos = data;
+                });
+            }
+        }
 
         $scope.add = function(){
-        	console.log('aaaddd')
+            $scope.saving   = true;
+            var recurso     = this.recurso;
+
+            recursoService.add(recurso).then(
+                function (data) {
+                    $scope.recursos.push(data);
+                    $scope.saving = false;
+                
+                    mostrarNotificacion('success');                    
+                }, function() {
+                    $scope.saving = false;
+
+                    mostrarNotificacion('error');
+                }
+            );
         }
 
         $scope.edit = function(){
-        	console.log('aaaddd')
+            $scope.saving   = true;
+            var recurso     = this.recurso;
+
+            recursoService.edit(id, recurso).then(
+                function (data) {
+                    $scope.saving = false;
+
+                    mostrarNotificacion('success');                    
+                }, function() {
+                    $scope.saving = false;
+
+                    mostrarNotificacion('error');
+                }
+            );
         }
 
-        new PNotify({
-            title: 'Regular Success',
-            text: 'That thing that you were trying to do worked!',
-            type: 'success'
-        });
+        $scope.borrar = function(id){
+            $scope.saving   = true;
+            var recurso     = this.recurso;
+
+            recursoService.borrar(id).then(
+                function (data) {
+                    $scope.recursos.pop(data);
+                    $scope.saving = false;
+
+                    mostrarNotificacion('success');                    
+                }, function() {
+                    $scope.saving = false;
+
+                    mostrarNotificacion('error');
+                }
+            );
+        }
+
+        var mostrarNotificacion = function(tipo){
+            var title   = '';
+            var text    = '';
+
+            if(tipo == 'success'){
+                var title   = 'Exito!';
+                var text    = 'Recurso borrado con exito.';
+            }else if(tipo == 'success'){
+                var title   = 'Oh No!';
+                var text    = 'Ha ocurrido un error.';
+            }
+
+            new PNotify({
+                title       : title,
+                text        : text,
+                type        : tipo,
+                nonblock    : {
+                    nonblock : true
+                }
+            });
+        }
+
+        initialize();
 
     }
 

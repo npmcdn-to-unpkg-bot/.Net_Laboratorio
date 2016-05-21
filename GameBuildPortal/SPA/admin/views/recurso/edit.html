@@ -14,56 +14,54 @@
     </div>
     <div class="x_content">
       <br>
-      <form id="demo-form2" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="">
-
+      <form id="form-recurso" name="formRecurso" novalidate class="form-horizontal form-label-left" ng-submit="formRecurso.$valid && edit()">
         <div class="form-group">
-          <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">First Name <span class="required">*</span>
+          <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nombre">Nombre <span class="required">*</span>
           </label>
           <div class="col-md-6 col-sm-6 col-xs-12">
-            <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12" data-parsley-id="5536"><ul class="parsley-errors-list" id="parsley-id-5536"></ul>
+            <input type="text" id="nombre" required="required" class="form-control col-md-7 col-xs-12" data-parsley-id="nombre" ng-model="recurso.nombre" value="{{recurso.nombre}}">
+            <ul class="parsley-errors-list" id="parsley-id-nombre"></ul>
           </div>
         </div>
         <div class="form-group">
-          <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Last Name <span class="required">*</span>
-          </label>
+          <label class="control-label col-md-3 col-sm-3 col-xs-12" for="descripcion">Descripción</label>
           <div class="col-md-6 col-sm-6 col-xs-12">
-            <input type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12" data-parsley-id="0978"><ul class="parsley-errors-list" id="parsley-id-0978"></ul>
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Middle Name / Initial</label>
-          <div class="col-md-6 col-sm-6 col-xs-12">
-            <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name" data-parsley-id="6693"><ul class="parsley-errors-list" id="parsley-id-6693"></ul>
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="control-label col-md-3 col-sm-3 col-xs-12">Gender</label>
-          <div class="col-md-6 col-sm-6 col-xs-12">
-            <div id="gender" class="btn-group" data-toggle="buttons">
-              <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                <input type="radio" name="gender" value="male" data-parsley-multiple="gender" data-parsley-id="9615"> &nbsp; Male &nbsp;
-              </label><ul class="parsley-errors-list" id="parsley-id-multiple-gender"></ul>
-              <label class="btn btn-primary" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                <input type="radio" name="gender" value="female" data-parsley-multiple="gender" data-parsley-id="9615"> Female
-              </label>
-            </div>
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="control-label col-md-3 col-sm-3 col-xs-12">Date Of Birth <span class="required">*</span>
-          </label>
-          <div class="col-md-6 col-sm-6 col-xs-12">
-            <input id="birthday" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text" data-parsley-id="5566"><ul class="parsley-errors-list" id="parsley-id-5566"></ul>
+            <textarea name="descripcion" id="descripcion" class="form-control col-md-7 col-xs-12" ng-model="recurso.descripcion">{{recurso.descripcion}}</textarea>
           </div>
         </div>
         <div class="ln_solid"></div>
         <div class="form-group">
           <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
             <a href="#/recurso" class="btn btn-primary">Cancel</a>
-            <button type="submit" class="btn btn-success">Submit</button>
+            <button class="btn btn-success" ng-disabled="saving">Submit</button>
           </div>
         </div>
       </form>
     </div>
   </div>
 </div>
+
+<!-- form validation -->
+<script type="text/javascript">
+  $(document).ready(function() {
+    $.listen('parsley:field:validate', function() {
+      validateFront();
+    });
+
+    $('#form-recurso .btn').on('click', function() {
+      $('#form-recurso').parsley().validate();
+      validateFront();
+    });
+
+    var validateFront = function() {
+      if (true === $('#form-recurso').parsley().isValid()) {
+        $('.bs-callout-info').removeClass('hidden');
+        $('.bs-callout-warning').addClass('hidden');
+      } else {
+        $('.bs-callout-info').addClass('hidden');
+        $('.bs-callout-warning').removeClass('hidden');
+      }
+    };
+  });
+</script>
+<!-- /form validation -->
