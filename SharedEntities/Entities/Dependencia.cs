@@ -11,8 +11,14 @@ namespace SharedEntities.Entities
     {
         public String nombre;
         public int level;
-        List<Dependencia> dependencias;
+        public List<Dependencia> dependencias;
 
+        public Dependencia(string name, int nivel, List<Dependencia> depend)
+        {
+            this.nombre = name;
+            this.level = nivel;
+            this.dependencias = depend;
+        }
 
     }
 }
