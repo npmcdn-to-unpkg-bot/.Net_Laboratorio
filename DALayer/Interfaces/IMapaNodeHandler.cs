@@ -10,7 +10,7 @@ namespace DALayer.Interfaces
     public interface IMapaNodeHandler
     {
         void CreateMapa(MapaNode mapa);
-        void DeleteMapa(int id);
+        void DeleteMapa(MapaNode mapa);
         void UpdateMapa(MapaNode mapa);
         MapaNode getMapa(int id);
         List<MapaNode> getAllMapas();

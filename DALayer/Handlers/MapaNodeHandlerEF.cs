@@ -23,10 +23,9 @@ namespace DALayer.Handlers
             mapaE.nivel = mapa.nivel;
             mapaE.cantidad = mapa.cantidad;
 
-            ctx.MapaNode.Add(mapaE);
             try
             {
-
+                ctx.MapaNode.Add(mapaE);
                 ctx.SaveChanges();
             }
             catch (Exception e)
@@ -35,10 +34,10 @@ namespace DALayer.Handlers
             }
         }
 
-        public void DeleteMapa(int id)
+        public void DeleteMapa(MapaNode mapa)
         {
             var mapaE = (from c in ctx.MapaNode
-                       where c.id == id
+                       where c.id == mapa.id
                        select c).SingleOrDefault();
             try
             {
@@ -72,7 +71,19 @@ namespace DALayer.Handlers
 
         public MapaNode getMapa(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var map = (from c in ctx.MapaNode
+                           where c.id == id
+                           select c).SingleOrDefault();
+
+                MapaNode mapa = new MapaNode(map.id, map.nombre, map.nivel, map.cantidad);
+                return mapa;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public void UpdateMapa(MapaNode mapa)
@@ -80,11 +91,12 @@ namespace DALayer.Handlers
             try
             {
                 var mapaE = ctx.MapaNode
-                    .Where(w => w.nombre == mapa.nombre)
+                    .Where(w => w.id == mapa.id)
                     .SingleOrDefault();
 
                 if (mapaE != null)
                 {
+                    mapaE.nombre = mapa.nombre;
                     mapaE.nivel = mapa.nivel;
                     mapaE.cantidad = mapa.cantidad;
                     ctx.SaveChangesAsync().Wait();

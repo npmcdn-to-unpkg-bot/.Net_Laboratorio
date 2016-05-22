@@ -10,7 +10,7 @@ namespace DALayer.Interfaces
     public interface IInvestigacionHandler
     {
         void createInvestigacion(Investigacion inv);
-        void deleteInvestigacion(int id);
+        void deleteInvestigacion(Investigacion inv);
         void updateInvestigacion(Investigacion inv);
         Investigacion getInvestigacion(int id);
         List<Investigacion> getAllInvestigaciones();

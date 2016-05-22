@@ -1,32 +1,32 @@
 ﻿(function () {
     'use strict';
-    angular.module('atlas2').controller('mapaCtrl', ['$scope', '$routeParams', 'mapaService', mapaCtrl]);
+    angular.module('atlas2').controller('investigacionCtrl', ['$scope', '$routeParams', 'investigacionService', investigacionCtrl]);
 
-    function mapaCtrl($scope, $routeParams, mapaService) {
-        $scope.mapas = [];
-        $scope.mapa = null;
+    function investigacionCtrl($scope, $routeParams, investigacionService) {
+        $scope.investigaciones = [];
+        $scope.investigacion = null;
         $scope.saving = false;
 
         var initialize = function () {
             var id = $routeParams && $routeParams['id'] ? $routeParams['id'] : null
             if (id) {
-                mapaService.getId(id).then(function (data) {
-                    $scope.mapa = data;
+                investigacionService.getId(id).then(function (data) {
+                    $scope.investigacion = data;
                 });
             } else {
-                mapaService.getAll().then(function (data) {
-                    $scope.mapas = data;
+                investigacionService.getAll().then(function (data) {
+                    $scope.investigaciones = data;
                 });
             }
         }
 
         $scope.add = function () {
             $scope.saving = true;
-            var mapa = this.mapa;
+            var investigacion = this.investigacion;
 
-            mapaService.add(mapa).then(
+            investigacionService.add(investigacion).then(
                 function (data) {
-                    $scope.mapas.push(data);
+                    $scope.investigaciones.push(data);
                     $scope.saving = false;
 
                     mostrarNotificacion('success');
@@ -41,9 +41,9 @@
 
         $scope.edit = function () {
             $scope.saving = true;
-            var mapa = this.mapa;
+            var investigacion = this.investigacion;
 
-            mapaService.edit(mapa).then(
+            investigacionService.edit(investigacion).then(
                 function (data) {
                     $scope.saving = false;
 
@@ -59,13 +59,13 @@
 
         $scope.borrar = function () {
             $scope.saving = true;
-            var mapa = this.mapa;
+            var investigacion = this.investigacion;
 
             var r = confirm("Seguro que quiere borrar?");
             if (r == true) {
-                mapaService.borrar(mapa.id).then(
+                investigacionService.borrar(investigacion.id).then(
                  function (data) {
-                     $scope.mapas.pop(data);
+                     $scope.investigaciones.pop(data);
                      $scope.saving = false;
 
                      mostrarNotificacion('success');
@@ -101,6 +101,7 @@
         }
 
         initialize();
+
     }
 
 })();

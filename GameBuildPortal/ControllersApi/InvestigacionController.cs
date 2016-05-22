@@ -1,57 +1,57 @@
-﻿using System;
+﻿using BLayer.Interfaces;
+using SharedEntities.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using BLayer.Interfaces;
-using SharedEntities.Entities;
 
 namespace GameBuildPortal.ControllersApi
 {
-    public class MapaController : ApiController
+    public class InvestigacionController : ApiController
     {
         public static IGameBuilder blHandler;
 
-        public MapaController()
+        public InvestigacionController()
         {
             blHandler = WebApiConfig.blHandler;
         }
 
         [HttpGet]
-        public MapaNode Get(int id)
+        public Investigacion Get(int id)
         {
-            MapaNode mapa = blHandler.getMapa(id);
-            if (mapa == null)
+            Investigacion investigacion = blHandler.getInvestigacion(id);
+            if (investigacion == null)
             {
                 throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.NotFound));
             }
 
-            return mapa;
+            return investigacion;
         }
 
         [HttpGet]
-        public IEnumerable<MapaNode> Get()
+        public IEnumerable<Investigacion> Get()
         {
-            return blHandler.getAllMapas();
+            return blHandler.getAllInvestigaciones();
         }
 
         [HttpPut]
-        public HttpResponseMessage Put(int id, MapaNode mapa)
+        public HttpResponseMessage Put(int id, Investigacion investigacion)
         {
             if (!ModelState.IsValid)
             {
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
             }
 
-            if (id != mapa.id)
+            if (id != investigacion.id)
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest);
             }
 
             try
             {
-                blHandler.updateMapa(mapa);
+                blHandler.updateInvestigacion(investigacion);
             }
             catch (Exception ex)
             {
@@ -62,13 +62,13 @@ namespace GameBuildPortal.ControllersApi
         }
 
         [HttpPost]
-        public HttpResponseMessage Post(MapaNode mapa)
+        public HttpResponseMessage Post(Investigacion investigacion)
         {
             if (ModelState.IsValid)
             {
-                blHandler.createMapa(mapa);
+                blHandler.createInvestigacion(investigacion);
 
-                HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, mapa);
+                HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, investigacion);
                 response.Headers.Location = new Uri(Url.Link("DefaultApi", new { controller = "Admin" }));
                 return response;
             }
@@ -81,22 +81,22 @@ namespace GameBuildPortal.ControllersApi
         [HttpDelete]
         public HttpResponseMessage Delete(int id)
         {
-            MapaNode mapa = blHandler.getMapa(id);
-            if (mapa == null)
+            Investigacion investigacion = blHandler.getInvestigacion(id);
+            if (investigacion == null)
             {
                 return Request.CreateResponse(HttpStatusCode.NotFound);
             }
 
             try
             {
-                blHandler.deleteMapa(mapa);
+                blHandler.deleteInvestigacion(investigacion);
             }
             catch (Exception ex)
             {
                 return Request.CreateErrorResponse(HttpStatusCode.NotFound, ex);
             }
 
-            return Request.CreateResponse(HttpStatusCode.OK, mapa);
+            return Request.CreateResponse(HttpStatusCode.OK, investigacion);
         }
     }
 }

@@ -43,6 +43,18 @@
 		    templateUrl: "/SPA/admin/views/mapa/edit.html",
 		    controller: 'mapaCtrl'
 		});
+
+        // ruta de investigacion
+		$routeProvider.when("/investigacion", {
+		    templateUrl : "/SPA/admin/views/investigacion/list.html",
+		    controller  : 'investigacionCtrl'
+		}).when("/investigacion/add", {
+		    templateUrl: "/SPA/admin/views/investigacion/add.html",
+		    controller  : 'investigacionCtrl'
+		}).when("/investigacion/edit/:id", {
+		    templateUrl: "/SPA/admin/views/investigacion/edit.html",
+		    controller  : 'investigacionCtrl'
+		});
     }
 
 })();

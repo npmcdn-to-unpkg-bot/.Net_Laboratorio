@@ -48,5 +48,50 @@ namespace BLayer.Admin
         {
             return builder.getMapaNodeHandler().getAllMapas();
         }
+        public MapaNode getMapa(int id)
+        {
+            return builder.getMapaNodeHandler().getMapa(id);
+        }
+
+        public void createMapa(MapaNode mapa)
+        {
+            builder.getMapaNodeHandler().CreateMapa(mapa);
+        }
+
+        public void deleteMapa(MapaNode mapa)
+        {
+            builder.getMapaNodeHandler().DeleteMapa(mapa);
+        }
+
+        public void updateMapa(MapaNode mapa)
+        {
+            builder.getMapaNodeHandler().UpdateMapa(mapa);
+        }
+
+        //INVESTIGACION
+        public List<Investigacion> getAllInvestigaciones()
+        {
+            return builder.getInvestigacionHandler().getAllInvestigaciones();
+        }
+
+        public Investigacion getInvestigacion(int id)
+        {
+            return builder.getInvestigacionHandler().getInvestigacion(id);
+        }
+
+        public void createInvestigacion(Investigacion investigacion)
+        {
+            builder.getInvestigacionHandler().createInvestigacion(investigacion);
+        }
+
+        public void updateInvestigacion(Investigacion investigacion)
+        {
+            builder.getInvestigacionHandler().updateInvestigacion(investigacion);
+        }
+
+        public void deleteInvestigacion(Investigacion investigacion)
+        {
+            builder.getInvestigacionHandler().deleteInvestigacion(investigacion);
+        }
     }
 }

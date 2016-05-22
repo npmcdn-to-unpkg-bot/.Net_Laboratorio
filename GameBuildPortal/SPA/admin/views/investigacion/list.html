@@ -1,12 +1,12 @@
 ﻿<div class="col-md-12 col-sm-12 col-xs-12">
     <div class="page-title">
         <div class="title_left">
-            <h3>Mapas</h3>
+            <h3>Tecnologías</h3>
         </div>
 
         <div class="title_right">
             <div class="pull-right">
-                <a href="#/mapa/add" class="btn btn-info">Agregar</a>
+                <a href="#/investigacion/add" class="btn btn-info">Agregar</a>
             </div>
         </div>
     </div>
@@ -19,7 +19,7 @@
                 <div class="row">
                     <div class="col-md-8 col-sm-8 col-xs-12">
                         <div class="row">
-                            <h2>Listado de mapas</h2>
+                            <h2>Listado de tecnologías</h2>
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-4 col-xs-12 pull-right top_search">
@@ -35,22 +35,22 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Nivel</th>
+                        <th>Foto</th>
                         <th>Nombre</th>
-                        <th>Cantidad</th>
+                        <th>Descripción</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
 
-                    <tr ng-repeat="mapa in mapas | filter:buscador">
-                        <td>{{mapa.id}}</td>
-                        <td>{{mapa.nivel}}</td>
-                        <td>{{mapa.nombre}}</td>
-                        <td>{{mapa.cantidad}}</td>
+                    <tr ng-repeat="investigacion in investigaciones | filter:buscador">
+                        <td>{{investigacion.id}}</td>
+                        <td>{{investigacion.foto}}</td>
+                        <td>{{investigacion.nombre}}</td>
+                        <td>{{investigacion.descripcion}}</td>
                         <td>
                             <div class="btn-group">
-                                <a href="#/mapa/edit/{{mapa.id}}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> </a>
+                                <a href="#/investigacion/edit/{{investigacion.id}}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> </a>
                                 <a class="btn btn-danger btn-xs" ng-click="borrar()"><i class="fa fa-trash-o"></i> </a>
                             </div>
                         </td>

@@ -1,32 +1,32 @@
 ﻿(function () {
     'use strict';
-    angular.module('atlas2').controller('mapaCtrl', ['$scope', '$routeParams', 'mapaService', mapaCtrl]);
+    angular.module('atlas2').controller('interaccionCtrl', ['$scope', '$routeParams', 'interaccionService', interaccionCtrl]);
 
-    function mapaCtrl($scope, $routeParams, mapaService) {
-        $scope.mapas = [];
-        $scope.mapa = null;
+    function interaccionCtrl($scope, $routeParams, interaccionService) {
+        $scope.interacciones = [];
+        $scope.interaccion = null;
         $scope.saving = false;
 
         var initialize = function () {
             var id = $routeParams && $routeParams['id'] ? $routeParams['id'] : null
             if (id) {
-                mapaService.getId(id).then(function (data) {
-                    $scope.mapa = data;
+                interaccionService.getId(id).then(function (data) {
+                    $scope.interaccion = data;
                 });
             } else {
-                mapaService.getAll().then(function (data) {
-                    $scope.mapas = data;
+                interaccionService.getAll().then(function (data) {
+                    $scope.interacciones = data;
                 });
             }
         }
 
         $scope.add = function () {
             $scope.saving = true;
-            var mapa = this.mapa;
+            var interaccion = this.interaccion;
 
-            mapaService.add(mapa).then(
+            interaccionService.add(interaccion).then(
                 function (data) {
-                    $scope.mapas.push(data);
+                    $scope.interacciones.push(data);
                     $scope.saving = false;
 
                     mostrarNotificacion('success');
@@ -41,9 +41,9 @@
 
         $scope.edit = function () {
             $scope.saving = true;
-            var mapa = this.mapa;
+            var interaccion = this.interaccion;
 
-            mapaService.edit(mapa).then(
+            interaccionService.edit(interaccion).then(
                 function (data) {
                     $scope.saving = false;
 
@@ -59,13 +59,13 @@
 
         $scope.borrar = function () {
             $scope.saving = true;
-            var mapa = this.mapa;
+            var interaccion = this.interaccion;
 
             var r = confirm("Seguro que quiere borrar?");
             if (r == true) {
-                mapaService.borrar(mapa.id).then(
+                interaccionService.borrar(interaccion.id).then(
                  function (data) {
-                     $scope.mapas.pop(data);
+                     $scope.interacciones.pop(data);
                      $scope.saving = false;
 
                      mostrarNotificacion('success');
@@ -101,6 +101,7 @@
         }
 
         initialize();
+
     }
 
 })();

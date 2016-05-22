@@ -38,10 +38,10 @@ namespace DALayer.Handlers
                 throw e;
             }            
         }
-        public void deleteInvestigacion(int id)
+        public void deleteInvestigacion(Investigacion invest)
         {
             var inv = (from c in ctx.Investigacion
-                       where c.id == id
+                       where c.id == invest.id
                        select c).SingleOrDefault();
             try
             {
@@ -75,7 +75,19 @@ namespace DALayer.Handlers
 
         public Investigacion getInvestigacion(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var inv = (from c in ctx.Investigacion
+                           where c.id == id
+                           select c).SingleOrDefault();
+
+                Investigacion investigacion = new Investigacion(inv.id, inv.nombre, inv.descripcion, inv.foto, inv.costo, inv.factorCostoNivel, inv.nivel);
+                return investigacion;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public void updateInvestigacion (Investigacion inv)

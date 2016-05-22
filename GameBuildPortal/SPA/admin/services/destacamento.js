@@ -1,15 +1,15 @@
 ﻿(function () {
     'use strict';
-    angular.module('atlas2').service('mapaService', ["$http", "$q", mapaService]);
+    angular.module('atlas2').service('destacamentoService', ["$http", "$q", destacamentoService]);
 
-    function mapaService($http, $q) {
+    function destacamentoService($http, $q) {
 
         var getAll = function () {
             var defer = $q.defer();
 
-            $http.get('/admin/api/mapa')
-            .success(function (mapas) {
-                defer.resolve(mapas);
+            $http.get('/admin/api/destacamento')
+            .success(function (destacamentos) {
+                defer.resolve(destacamentos);
             })
             .error(function () {
                 defer.reject('server error')
@@ -18,12 +18,12 @@
             return defer.promise;
         };
 
-        var add = function (mapa) {
+        var add = function (destacamento) {
             var defer = $q.defer();
 
-            $http.post('/admin/api/mapa', mapa)
-            .success(function (mapa) {
-                defer.resolve(mapa);
+            $http.post('/admin/api/destacamento', destacamento)
+            .success(function (destacamento) {
+                defer.resolve(destacamento);
             })
             .error(function () {
                 defer.reject('server error')
@@ -32,12 +32,12 @@
             return defer.promise;
         };
 
-        var edit = function (mapa) {
+        var edit = function (destacamento) {
             var defer = $q.defer();
 
-            $http.put('/admin/api/mapa?id=' + mapa.id, mapa)
-            .success(function (mapa) {
-                defer.resolve(mapa);
+            $http.put('/admin/api/destacamento?id=' + destacamento.id, destacamento)
+            .success(function (destacamento) {
+                defer.resolve(destacamento);
             })
             .error(function () {
                 defer.reject('server error')
@@ -49,9 +49,9 @@
         var borrar = function (id) {
             var defer = $q.defer();
 
-            $http.delete('/admin/api/mapa?id=' + id)
-            .success(function (mapa) {
-                defer.resolve(mapa);
+            $http.delete('/admin/api/destacamento?id=' + id)
+            .success(function (destacamento) {
+                defer.resolve(destacamento);
             })
             .error(function () {
                 defer.reject('server error')
@@ -63,9 +63,9 @@
         var getId = function (id) {
             var defer = $q.defer();
 
-            $http.get('/admin/api/mapa?id=' + id)
-            .success(function (mapa) {
-                defer.resolve(mapa);
+            $http.get('/admin/api/destacamento?id=' + id)
+            .success(function (destacamento) {
+                defer.resolve(destacamento);
             })
             .error(function () {
                 defer.reject('server error')

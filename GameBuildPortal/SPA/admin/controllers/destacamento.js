@@ -1,32 +1,32 @@
 ﻿(function () {
     'use strict';
-    angular.module('atlas2').controller('mapaCtrl', ['$scope', '$routeParams', 'mapaService', mapaCtrl]);
+    angular.module('atlas2').controller('destacamentoCtrl', ['$scope', '$routeParams', 'destacamentoService', destacamentoCtrl]);
 
-    function mapaCtrl($scope, $routeParams, mapaService) {
-        $scope.mapas = [];
-        $scope.mapa = null;
+    function destacamentoCtrl($scope, $routeParams, destacamentoService) {
+        $scope.destacamentos = [];
+        $scope.destacamento = null;
         $scope.saving = false;
 
         var initialize = function () {
             var id = $routeParams && $routeParams['id'] ? $routeParams['id'] : null
             if (id) {
-                mapaService.getId(id).then(function (data) {
-                    $scope.mapa = data;
+                destacamentoService.getId(id).then(function (data) {
+                    $scope.destacamento = data;
                 });
             } else {
-                mapaService.getAll().then(function (data) {
-                    $scope.mapas = data;
+                destacamentoService.getAll().then(function (data) {
+                    $scope.destacamentos = data;
                 });
             }
         }
 
         $scope.add = function () {
             $scope.saving = true;
-            var mapa = this.mapa;
+            var destacamento = this.destacamento;
 
-            mapaService.add(mapa).then(
+            destacamentoService.add(destacamento).then(
                 function (data) {
-                    $scope.mapas.push(data);
+                    $scope.destacamentos.push(data);
                     $scope.saving = false;
 
                     mostrarNotificacion('success');
@@ -41,9 +41,9 @@
 
         $scope.edit = function () {
             $scope.saving = true;
-            var mapa = this.mapa;
+            var destacamento = this.destacamento;
 
-            mapaService.edit(mapa).then(
+            destacamentoService.edit(destacamento).then(
                 function (data) {
                     $scope.saving = false;
 
@@ -59,13 +59,13 @@
 
         $scope.borrar = function () {
             $scope.saving = true;
-            var mapa = this.mapa;
+            var destacamento = this.destacamento;
 
             var r = confirm("Seguro que quiere borrar?");
             if (r == true) {
-                mapaService.borrar(mapa.id).then(
+                destacamentoService.borrar(destacamento.id).then(
                  function (data) {
-                     $scope.mapas.pop(data);
+                     $scope.destacamentos.pop(data);
                      $scope.saving = false;
 
                      mostrarNotificacion('success');
@@ -101,6 +101,7 @@
         }
 
         initialize();
+
     }
 
 })();

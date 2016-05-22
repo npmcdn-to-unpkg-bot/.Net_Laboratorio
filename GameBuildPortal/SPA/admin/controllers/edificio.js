@@ -1,32 +1,32 @@
 ﻿(function () {
     'use strict';
-    angular.module('atlas2').controller('mapaCtrl', ['$scope', '$routeParams', 'mapaService', mapaCtrl]);
+    angular.module('atlas2').controller('edificioCtrl', ['$scope', '$routeParams', 'edificioService', edificioCtrl]);
 
-    function mapaCtrl($scope, $routeParams, mapaService) {
-        $scope.mapas = [];
-        $scope.mapa = null;
+    function edificioCtrl($scope, $routeParams, edificioService) {
+        $scope.edificios = [];
+        $scope.edificio = null;
         $scope.saving = false;
 
         var initialize = function () {
             var id = $routeParams && $routeParams['id'] ? $routeParams['id'] : null
             if (id) {
-                mapaService.getId(id).then(function (data) {
-                    $scope.mapa = data;
+                edificioService.getId(id).then(function (data) {
+                    $scope.edificio = data;
                 });
             } else {
-                mapaService.getAll().then(function (data) {
-                    $scope.mapas = data;
+                edificioService.getAll().then(function (data) {
+                    $scope.edificios = data;
                 });
             }
         }
 
         $scope.add = function () {
             $scope.saving = true;
-            var mapa = this.mapa;
+            var edificio = this.edificio;
 
-            mapaService.add(mapa).then(
+            edificioService.add(edificio).then(
                 function (data) {
-                    $scope.mapas.push(data);
+                    $scope.edificios.push(data);
                     $scope.saving = false;
 
                     mostrarNotificacion('success');
@@ -41,9 +41,9 @@
 
         $scope.edit = function () {
             $scope.saving = true;
-            var mapa = this.mapa;
+            var edificio = this.edificio;
 
-            mapaService.edit(mapa).then(
+            edificioService.edit(edificio).then(
                 function (data) {
                     $scope.saving = false;
 
@@ -59,13 +59,13 @@
 
         $scope.borrar = function () {
             $scope.saving = true;
-            var mapa = this.mapa;
+            var edificio = this.edificio;
 
             var r = confirm("Seguro que quiere borrar?");
             if (r == true) {
-                mapaService.borrar(mapa.id).then(
+                edificioService.borrar(edificio.id).then(
                  function (data) {
-                     $scope.mapas.pop(data);
+                     $scope.edificios.pop(data);
                      $scope.saving = false;
 
                      mostrarNotificacion('success');
@@ -101,6 +101,7 @@
         }
 
         initialize();
+
     }
 
 })();
