@@ -14,7 +14,7 @@
             redirectTo 	: '/'
         });
 
-        // ruta de recursos
+        // ruta de wizard
         $routeProvider.when("/wizard", {
             templateUrl: "/SPA/admin/views/wizard/index.html",
             controller: 'wizardCtrl'
@@ -30,6 +30,18 @@
 		}).when("/recurso/edit/:id", {
 		    templateUrl: "/SPA/admin/views/recurso/edit.html",
 		    controller  : 'recursoCtrl'
+		});
+
+        // ruta de mapa
+		$routeProvider.when("/mapa", {
+		    templateUrl: "/SPA/admin/views/mapa/list.html",
+		    controller: 'mapaCtrl'
+		}).when("/mapa/add", {
+		    templateUrl: "/SPA/admin/views/mapa/add.html",
+		    controller: 'mapaCtrl'
+		}).when("/mapa/edit/:id", {
+		    templateUrl: "/SPA/admin/views/mapa/edit.html",
+		    controller: 'mapaCtrl'
 		});
     }
 

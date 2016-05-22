@@ -61,7 +61,7 @@ namespace DALayer.Handlers
             }
         }
 
-        public List<MapaNode> GetAllMapas()
+        public List<MapaNode> getAllMapas()
         {
             List<MapaNode> mapas = new List<MapaNode>();
             try

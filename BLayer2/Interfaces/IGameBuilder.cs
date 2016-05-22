@@ -13,5 +13,7 @@ namespace BLayer.Interfaces
         void deleteRecurso(Recurso recurso);
         void updateRecurso(Recurso recurso);
         Recurso getRecurso(Guid id);
+
+        List<MapaNode> getAllMapas();
     }
 }

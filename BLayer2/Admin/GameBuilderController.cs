@@ -41,5 +41,10 @@ namespace BLayer.Admin
         {
             builder.getRecursoHandler().deleteRecurso(recurso);
         }
+
+        public List<MapaNode> getAllMapas()
+        {
+            return builder.getMapaNodeHandler().getAllMapas();
+        }
     }
 }

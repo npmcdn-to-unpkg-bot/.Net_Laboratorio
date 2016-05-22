@@ -12,6 +12,6 @@ namespace DALayer.Interfaces
         void CreateMapa(MapaNode mapa);
         void DeleteMapa(string nombreTmp);
         void UpdateMapa(MapaNode mapa);
-        List<MapaNode> GetAllMapas();
+        List<MapaNode> getAllMapas();
     }
 }
