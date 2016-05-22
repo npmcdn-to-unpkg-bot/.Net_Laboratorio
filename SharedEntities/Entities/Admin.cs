@@ -12,5 +12,18 @@ namespace SharedEntities.Entities
     public class Admin: Usuario
     {
         public int telefono;
+
+        public Admin(int id, String name, String apellidos, String email, String usuario, String password,
+            byte[] foto, int telefono)
+        {
+            this.Id = id;
+            this.name = name;
+            this.apellidos = apellidos;
+            this.email = email;
+            this.usuario = usuario;
+            this.password = password;
+            this.foto = foto;
+            this.telefono = telefono;
+        }
     }
 }
