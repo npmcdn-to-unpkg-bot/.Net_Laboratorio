@@ -14,7 +14,7 @@ namespace DALayer
         } 
 
         public virtual DbSet<SuperAdmin> SuperAdmins { get; set; }
-        public virtual DbSet<SolicitudJuego> SolicitudJuegos { get; set; }
+        public virtual DbSet<SolicitudJuego> SolicitudJuego { get; set; }
         public virtual DbSet<Juego> Juego { get; set; }
     }
 }
