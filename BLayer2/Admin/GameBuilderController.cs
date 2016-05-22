@@ -17,6 +17,7 @@ namespace BLayer.Admin
             builder.setTenant(tId);
         }
 
+        //RECURSOS
         public List<Recurso> getAllRecursos()
         {
             return builder.getRecursoHandler().getAllRecursos();
@@ -42,6 +43,7 @@ namespace BLayer.Admin
             builder.getRecursoHandler().deleteRecurso(recurso);
         }
 
+        //MAPAS
         public List<MapaNode> getAllMapas()
         {
             return builder.getMapaNodeHandler().getAllMapas();
