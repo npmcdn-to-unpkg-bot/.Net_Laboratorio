@@ -23,6 +23,7 @@ namespace DALayer.Api
         private PaquetePaypalHandlerEF paquetePHandler;
         private SolicitudJuegoHandlerEF solicitudJHandler;
         private UnidadHandlerEF unidadHandler;
+        private UsuarioHandlerEF usuarioHandler;
         
         public IRecursoHandler getRecursoHandler()
         {
@@ -168,6 +169,19 @@ namespace DALayer.Api
                 solicitudJHandler = new SolicitudJuegoHandlerEF(actx);
             }
             return solicitudJHandler;
+        }
+
+        public IUsuarioHandler getUsuarioHandler()
+        {
+            if (ctx == null)
+            {
+                throw new Exception("Tenes que llamar a la funcion setTenant despues de inicializar esta clase");
+            }
+            if (usuarioHandler == null)
+            {
+                usuarioHandler = new UsuarioHandlerEF(ctx);
+            }
+            return usuarioHandler;
         }
     }
 }

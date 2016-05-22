@@ -88,6 +88,7 @@
     <Compile Include="Handlers\RecursosHandlerEF.cs" />
     <Compile Include="Handlers\SolicitudJuegoHandlerEF.cs" />
     <Compile Include="Handlers\UnidadHandlerEF.cs" />
+    <Compile Include="Handlers\UsuarioHandlerEF.cs" />
     <Compile Include="Interfaces\IApi.cs" />
     <Compile Include="Interfaces\IDependenciaHandler.cs" />
     <Compile Include="Interfaces\IFlotaHandler.cs" />
@@ -100,6 +101,7 @@
     <Compile Include="Interfaces\IRecursoHandler.cs" />
     <Compile Include="Interfaces\ISolicitudJuegoHandler.cs" />
     <Compile Include="Interfaces\IUnidadHandler.cs" />
+    <Compile Include="Interfaces\IUsuarioHandler.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Handlers\SchemaHandler.cs" />

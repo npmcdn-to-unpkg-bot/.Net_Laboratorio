@@ -8,7 +8,7 @@ namespace DALayer.Entities
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id{get; set;}
+        public int id{get; set;}
         public String nombre{get; set;}
         public String apellido{get; set;}
         public String email{get; set;}
