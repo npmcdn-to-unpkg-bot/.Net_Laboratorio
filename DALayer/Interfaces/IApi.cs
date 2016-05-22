@@ -8,8 +8,16 @@ namespace DALayer.Interfaces
 {
     public interface IApi
     {
+        IAlianzaHandler getAlianzaHandler();
+        IDependenciaHandler getDependenciaHandler();
+        IFlotaHandler getFlotaHandler();
+        IHistorialVentasHandler getHVHandler();
+        IInvestigacionHandler getInvestigacionHandler();
+        IJuegoHandler getJuegoHandler();
         IRecursoHandler getRecursoHandler();
         IMapaNodeHandler getMapaNodeHandler();
+        IPaquetePayPalHandler getPPHandler();
+        ISolicitudJuegoHandler getSJHandler();
         IUnidadHandler getUnidadHandller();
         void setTenant(string tid);
     }

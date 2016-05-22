@@ -49,7 +49,7 @@ namespace DALayer
                         SchemaHandler.createTenant(tenant);
                         /*Esto debe llamar a la funcion de creacion de Juego del DJuego*/
                         Juego newJuego = new Juego();
-                        newJuego.id = Guid.NewGuid();
+                        //newJuego.id = Guid.NewGuid();
                         newJuego.dominio = "domino" + tenant;
                         newJuego.nombreJuego = tenant;
                         ctx.Juego.Add(newJuego);

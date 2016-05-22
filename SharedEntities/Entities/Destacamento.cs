@@ -11,7 +11,7 @@ namespace SharedEntities.Entities
         public float velocidad;
         public Boolean enMision;
 
-        public Destacamento(Guid id, string description, byte[] photo, float capacidadI, float ataque, float escudo,
+        public Destacamento(int id, string description, byte[] photo, float capacidadI, float ataque, float escudo,
             float efectividadAtaque, float vida, float velocidad, Boolean enMission)
         {
             this.id = id;

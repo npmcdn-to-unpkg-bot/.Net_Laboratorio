@@ -19,7 +19,7 @@ namespace GameBuildPortal.ControllersApi
         }
 
         [HttpGet]
-        public Recurso Get(Guid id)
+        public Recurso Get(int id)
         {
             Recurso recurso = blHandler.getRecurso(id);
             if (recurso == null)
@@ -37,7 +37,7 @@ namespace GameBuildPortal.ControllersApi
         }
 
         [HttpPut]
-        public HttpResponseMessage Put(Guid id, Recurso recurso)
+        public HttpResponseMessage Put(int id, Recurso recurso)
         {
             if (!ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace GameBuildPortal.ControllersApi
         }
 
         [HttpDelete]
-        public HttpResponseMessage Delete(Guid id)
+        public HttpResponseMessage Delete(int id)
         {
             Recurso recurso = blHandler.getRecurso(id);
             if (recurso == null)

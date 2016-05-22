@@ -7,11 +7,12 @@ using SharedEntities.Entities;
 
 namespace DALayer.Interfaces
 {
-    interface IInvestigacionHandler
+    public interface IInvestigacionHandler
     {
         void createInvestigacion(Investigacion inv);
-        void deleteInvestigacion(string name);
+        void deleteInvestigacion(int id);
         void updateInvestigacion(Investigacion inv);
+        Investigacion getInvestigacion(int id);
         List<Investigacion> getAllInvestigaciones();
     }
 }

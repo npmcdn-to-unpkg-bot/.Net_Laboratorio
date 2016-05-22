@@ -20,7 +20,6 @@ namespace DALayer.Handlers
         public void createRecurso(Recurso recTmp)
         {
             Entities.Recurso rec = new Entities.Recurso();
-            rec.id = recTmp.id;
             rec.descripcion = recTmp.descripcion;
             rec.foto = recTmp.foto;
             rec.nombre = recTmp.nombre;
@@ -72,7 +71,7 @@ namespace DALayer.Handlers
             }
         }
 
-        public Recurso getRecurso(Guid id)
+        public Recurso getRecurso(int id)
         {
             try
             {

@@ -10,12 +10,12 @@ namespace SharedEntities.Entities
     {
         public String nombreJuego;
         public String dominio;
-        public Guid id;
+        public int id;
         public Boolean estado;
         public string descripcion;
 
 
-        public Juego(string gameName, string dom, Guid ident, Boolean status, string description)
+        public Juego(string gameName, string dom, int ident, Boolean status, string description)
         {
             this.nombreJuego = gameName;
             this.dominio = dom;

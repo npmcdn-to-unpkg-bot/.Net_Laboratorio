@@ -19,41 +19,29 @@ namespace DALayer.Handlers
         public void createInvestigacion(Investigacion invTmp)
         {
             Entities.Investigacion inv = new Entities.Investigacion();
-
+            
             inv.nombre = invTmp.nombre;
             inv.descripcion = invTmp.descripcion;
             inv.foto = invTmp.foto;
             inv.costo = invTmp.costo;
             inv.factorCostoNivel = invTmp.factorCostoNivel;
             inv.nivel = invTmp.nivel;
-
-
-            ctx.Investigacion.Add(inv);
-
+            
             try
             {
+                ctx.Investigacion.Add(inv);
 
                 ctx.SaveChanges();
             }
-            catch (DbEntityValidationException e)
+            catch (Exception e)
             {
-                foreach (var eve in e.EntityValidationErrors)
-                {
-                    Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
-                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
-                    foreach (var ve in eve.ValidationErrors)
-                    {
-                        Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
-                            ve.PropertyName, ve.ErrorMessage);
-                    }
-                }
-                throw;
+                throw e;
             }            
         }
-        public void deleteInvestigacion(string nombreTmp)
+        public void deleteInvestigacion(int id)
         {
             var inv = (from c in ctx.Investigacion
-                       where c.nombre == nombreTmp
+                       where c.id == id
                        select c).SingleOrDefault();
             try
             {
@@ -74,7 +62,7 @@ namespace DALayer.Handlers
                 List<Entities.Investigacion> invTmp = ctx.Investigacion.ToList();
                 foreach (Entities.Investigacion item in invTmp)
                 {
-                    Investigacion inv = new Investigacion(item.nombre, item.descripcion, item.foto, item.costo, item.factorCostoNivel, item.nivel);
+                    Investigacion inv = new Investigacion(item.id, item.nombre, item.descripcion, item.foto, item.costo, item.factorCostoNivel, item.nivel);
                     invest.Add(inv);
                 }
                 return invest;
@@ -83,6 +71,11 @@ namespace DALayer.Handlers
             {
                 throw ex;
             }
+        }
+
+        public Investigacion getInvestigacion(int id)
+        {
+            throw new NotImplementedException();
         }
 
         public void updateInvestigacion (Investigacion inv)

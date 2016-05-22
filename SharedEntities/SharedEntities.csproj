@@ -45,11 +45,14 @@
     <Compile Include="Entities\Alianza.cs" />
     <Compile Include="Entities\Destacamento.cs" />
     <Compile Include="Entities\Edificio.cs" />
+    <Compile Include="Entities\EstadoInicialJuego.cs" />
     <Compile Include="Entities\Flota.cs" />
+    <Compile Include="Entities\HistorialVentas.cs" />
     <Compile Include="Entities\Investigacion.cs" />
     <Compile Include="Entities\Juego.cs" />
     <Compile Include="Entities\Jugador.cs" />
     <Compile Include="Entities\MapaNode.cs" />
+    <Compile Include="Entities\PaquetePaypal.cs" />
     <Compile Include="Entities\Recurso.cs" />
     <Compile Include="Entities\SolicitudJuego.cs" />
     <Compile Include="Entities\Dependencia.cs" />

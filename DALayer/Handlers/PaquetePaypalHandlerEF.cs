@@ -33,28 +33,18 @@ namespace DALayer.Handlers
             {
                 ctx.SaveChanges();
             }
-            catch (DbEntityValidationException e)
+            catch (Exception e)
             {
-                foreach (var eve in e.EntityValidationErrors)
-                {
-                    Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
-                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
-                    foreach (var ve in eve.ValidationErrors)
-                    {
-                        Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
-                            ve.PropertyName, ve.ErrorMessage);
-                    }
-                }
-                throw;
+                throw e;
             }
 
         }
 
-        public void deletePaquetePaypal(string nombreOfertaTmp)
+        public void deletePaquetePaypal(int id)
         {
             {
                 var pp = (from c in ctx.PaquetePaypal
-                           where c.nombreOferta == nombreOfertaTmp
+                           where c.id == id
                            select c).SingleOrDefault();
                 try
                 {
@@ -76,7 +66,7 @@ namespace DALayer.Handlers
                 List<Entities.PaquetePaypal> paquetesTmp = ctx.PaquetePaypal.ToList();
                 foreach (Entities.PaquetePaypal item in paquetesTmp)
                 {
-                    PaquetePaypal pp = new PaquetePaypal(item.nombreOferta, item.producto, item.cantidad, item.precio, item.ofertaActiva);
+                    PaquetePaypal pp = new PaquetePaypal(item.id, item.nombreOferta, item.producto, item.cantidad, item.precio, item.ofertaActiva);
                     paquetes.Add(pp);
                 }
                 return paquetes;
@@ -117,6 +107,11 @@ namespace DALayer.Handlers
         }
 
         public void getPaquetePaypalByUser()
+        {
+            throw new NotImplementedException();
+        }
+
+        public PaquetePaypal getPaquetePaypal(int id)
         {
             throw new NotImplementedException();
         }

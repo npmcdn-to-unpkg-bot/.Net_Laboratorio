@@ -10,8 +10,10 @@ namespace DALayer.Interfaces
     public interface IHistorialVentasHandler
     {
         void createHistorialVentas(HistorialVentas hv);
-        void deleteHistorialVentas(Guid ident);
-        List<HistorialVentas> getAllHistorialesVenta();
+        void deleteHistorialVentas(int id);
         void updateHistorialVentas(HistorialVentas hv);
+        HistorialVentas getHistorialVentas(int id);
+        List<HistorialVentas> getAllHistorialesVenta();
+        
     }
 }

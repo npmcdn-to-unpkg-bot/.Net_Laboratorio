@@ -8,12 +8,12 @@ namespace SharedEntities.Entities
 {
     public class HistorialVentas
     {
-        public Guid id;
+        public int id;
         public int idusuario;
         public string nombreOferta;
         public DateTime fechaCompra;
 
-        public HistorialVentas(Guid ident, int iduser, string nameO, DateTime dateB)
+        public HistorialVentas(int ident, int iduser, string nameO, DateTime dateB)
         {
             this.id = ident;
             this.idusuario = iduser;

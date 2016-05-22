@@ -7,11 +7,12 @@ using SharedEntities.Entities;
 
 namespace DALayer.Interfaces
 {
-    interface IAlianzaHandler
+    public interface IAlianzaHandler
     {
-        void createAlianza(Alianza alli);
-        void deleteAlianza(string name);
-        void updateAlianza(Alianza alli);
+        void createAlianza(Alianza ali);
+        void deleteAlianza(int id);
+        void updateAlianza(Alianza ali);
+        Alianza getAlianza(int id);
         List<Alianza> getAllAlianzas();
     }
 }

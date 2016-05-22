@@ -20,36 +20,24 @@ namespace DALayer.Handlers
         {
 
             Entities.HistorialVentas hv = new Entities.HistorialVentas();
-
-            hv.id = hvTmp.id;
+            
             hv.idusuario = hvTmp.idusuario;
             hv.nombreOferta = hvTmp.nombreOferta;
             hv.fechaCompra = hvTmp.fechaCompra;
 
-            ctx.HistorialVentas.Add(hv);
             try
             {
-
+                ctx.HistorialVentas.Add(hv);
                 ctx.SaveChanges();
             }
-            catch (DbEntityValidationException e)
+            catch (Exception e)
             {
-                foreach (var eve in e.EntityValidationErrors)
-                {
-                    Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
-                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
-                    foreach (var ve in eve.ValidationErrors)
-                    {
-                        Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
-                            ve.PropertyName, ve.ErrorMessage);
-                    }
-                }
-                throw;
+                throw e;
             }
 
         }
 
-        public void deleteHistorialVentas(Guid idTmp)
+        public void deleteHistorialVentas(int idTmp)
         {
             var hv = (from c in ctx.HistorialVentas
                        where c.id == idTmp
@@ -116,6 +104,9 @@ namespace DALayer.Handlers
             throw new NotImplementedException();
         }
 
-
+        public HistorialVentas getHistorialVentas(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

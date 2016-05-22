@@ -66,26 +66,16 @@ namespace DALayer.Handlers
 
                 ctx.SaveChanges();
             }
-            catch (DbEntityValidationException e)
+            catch (Exception ex)
             {
-                foreach (var eve in e.EntityValidationErrors)
-                {
-                    Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
-                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
-                    foreach (var ve in eve.ValidationErrors)
-                    {
-                        Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
-                            ve.PropertyName, ve.ErrorMessage);
-                    }
-                }
-                throw;
+                throw ex;
             }
         }
 
-        public void deleteAlianza(string nombreTmp)
+        public void deleteAlianza(int id)
         {
             var alli = (from c in ctx.Alianza
-                       where c.nombre == nombreTmp
+                       where c.id == id
                        select c).SingleOrDefault();
             try
             {
@@ -171,6 +161,11 @@ namespace DALayer.Handlers
             //{
             //    throw ex;
             //}
+            throw new NotImplementedException();
+        }
+
+        public Alianza getAlianza(int id)
+        {
             throw new NotImplementedException();
         }
     }

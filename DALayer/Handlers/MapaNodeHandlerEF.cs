@@ -29,26 +29,16 @@ namespace DALayer.Handlers
 
                 ctx.SaveChanges();
             }
-            catch (DbEntityValidationException e)
+            catch (Exception e)
             {
-                foreach (var eve in e.EntityValidationErrors)
-                {
-                    Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
-                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
-                    foreach (var ve in eve.ValidationErrors)
-                    {
-                        Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
-                            ve.PropertyName, ve.ErrorMessage);
-                    }
-                }
-                throw;
+                throw e;
             }
         }
 
-        public void DeleteMapa(string nombreTmp)
+        public void DeleteMapa(int id)
         {
             var mapaE = (from c in ctx.MapaNode
-                       where c.nombre == nombreTmp
+                       where c.id == id
                        select c).SingleOrDefault();
             try
             {
@@ -69,7 +59,7 @@ namespace DALayer.Handlers
                 List<Entities.MapaNode> mapasE = ctx.MapaNode.ToList();
                 foreach (Entities.MapaNode item in mapasE)
                 {
-                    MapaNode map = new MapaNode(item.nombre, item.nivel, item.cantidad);
+                    MapaNode map = new MapaNode(item.id, item.nombre, item.nivel, item.cantidad);
                     mapas.Add(map);
                 }
                 return mapas;
@@ -78,6 +68,11 @@ namespace DALayer.Handlers
             {
                 throw ex;
             }
+        }
+
+        public MapaNode getMapa(int id)
+        {
+            throw new NotImplementedException();
         }
 
         public void UpdateMapa(MapaNode mapa)

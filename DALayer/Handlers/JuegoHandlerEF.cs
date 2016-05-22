@@ -22,36 +22,26 @@ namespace DALayer.Handlers
             {
 
                 Entities.Juego game = new Entities.Juego();
-                game.id = gameTmp.id;
                 game.nombreJuego = gameTmp.nombreJuego;
                 game.descripcion = gameTmp.descripcion;
                 game.estado = gameTmp.estado;
                 game.dominio = gameTmp.dominio;
 
-                ctx.Juego.Add(game);
+                
                 try
                 {
+                    ctx.Juego.Add(game);
 
                     ctx.SaveChanges();
                 }
-                catch (DbEntityValidationException e)
+                catch (Exception e)
                 {
-                    foreach (var eve in e.EntityValidationErrors)
-                    {
-                        Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
-                            eve.Entry.Entity.GetType().Name, eve.Entry.State);
-                        foreach (var ve in eve.ValidationErrors)
-                        {
-                            Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
-                                ve.PropertyName, ve.ErrorMessage);
-                        }
-                    }
-                    throw;
+                    throw e;
                 }
 
             }
 
-            public void deleteJuego(Guid idTmp)
+            public void deleteJuego(int idTmp)
             {
                 var game = (from c in ctx.Juego
                            where c.id == idTmp
@@ -86,7 +76,12 @@ namespace DALayer.Handlers
                 }
             }
 
-            public void getJuegoByUser()
+        public Juego getJuego(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void getJuegoByUser()
             {
                 throw new NotImplementedException();
             }

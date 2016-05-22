@@ -8,7 +8,7 @@ namespace SharedEntities.Entities
 {
     public class EstadoInicialJuego
     {
-        public Guid id;
+        public int id;
         public Dictionary<String, float> estadoInicial;
     }
 }

@@ -20,32 +20,22 @@ namespace DALayer.Handlers
         {
 
             Entities.SolicitudJuego sj = new Entities.SolicitudJuego();
-            sj.id = soljuegoTmp.id;
             sj.email = soljuegoTmp.email;
             sj.password = soljuegoTmp.password;
             sj.token = soljuegoTmp.token;
             sj.user = soljuegoTmp.user;
             sj.expirationTime = soljuegoTmp.expirationTime;
             
-            ctx.SolicitudJuego.Add(sj);
+            
             try
             {
+                ctx.SolicitudJuego.Add(sj);
 
                 ctx.SaveChanges();
             }
-            catch (DbEntityValidationException e)
+            catch (Exception e)
             {
-                foreach (var eve in e.EntityValidationErrors)
-                {
-                    Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
-                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
-                    foreach (var ve in eve.ValidationErrors)
-                    {
-                        Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
-                            ve.PropertyName, ve.ErrorMessage);
-                    }
-                }
-                throw;
+                throw e;
             }
 
         }
@@ -110,6 +100,9 @@ namespace DALayer.Handlers
             }            
         }
 
-
+        public SolicitudJuego getSolicitudJuego(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

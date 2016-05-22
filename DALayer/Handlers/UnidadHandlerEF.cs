@@ -18,10 +18,9 @@ namespace DALayer.Handlers
             ctx = tc;
         }
 
-        public Destacamento createDestacamento(Destacamento destacamento)
+        public void createDestacamento(Destacamento destacamento)
         {
             Entities.Destacamento desE = new Entities.Destacamento();
-            desE.id = destacamento.id;
             desE.descripcion = destacamento.descripcion;
             desE.foto = destacamento.foto;
             desE.capacidadInicial = destacamento.capacidadInicial;
@@ -36,30 +35,16 @@ namespace DALayer.Handlers
             {
                 ctx.Destacamento.Add(desE);
                 ctx.SaveChanges();
-                
-
-                return destacamento;
             }
-            catch (DbEntityValidationException e)
+            catch (Exception e)
             {
-                foreach (var eve in e.EntityValidationErrors)
-                {
-                    Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
-                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
-                    foreach (var ve in eve.ValidationErrors)
-                    {
-                        Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
-                            ve.PropertyName, ve.ErrorMessage);
-                    }
-                }
-                throw;
+                throw e;
             }
         }
 
-        public Edificio createEdificio(Edificio edificio)
+        public void createEdificio(Edificio edificio)
         {
             Entities.Edificio EdificioE = new Entities.Edificio();
-            EdificioE.id = edificio.id;
             EdificioE.descripcion = edificio.descripcion;
             EdificioE.foto = edificio.foto;
             EdificioE.capacidadInicial = edificio.capacidadInicial;
@@ -75,30 +60,18 @@ namespace DALayer.Handlers
             {
                 ctx.Edificio.Add(EdificioE);
                 ctx.SaveChanges();
-
-
-                return edificio;
+                
             }
-            catch (DbEntityValidationException e)
+            catch (Exception e)
             {
-                foreach (var eve in e.EntityValidationErrors)
-                {
-                    Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
-                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
-                    foreach (var ve in eve.ValidationErrors)
-                    {
-                        Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
-                            ve.PropertyName, ve.ErrorMessage);
-                    }
-                }
-                throw;
+                throw e;
             }
         }
 
-        public void deleteDestacamento(Destacamento destacamento)
+        public void deleteDestacamento(int id)
         {
             var dest = (from c in ctx.Destacamento
-                       where c.id == destacamento.id
+                       where c.id == id
                        select c).SingleOrDefault();
             try
             {
@@ -111,10 +84,10 @@ namespace DALayer.Handlers
             }
         }
 
-        public void deleteEdificio(Edificio edificio)
+        public void deleteEdificio(int id)
         {
             var edi = (from c in ctx.Edificio
-                        where c.id == edificio.id
+                        where c.id == id
                         select c).SingleOrDefault();
             try
             {
@@ -169,7 +142,7 @@ namespace DALayer.Handlers
             }
         }
 
-        public Destacamento getDestacamento(Guid id)
+        public Destacamento getDestacamento(int id)
         {
             try
             {
@@ -187,7 +160,7 @@ namespace DALayer.Handlers
             }
         }
 
-        public Edificio getEdificio(Guid id)
+        public Edificio getEdificio(int id)
         {
             try
             {
@@ -205,7 +178,7 @@ namespace DALayer.Handlers
             }
         }
 
-        public Destacamento updateDestacamento(Destacamento destacamento)
+        public void updateDestacamento(Destacamento destacamento)
         {
             try
             {
@@ -227,8 +200,6 @@ namespace DALayer.Handlers
                     destE.enMision = destacamento.enMision;
                     ctx.SaveChangesAsync().Wait();
                 }
-                
-                return destacamento;
             }
             catch (Exception ex)
             {
@@ -236,7 +207,7 @@ namespace DALayer.Handlers
             }
         }
 
-        public Edificio updateEdificio(Edificio edificio)
+        public void updateEdificio(Edificio edificio)
         {
             try
             {
@@ -259,8 +230,6 @@ namespace DALayer.Handlers
                     ediE.factorCapacidad = edificio.factorCapacidad;
                     ctx.SaveChangesAsync().Wait();
                 }
-                
-                return edificio;
             }
             catch (Exception ex)
             {

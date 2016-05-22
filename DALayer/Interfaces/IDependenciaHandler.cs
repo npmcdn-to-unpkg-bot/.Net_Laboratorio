@@ -7,11 +7,12 @@ using SharedEntities.Entities;
 
 namespace DALayer.Interfaces
 {
-    interface IDependenciaHandler
+    public interface IDependenciaHandler
     {
         void createDependencia(Dependencia dep);
-        void deleteDependencia(string nombre);
+        void deleteDependencia(int id);
         void updateDependencia(Dependencia dep);
+        Dependencia getDependencia(int id);
         List<Dependencia> getAllDependencias();
     }
 }

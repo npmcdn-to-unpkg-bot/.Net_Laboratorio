@@ -10,7 +10,8 @@ namespace DALayer.Interfaces
     public interface IPaquetePayPalHandler
     {
         void createPaquetePaypal(PaquetePaypal pp);
-        void deletePaquetePaypal(string nombreO);
+        void deletePaquetePaypal(int id);
+        PaquetePaypal getPaquetePaypal(int id);
         List<PaquetePaypal> getAllPaquetes();
         void updatePaquetePaypal(PaquetePaypal pp);
     }

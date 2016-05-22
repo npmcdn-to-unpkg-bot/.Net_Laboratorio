@@ -8,12 +8,14 @@ namespace BLayer.Interfaces
 {
     public interface IGameBuilder
     {
+        // RECURSO
         List<Recurso> getAllRecursos();
         void createRecurso(Recurso recurso);
         void deleteRecurso(Recurso recurso);
         void updateRecurso(Recurso recurso);
-        Recurso getRecurso(Guid id);
+        Recurso getRecurso(int id);
 
+        //MAPA
         List<MapaNode> getAllMapas();
     }
 }

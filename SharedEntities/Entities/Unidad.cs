@@ -8,7 +8,7 @@ namespace SharedEntities.Entities
 {
     public abstract class Unidad
     {
-        public Guid id;
+        public int id;
         /*nombre recurso, factor prod por nivel*/
         public string descripcion;
         public byte[] foto;

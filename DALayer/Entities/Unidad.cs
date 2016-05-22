@@ -4,13 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DALayer.Entities
 {
     public abstract class Unidad
     {
         [Key]
-        public Guid id { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int id { get; set; }
         /*nombre recurso, factor prod por nivel*/
         public string descripcion { get; set; }
         public byte[] foto { get; set; }

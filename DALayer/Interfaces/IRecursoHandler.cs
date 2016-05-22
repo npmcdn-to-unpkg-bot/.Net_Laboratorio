@@ -13,6 +13,6 @@ namespace DALayer.Interfaces
         void deleteRecurso(Recurso rec);
         void updateRecurso(Recurso rec);
         List<Recurso> getAllRecursos();
-        Recurso getRecurso(Guid id);
+        Recurso getRecurso(int id);
     }
 }

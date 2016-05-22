@@ -8,14 +8,16 @@ namespace SharedEntities.Entities
 {
     public class PaquetePaypal
     {
+        public int id;
         public string nombreOferta;
         public string producto;
         public int cantidad;
         public int precio;
         public bool ofertaActiva;
 
-        public PaquetePaypal(string nameO, string product, int cant, int price, bool active)
+        public PaquetePaypal(int id, string nameO, string product, int cant, int price, bool active)
         {
+            this.id = id;
             this.nombreOferta = nameO;
             this.producto = product;
             this.cantidad = cant;

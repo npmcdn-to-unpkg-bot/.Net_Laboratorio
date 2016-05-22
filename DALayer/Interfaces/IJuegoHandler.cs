@@ -10,8 +10,9 @@ namespace DALayer.Interfaces
     public interface IJuegoHandler
     {
         void createJuego(Juego game);
-        void deleteJuego(Guid id);
+        void deleteJuego(int id);
         void updateJuego(Juego game);
+        Juego getJuego(int id);
         List<Juego> getAllJuegos();
     }
 }

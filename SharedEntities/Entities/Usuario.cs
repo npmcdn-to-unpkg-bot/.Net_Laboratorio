@@ -15,6 +15,6 @@ namespace SharedEntities.Entities
         public String usuario;
         public String password;
         public byte[] foto;
-        public Guid Id;
+        public int Id;
     }
 }

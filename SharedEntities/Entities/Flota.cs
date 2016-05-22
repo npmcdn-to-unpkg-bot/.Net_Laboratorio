@@ -8,11 +8,11 @@ namespace SharedEntities.Entities
 {
     public class Flota
     {
-        public Guid id;
+        public int id;
         public String typoNave;
         public int cantidad;
 
-        public Flota (Guid ident, string tynave, int cant)
+        public Flota (int ident, string tynave, int cant)
         {
             this.id = ident;
             this.typoNave = tynave;

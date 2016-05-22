@@ -10,8 +10,9 @@ namespace DALayer.Interfaces
     public interface IFlotaHandler
     {
         void CreateFlota(Flota fleet);
-        void DeleteFlota(Guid id);
+        void DeleteFlota(int id);
         void UpdateFlota(Flota fleet);
+        Flota getFlota(int id);
         List<Flota> GetAllFlotas();
     }
 }

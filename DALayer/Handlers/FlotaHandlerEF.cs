@@ -20,34 +20,23 @@ namespace DALayer.Handlers
         {
 
             Entities.Flota fleet = new Entities.Flota();
-            fleet.id = fleetTmp.id;
             fleet.cantidad = fleetTmp.cantidad;
             fleet.typoNave = fleetTmp.typoNave;             
 
-            ctx.Flota.Add(fleet);
+            
             try
             {
-
+                ctx.Flota.Add(fleet);
                 ctx.SaveChanges();
             }
-            catch (DbEntityValidationException e)
+            catch (Exception e)
             {
-                foreach (var eve in e.EntityValidationErrors)
-                {
-                    Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
-                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
-                    foreach (var ve in eve.ValidationErrors)
-                    {
-                        Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
-                            ve.PropertyName, ve.ErrorMessage);
-                    }
-                }
-                throw;
+                throw e;
             }
 
         }
 
-        public void DeleteFlota(Guid idTmp)
+        public void DeleteFlota(int idTmp)
         {
             var fleet = (from c in ctx.Flota
                          where c.id == idTmp
@@ -114,5 +103,9 @@ namespace DALayer.Handlers
             throw new NotImplementedException();
         }
 
+        public Flota getFlota(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

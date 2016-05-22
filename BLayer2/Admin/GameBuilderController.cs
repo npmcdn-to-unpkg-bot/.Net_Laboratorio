@@ -23,7 +23,7 @@ namespace BLayer.Admin
             return builder.getRecursoHandler().getAllRecursos();
         }
 
-        public Recurso getRecurso(Guid id)
+        public Recurso getRecurso(int id)
         {
             return builder.getRecursoHandler().getRecurso(id);
         }

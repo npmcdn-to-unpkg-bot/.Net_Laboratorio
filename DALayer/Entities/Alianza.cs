@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DALayer.Entities
 {
     public class Alianza
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int id { get; set; }
         public String nombre { get; set; }
         public List<Jugador> miembros{get; set;}
         public List<Jugador> admins{get; set;}

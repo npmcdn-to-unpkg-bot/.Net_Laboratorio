@@ -16,7 +16,7 @@ namespace DALayer
         {
             Jugador s = new Jugador();
             s.apellido = DateTime.Now.Millisecond.ToString();
-            s.Id = Guid.NewGuid();
+            //s.Id = Guid.NewGuid();
              using (TenantContext t2 = TenantFactory.getTenantCxt("sch3emas5238"))
              {
                   t2.Set<Jugador>().Add(s);

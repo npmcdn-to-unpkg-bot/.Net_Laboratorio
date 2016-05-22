@@ -25,34 +25,22 @@ namespace DALayer.Handlers
                 dep.level = depTmp.level;
                 //cambiar lo de shared
                 //dep.dependencias = depTmp.dependencias;
-
-                ctx.Dependencia.Add(dep);
                 try
                 {
-
+                    ctx.Dependencia.Add(dep);
                     ctx.SaveChanges();
                 }
-                catch (DbEntityValidationException e)
+                catch (Exception e)
                 {
-                    foreach (var eve in e.EntityValidationErrors)
-                    {
-                        Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
-                            eve.Entry.Entity.GetType().Name, eve.Entry.State);
-                        foreach (var ve in eve.ValidationErrors)
-                        {
-                            Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
-                                ve.PropertyName, ve.ErrorMessage);
-                        }
-                    }
-                    throw;
+                    throw e;
                 }
 
             }
 
-            public void deleteDependencia(string nombreTmp)
+            public void deleteDependencia(int id)
             {
                 var dep = (from c in ctx.Dependencia
-                           where c.nombre == nombreTmp
+                           where c.id == id
                            select c).SingleOrDefault();
                 try
                 {
@@ -85,7 +73,12 @@ namespace DALayer.Handlers
             throw new NotImplementedException();
             }
 
-            public void getDependenciaByUser()
+        public Dependencia getDependencia(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void getDependenciaByUser()
             {
                 throw new NotImplementedException();
             }
