@@ -1,32 +1,32 @@
 ﻿(function () {
     'use strict';
-    angular.module('atlas2').controller('agrupacionCtrl', ['$scope', '$routeParams', 'agrupacionService', agrupacionCtrl]);
+    angular.module('atlas2').controller('alianzaCtrl', ['$scope', '$routeParams', 'alianzaService', alianzaCtrl]);
 
-    function agrupacionCtrl($scope, $routeParams, agrupacionService) {
-        $scope.agrupaciones = [];
-        $scope.agrupacion = null;
+    function alianzaCtrl($scope, $routeParams, alianzaService) {
+        $scope.alianzas = [];
+        $scope.alianza = null;
         $scope.saving = false;
 
         var initialize = function () {
             var id = $routeParams && $routeParams['id'] ? $routeParams['id'] : null
             if (id) {
-                agrupacionService.getId(id).then(function (data) {
-                    $scope.agrupacion = data;
+                alianzaService.getId(id).then(function (data) {
+                    $scope.alianza = data;
                 });
             } else {
-                agrupacionService.getAll().then(function (data) {
-                    $scope.agrupaciones = data;
+                alianzaService.getAll().then(function (data) {
+                    $scope.alianzas = data;
                 });
             }
         }
 
         $scope.add = function () {
             $scope.saving = true;
-            var agrupacion = this.agrupacion;
+            var alianza = this.alianza;
 
-            agrupacionService.add(agrupacion).then(
+            alianzaService.add(alianza).then(
                 function (data) {
-                    $scope.agrupaciones.push(data);
+                    $scope.alianzas.push(data);
                     $scope.saving = false;
 
                     mostrarNotificacion('success');
@@ -41,9 +41,9 @@
 
         $scope.edit = function () {
             $scope.saving = true;
-            var agrupacion = this.agrupacion;
+            var alianza = this.alianza;
 
-            agrupacionService.edit(agrupacion).then(
+            alianzaService.edit(alianza).then(
                 function (data) {
                     $scope.saving = false;
 
@@ -59,13 +59,13 @@
 
         $scope.borrar = function (index) {
             $scope.saving = true;
-            var agrupacion = this.agrupacion;
+            var alianza = this.alianza;
 
             var r = confirm("Seguro que quiere borrar?");
             if (r == true) {
-                agrupacionService.borrar(agrupacion.id).then(
+                alianzaService.borrar(alianza.id).then(
                  function () {
-                     $scope.agrupaciones.splice(index, 1);
+                     $scope.alianzas.splice(index, 1);
                      $scope.saving = false;
 
                      mostrarNotificacion('success');

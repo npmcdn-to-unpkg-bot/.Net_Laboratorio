@@ -1,15 +1,15 @@
 ﻿(function () {
     'use strict';
-    angular.module('atlas2').service('agrupacionService', ["$http", "$q", agrupacionService]);
+    angular.module('atlas2').service('alianzaService', ["$http", "$q", alianzaService]);
 
-    function agrupacionService($http, $q) {
+    function alianzaService($http, $q) {
 
         var getAll = function () {
             var defer = $q.defer();
 
-            $http.get('/admin/api/agrupacion')
-            .success(function (agrupaciones) {
-                defer.resolve(agrupaciones);
+            $http.get('/admin/api/alianza')
+            .success(function (alianzas) {
+                defer.resolve(alianzas);
             })
             .error(function () {
                 defer.reject('server error')
@@ -18,12 +18,12 @@
             return defer.promise;
         };
 
-        var add = function (agrupacion) {
+        var add = function (alianza) {
             var defer = $q.defer();
 
-            $http.post('/admin/api/agrupacion', agrupacion)
-            .success(function (agrupacion) {
-                defer.resolve(agrupacion);
+            $http.post('/admin/api/alianza', alianza)
+            .success(function (alianza) {
+                defer.resolve(alianza);
             })
             .error(function () {
                 defer.reject('server error')
@@ -32,12 +32,12 @@
             return defer.promise;
         };
 
-        var edit = function (agrupacion) {
+        var edit = function (alianza) {
             var defer = $q.defer();
 
-            $http.put('/admin/api/agrupacion?id=' + agrupacion.id, agrupacion)
-            .success(function (agrupacion) {
-                defer.resolve(agrupacion);
+            $http.put('/admin/api/alianza?id=' + alianza.id, alianza)
+            .success(function (alianza) {
+                defer.resolve(alianza);
             })
             .error(function () {
                 defer.reject('server error')
@@ -49,9 +49,9 @@
         var borrar = function (id) {
             var defer = $q.defer();
 
-            $http.delete('/admin/api/agrupacion?id=' + id)
-            .success(function (agrupacion) {
-                defer.resolve(agrupacion);
+            $http.delete('/admin/api/alianza?id=' + id)
+            .success(function (alianza) {
+                defer.resolve(alianza);
             })
             .error(function () {
                 defer.reject('server error')
@@ -63,9 +63,9 @@
         var getId = function (id) {
             var defer = $q.defer();
 
-            $http.get('/admin/api/agrupacion?id=' + id)
-            .success(function (agrupacion) {
-                defer.resolve(agrupacion);
+            $http.get('/admin/api/alianza?id=' + id)
+            .success(function (alianza) {
+                defer.resolve(alianza);
             })
             .error(function () {
                 defer.reject('server error')
