@@ -21,6 +21,7 @@ namespace DALayer.Handlers
         public void createDestacamento(Destacamento destacamento)
         {
             Entities.Destacamento desE = new Entities.Destacamento();
+
             desE.descripcion = destacamento.descripcion;
             desE.foto = destacamento.foto;
             desE.capacidadInicial = destacamento.capacidadInicial;
@@ -30,6 +31,7 @@ namespace DALayer.Handlers
             desE.vida = destacamento.vida;
             desE.velocidad = destacamento.velocidad;
             desE.enMision = destacamento.enMision;
+            desE.nombre = destacamento.nombre;
 
             try
             {
@@ -45,6 +47,7 @@ namespace DALayer.Handlers
         public void createEdificio(Edificio edificio)
         {
             Entities.Edificio EdificioE = new Entities.Edificio();
+
             EdificioE.descripcion = edificio.descripcion;
             EdificioE.foto = edificio.foto;
             EdificioE.capacidadInicial = edificio.capacidadInicial;
@@ -55,6 +58,7 @@ namespace DALayer.Handlers
             EdificioE.nivel = edificio.nivel;
             EdificioE.factorCostoNivel = edificio.factorCostoNivel;
             EdificioE.factorCapacidad = edificio.factorCapacidad;
+            EdificioE.nombre = edificio.nombre;
 
             try
             {
@@ -68,10 +72,10 @@ namespace DALayer.Handlers
             }
         }
 
-        public void deleteDestacamento(int id)
+        public void deleteDestacamento(Destacamento destacamento)
         {
             var dest = (from c in ctx.Destacamento
-                       where c.id == id
+                       where c.id == destacamento.id
                        select c).SingleOrDefault();
             try
             {
@@ -84,10 +88,10 @@ namespace DALayer.Handlers
             }
         }
 
-        public void deleteEdificio(int id)
+        public void deleteEdificio(Edificio edificio)
         {
             var edi = (from c in ctx.Edificio
-                        where c.id == id
+                        where c.id == edificio.id
                         select c).SingleOrDefault();
             try
             {
@@ -109,7 +113,7 @@ namespace DALayer.Handlers
                 foreach (Entities.Destacamento item in destE)
                 {
                     Destacamento dest = new Destacamento(item.id, item.descripcion, item.foto, item.capacidadInicial, item.ataque,
-                        item.escudo, item.efectividadAtaque, item.vida, item.velocidad, item.enMision);
+                        item.escudo, item.efectividadAtaque, item.vida, item.velocidad, item.enMision, item.nombre);
                     destacamentos.Add(dest);
                 }
 
@@ -129,8 +133,8 @@ namespace DALayer.Handlers
                 List<Entities.Edificio> ediE = ctx.Edificio.ToList();
                 foreach (Entities.Edificio item in ediE)
                 {
-                    Edificio edi = new Edificio(item.id, item.descripcion, item.foto, item.capacidadInicial, item.ataque,
-                        item.escudo, item.efectividadAtaque, item.vida, item.nivel, item.factorCostoNivel, item.factorCapacidad);
+                    Edificio edi = new Edificio(item.id,item.descripcion, item.foto, item.capacidadInicial, item.ataque,
+                        item.escudo, item.efectividadAtaque, item.vida, item.nivel, item.factorCostoNivel, item.factorCapacidad, item.nombre);
                     edificios.Add(edi);
                 }
 
@@ -151,7 +155,7 @@ namespace DALayer.Handlers
                            select c).SingleOrDefault();
 
                 Destacamento dest = new Destacamento(destE.id, destE.descripcion, destE.foto, destE.capacidadInicial, destE.ataque,
-                        destE.escudo, destE.efectividadAtaque, destE.vida, destE.velocidad, destE.enMision);
+                        destE.escudo, destE.efectividadAtaque, destE.vida, destE.velocidad, destE.enMision, destE.nombre);
                 return dest;
             }
             catch (Exception ex)
@@ -169,7 +173,7 @@ namespace DALayer.Handlers
                            select c).SingleOrDefault();
 
                 Edificio edi = new Edificio(ediE.id, ediE.descripcion, ediE.foto, ediE.capacidadInicial, ediE.ataque,
-                        ediE.escudo, ediE.efectividadAtaque, ediE.vida, ediE.nivel, ediE.factorCostoNivel, ediE.factorCapacidad);
+                        ediE.escudo, ediE.efectividadAtaque, ediE.vida, ediE.nivel, ediE.factorCostoNivel, ediE.factorCapacidad, ediE.nombre);
                 return edi;
             }
             catch (Exception ex)
@@ -198,6 +202,7 @@ namespace DALayer.Handlers
                     destE.vida = destacamento.vida;
                     destE.velocidad = destacamento.velocidad;
                     destE.enMision = destacamento.enMision;
+                    destE.nombre = destacamento.nombre;
                     ctx.SaveChangesAsync().Wait();
                 }
             }
@@ -228,6 +233,8 @@ namespace DALayer.Handlers
                     ediE.nivel = edificio.nivel;
                     ediE.factorCostoNivel = edificio.factorCostoNivel;
                     ediE.factorCapacidad = edificio.factorCapacidad;
+                    ediE.nombre = edificio.nombre;
+
                     ctx.SaveChangesAsync().Wait();
                 }
             }

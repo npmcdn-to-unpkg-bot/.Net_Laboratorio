@@ -221,6 +221,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="ControllersApi\DestacamentoController.cs" />
+    <Compile Include="ControllersApi\EdificioController.cs" />
     <Compile Include="ControllersApi\InvestigacionController.cs" />
     <Compile Include="ControllersApi\MapaController.cs" />
     <Compile Include="ControllersApi\RecursoController.cs" />
@@ -554,6 +556,12 @@
     <Content Include="SPA\admin\services\investigacion.js" />
     <Content Include="SPA\admin\services\mapa.js" />
     <Content Include="SPA\admin\services\recurso.js" />
+    <Content Include="SPA\admin\views\destacamento\add.html" />
+    <Content Include="SPA\admin\views\destacamento\edit.html" />
+    <Content Include="SPA\admin\views\destacamento\list.html" />
+    <Content Include="SPA\admin\views\edificio\add.html" />
+    <Content Include="SPA\admin\views\edificio\edit.html" />
+    <Content Include="SPA\admin\views\edificio\list.html" />
     <Content Include="SPA\admin\views\home.html" />
     <Content Include="SPA\admin\views\investigacion\add.html" />
     <Content Include="SPA\admin\views\investigacion\edit.html" />

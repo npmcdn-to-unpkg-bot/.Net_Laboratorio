@@ -15,7 +15,7 @@ namespace SharedEntities.Entities
         public Jugador(int id, String name, String apellidos, String email, String usuario, String password,
             byte[] foto, string nickname, int nivel, float exp)
         {
-            this.Id = id;
+            this.id = id;
             this.name = name;
             this.apellidos = apellidos;
             this.email = email;

@@ -9,7 +9,6 @@ namespace SharedEntities.Entities
     public abstract class Unidad
     {
         public int id;
-        /*nombre recurso, factor prod por nivel*/
         public string descripcion;
         public byte[] foto;
         Dictionary<String, float> factoresProdRecursos;
@@ -19,6 +18,7 @@ namespace SharedEntities.Entities
         public float escudo;
         public float efectividadAtaque;
         public float vida;
+        public string nombre;
 
     }
 }

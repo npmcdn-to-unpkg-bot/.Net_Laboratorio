@@ -28,5 +28,19 @@ namespace BLayer.Interfaces
         void deleteInvestigacion(Investigacion investigacion);
         void updateInvestigacion(Investigacion investigacion);
         Investigacion getInvestigacion(int id);
+
+        // DESTACAMENTO
+        List<Destacamento> getAllDestacamentos();
+        void createDestacamento(Destacamento destacamento);
+        void deleteDestacamento(Destacamento destacamento);
+        void updateDestacamento(Destacamento destacamento);
+        Destacamento getDestacamento(int id);
+
+        // EDIFICIO
+        List<Edificio> getAllEdificios();
+        void createEdificio(Edificio edificio);
+        void deleteEdificio(Edificio edificio);
+        void updateEdificio(Edificio edificio);
+        Edificio getEdificio(int id);
     }
 }

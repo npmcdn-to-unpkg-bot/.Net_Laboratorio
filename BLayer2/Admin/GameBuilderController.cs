@@ -93,5 +93,57 @@ namespace BLayer.Admin
         {
             builder.getInvestigacionHandler().deleteInvestigacion(investigacion);
         }
+
+        //DESTACAMENTOS
+        public List<Destacamento> getAllDestacamentos()
+        {
+            return builder.getUnidadHandler().getAllDestacamentos();
+        }
+
+        public Destacamento getDestacamento(int id)
+        {
+            return builder.getUnidadHandler().getDestacamento(id);
+        }
+
+        public void createDestacamento(Destacamento destacamento)
+        {
+            builder.getUnidadHandler().createDestacamento(destacamento);
+        }
+
+        public void updateDestacamento(Destacamento destacamento)
+        {
+            builder.getUnidadHandler().updateDestacamento(destacamento);
+        }
+
+        public void deleteDestacamento(Destacamento destacamento)
+        {
+            builder.getUnidadHandler().deleteDestacamento(destacamento);
+        }
+
+        //EDIFICIOS
+        public List<Edificio> getAllEdificios()
+        {
+            return builder.getUnidadHandler().getAllEdificios();
+        }
+
+        public Edificio getEdificio(int id)
+        {
+            return builder.getUnidadHandler().getEdificio(id);
+        }
+
+        public void createEdificio(Edificio edificio)
+        {
+            builder.getUnidadHandler().createEdificio(edificio);
+        }
+
+        public void updateEdificio(Edificio edificio)
+        {
+            builder.getUnidadHandler().updateEdificio(edificio);
+        }
+
+        public void deleteEdificio(Edificio edificio)
+        {
+            builder.getUnidadHandler().deleteEdificio(edificio);
+        }
     }
 }

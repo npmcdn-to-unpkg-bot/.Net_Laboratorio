@@ -13,7 +13,6 @@ namespace DALayer.Entities
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id { get; set; }
-        /*nombre recurso, factor prod por nivel*/
         public string descripcion { get; set; }
         public byte[] foto { get; set; }
         Dictionary<String, float> factoresProdRecursos{get; set;}
@@ -23,6 +22,6 @@ namespace DALayer.Entities
         public float escudo {get; set;}
         public float efectividadAtaque {get; set;}
         public float vida {get; set;}
-
+        public string nombre;
     }
 }
