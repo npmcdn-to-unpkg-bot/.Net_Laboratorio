@@ -6,7 +6,7 @@
 
         <div class="title_right">
             <div class="pull-right">
-                <a href="#/destacamento/add" class="btn btn-info">Agregar</a>
+                <a href="#/destacamento/add" class="btn btn-info" ng-if="recursos.lenght > 0">Agregar</a>
             </div>
         </div>
     </div>
@@ -38,13 +38,6 @@
                         <th>Foto</th>
                         <th>Nombre</th>
                         <th>Descripción</th>
-                        <th>Factores de prod. de recursos</th>
-                        <th>Capacidad inicial</th>
-                        <th>Ataque</th>
-                        <th>Escudo</th>
-                        <th>Efectividad de ataque</th>
-                        <th>Vida</th>
-                        <th>Velocidad</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -55,13 +48,6 @@
                         <td>{{destacamento.foto}}</td>
                         <td>{{destacamento.nombre}}</td>
                         <td>{{destacamento.descripcion}}</td>
-                        <td>{{destacamento.factoresProdRecursos}}</td>
-                        <td>{{destacamento.capacidadInicial}}</td>
-                        <td>{{destacamento.ataque}}</td>
-                        <td>{{destacamento.escudo}}</td>
-                        <td>{{destacamento.efectividadAtaque}}</td>
-                        <td>{{destacamento.vida}}</td>
-                        <td>{{destacamento.velocidad}}</td>
                         <td>
                             <div class="btn-group">
                                 <a href="#/destacamento/edit/{{destacamento.id}}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> </a>
