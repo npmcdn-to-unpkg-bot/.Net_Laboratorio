@@ -78,8 +78,8 @@ $(function () {
 
     // check active menu
     $SIDEBAR_MENU.find('a').filter(function () {
-        var route       = this.href.split('/#/')[1];
-        var urlRoute    = URL.href.split('/#/')[1];
+        var route = this.href.split('/#/')[1] || this.href.split('#/')[1];
+        var urlRoute = URL.href.split('/#/')[1] || URL.href.split('#/')[1];
         
         return ((this.href == URL) || (route && urlRoute.indexOf(route) > -1));
     }).parent('li').addClass('current-page').parents('ul').slideDown(function() {

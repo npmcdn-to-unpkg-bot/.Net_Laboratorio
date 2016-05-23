@@ -32,7 +32,7 @@ namespace DALayer.Handlers
                 jug.email = item.email;
                 jug.experiencia = item.experiencia;
                 jug.foto = item.foto;
-                jug.Id = item.Id;
+                jug.id = item.id;
                 jug.nickname = item.nickname;
                 jug.nivel = item.nivel;
                 jug.password =item.password;
@@ -48,7 +48,7 @@ namespace DALayer.Handlers
                 jug2.email = item2.email;
                 jug2.experiencia = item2.experiencia;
                 jug2.foto = item2.foto;
-                jug2.Id = item2.Id;
+                jug2.id = item2.id;
                 jug2.nickname = item2.nickname;
                 jug2.nivel = item2.nivel;
                 jug2.password = item2.password;
@@ -110,7 +110,7 @@ namespace DALayer.Handlers
                         jug.email = item.email;
                         jug.experiencia = item.experiencia;
                         jug.foto = item.foto;
-                        jug.Id = item.Id;
+                        jug.id = item.id;
                         jug.nickname = item.nickname;
                         jug.nivel = item.nivel;
                         jug.password = item.password;
@@ -126,7 +126,7 @@ namespace DALayer.Handlers
                         jug2.email = item2.email;
                         jug2.experiencia = item2.experiencia;
                         jug2.foto = item2.foto;
-                        jug2.Id = item2.Id;
+                        jug2.id = item2.id;
                         jug2.nickname = item2.nickname;
                         jug2.nivel = item2.nivel;
                         jug2.password = item2.password;
