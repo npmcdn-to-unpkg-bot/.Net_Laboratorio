@@ -57,15 +57,15 @@
             );
         }
 
-        $scope.borrar = function () {
+        $scope.borrar = function (index) {
             $scope.saving = true;
             var edificio = this.edificio;
 
             var r = confirm("Seguro que quiere borrar?");
             if (r == true) {
                 edificioService.borrar(edificio.id).then(
-                 function (data) {
-                     $scope.edificios.pop(data);
+                 function () {
+                     $scope.edificios.splice(index, 1);
                      $scope.saving = false;
 
                      mostrarNotificacion('success');

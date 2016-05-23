@@ -57,15 +57,15 @@
             );
         }
 
-        $scope.borrar = function () {
+        $scope.borrar = function (index) {
             $scope.saving = true;
             var mapa = this.mapa;
 
             var r = confirm("Seguro que quiere borrar?");
             if (r == true) {
                 mapaService.borrar(mapa.id).then(
-                 function (data) {
-                     $scope.mapas.pop(data);
+                 function () {
+                     $scope.mapas.splice(index, 1);
                      $scope.saving = false;
 
                      mostrarNotificacion('success');

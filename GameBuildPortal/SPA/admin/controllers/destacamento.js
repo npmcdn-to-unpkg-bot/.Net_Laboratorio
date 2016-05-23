@@ -57,15 +57,15 @@
             );
         }
 
-        $scope.borrar = function () {
+        $scope.borrar = function (index) {
             $scope.saving = true;
             var destacamento = this.destacamento;
 
             var r = confirm("Seguro que quiere borrar?");
             if (r == true) {
                 destacamentoService.borrar(destacamento.id).then(
-                 function (data) {
-                     $scope.destacamentos.pop(data);
+                 function () {
+                     $scope.destacamentos.splice(index, 1);
                      $scope.saving = false;
 
                      mostrarNotificacion('success');

@@ -57,15 +57,15 @@
             );
         }
 
-        $scope.borrar = function () {
+        $scope.borrar = function (index) {
             $scope.saving = true;
             var investigacion = this.investigacion;
 
             var r = confirm("Seguro que quiere borrar?");
             if (r == true) {
                 investigacionService.borrar(investigacion.id).then(
-                 function (data) {
-                     $scope.investigaciones.pop(data);
+                 function () {
+                     $scope.investigaciones.splice(index, 1);
                      $scope.saving = false;
 
                      mostrarNotificacion('success');

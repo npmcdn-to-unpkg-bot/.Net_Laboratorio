@@ -57,15 +57,15 @@
             );
         }
 
-        $scope.borrar = function () {
+        $scope.borrar = function (index) {
             $scope.saving   = true;
             var dependencia = this.dependencia;
 
             var r = confirm("Seguro que quiere borrar?");
             if (r == true) {
                 dependenciaService.borrar(dependencia.id).then(
-                 function (data) {
-                     $scope.dependencias.pop(data);
+                 function () {
+                     $scope.dependencias.splice(index, 1);
                      $scope.saving = false;
 
                      mostrarNotificacion('success');

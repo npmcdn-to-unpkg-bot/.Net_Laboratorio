@@ -16,6 +16,7 @@ namespace DALayer.Handlers
         {
             ctx = tc;
         }
+
         public void createInvestigacion(Investigacion invTmp)
         {
             Entities.Investigacion inv = new Entities.Investigacion();
@@ -38,6 +39,7 @@ namespace DALayer.Handlers
                 throw e;
             }            
         }
+
         public void deleteInvestigacion(int id)
         {
             var inv = (from c in ctx.Investigacion
@@ -95,11 +97,12 @@ namespace DALayer.Handlers
             try
             {
                 var invTmp = ctx.Investigacion
-                    .Where(w => w.nombre == inv.nombre)
+                    .Where(w => w.id == inv.id)
                     .SingleOrDefault();
 
                 if (invTmp != null)
                 {
+                    invTmp.nombre = inv.nombre;
                     invTmp.descripcion = inv.descripcion;
                     invTmp.foto = inv.foto;
                     invTmp.factorCostoNivel = inv.factorCostoNivel;
