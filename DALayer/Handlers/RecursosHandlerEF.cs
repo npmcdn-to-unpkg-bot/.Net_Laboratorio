@@ -35,10 +35,10 @@ namespace DALayer.Handlers
 
         }
 
-        public void deleteRecurso(Recurso recurso)
+        public void deleteRecurso(int id)
         {
             var rec = (from c in ctx.Recurso
-                        where c.id == recurso.id
+                        where c.id == id
                         select c).SingleOrDefault();
             try
             {

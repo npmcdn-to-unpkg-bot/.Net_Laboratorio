@@ -72,10 +72,10 @@ namespace DALayer.Handlers
             }
         }
 
-        public void deleteDestacamento(Destacamento destacamento)
+        public void deleteDestacamento(int id)
         {
             var dest = (from c in ctx.Destacamento
-                       where c.id == destacamento.id
+                       where c.id == id
                        select c).SingleOrDefault();
             try
             {
@@ -88,10 +88,10 @@ namespace DALayer.Handlers
             }
         }
 
-        public void deleteEdificio(Edificio edificio)
+        public void deleteEdificio(int id)
         {
             var edi = (from c in ctx.Edificio
-                        where c.id == edificio.id
+                        where c.id == id
                         select c).SingleOrDefault();
             try
             {

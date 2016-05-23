@@ -11,8 +11,8 @@ namespace DALayer.Interfaces
     {
         void createEdificio(Edificio edificio);
         void createDestacamento(Destacamento destacamento);
-        void deleteEdificio(Edificio edificio);
-        void deleteDestacamento(Destacamento destacamento);
+        void deleteEdificio(int id);
+        void deleteDestacamento(int id);
         void updateEdificio(Edificio edificio);
         void updateDestacamento(Destacamento destacamento);
         List<Edificio> getAllEdificios();

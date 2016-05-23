@@ -34,10 +34,10 @@ namespace DALayer.Handlers
             }
         }
 
-        public void DeleteMapa(MapaNode mapa)
+        public void DeleteMapa(int id)
         {
             var mapaE = (from c in ctx.MapaNode
-                       where c.id == mapa.id
+                       where c.id == id
                        select c).SingleOrDefault();
             try
             {

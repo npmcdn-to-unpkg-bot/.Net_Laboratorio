@@ -81,22 +81,16 @@ namespace GameBuildPortal.ControllersApi
         [HttpDelete]
         public HttpResponseMessage Delete(int id)
         {
-            Destacamento destacamento = blHandler.getDestacamento(id);
-            if (destacamento == null)
-            {
-                return Request.CreateResponse(HttpStatusCode.NotFound);
-            }
-
             try
             {
-                blHandler.deleteDestacamento(destacamento);
+                blHandler.deleteDestacamento(id);
             }
             catch (Exception ex)
             {
                 return Request.CreateErrorResponse(HttpStatusCode.NotFound, ex);
             }
 
-            return Request.CreateResponse(HttpStatusCode.OK, destacamento);
+            return Request.CreateResponse(HttpStatusCode.OK);
         }
     }
 }

@@ -38,9 +38,9 @@ namespace BLayer.Admin
             builder.getRecursoHandler().updateRecurso(recurso);
         }
 
-        public void deleteRecurso(Recurso recurso)
+        public void deleteRecurso(int id)
         {
-            builder.getRecursoHandler().deleteRecurso(recurso);
+            builder.getRecursoHandler().deleteRecurso(id);
         }
 
         //MAPAS
@@ -58,9 +58,9 @@ namespace BLayer.Admin
             builder.getMapaNodeHandler().CreateMapa(mapa);
         }
 
-        public void deleteMapa(MapaNode mapa)
+        public void deleteMapa(int id)
         {
-            builder.getMapaNodeHandler().DeleteMapa(mapa);
+            builder.getMapaNodeHandler().DeleteMapa(id);
         }
 
         public void updateMapa(MapaNode mapa)
@@ -89,9 +89,9 @@ namespace BLayer.Admin
             builder.getInvestigacionHandler().updateInvestigacion(investigacion);
         }
 
-        public void deleteInvestigacion(Investigacion investigacion)
+        public void deleteInvestigacion(int id)
         {
-            builder.getInvestigacionHandler().deleteInvestigacion(investigacion);
+            builder.getInvestigacionHandler().deleteInvestigacion(id);
         }
 
         //DESTACAMENTOS
@@ -115,9 +115,9 @@ namespace BLayer.Admin
             builder.getUnidadHandler().updateDestacamento(destacamento);
         }
 
-        public void deleteDestacamento(Destacamento destacamento)
+        public void deleteDestacamento(int id)
         {
-            builder.getUnidadHandler().deleteDestacamento(destacamento);
+            builder.getUnidadHandler().deleteDestacamento(id);
         }
 
         //EDIFICIOS
@@ -141,9 +141,9 @@ namespace BLayer.Admin
             builder.getUnidadHandler().updateEdificio(edificio);
         }
 
-        public void deleteEdificio(Edificio edificio)
+        public void deleteEdificio(int id)
         {
-            builder.getUnidadHandler().deleteEdificio(edificio);
+            builder.getUnidadHandler().deleteEdificio(id);
         }
     }
 }
