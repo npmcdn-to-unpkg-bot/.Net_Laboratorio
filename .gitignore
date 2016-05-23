@@ -6,5 +6,8 @@ BLayer/obj/
 BLayer2/bin/
 BLayer2/obj/
 GameBuildPortal.Tests/obj/
+GameBuildPortal.Tests/bin/
 GameBuildPortal/obj/
+GameBuildPortal/bin/
 SharedEntities/obj/
+SharedEntities/bin/
