@@ -10,7 +10,7 @@ using System.Data.Entity.Validation;
 namespace DALayer.Handlers
 
 {
-    public class AlianzaHandlerEF : IAlianzaHandler 
+    public class AlianzaHandlerEF : IAlianzaHandler
     {
         TenantContext ctx;
         public AlianzaHandlerEF(TenantContext tc)
@@ -35,7 +35,7 @@ namespace DALayer.Handlers
                 jug.id = item.id;
                 jug.nickname = item.nickname;
                 jug.nivel = item.nivel;
-                jug.password =item.password;
+                jug.password = item.password;
                 jug.usuario = item.usuario;
                 alli.miembros.Add(jug);
             }
@@ -72,11 +72,11 @@ namespace DALayer.Handlers
             }
         }
 
-        public void deleteAlianza(int id)
+        public void deleteAlianza(Alianza alianza)
         {
             var alli = (from c in ctx.Alianza
-                       where c.id == id
-                       select c).SingleOrDefault();
+                        where c.id == alianza.id
+                        select c).SingleOrDefault();
             try
             {
                 ctx.Alianza.Remove(alli);
@@ -166,6 +166,20 @@ namespace DALayer.Handlers
 
         public Alianza getAlianza(int id)
         {
+            //    try
+            //    {
+            //        var ali = (from c in ctx.Alianza
+            //                   where c.id == id
+            //                   select c).SingleOrDefault();
+
+            //        Alianza alianza = new Alianza(ali.id, ali.nombre, ali.miembros, ali.admins ,ali.descripcion, ali.foto);
+            //        return alianza;
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        throw ex;
+            //    }
+            //}
             throw new NotImplementedException();
         }
     }

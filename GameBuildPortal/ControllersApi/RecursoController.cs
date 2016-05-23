@@ -81,22 +81,16 @@ namespace GameBuildPortal.ControllersApi
         [HttpDelete]
         public HttpResponseMessage Delete(int id)
         {
-            Recurso recurso = blHandler.getRecurso(id);
-            if (recurso == null)
-            {
-                return Request.CreateResponse(HttpStatusCode.NotFound);
-            }
-            
             try
             {
-                blHandler.deleteRecurso(recurso);
+                blHandler.deleteRecurso(id);
             }
             catch (Exception ex)
             {
                 return Request.CreateErrorResponse(HttpStatusCode.NotFound, ex);
             }
 
-            return Request.CreateResponse(HttpStatusCode.OK, recurso);
+            return Request.CreateResponse(HttpStatusCode.OK);
         }
     }
 }

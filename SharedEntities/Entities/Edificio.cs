@@ -13,7 +13,7 @@ namespace SharedEntities.Entities
         public float factorCapacidad;
 
         public Edificio(int id, string description, byte[] photo, float capacidadI, float ataque, float escudo,
-            float efectividadAtaque, float vida, int nivel, float factorCN, float factorC)
+            float efectividadAtaque, float vida, int nivel, float factorCN, float factorC, string name)
         {
             this.id = id;
             this.descripcion = description;
@@ -26,6 +26,7 @@ namespace SharedEntities.Entities
             this.nivel = nivel;
             this.factorCostoNivel = factorCN;
             this.factorCapacidad = factorC;
+            this.nombre = name;
         }
     }
 }

@@ -55,6 +55,30 @@
 		    templateUrl: "/SPA/admin/views/investigacion/edit.html",
 		    controller  : 'investigacionCtrl'
 		});
+
+        // ruta de destacamento
+		$routeProvider.when("/destacamento", {
+		    templateUrl: "/SPA/admin/views/destacamento/list.html",
+		    controller: 'destacamentoCtrl'
+		}).when("/destacamento/add", {
+		    templateUrl: "/SPA/admin/views/destacamento/add.html",
+		    controller: 'destacamentoCtrl'
+		}).when("/destacamento/edit/:id", {
+		    templateUrl: "/SPA/admin/views/destacamento/edit.html",
+		    controller: 'destacamentoCtrl'
+		});
+
+        // ruta de edificios
+		$routeProvider.when("/edificio", {
+		    templateUrl: "/SPA/admin/views/edificio/list.html",
+		    controller: 'edificioCtrl'
+		}).when("/edificio/add", {
+		    templateUrl: "/SPA/admin/views/edificio/add.html",
+		    controller: 'edificioCtrl'
+		}).when("/edificio/edit/:id", {
+		    templateUrl: "/SPA/admin/views/edificio/edit.html",
+		    controller: 'edificioCtrl'
+		});
     }
 
 })();

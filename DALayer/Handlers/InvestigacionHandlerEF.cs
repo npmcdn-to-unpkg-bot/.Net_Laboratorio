@@ -38,10 +38,10 @@ namespace DALayer.Handlers
                 throw e;
             }            
         }
-        public void deleteInvestigacion(Investigacion invest)
+        public void deleteInvestigacion(int id)
         {
             var inv = (from c in ctx.Investigacion
-                       where c.id == invest.id
+                       where c.id == id
                        select c).SingleOrDefault();
             try
             {

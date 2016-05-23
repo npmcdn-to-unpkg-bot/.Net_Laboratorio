@@ -54,7 +54,7 @@ namespace DALayer.Api
             ctx = TenantFactory.getTenantCxt(tid);
         }
 
-        public IUnidadHandler getUnidadHandller()
+        public IUnidadHandler getUnidadHandler()
         {
             if (ctx == null)
             {

@@ -1,57 +1,57 @@
-﻿using System;
+﻿using BLayer.Interfaces;
+using SharedEntities.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using BLayer.Interfaces;
-using SharedEntities.Entities;
 
 namespace GameBuildPortal.ControllersApi
 {
-    public class MapaController : ApiController
+    public class DestacamentoController : ApiController
     {
         public static IGameBuilder blHandler;
 
-        public MapaController()
+        public DestacamentoController()
         {
             blHandler = WebApiConfig.blHandler;
         }
 
         [HttpGet]
-        public MapaNode Get(int id)
+        public Destacamento Get(int id)
         {
-            MapaNode mapa = blHandler.getMapa(id);
-            if (mapa == null)
+            Destacamento destacamento = blHandler.getDestacamento(id);
+            if (destacamento == null)
             {
                 throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.NotFound));
             }
 
-            return mapa;
+            return destacamento;
         }
 
         [HttpGet]
-        public IEnumerable<MapaNode> Get()
+        public IEnumerable<Destacamento> Get()
         {
-            return blHandler.getAllMapas();
+            return blHandler.getAllDestacamentos();
         }
 
         [HttpPut]
-        public HttpResponseMessage Put(int id, MapaNode mapa)
+        public HttpResponseMessage Put(int id, Destacamento destacamento)
         {
             if (!ModelState.IsValid)
             {
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
             }
 
-            if (id != mapa.id)
+            if (id != destacamento.id)
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest);
             }
 
             try
             {
-                blHandler.updateMapa(mapa);
+                blHandler.updateDestacamento(destacamento);
             }
             catch (Exception ex)
             {
@@ -62,13 +62,13 @@ namespace GameBuildPortal.ControllersApi
         }
 
         [HttpPost]
-        public HttpResponseMessage Post(MapaNode mapa)
+        public HttpResponseMessage Post(Destacamento destacamento)
         {
             if (ModelState.IsValid)
             {
-                blHandler.createMapa(mapa);
+                blHandler.createDestacamento(destacamento);
 
-                HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, mapa);
+                HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, destacamento);
                 response.Headers.Location = new Uri(Url.Link("DefaultApi", new { controller = "Admin" }));
                 return response;
             }
@@ -83,7 +83,7 @@ namespace GameBuildPortal.ControllersApi
         {
             try
             {
-                blHandler.deleteMapa(id);
+                blHandler.deleteDestacamento(id);
             }
             catch (Exception ex)
             {

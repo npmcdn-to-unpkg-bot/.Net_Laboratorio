@@ -38,9 +38,9 @@ namespace BLayer.Admin
             builder.getRecursoHandler().updateRecurso(recurso);
         }
 
-        public void deleteRecurso(Recurso recurso)
+        public void deleteRecurso(int id)
         {
-            builder.getRecursoHandler().deleteRecurso(recurso);
+            builder.getRecursoHandler().deleteRecurso(id);
         }
 
         //MAPAS
@@ -58,9 +58,9 @@ namespace BLayer.Admin
             builder.getMapaNodeHandler().CreateMapa(mapa);
         }
 
-        public void deleteMapa(MapaNode mapa)
+        public void deleteMapa(int id)
         {
-            builder.getMapaNodeHandler().DeleteMapa(mapa);
+            builder.getMapaNodeHandler().DeleteMapa(id);
         }
 
         public void updateMapa(MapaNode mapa)
@@ -89,9 +89,61 @@ namespace BLayer.Admin
             builder.getInvestigacionHandler().updateInvestigacion(investigacion);
         }
 
-        public void deleteInvestigacion(Investigacion investigacion)
+        public void deleteInvestigacion(int id)
         {
-            builder.getInvestigacionHandler().deleteInvestigacion(investigacion);
+            builder.getInvestigacionHandler().deleteInvestigacion(id);
+        }
+
+        //DESTACAMENTOS
+        public List<Destacamento> getAllDestacamentos()
+        {
+            return builder.getUnidadHandler().getAllDestacamentos();
+        }
+
+        public Destacamento getDestacamento(int id)
+        {
+            return builder.getUnidadHandler().getDestacamento(id);
+        }
+
+        public void createDestacamento(Destacamento destacamento)
+        {
+            builder.getUnidadHandler().createDestacamento(destacamento);
+        }
+
+        public void updateDestacamento(Destacamento destacamento)
+        {
+            builder.getUnidadHandler().updateDestacamento(destacamento);
+        }
+
+        public void deleteDestacamento(int id)
+        {
+            builder.getUnidadHandler().deleteDestacamento(id);
+        }
+
+        //EDIFICIOS
+        public List<Edificio> getAllEdificios()
+        {
+            return builder.getUnidadHandler().getAllEdificios();
+        }
+
+        public Edificio getEdificio(int id)
+        {
+            return builder.getUnidadHandler().getEdificio(id);
+        }
+
+        public void createEdificio(Edificio edificio)
+        {
+            builder.getUnidadHandler().createEdificio(edificio);
+        }
+
+        public void updateEdificio(Edificio edificio)
+        {
+            builder.getUnidadHandler().updateEdificio(edificio);
+        }
+
+        public void deleteEdificio(int id)
+        {
+            builder.getUnidadHandler().deleteEdificio(id);
         }
     }
 }

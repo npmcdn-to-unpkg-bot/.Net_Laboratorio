@@ -18,7 +18,7 @@ namespace DALayer.Interfaces
         IMapaNodeHandler getMapaNodeHandler();
         IPaquetePayPalHandler getPPHandler();
         ISolicitudJuegoHandler getSJHandler();
-        IUnidadHandler getUnidadHandller();
+        IUnidadHandler getUnidadHandler();
         IUsuarioHandler getUsuarioHandler();
         void setTenant(string tid);
     }
