@@ -221,8 +221,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="ControllersApi\AlianzaController.cs" />
+    <Compile Include="ControllersApi\DependenciaController.cs" />
     <Compile Include="ControllersApi\DestacamentoController.cs" />
     <Compile Include="ControllersApi\EdificioController.cs" />
+    <Compile Include="ControllersApi\InteraccionController.cs" />
     <Compile Include="ControllersApi\InvestigacionController.cs" />
     <Compile Include="ControllersApi\MapaController.cs" />
     <Compile Include="ControllersApi\RecursoController.cs" />
@@ -569,6 +572,9 @@
     <Content Include="SPA\admin\views\edificio\edit.html" />
     <Content Include="SPA\admin\views\edificio\list.html" />
     <Content Include="SPA\admin\views\home.html" />
+    <Content Include="SPA\admin\views\interaccion\add.html" />
+    <Content Include="SPA\admin\views\interaccion\edit.html" />
+    <Content Include="SPA\admin\views\interaccion\list.html" />
     <Content Include="SPA\admin\views\investigacion\add.html" />
     <Content Include="SPA\admin\views\investigacion\edit.html" />
     <Content Include="SPA\admin\views\investigacion\list.html" />

@@ -1,12 +1,12 @@
 ﻿<div class="col-md-12 col-sm-12 col-xs-12">
     <div class="page-title">
         <div class="title_left">
-            <h3>Alianzas</h3>
+            <h3>Interacción</h3>
         </div>
 
         <div class="title_right">
             <div class="pull-right">
-                <a href="#/alianza/add" class="btn btn-info">Agregar</a>
+                <a href="#/interaccion/add" class="btn btn-info">Agregar</a>
             </div>
         </div>
     </div>
@@ -19,7 +19,7 @@
                 <div class="row">
                     <div class="col-md-8 col-sm-8 col-xs-12">
                         <div class="row">
-                            <h2>Listado de alianzas</h2>
+                            <h2>Listado de interacciones</h2>
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-4 col-xs-12 pull-right top_search">
@@ -35,21 +35,22 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <!--<th>Foto</th-->>
+                        <th>Foto</th>
                         <th>Nombre</th>
-                        <!--<th>Descripción</th>-->
+                        <th>Descripción</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
 
-                    <tr ng-repeat="alianza in alianzas | filter:buscador">
-                        <td>{{alianza.id}}</td>                        
-                        <td>{{alianza.nombre}}</td>
-                        
+                    <tr ng-repeat="interaccion in interacciones | filter:buscador">
+                        <td>{{interaccion.id}}</td>
+                        <td>{{interaccion.foto}}</td>
+                        <td>{{interaccion.nombre}}</td>
+                        <td>{{interaccion.descripcion}}</td>
                         <td>
                             <div class="btn-group">
-                                <a href="#/alianza/edit/{{alianza.id}}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> </a>
+                                <a href="#/interaccion/edit/{{interaccion.id}}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> </a>
                                 <a class="btn btn-danger btn-xs" ng-click="borrar($index)"><i class="fa fa-trash-o"></i> </a>
                             </div>
                         </td>
