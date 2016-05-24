@@ -19,7 +19,24 @@ namespace DALayer.Handlers
 
         public void createRelJugadorInvestigacion(RelJugadorInvestigacion r)
         {
-            Entities.RelJugadorInvestigacion rji = new Entities.RelJugadorInvestigacion(r.colonia, r.investigacion, r.nivel);
+            var j2 = new Entities.Jugador(r.colonia.jugador.nombre, r.colonia.jugador.apellido, r.colonia.jugador.foto,
+                r.colonia.jugador.nickname, r.colonia.jugador.nivel, r.colonia.jugador.experiencia);
+            j2.Id = r.colonia.jugador.id;
+            var col = new Entities.RelJugadorMapa(r.colonia.nivel1, r.colonia.nivel2, r.colonia.nivel3, r.colonia.nivel4,
+                r.colonia.nivel5, j2);
+            col.id = r.colonia.id;
+
+            List<Entities.Costo> cos = new List<Entities.Costo>();
+            foreach (var item in r.investigacion.costos)
+            {
+                var c = new Entities.Costo(item.idRecurso, item.valor, item.incrementoNivel);
+                cos.Add(c);
+            }
+            var inv = new Entities.Investigacion(r.investigacion.nombre, r.investigacion.descripcion, r.investigacion.foto,
+                cos, r.investigacion.factorCostoNivel);
+            inv.id = r.investigacion.id;
+
+            Entities.RelJugadorInvestigacion rji = new Entities.RelJugadorInvestigacion(col, inv, r.nivel);
             
             try
             {
@@ -84,7 +101,7 @@ namespace DALayer.Handlers
                 RelJugadorMapa col = new RelJugadorMapa(invE.colonia.id, invE.colonia.nivel1, invE.colonia.nivel2, invE.colonia.nivel3,
                                                         invE.colonia.nivel4, invE.colonia.nivel5, jug);
                 var costos = new List<Costo>();
-                foreach (var item in invE.investigacion.costo)
+                foreach (var item in invE.investigacion.costos)
                 {
                     var c = new Costo(item.idRecurso, item.valor, item.incrementoNivel);
                     costos.Add(c);

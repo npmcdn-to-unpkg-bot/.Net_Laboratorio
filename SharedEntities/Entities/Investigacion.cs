@@ -16,7 +16,7 @@ namespace SharedEntities.Entities
             this.nombre = name;
             this.descripcion = description;
             this.foto = photo;
-            this.costo = cost;
+            this.costos = cost;
             this.factorCostoNivel = costLevelFactor;
         }
     }

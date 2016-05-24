@@ -19,7 +19,17 @@ namespace DALayer.Handlers
 
         public void createRelJugadorRecurso(RelJugadorRecurso r)
         {
-            var rjr = new Entities.RelJugadorRecurso(r.recurso, r.colonia, r.capacidad, r.cantidadR, r.factorIncremento);
+            var rec = new Entities.Recurso(r.recurso.nombre, r.recurso.descripcion, r.recurso.foto);
+            rec.id = r.recurso.id;
+
+            var j2 = new Entities.Jugador(r.colonia.jugador.nombre, r.colonia.jugador.apellido, r.colonia.jugador.foto,
+                r.colonia.jugador.nickname, r.colonia.jugador.nivel, r.colonia.jugador.experiencia);
+            j2.Id = r.colonia.jugador.id;
+            var col = new Entities.RelJugadorMapa(r.colonia.nivel1, r.colonia.nivel2, r.colonia.nivel3, r.colonia.nivel4,
+                r.colonia.nivel5, j2);
+            col.id = r.colonia.id;
+
+            var rjr = new Entities.RelJugadorRecurso(rec, col, r.capacidad, r.cantidadR, r.factorIncremento);
 
             try
             {

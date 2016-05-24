@@ -20,15 +20,10 @@ namespace DALayer.Entities
 
         public RelJugadorInvestigacion() { }
 
-        public RelJugadorInvestigacion(SharedEntities.Entities.RelJugadorMapa c, SharedEntities.Entities.Investigacion i, int nivel)
+        public RelJugadorInvestigacion(RelJugadorMapa c, Investigacion i, int nivel)
         {
-            var col = new RelJugadorMapa(c.nivel1, c.nivel2, c.nivel3, c.nivel4, c.nivel5, c.jugador);
-            col.id = c.id;
-            var inv = new Investigacion(i.nombre, i.descripcion, i.foto, i.costo, i.factorCostoNivel);
-            inv.id = i.id;
-
-            this.colonia = col;
-            this.investigacion = inv;
+            this.colonia = c;
+            this.investigacion = i;
             this.nivel = nivel;
         }
     }

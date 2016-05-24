@@ -18,5 +18,12 @@ namespace DALayer.Entities
         public int cantidad { get; set; } 
 
         public RelJugadorDestacamento() { }
+
+        public RelJugadorDestacamento(RelJugadorMapa col, Destacamento des, int cant)
+        {
+            this.colonia = col;
+            this.destacamento = des;
+            this.cantidad = cant;
+        }
     }
 }

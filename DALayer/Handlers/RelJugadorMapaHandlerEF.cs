@@ -18,7 +18,10 @@ namespace DALayer.Handlers
 
         public void createRelJugadorMapa(RelJugadorMapa r)
         {
-            var rel = new Entities.RelJugadorMapa(r.nivel1, r.nivel2, r.nivel3, r.nivel4, r.nivel5, r.jugador);
+            var j2 = new Entities.Jugador(r.jugador.nombre, r.jugador.apellido, r.jugador.foto, r.jugador.nickname,
+                r.jugador.nivel, r.jugador.experiencia);
+            j2.Id = r.jugador.id;
+            var rel = new Entities.RelJugadorMapa(r.nivel1, r.nivel2, r.nivel3, r.nivel4, r.nivel5, j2);
             try
             {
                 ctx.RelJugadorMapa.Add(rel);

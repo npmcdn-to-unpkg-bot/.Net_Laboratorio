@@ -7,7 +7,7 @@ using SharedEntities.Entities;
 
 namespace DALayer.Interfaces
 {
-    interface IRelJugadorEdificioHandler
+    public interface IRelJugadorEdificioHandler
     {
         void createRelJugadorEdificio(RelJugadorEdificio relacion);
         void deleteRelJugadorEdificio(int id);

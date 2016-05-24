@@ -23,16 +23,14 @@ namespace DALayer.Entities
 
         public RelJugadorMapa() { }
 
-        public RelJugadorMapa(int nivel1, int nivel2, int nivel3, int nivel4, int nivel5, SharedEntities.Entities.Jugador j)
+        public RelJugadorMapa(int nivel1, int nivel2, int nivel3, int nivel4, int nivel5, Jugador j)
         {
-            var j2 = new Entities.Jugador(j.nombre, j.apellido, j.foto, j.nickname, j.nivel, j.experiencia);
-            j2.Id = j.id;
             this.nivel1 = nivel1;
             this.nivel2 = nivel2;
             this.nivel3 = nivel3;
             this.nivel4 = nivel4;
             this.nivel5 = nivel5;
-            this.j = j2;
+            this.j = j;
         }
     }
 }

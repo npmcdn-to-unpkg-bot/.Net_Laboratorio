@@ -20,6 +20,12 @@ namespace DALayer.Interfaces
         ISolicitudJuegoHandler getSJHandler();
         IUnidadHandler getUnidadHandler();
         IUsuarioHandler getUsuarioHandler();
+        IRelJugadorEdificioHandler getRelJugadorEdificioHandler();
+        IRelJugadorInvestigacionHandler getRelJugadorInvestigacionHandler();
+        IRelJugadorMapaHandler getRelJugadorMapaHandler();
+        IRelJugadorRecursoHandler getRelJugadorRecursoHandler();
+        IRelJugadorDestacamentoHandler getRelJugadorDestacamentoHandler();
+
         void setTenant(string tid);
     }
 }

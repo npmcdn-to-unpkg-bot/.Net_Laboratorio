@@ -22,15 +22,10 @@ namespace DALayer.Entities
 
         public RelJugadorRecurso() { }
 
-        public RelJugadorRecurso(SharedEntities.Entities.Recurso r, SharedEntities.Entities.RelJugadorMapa c, int capacidad, int cantidadR, float factorIncremento)
+        public RelJugadorRecurso(Recurso r, RelJugadorMapa c, int capacidad, int cantidadR, float factorIncremento)
         {
-            var rec = new Entities.Recurso(r.nombre, r.descripcion, r.foto);
-            rec.id = r.id;
-            var col = new Entities.RelJugadorMapa(c.nivel1, c.nivel2, c.nivel3, c.nivel4, c.nivel5, c.jugador);
-            col.id = c.id;
-
-            this.recurso = rec;
-            this.colonia = col;
+            this.recurso = r;
+            this.colonia = c;
             this.capacidad = capacidad;
             this.cantidadR = cantidadR;
             this.factorIncremento = factorIncremento;

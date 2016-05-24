@@ -8,25 +8,25 @@ namespace SharedEntities.Entities
         public string nombre;
         public string descripcion;
         public byte[] foto;
-        public List<Costo> costo;
+        public List<Costo> costos;
 
         public void addCosto(Costo c)
         {
-            if (this.costo == null)
+            if (this.costos == null)
             {
-                this.costo = new List<Costo>();
+                this.costos = new List<Costo>();
             }
-            this.costo.Add(c);
+            this.costos.Add(c);
         }
 
         public void setCosto(List<Costo> c)
         {
-            this.costo = c;
+            this.costos = c;
         }
 
         public List<Costo> getCosto()
         {
-            return this.costo;
+            return this.costos;
         }
     }
 }

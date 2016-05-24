@@ -11,10 +11,9 @@ namespace SharedEntities.Entities
         public int nivel;
         public float factorCostoNivel;
         public float factorCapacidad;
-
-       
-
-        public Edificio(int id, string descripcion, byte[] foto, float ataque, float escudo, float efectividadAtaque, float vida, int nivel, float factorCostoNivel, float factorCapacidad, string nombre)
+        
+        public Edificio(int id, string descripcion, byte[] foto, float ataque, float escudo, float efectividadAtaque, float vida,
+            int nivel, float factorCostoNivel, float factorCapacidad, string nombre)
         {
             this.id = id;
             this.descripcion = descripcion;
@@ -29,7 +28,8 @@ namespace SharedEntities.Entities
             this.nombre = nombre;
         }
 
-        public Edificio(int id, string descripcion, byte[] foto, float ataque, float escudo, float efectividadAtaque, float vida, string nombre)
+        public Edificio(int id, string descripcion, byte[] foto, float ataque, float escudo, float efectividadAtaque, float vida,
+            string nombre, List<Costo> costos)
         {
             this.id = id;
             this.descripcion = descripcion;
@@ -39,6 +39,7 @@ namespace SharedEntities.Entities
             this.efectividadAtaque = efectividadAtaque;
             this.vida = vida;
             this.nombre = nombre;
+            this.costos = costos;
         }
     }
 }
