@@ -21,7 +21,7 @@ namespace DALayer.Handlers
             public void createDependencia(Dependencia d)
             {
 
-                Entities.Dependencia dep = new Entities.Dependencia(d.idProdPadre, d.idProdHijo, d.level);
+                Entities.Dependencia dep = new Entities.Dependencia(d.padre, d.hijo, d.level);
                 try
                 {
                     ctx.Dependencia.Add(dep);
@@ -58,7 +58,7 @@ namespace DALayer.Handlers
                     List<Entities.Dependencia> dependenciasTmp = ctx.Dependencia.ToList();
                     foreach (Entities.Dependencia item in dependenciasTmp)
                     {
-                        Dependencia dep = new Dependencia(item.id, item.idProdPadre, item.idProdHijo, item.level);
+                        Dependencia dep = new Dependencia(item.id, item.padre, item.hijo, item.level);
                         dependencias.Add(dep);
                     }
                     return dependencias;
@@ -77,7 +77,7 @@ namespace DALayer.Handlers
                            where c.id == id
                            select c).SingleOrDefault();
 
-                Dependencia dependencia = new Dependencia(depE.id, depE.idProdPadre, depE.idProdHijo, depE.level);
+                Dependencia dependencia = new Dependencia(depE.id, depE.padre, depE.hijo, depE.level);
                 return dependencia;
             }
             catch (Exception ex)
@@ -96,8 +96,8 @@ namespace DALayer.Handlers
 
                     if (depTmp != null)
                     {
-                        depTmp.idProdPadre = dep.idProdPadre;
-                        depTmp.idProdHijo = dep.idProdHijo;
+                        depTmp.padre = dep.padre;
+                        depTmp.hijo = dep.hijo;
                         depTmp.level = dep.level;
 
                         ctx.SaveChangesAsync().Wait();
@@ -115,7 +115,7 @@ namespace DALayer.Handlers
             try
             {
                 ctx.Database.Connection.Open();
-                List<Entities.Dependencia> depE = ctx.Dependencia.Where(w => w.idProdPadre == id).ToList();
+                List<Entities.Dependencia> depE = ctx.Dependencia.Where(w => w.padre.id == id).ToList();
                 ctx.Database.Connection.Close();
                 foreach (var item in depE)
                 {
