@@ -289,6 +289,20 @@
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BLayer2\BLayer.csproj">
+      <Project>{6e97060f-e9f2-4b9a-a295-194573c8cf89}</Project>
+      <Name>BLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DALayer\DALayer.csproj">
+      <Project>{1771106e-4b5f-421d-96f1-a07436f59a56}</Project>
+      <Name>DALayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SharedEntities\SharedEntities.csproj">
+      <Project>{730c64c0-b03b-4706-9116-058c34f66c42}</Project>
+      <Name>SharedEntities</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
