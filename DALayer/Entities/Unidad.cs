@@ -16,10 +16,9 @@ namespace DALayer.Entities
         public string nombre { get; set; }
         public string descripcion { get; set; }
         public byte[] foto { get; set; }
-        Dictionary<String, float> factoresProdRecursos{get; set;}
-        public float capacidadInicial{get; set;}
+        List<Costo> costo { get; set; }
+        List<Capacidad> capacidad { get; set; }
         public float ataque {get; set;}
-        //float defensa{get; set;} creo que sobra
         public float escudo {get; set;}
         public float efectividadAtaque {get; set;}
         public float vida {get; set;}

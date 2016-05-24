@@ -8,8 +8,6 @@ namespace DALayer.Entities
 {
     public class Edificio: Unidad
     {
-        public int nivel { get; set; }
-        public float factorCostoNivel { get; set; }
-        public float factorCapacidad { get; set; }
+       
     }
 }

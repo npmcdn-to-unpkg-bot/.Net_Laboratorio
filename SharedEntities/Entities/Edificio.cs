@@ -12,21 +12,33 @@ namespace SharedEntities.Entities
         public float factorCostoNivel;
         public float factorCapacidad;
 
-        public Edificio(int id, string description, byte[] photo, float capacidadI, float ataque, float escudo,
-            float efectividadAtaque, float vida, int nivel, float factorCN, float factorC, string name)
+       
+
+        public Edificio(int id, string descripcion, byte[] foto, float ataque, float escudo, float efectividadAtaque, float vida, int nivel, float factorCostoNivel, float factorCapacidad, string nombre)
         {
             this.id = id;
-            this.descripcion = description;
-            this.foto = photo;
-            this.capacidadInicial = capacidadI;
+            this.descripcion = descripcion;
+            this.foto = foto;
             this.ataque = ataque;
             this.escudo = escudo;
             this.efectividadAtaque = efectividadAtaque;
             this.vida = vida;
             this.nivel = nivel;
-            this.factorCostoNivel = factorCN;
-            this.factorCapacidad = factorC;
-            this.nombre = name;
+            this.factorCostoNivel = factorCostoNivel;
+            this.factorCapacidad = factorCapacidad;
+            this.nombre = nombre;
+        }
+
+        public Edificio(int id, string descripcion, byte[] foto, float ataque, float escudo, float efectividadAtaque, float vida, string nombre)
+        {
+            this.id = id;
+            this.descripcion = descripcion;
+            this.foto = foto;
+            this.ataque = ataque;
+            this.escudo = escudo;
+            this.efectividadAtaque = efectividadAtaque;
+            this.vida = vida;
+            this.nombre = nombre;
         }
     }
 }

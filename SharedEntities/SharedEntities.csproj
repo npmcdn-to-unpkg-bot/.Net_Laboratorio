@@ -43,6 +43,8 @@
     <Compile Include="DataTypes\RecursoInfo.cs" />
     <Compile Include="Entities\Admin.cs" />
     <Compile Include="Entities\Alianza.cs" />
+    <Compile Include="Entities\Capacidad.cs" />
+    <Compile Include="Entities\Costo.cs" />
     <Compile Include="Entities\Destacamento.cs" />
     <Compile Include="Entities\Edificio.cs" />
     <Compile Include="Entities\EstadoInicialJuego.cs" />

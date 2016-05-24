@@ -11,13 +11,12 @@ namespace SharedEntities.Entities
         public float velocidad;
         public Boolean enMision;
 
-        public Destacamento(int id, string description, byte[] photo, float capacidadI, float ataque, float escudo,
+        public Destacamento(int id, string description, byte[] photo, float ataque, float escudo,
             float efectividadAtaque, float vida, float velocidad, Boolean enMission, string name)
         {
             this.id = id;
             this.descripcion = description;
-            this.foto = photo;
-            this.capacidadInicial = capacidadI;
+            this.foto = photo; 
             this.ataque = ataque;
             this.escudo = escudo;
             this.efectividadAtaque = efectividadAtaque;
@@ -27,5 +26,17 @@ namespace SharedEntities.Entities
             this.nombre = name;
         }
 
+        public Destacamento(int id, string descripcion, byte[] foto, float ataque, float escudo, float efectividadAtaque, float vida, float velocidad, string nombre)
+        {
+            this.id = id;
+            this.descripcion = descripcion;
+            this.foto = foto;
+            this.ataque = ataque;
+            this.escudo = escudo;
+            this.efectividadAtaque = efectividadAtaque;
+            this.vida = vida;
+            this.velocidad = velocidad;
+            this.nombre = nombre;
+        }
     }
 }
