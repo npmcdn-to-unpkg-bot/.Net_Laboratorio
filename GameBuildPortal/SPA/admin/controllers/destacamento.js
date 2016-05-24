@@ -1,11 +1,16 @@
 ﻿(function () {
     'use strict';
-    angular.module('atlas2').controller('destacamentoCtrl', ['$scope', '$routeParams', 'destacamentoService', destacamentoCtrl]);
+    angular.module('atlas2').controller('destacamentoCtrl', ['$scope', '$routeParams', 'destacamentoService', 'recursoService', destacamentoCtrl]);
 
-    function destacamentoCtrl($scope, $routeParams, destacamentoService) {
+    function destacamentoCtrl($scope, $routeParams, destacamentoService, recursoService) {
         $scope.destacamentos = [];
+        $scope.recursos = [];
         $scope.destacamento = null;
         $scope.saving = false;
+
+        recursoService.getAll().then(function (data) {
+            $scope.recursos = data;
+        });
 
         var initialize = function () {
             var id = $routeParams && $routeParams['id'] ? $routeParams['id'] : null

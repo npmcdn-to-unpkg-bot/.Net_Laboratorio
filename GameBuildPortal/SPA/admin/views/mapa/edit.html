@@ -27,7 +27,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nivel">Nivel</label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
-                        <select class="form-control" ng-model="mapa.nivel">
+                        <select class="form-control" ng-model="mapa.nivel" disabled="disabled">
                             <option ng-repeat="nivel in [1,2,3,4,5]" ng-selected="mapa.nivel == nivel">{{nivel}}</option>
                         </select>
                     </div>

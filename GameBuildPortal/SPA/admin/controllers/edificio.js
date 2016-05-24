@@ -1,11 +1,16 @@
 ﻿(function () {
     'use strict';
-    angular.module('atlas2').controller('edificioCtrl', ['$scope', '$routeParams', 'edificioService', edificioCtrl]);
+    angular.module('atlas2').controller('edificioCtrl', ['$scope', '$routeParams', 'edificioService', 'recursoService', edificioCtrl]);
 
-    function edificioCtrl($scope, $routeParams, edificioService) {
+    function edificioCtrl($scope, $routeParams, edificioService, recursoService) {
         $scope.edificios = [];
+        $scope.recursos = [];
         $scope.edificio = null;
         $scope.saving = false;
+
+        recursoService.getAll().then(function (data) {
+            $scope.recursos = data;
+        });
 
         var initialize = function () {
             var id = $routeParams && $routeParams['id'] ? $routeParams['id'] : null
