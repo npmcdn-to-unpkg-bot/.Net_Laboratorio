@@ -1,27 +1,31 @@
 ﻿(function () {
     'use strict';
-    angular.module('atlas2').controller('edificioCtrl', ['$scope', '$routeParams', 'edificioService', 'recursoService', edificioCtrl]);
+    angular.module('atlas2').controller('edificioCtrl', ['$scope', '$routeParams', '$location', 'edificioService', 'recursoService', edificioCtrl]);
 
-    function edificioCtrl($scope, $routeParams, edificioService, recursoService) {
+    function edificioCtrl($scope, $routeParams, $location, edificioService, recursoService) {
         $scope.edificios = [];
         $scope.recursos = null;
         $scope.edificio = null;
         $scope.saving = false;
 
-        recursoService.getAll().then(function (data) {
-            $scope.recursos = data;
-        });
+        var path = $location.path();
 
         var initialize = function () {
-            var id = $routeParams && $routeParams['id'] ? $routeParams['id'] : null
-            if (id) {
-                edificioService.getId(id).then(function (data) {
-                    $scope.edificio = data;
-                });
+            recursoService.getAll().then(function (data) {
+                $scope.recursos = data;
+            });
+
+            if (path.indexOf('edit') > -1 || path.indexOf('add') > -1) {
+                var id = $routeParams && $routeParams['id'] ? $routeParams['id'] : null
+                if (id) {
+                    edificioService.getId(id).then(function (data) {
+                        $scope.edificio = data;
+                    });
+                } 
             } else {
-                //edificioService.getAll().then(function (data) {
-                //    $scope.edificios = data;
-                //});
+                edificioService.getAll().then(function (data) {
+                    $scope.edificios = data;
+                });
             }
         }
 
