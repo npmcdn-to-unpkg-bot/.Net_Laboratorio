@@ -17,8 +17,12 @@
                 mapaService.getAll().then(function (data) {
                     $scope.mapas = data;
 
-                    var lastLevel = data.slice(-1)[0]
-                    var level = parseInt(lastLevel.nivel) + 1
+                    var lastLevel = data.slice(-1)[0];
+                    var level = 0;
+                    if (lastLevel) {
+                        level = parseInt(lastLevel.nivel)
+                    }
+                    var level = level + 1
                     $scope.mapa = { nivel : level + '' };
                 });
             }

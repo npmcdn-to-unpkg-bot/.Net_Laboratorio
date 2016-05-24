@@ -105,23 +105,43 @@
                 <div class="ln_solid"></div>
                 <div class="form-group">
                     <div class="col-md-12 col-sm-12 col-xs-12">
-                        <label class="control-label"> Costos <a class="btn btn-link"></a></label>
+                        <h3> Costos</h3>
                     </div>
-                    <div class="col-md-12 col-sm-12 col-xs-12">
-                        <div class="row">
-                            <div class="col-md-4 col-sm-4 col-xs-12">
-                                <select class="form-control" ng-model="edificio.recurso.id">
-                                    <option ng-repeat="recurso in recursos" value="{{recruso.nombre}}">{{recurso.nombre}}</option>
-                                </select>
-                            </div>
-                            <div class="col-md-4 col-sm-4 col-xs-12">
-                                <input type="number" id="factorCapacidad" class="form-control" ng-model="edificio.recurso.valor">
-                            </div>
-                            <div class="col-md-4 col-sm-4 col-xs-12">
-                                <input type="number" step="0,01" id="factorCapacidad" class="form-control" ng-model="edificio.recurso.incrementoNivel">
-                            </div>
+
+                    <div class="col-md-12 col-sm-12 col-xs-12 form-inline" style="margin-top:10px;" ng-if="recursos.length > 0">
+                        <div class="form-group">
+                            <label>Recurso</label>
+                            <select class="form-control" ng-model="costo.recurso">
+                                <option ng-repeat="recurso in recursos" value="{{recurso.id}}">{{recurso.nombre}}</option>
+                            </select>
                         </div>
+                        <div class="form-group">
+                            <label>Valor</label>
+                            <input type="number" class="form-control" ng-model="costo.valor">
+                        </div>
+                        <div class="form-group">
+                            <label>Factor de capacidad</label>
+                            <input type="number" step="0,01" class="form-control" ng-model="costo.incrementoNivel">
+                        </div>
+                        <a class="btn btn-default" style="margin:0;" ng-click="addCosto()">+</a>
                     </div>
+
+                    <div class="col-md-12 col-sm-12 col-xs-12 form-inline" ng-repeat="c in costos" style="margin-top:10px;">
+                        <div class="form-group">
+                            <label>Recurso</label>
+                            <input type="text" class="form-control" value="{{c.nombreRecurso}}" disabled="disabled">
+                        </div>
+                        <div class="form-group">
+                            <label>Valor</label>
+                            <input type="text" class="form-control" value="{{c.valor}}" disabled="disabled">
+                        </div>
+                        <div class="form-group">
+                            <label>Factor de capacidad</label>
+                            <input type="text" class="form-control" value="{{c.incrementoNivel}}" disabled="disabled">
+                        </div>
+                        <a class="btn btn-default" style="margin:0;" ng-click="removeCosto($index)">-</a>
+                    </div>
+
                 </div>
                 <div class="ln_solid"></div>
                 <div class="form-group">
@@ -142,7 +162,7 @@
       validateFront();
     });
 
-    $('#form-edificio .btn').on('click', function() {
+    $('#form-edificio .btn-success').on('click', function () {
       $('#form-edificio').parsley().validate();
       validateFront();
     });

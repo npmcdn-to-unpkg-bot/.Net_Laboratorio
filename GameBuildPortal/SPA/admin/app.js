@@ -80,18 +80,6 @@
 		    controller: 'edificioCtrl'
 		});
 
-        // ruta de alianza
-		$routeProvider.when("/alianza", {
-		    templateUrl: "/SPA/admin/views/alianza/list.html",
-		    controller: 'alianzaCtrl'
-		}).when("/alianza/add", {
-		    templateUrl: "/SPA/admin/views/alianza/add.html",
-		    controller: 'alianzaCtrl'
-		}).when("/alianza/edit/:id", {
-		    templateUrl: "/SPA/admin/views/alianza/edit.html",
-		    controller: 'alianzaCtrl'
-		});
-
         // ruta de dependencia
 		$routeProvider.when("/dependencia", {
 		    templateUrl: "/SPA/admin/views/dependencia/list.html",

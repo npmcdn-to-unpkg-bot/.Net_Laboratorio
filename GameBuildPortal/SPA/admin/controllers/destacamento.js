@@ -1,33 +1,45 @@
 ﻿(function () {
     'use strict';
-    angular.module('atlas2').controller('destacamentoCtrl', ['$scope', '$routeParams', 'destacamentoService', 'recursoService', destacamentoCtrl]);
+    angular.module('atlas2').controller('destacamentoCtrl', ['$scope', '$routeParams', '$location', 'destacamentoService', 'recursoService', destacamentoCtrl]);
 
-    function destacamentoCtrl($scope, $routeParams, destacamentoService, recursoService) {
-        $scope.destacamentos = [];
+    function destacamentoCtrl($scope, $routeParams, $location, destacamentoService, recursoService) {
+        $scope.destacamentos    = [];
+        $scope.costos           = [];
+
         $scope.recursos = null;
-        $scope.destacamento = null;
-        $scope.saving = false;
+        var recursos    = [];
+        $scope.saving   = false;
 
-        recursoService.getAll().then(function (data) {
-            $scope.recursos = data;
-        });
+        $scope.destacamento = null;
+        $scope.costo        = null;
+
+        var path = $location.path();
 
         var initialize = function () {
-            var id = $routeParams && $routeParams['id'] ? $routeParams['id'] : null
-            if (id) {
-                destacamentoService.getId(id).then(function (data) {
-                    $scope.destacamento = data;
-                });
+            recursoService.getAll().then(function (data) {
+                $scope.recursos = data;
+                recursos        = angular.copy(data);
+            });
+
+            if (path.indexOf('edit') > -1 || path.indexOf('add') > -1) {
+                var id = $routeParams && $routeParams['id'] ? $routeParams['id'] : null
+                if (id) {
+                    destacamentoService.getId(id).then(function (data) {
+                        $scope.destacamento = data;
+                    });
+                }
             } else {
-                //destacamentoService.getAll().then(function (data) {
-                //    $scope.destacamentos = data;
-                //});
+                destacamentoService.getAll().then(function (data) {
+                    $scope.destacamentos = data;
+                });
             }
         }
 
         $scope.add = function () {
-            $scope.saving = true;
+            $scope.saving    = true;
             var destacamento = this.destacamento;
+
+            destacamento['costos'] = $scope.costos;
 
             destacamentoService.add(destacamento).then(
                 function (data) {
@@ -103,6 +115,39 @@
                     nonblock: true
                 }
             });
+        }
+
+        $scope.addCosto = function () {
+            var costo = this.costo;
+
+            for (var rec in $scope.recursos) {
+                var recurso = $scope.recursos[rec];
+                if (parseInt(costo.recurso) == recurso.id) {
+                    var costoGuardar = {
+                        recurso         : costo.recurso,
+                        nombreRecurso   : recurso.nombre,
+                        valor           : costo.valor,
+                        incrementoNivel : costo.incrementoNivel
+                    }
+
+                    $scope.costos.push(costoGuardar);
+                    $scope.recursos.splice(rec, 1);
+
+                    this.costo = null;
+                }
+            }
+        }
+
+        $scope.removeCosto = function (index) {
+            var costo = $scope.costos[index];
+            for (var rec in recursos) {
+                var recurso = recursos[rec];
+
+                if (parseInt(costo.recurso) == recurso.id) {
+                    $scope.recursos.push(recurso);
+                    $scope.costos.splice(index, 1);
+                }
+            }
         }
 
         initialize();

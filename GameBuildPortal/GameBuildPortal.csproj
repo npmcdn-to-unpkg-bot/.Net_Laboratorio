@@ -221,7 +221,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="ControllersApi\AlianzaController.cs" />
     <Compile Include="ControllersApi\DependenciaController.cs" />
     <Compile Include="ControllersApi\DestacamentoController.cs" />
     <Compile Include="ControllersApi\EdificioController.cs" />
@@ -543,7 +542,6 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="SPA\admin\app.js" />
-    <Content Include="SPA\admin\controllers\alianza.js" />
     <Content Include="SPA\admin\controllers\dependencia.js" />
     <Content Include="SPA\admin\controllers\destacamento.js" />
     <Content Include="SPA\admin\controllers\edificio.js" />
@@ -553,7 +551,6 @@
     <Content Include="SPA\admin\controllers\mapa.js" />
     <Content Include="SPA\admin\controllers\recurso.js" />
     <Content Include="SPA\admin\controllers\wizard.js" />
-    <Content Include="SPA\admin\services\alianza.js" />
     <Content Include="SPA\admin\services\dependencia.js" />
     <Content Include="SPA\admin\services\destacamento.js" />
     <Content Include="SPA\admin\services\edificio.js" />
@@ -561,9 +558,6 @@
     <Content Include="SPA\admin\services\investigacion.js" />
     <Content Include="SPA\admin\services\mapa.js" />
     <Content Include="SPA\admin\services\recurso.js" />
-    <Content Include="SPA\admin\views\alianza\add.html" />
-    <Content Include="SPA\admin\views\alianza\edit.html" />
-    <Content Include="SPA\admin\views\alianza\list.html" />
     <Content Include="SPA\admin\views\dependencia\add.html" />
     <Content Include="SPA\admin\views\dependencia\edit.html" />
     <Content Include="SPA\admin\views\dependencia\list.html" />
