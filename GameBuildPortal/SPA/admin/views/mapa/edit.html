@@ -53,10 +53,6 @@
 <!-- form validation -->
 <script type="text/javascript">
   $(document).ready(function() {
-    $.listen('parsley:field:validate', function() {
-      validateFront();
-    });
-
     $('#form-mapa .btn').on('click', function() {
       $('#form-mapa').parsley().validate();
       validateFront();

@@ -101,11 +101,7 @@
 <!-- form validation -->
 <script type="text/javascript">
   $(document).ready(function() {
-    $.listen('parsley:field:validate', function() {
-      validateFront();
-    });
-
-    $('#form-destacamento .btn').on('click', function() {
+    $('#form-destacamento .btn-success').on('click', function() {
       $('#form-destacamento').parsley().validate();
       validateFront();
     });

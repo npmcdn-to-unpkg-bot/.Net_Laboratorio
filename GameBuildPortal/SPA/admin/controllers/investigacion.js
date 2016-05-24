@@ -3,22 +3,27 @@
     angular.module('atlas2').controller('investigacionCtrl', ['$scope', '$routeParams', '$location', 'investigacionService', 'recursoService', investigacionCtrl]);
 
     function investigacionCtrl($scope, $routeParams, $location, investigacionService, recursoService) {
-        $scope.investigaciones  = [];
-        $scope.costos           = [];
+        $scope.saving = false;
+
+        $scope.costos = [];
+        $scope.capacidades = [];
+        $scope.investigaciones = [];
 
         $scope.recursos = null;
-        var recursos    = [];
-        $scope.saving   = false;
+        $scope.recursosCosto = null;
+        $scope.recursosCapacidad = null;
 
-        $scope.investigacion    = null;
-        $scope.costo            = null;
+        $scope.costo = null;
+        $scope.capacidad = null;
+        $scope.invetigacion = null;
 
         var path = $location.path();
 
         var initialize = function () {
             recursoService.getAll().then(function (data) {
                 $scope.recursos = data;
-                recursos = angular.copy(data);
+                $scope.recursosCosto = angular.copy($scope.recursos);
+                $scope.recursosCapacidad = angular.copy($scope.recursos);
             });
 
             if (path.indexOf('edit') > -1 || path.indexOf('add') > -1) {
@@ -40,6 +45,7 @@
             var investigacion   = this.investigacion;
             
             investigacion['costos'] = $scope.costos;
+            investigacion['capacidad'] = $scope.capacidades;
 
             investigacionService.add(investigacion).then(
                 function (data) {
@@ -117,35 +123,72 @@
             });
         }
 
-        $scope.addCosto = function () {
-            var costo = this.costo;
+        $scope.addRelation = function (type) {
+            var scopeData = null;
+            var items = null;
+            var item = null;
 
-            for (var rec in $scope.recursos) {
-                var recurso = $scope.recursos[rec];
-                if (parseInt(costo.recurso) == recurso.id) {
-                    var costoGuardar = {
-                        recurso         : costo.recurso,
-                        nombreRecurso   : recurso.nombre,
-                        valor           : costo.valor,
-                        incrementoNivel : costo.incrementoNivel
+            if (type == 'costo') {
+                scopeData = $scope.recursosCosto;
+                items = $scope.costos;
+                item = this.costo;
+            } else if (type == 'capacidad') {
+                scopeData = $scope.recursosCapacidad;
+                items = $scope.capacidades;
+                item = this.capacidad;
+            } else {
+                return console.error('No se encontro el tipo de relacion.');
+            }
+
+            if (!item) {
+                return console.error('No agrego ninguna relacion.');
+            }
+
+            for (var rec in scopeData) {
+                var data = scopeData[rec];
+                if (parseInt(item.recurso) == data.id) {
+                    var dataGuardar = {
+                        valor: item.valor,
+                        recurso: item.recurso,
+                        nombreRecurso: data.nombre,
+                        incrementoNivel: item.incrementoNivel
                     }
 
-                    $scope.costos.push(costoGuardar);
-                    $scope.recursos.splice(rec, 1);
+                    items.push(dataGuardar);
+                    scopeData.splice(rec, 1);
 
-                    this.costo = null;
+                    item.valor = null;
+                    item.recurso = null;
+                    item.incrementoNivel = null;
+                    return;
                 }
             }
         }
 
-        $scope.removeCosto = function (index) {
-            var costo = $scope.costos[index];
-            for (var rec in recursos) {
-                var recurso = recursos[rec];
+        $scope.removeRelation = function (type, index) {
+            var scopeData = null;
+            var items = null;
+            var item = null;
 
-                if (parseInt(costo.recurso) == recurso.id) {
-                    $scope.recursos.push(recurso);
-                    $scope.costos.splice(index, 1);
+            if (type == 'costo') {
+                scopeData = $scope.recursosCosto;
+                items = $scope.costos;
+                item = $scope.costos[index];
+            } else if (type == 'capacidad') {
+                scopeData = $scope.recursosCapacidad;
+                items = $scope.capacidades;
+                item = $scope.capacidades[index];
+            } else {
+                return console.error('No se encontro el tipo de relacion.');
+            }
+
+            for (var rec in $scope.recursos) {
+                var recurso = $scope.recursos[rec];
+
+                if (parseInt(item.recurso) == recurso.id) {
+                    scopeData.push(recurso);
+                    items.splice(index, 1);
+                    return;
                 }
             }
         }

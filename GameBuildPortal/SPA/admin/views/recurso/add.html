@@ -44,10 +44,6 @@
 <!-- form validation -->
 <script type="text/javascript">
   $(document).ready(function() {
-    $.listen('parsley:field:validate', function() {
-      validateFront();
-    });
-
     $('#form-recurso .btn').on('click', function() {
       $('#form-recurso').parsley().validate();
       validateFront();

@@ -117,11 +117,7 @@
 <!-- form validation -->
 <script type="text/javascript">
   $(document).ready(function() {
-    $.listen('parsley:field:validate', function() {
-      validateFront();
-    });
-
-    $('#form-edificio .btn').on('click', function() {
+    $('#form-edificio .btn-success').on('click', function() {
       $('#form-edificio').parsley().validate();
       validateFront();
     });
