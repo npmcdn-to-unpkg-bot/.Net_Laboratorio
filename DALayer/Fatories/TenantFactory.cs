@@ -24,7 +24,14 @@ namespace DALayer
         private static void createTables(TenantContext t) {
             ObjectContext x = getCtx(t);
             string d = x.CreateDatabaseScript();
-            t.Database.ExecuteSqlCommand(d);
+            try
+            {
+                t.Database.ExecuteSqlCommand(d);
+            }
+            catch (Exception e) {
+                t.Database.Connection.Close();
+                throw e;
+            }
         }
         public static TenantContext getTenantCxt(string tenant) {
             if (first)
@@ -33,7 +40,6 @@ namespace DALayer
                 first = false;
 
             }
-
             string connectionStr = SchemaHandler.getTenantConnectionString(tenant);
 
             TenantContext t;
