@@ -4,7 +4,7 @@
 
     function destacamentoCtrl($scope, $routeParams, destacamentoService, recursoService) {
         $scope.destacamentos = [];
-        $scope.recursos = [];
+        $scope.recursos = null;
         $scope.destacamento = null;
         $scope.saving = false;
 
@@ -19,9 +19,9 @@
                     $scope.destacamento = data;
                 });
             } else {
-                destacamentoService.getAll().then(function (data) {
-                    $scope.destacamentos = data;
-                });
+                //destacamentoService.getAll().then(function (data) {
+                //    $scope.destacamentos = data;
+                //});
             }
         }
 

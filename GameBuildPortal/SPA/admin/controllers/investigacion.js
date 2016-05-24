@@ -1,11 +1,16 @@
 ﻿(function () {
     'use strict';
-    angular.module('atlas2').controller('investigacionCtrl', ['$scope', '$routeParams', 'investigacionService', investigacionCtrl]);
+    angular.module('atlas2').controller('investigacionCtrl', ['$scope', '$routeParams', 'investigacionService', 'recursoService', investigacionCtrl]);
 
-    function investigacionCtrl($scope, $routeParams, investigacionService) {
+    function investigacionCtrl($scope, $routeParams, investigacionService, recursoService) {
         $scope.investigaciones = [];
+        $scope.recursos = null;
         $scope.investigacion = null;
         $scope.saving = false;
+
+        recursoService.getAll().then(function (data) {
+            $scope.recursos = data;
+        });
 
         var initialize = function () {
             var id = $routeParams && $routeParams['id'] ? $routeParams['id'] : null
@@ -14,9 +19,9 @@
                     $scope.investigacion = data;
                 });
             } else {
-                investigacionService.getAll().then(function (data) {
-                    $scope.investigaciones = data;
-                });
+                //investigacionService.getAll().then(function (data) {
+                //    $scope.investigaciones = data;
+                //});
             }
         }
 

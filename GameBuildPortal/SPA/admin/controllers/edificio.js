@@ -4,7 +4,7 @@
 
     function edificioCtrl($scope, $routeParams, edificioService, recursoService) {
         $scope.edificios = [];
-        $scope.recursos = [];
+        $scope.recursos = null;
         $scope.edificio = null;
         $scope.saving = false;
 
@@ -19,9 +19,9 @@
                     $scope.edificio = data;
                 });
             } else {
-                edificioService.getAll().then(function (data) {
-                    $scope.edificios = data;
-                });
+                //edificioService.getAll().then(function (data) {
+                //    $scope.edificios = data;
+                //});
             }
         }
 

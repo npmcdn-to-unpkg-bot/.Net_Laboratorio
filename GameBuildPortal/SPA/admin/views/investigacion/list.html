@@ -6,9 +6,15 @@
 
         <div class="title_right">
             <div class="pull-right">
-                <a href="#/investigacion/add" class="btn btn-info">Agregar</a>
+                <a href="#/investigacion/add" class="btn btn-info" ng-if="recursos.length > 0">Agregar</a>
             </div>
         </div>
+    </div>
+</div>
+
+<div class="col-md-12 col-sm-12 col-xs-12" ng-if="recursos.length == 0">
+    <div class="alert alert-danger fade in">
+        <strong>Hay un eror!</strong> No es posible agregar edificios sin haber ingresado un recursos antes.
     </div>
 </div>
 
@@ -38,9 +44,6 @@
                         <th>Foto</th>
                         <th>Nombre</th>
                         <th>Descripción</th>
-                        <th>Costo</th>
-                        <th>Factor de costo por nivel</th>
-                        <th>Nivel</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -51,9 +54,6 @@
                         <td>{{investigacion.foto}}</td>
                         <td>{{investigacion.nombre}}</td>
                         <td>{{investigacion.descripcion}}</td>
-                        <td>{{investigacion.costo}}</td>
-                        <td>{{investigacion.factorCostoNivel}}</td>
-                        <td>{{investigacion.nivel}}</td>
                         <td>
                             <div class="btn-group">
                                 <a href="#/investigacion/edit/{{investigacion.id}}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> </a>
