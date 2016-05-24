@@ -19,8 +19,6 @@ namespace GameBuildPortal
             container.LoadConfiguration();
 
             blHandler = container.Resolve<IGameBuilder>(new ParameterOverrides { { "tId", "orgame" },{ "IApi", container.Resolve<IApi>() } });
-            container.Resolve<IGameBuilder>(new ParameterOverrides { { "tId", "clash" }, { "IApi", container.Resolve<IApi>() } });
-
             // Web API routes
             config.MapHttpAttributeRoutes();
 
@@ -29,6 +27,11 @@ namespace GameBuildPortal
                 routeTemplate: "admin/api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+        }
+        public static IGameBuilder BuilderService(string tenant) {
+            IUnityContainer container = new UnityContainer();
+            container.LoadConfiguration();
+            return container.Resolve<IGameBuilder>(new ParameterOverrides { { "tId", tenant }, { "IApi", container.Resolve<IApi>() } });
         }
     }
 }

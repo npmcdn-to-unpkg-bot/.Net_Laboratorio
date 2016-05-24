@@ -24,7 +24,15 @@ namespace DALayer.Api
         private SolicitudJuegoHandlerEF solicitudJHandler;
         private UnidadHandlerEF unidadHandler;
         private UsuarioHandlerEF usuarioHandler;
-        
+        private TenantHandlerEF tenantHandler;
+
+        public ITenantHandler getTenantHandler() {
+            if (tenantHandler == null)
+            {
+                tenantHandler = new TenantHandlerEF();
+            }
+            return tenantHandler;
+        }
         public IRecursoHandler getRecursoHandler()
         {
             if (ctx == null) {

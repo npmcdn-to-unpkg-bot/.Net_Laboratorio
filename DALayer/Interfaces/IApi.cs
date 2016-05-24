@@ -8,6 +8,7 @@ namespace DALayer.Interfaces
 {
     public interface IApi
     {
+        ITenantHandler getTenantHandler();
         IAlianzaHandler getAlianzaHandler();
         IDependenciaHandler getDependenciaHandler();
         IFlotaHandler getFlotaHandler();

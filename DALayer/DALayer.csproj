@@ -90,6 +90,7 @@
     <Compile Include="Handlers\PaquetePaypalHandlerEF.cs" />
     <Compile Include="Handlers\RecursosHandlerEF.cs" />
     <Compile Include="Handlers\SolicitudJuegoHandlerEF.cs" />
+    <Compile Include="Handlers\TenantHandlerEF.cs" />
     <Compile Include="Handlers\UnidadHandlerEF.cs" />
     <Compile Include="Handlers\UsuarioHandlerEF.cs" />
     <Compile Include="Interfaces\IApi.cs" />
@@ -103,6 +104,7 @@
     <Compile Include="Interfaces\IPaquetePayPalHandler.cs" />
     <Compile Include="Interfaces\IRecursoHandler.cs" />
     <Compile Include="Interfaces\ISolicitudJuegoHandler.cs" />
+    <Compile Include="Interfaces\ITenantHandler.cs" />
     <Compile Include="Interfaces\IUnidadHandler.cs" />
     <Compile Include="Interfaces\IUsuarioHandler.cs" />
     <Compile Include="Program.cs" />

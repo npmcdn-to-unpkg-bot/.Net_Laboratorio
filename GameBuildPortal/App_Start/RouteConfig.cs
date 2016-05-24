@@ -18,6 +18,11 @@ namespace GameBuildPortal
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Admin", action = "Index", id = UrlParameter.Optional }
             );
+            routes.MapRoute(
+                name: "ActivateCreate",
+                url: "{controller}/{action}/{usuario}/{password}/{token}",
+                defaults: new { controller = "Activate", action = "Index", usuario = 1,password = 1, token = 1} 
+            );
         }
     }
 }

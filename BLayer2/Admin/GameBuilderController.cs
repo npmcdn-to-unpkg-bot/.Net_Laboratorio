@@ -14,9 +14,13 @@ namespace BLayer.Admin
 
         public GameBuilderController(string tId, IApi gc) {
             builder = gc;
+            tId = tId.Replace(" ", "_");
             builder.setTenant(tId);
         }
-
+        //TENANT
+        public bool existGame(string gameName) {
+            return builder.getTenantHandler().tenantExist(gameName);
+        }
         //RECURSOS
         public List<Recurso> getAllRecursos()
         {
