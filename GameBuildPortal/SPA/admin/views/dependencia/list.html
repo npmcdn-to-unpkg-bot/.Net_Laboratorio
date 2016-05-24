@@ -35,9 +35,9 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Nombre</th>
+                        <th>Unidad</th>
+                        <th>Depende</th>
                         <th>Nivel</th>
-                        <th>Dependencias</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -45,9 +45,9 @@
 
                     <tr ng-repeat="dependencia in dependencias | filter:buscador">
                         <td>{{dependencia.id}}</td>
-                        <td>{{dependencia.nombre}}</td>
+                        <td>{{dependencia.padre.nombre}}</td>
+                        <td>{{dependencia.hijo.nombre}}</td>
                         <td>{{dependencia.nivel}}</td>
-                        <td>{{dependencia.dependencias}}</td>
                         <td>
                             <div class="btn-group">
                                 <a href="#/dependencia/edit/{{dependencia.id}}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> </a>

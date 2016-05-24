@@ -81,12 +81,12 @@
                         <div class="menu_section">
                             <ul class="nav side-menu">
                                 <li>
-                                    <a href="#/"><i class="fa fa-home"></i> Inicio </a>
+                                    <a href="#/"><i class="fa fa-home"></i> Dashboard </a>
                                 </li>
                             </ul>
                             <ul class="nav side-menu">
                                 <li>
-                                    <a href="#/wizard"><i class="fa fa-magic"></i> Wizard </a>
+                                    <a href="#/ui"><i class="fa fa-code"></i> UI </a>
                                 </li>
                             </ul>
                             <ul class="nav side-menu">
@@ -117,6 +117,7 @@
                                     </ul>
                                 </li>
                             </ul>
+                            
                         </div>
 
                     </div>
@@ -185,6 +186,8 @@
     <script type="text/javascript" src="~/SPA/admin/app.js"></script>
 
     <!-- services -->
+    <script type="text/javascript" src="~/SPA/admin/services/dashboard.js"></script>
+    <script type="text/javascript" src="~/SPA/admin/services/ui.js"></script>
     <script type="text/javascript" src="~/SPA/admin/services/recurso.js"></script>
     <script type="text/javascript" src="~/SPA/admin/services/mapa.js"></script>
     <script type="text/javascript" src="~/SPA/admin/services/investigacion.js"></script>
@@ -194,9 +197,9 @@
     <script type="text/javascript" src="~/SPA/admin/services/interaccion.js"></script>
 
     <!-- controllers -->
-    <script type="text/javascript" src="~/SPA/admin/controllers/home.js"></script>
+    <script type="text/javascript" src="~/SPA/admin/controllers/dashboard.js"></script>
+    <script type="text/javascript" src="~/SPA/admin/controllers/ui.js"></script>
     <script type="text/javascript" src="~/SPA/admin/controllers/recurso.js"></script>
-    <script type="text/javascript" src="~/SPA/admin/controllers/wizard.js"></script>
     <script type="text/javascript" src="~/SPA/admin/controllers/mapa.js"></script>
     <script type="text/javascript" src="~/SPA/admin/controllers/investigacion.js"></script>
     <script type="text/javascript" src="~/SPA/admin/controllers/destacamento.js"></script>
@@ -246,6 +249,10 @@
 
     <!-- dropzone -->
     <script src="~/Scripts/admin/dropzone/dropzone.js"></script>
+
+    <!-- chart -->
+    <script src="~/Scripts/admin/moris/raphael-min.js"></script>
+    <script src="~/Scripts/admin/moris/morris.min.js"></script>
 </body>
 
 </html>

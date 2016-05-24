@@ -543,22 +543,25 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="SPA\admin\app.js" />
+    <Content Include="SPA\admin\controllers\ui.js" />
     <Content Include="SPA\admin\controllers\dependencia.js" />
     <Content Include="SPA\admin\controllers\destacamento.js" />
     <Content Include="SPA\admin\controllers\edificio.js" />
-    <Content Include="SPA\admin\controllers\home.js" />
+    <Content Include="SPA\admin\controllers\dashboard.js" />
     <Content Include="SPA\admin\controllers\interaccion.js" />
     <Content Include="SPA\admin\controllers\investigacion.js" />
     <Content Include="SPA\admin\controllers\mapa.js" />
     <Content Include="SPA\admin\controllers\recurso.js" />
-    <Content Include="SPA\admin\controllers\wizard.js" />
+    <Content Include="SPA\admin\services\ui.js" />
     <Content Include="SPA\admin\services\dependencia.js" />
     <Content Include="SPA\admin\services\destacamento.js" />
     <Content Include="SPA\admin\services\edificio.js" />
     <Content Include="SPA\admin\services\interaccion.js" />
     <Content Include="SPA\admin\services\investigacion.js" />
+    <Content Include="SPA\admin\services\dashboard.js" />
     <Content Include="SPA\admin\services\mapa.js" />
     <Content Include="SPA\admin\services\recurso.js" />
+    <Content Include="SPA\admin\views\ui.html" />
     <Content Include="SPA\admin\views\dependencia\add.html" />
     <Content Include="SPA\admin\views\dependencia\edit.html" />
     <Content Include="SPA\admin\views\dependencia\list.html" />
@@ -568,7 +571,7 @@
     <Content Include="SPA\admin\views\edificio\add.html" />
     <Content Include="SPA\admin\views\edificio\edit.html" />
     <Content Include="SPA\admin\views\edificio\list.html" />
-    <Content Include="SPA\admin\views\home.html" />
+    <Content Include="SPA\admin\views\dashboard.html" />
     <Content Include="SPA\admin\views\interaccion\add.html" />
     <Content Include="SPA\admin\views\interaccion\edit.html" />
     <Content Include="SPA\admin\views\interaccion\list.html" />
@@ -581,7 +584,6 @@
     <Content Include="SPA\admin\views\recurso\add.html" />
     <Content Include="SPA\admin\views\recurso\edit.html" />
     <Content Include="SPA\admin\views\recurso\list.html" />
-    <Content Include="SPA\admin\views\wizard\index.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

@@ -1,19 +1,23 @@
 ﻿(function () {
     'use strict';
-    angular.module('atlas2').controller('dependenciaCtrl', ['$scope', '$routeParams', 'dependenciaService', dependenciaCtrl]);
+    angular.module('atlas2').controller('dependenciaCtrl', ['$scope', '$routeParams', '$location', 'dependenciaService', dependenciaCtrl]);
 
-    function dependenciaCtrl($scope, $routeParams, dependenciaService) {
+    function dependenciaCtrl($scope, $routeParams, $location, dependenciaService) {
         $scope.dependencias = [];
         $scope.dependencia  = null;
         $scope.saving   = false;
 
-        var initialize = function(){
-            var id = $routeParams && $routeParams['id'] ? $routeParams['id'] : null
-            if(id){
-                dependenciaService.getId(id).then(function (data) {
-                    $scope.dependencia = data;
-                });
-            }else{
+        var path = $location.path();
+
+        var initialize = function () {
+            if (path.indexOf('edit') > -1 || path.indexOf('add') > -1) {
+                var id = $routeParams && $routeParams['id'] ? $routeParams['id'] : null
+                if (id) {
+                    dependenciaService.getId(id).then(function (data) {
+                        $scope.dependencia = data;
+                    });
+                }
+            } else {
                 dependenciaService.getAll().then(function (data) {
                     $scope.dependencias = data;
                 });
@@ -21,8 +25,8 @@
         }
 
         $scope.add = function(){
-            $scope.saving   = true;
-            var dependencia     = this.dependencia;
+            $scope.saving = true;
+            var dependencia = this.dependencia;
 
             dependenciaService.add(dependencia).then(
                 function (data) {
@@ -40,8 +44,8 @@
         }
 
         $scope.edit = function () {
-            $scope.saving   = true;
-            var dependencia     = this.dependencia;
+            $scope.saving = true;
+            var dependencia = this.dependencia;
 
             dependenciaService.edit(dependencia).then(
                 function (data) {

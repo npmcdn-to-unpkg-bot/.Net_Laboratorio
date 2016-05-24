@@ -8,16 +8,13 @@
     function configFunction($routeProvider) {
         // Routes
         $routeProvider.when("/", {
-            templateUrl : "/SPA/admin/views/home.html",
-		    controller  : 'homeCtrl'
-		}).otherwise({
+            templateUrl : "/SPA/admin/views/dashboard.html",
+		    controller  : 'dashboardCtrl'
+        }).when("/ui", {
+            templateUrl: "/SPA/admin/views/ui.html",
+            controller: 'uiCtrl'
+        }).otherwise({
             redirectTo 	: '/'
-        });
-
-        // ruta de wizard
-        $routeProvider.when("/wizard", {
-            templateUrl: "/SPA/admin/views/wizard/index.html",
-            controller: 'wizardCtrl'
         });
 
 		// ruta de recursos
