@@ -16,6 +16,10 @@
             } else {
                 mapaService.getAll().then(function (data) {
                     $scope.mapas = data;
+
+                    var lastLevel = data.slice(-1)[0]
+                    var level = parseInt(lastLevel.nivel) + 1
+                    $scope.mapa = { nivel : level + '' };
                 });
             }
         }

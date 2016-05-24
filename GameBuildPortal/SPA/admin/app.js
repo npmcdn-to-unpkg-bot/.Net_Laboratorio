@@ -79,6 +79,42 @@
 		    templateUrl: "/SPA/admin/views/edificio/edit.html",
 		    controller: 'edificioCtrl'
 		});
+
+        // ruta de alianza
+		$routeProvider.when("/alianza", {
+		    templateUrl: "/SPA/admin/views/alianza/list.html",
+		    controller: 'alianzaCtrl'
+		}).when("/alianza/add", {
+		    templateUrl: "/SPA/admin/views/alianza/add.html",
+		    controller: 'alianzaCtrl'
+		}).when("/alianza/edit/:id", {
+		    templateUrl: "/SPA/admin/views/alianza/edit.html",
+		    controller: 'alianzaCtrl'
+		});
+
+        // ruta de dependencia
+		$routeProvider.when("/dependencia", {
+		    templateUrl: "/SPA/admin/views/dependencia/list.html",
+		    controller: 'dependenciaCtrl'
+		}).when("/dependencia/add", {
+		    templateUrl: "/SPA/admin/views/dependencia/add.html",
+		    controller: 'dependenciaCtrl'
+		}).when("/dependencia/edit/:id", {
+		    templateUrl: "/SPA/admin/views/dependencia/edit.html",
+		    controller: 'dependenciaCtrl'
+		});
+
+        // ruta de interacciones
+		$routeProvider.when("/interaccion", {
+		    templateUrl: "/SPA/admin/views/interaccion/list.html",
+		    controller: 'interaccionCtrl'
+		}).when("/interaccion/add", {
+		    templateUrl: "/SPA/admin/views/interaccion/add.html",
+		    controller: 'interaccionCtrl'
+		}).when("/interaccion/edit/:id", {
+		    templateUrl: "/SPA/admin/views/interaccion/edit.html",
+		    controller: 'interaccionCtrl'
+		});
     }
 
 })();

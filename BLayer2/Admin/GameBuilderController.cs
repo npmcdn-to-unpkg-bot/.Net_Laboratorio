@@ -145,5 +145,57 @@ namespace BLayer.Admin
         {
             builder.getUnidadHandler().deleteEdificio(id);
         }
+
+        //ALIANZA
+        public List<Alianza> getAllAlianzas()
+        {
+            return builder.getAlianzaHandler().getAllAlianzas();
+        }
+
+        public Alianza getAlianza(int id)
+        {
+            return builder.getAlianzaHandler().getAlianza(id);
+        }
+
+        public void createAlianza(Alianza alianza)
+        {
+            builder.getAlianzaHandler().createAlianza(alianza);
+        }
+
+        public void updateAlianza(Alianza alianza)
+        {
+            builder.getAlianzaHandler().updateAlianza(alianza);
+        }
+
+        public void deleteAlianza(int id)
+        {
+//            builder.getAlianzaHandler().deleteAlianza(id);
+        }
+
+        //DEPENDENCIA
+        public List<Dependencia> getAllDependencias()
+        {
+            return builder.getDependenciaHandler().getAllDependencias();
+        }
+
+        public Dependencia getDependencia(int id)
+        {
+            return builder.getDependenciaHandler().getDependencia(id);
+        }
+
+        public void createDependencia(Dependencia dependencia)
+        {
+            builder.getDependenciaHandler().createDependencia(dependencia);
+        }
+
+        public void updateDependencia(Dependencia dependencia)
+        {
+            builder.getDependenciaHandler().updateDependencia(dependencia);
+        }
+
+        public void deleteDependencia(int id)
+        {
+            builder.getDependenciaHandler().deleteDependencia(id);
+        }
     }
 }

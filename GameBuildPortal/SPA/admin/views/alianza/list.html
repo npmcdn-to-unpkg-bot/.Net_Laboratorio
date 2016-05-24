@@ -35,19 +35,18 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Foto</th>
+                        <!--<th>Foto</th-->>
                         <th>Nombre</th>
-                        <th>Descripción</th>
+                        <!--<th>Descripción</th>-->
                         <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
 
                     <tr ng-repeat="alianza in alianzas | filter:buscador">
-                        <td>{{alianza.id}}</td>
-                        <td>{{alianza.foto}}</td>
+                        <td>{{alianza.id}}</td>                        
                         <td>{{alianza.nombre}}</td>
-                        <td>{{alianza.descripcion}}</td>
+                        
                         <td>
                             <div class="btn-group">
                                 <a href="#/alianza/edit/{{alianza.id}}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> </a>
