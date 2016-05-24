@@ -21,10 +21,11 @@ namespace DALayer.Handlers
             {
 
                 Entities.Dependencia dep = new Entities.Dependencia();
-                dep.nombre = depTmp.nombre;
+                dep.idUnidadDependiente = depTmp.idUnidadDependiente;
+                dep.idInvestigacionDependiente = depTmp.idUnidadDependiente;
+                dep.idInvQueDepende = depTmp.idUniQueDepende;
+                dep.idInvQueDepende = depTmp.idInvQueDepende;
                 dep.level = depTmp.level;
-                //cambiar lo de shared
-                //dep.dependencias = depTmp.dependencias;
                 try
                 {
                     ctx.Dependencia.Add(dep);
@@ -55,27 +56,41 @@ namespace DALayer.Handlers
 
             public List<Dependencia> getAllDependencias()
             {
-            //List<Dependencia> dependencias = new List<Dependencia>();
-            //try
-            //{
-            //    List<Entities.Dependencia> dependenciasTmp = ctx.Dependencia.ToList();
-            //    foreach (Entities.Dependencia item in dependenciasTmp)
-            //    {
-            //        Dependencia dep = new Dependencia(item.nombre, item.level, item.dependencias);
-            //        dependencias.Add(dep);
-            //    }
-            //    return dependencias;
-            //}
-            //catch (Exception ex)
-            //{
-            //    throw ex;
-            //}
+            List<Dependencia> dependencias = new List<Dependencia>();
+            try
+            {
+                List<Entities.Dependencia> dependenciasTmp = ctx.Dependencia.ToList();
+                foreach (Entities.Dependencia item in dependenciasTmp)
+                {
+                    Dependencia dep = new Dependencia(item.id, item.idUnidadDependiente, item.idInvestigacionDependiente,
+                        item.idUniQueDepende, item.idInvQueDepende, item.level);
+                    dependencias.Add(dep);
+                }
+                return dependencias;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
             throw new NotImplementedException();
             }
 
         public Dependencia getDependencia(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var depE = (from c in ctx.Dependencia
+                           where c.id == id
+                           select c).SingleOrDefault();
+
+                Dependencia dependencia = new Dependencia(depE.id, depE.idInvestigacionDependiente, depE.idInvestigacionDependiente,
+                    depE.idUniQueDepende, depE.idInvQueDepende, depE.level);
+                return dependencia;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public void getDependenciaByUser()
@@ -88,14 +103,15 @@ namespace DALayer.Handlers
                 try
                 {
                     var depTmp = ctx.Dependencia
-                        .Where(w => w.nombre == dep.nombre)
+                        .Where(w => w.id == dep.id)
                         .SingleOrDefault();
 
                     if (depTmp != null)
                     {
-                        dep.nombre = depTmp.nombre;
-                        dep.level = depTmp.level;
-                        depTmp.dependencias = depTmp.dependencias;
+                        depTmp.idUnidadDependiente = dep.idUnidadDependiente;
+                        depTmp.idInvestigacionDependiente = dep.idInvestigacionDependiente;
+                        depTmp.idUniQueDepende = dep.idUniQueDepende;
+                        depTmp.idInvQueDepende = dep.idInvQueDepende;
                         ctx.SaveChangesAsync().Wait();
                     }
                 }
