@@ -58,6 +58,7 @@
     <Compile Include="Api\EFApi.cs" />
     <Compile Include="Entities\Capacidad.cs" />
     <Compile Include="Entities\Costo.cs" />
+    <Compile Include="Entities\Producto.cs" />
     <Compile Include="Fatories\AdminFactory.cs" />
     <Compile Include="Contexts\TenantContext.cs" />
     <Compile Include="Contexts\AdminContext.cs" />
