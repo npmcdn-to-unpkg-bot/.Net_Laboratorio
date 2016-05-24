@@ -8,14 +8,8 @@ using System.Threading.Tasks;
 
 namespace DALayer.Entities
 {
-    public class Investigacion
+    public class Investigacion : Producto
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int id { get; set; }
-        public String nombre{get; set;}
-        public string descripcion { get; set; }
-        public byte[] foto { get; set; }
         public Dictionary<String, float> costo{get; set;}
         public Dictionary<String, float> factorCostoNivel{get; set;}
         public int nivel{get; set;}

@@ -17,15 +17,10 @@ namespace DALayer.Handlers
             {
                 ctx = tc;
             }
-            public void createDependencia(Dependencia depTmp)
+            public void createDependencia(Dependencia d)
             {
 
-                Entities.Dependencia dep = new Entities.Dependencia();
-                dep.idUnidadDependiente = depTmp.idUnidadDependiente;
-                dep.idInvestigacionDependiente = depTmp.idUnidadDependiente;
-                dep.idInvQueDepende = depTmp.idUniQueDepende;
-                dep.idInvQueDepende = depTmp.idInvQueDepende;
-                dep.level = depTmp.level;
+                Entities.Dependencia dep = new Entities.Dependencia(d.idProdPadre, d.idProdHijo, d.level);
                 try
                 {
                     ctx.Dependencia.Add(dep);
@@ -62,8 +57,7 @@ namespace DALayer.Handlers
                 List<Entities.Dependencia> dependenciasTmp = ctx.Dependencia.ToList();
                 foreach (Entities.Dependencia item in dependenciasTmp)
                 {
-                    Dependencia dep = new Dependencia(item.id, item.idUnidadDependiente, item.idInvestigacionDependiente,
-                        item.idUniQueDepende, item.idInvQueDepende, item.level);
+                    Dependencia dep = new Dependencia(item.id, item.idProdPadre, item.idProdHijo, item.level);
                     dependencias.Add(dep);
                 }
                 return dependencias;
@@ -83,8 +77,7 @@ namespace DALayer.Handlers
                            where c.id == id
                            select c).SingleOrDefault();
 
-                Dependencia dependencia = new Dependencia(depE.id, depE.idInvestigacionDependiente, depE.idInvestigacionDependiente,
-                    depE.idUniQueDepende, depE.idInvQueDepende, depE.level);
+                Dependencia dependencia = new Dependencia(depE.id, depE.idProdPadre, depE.idProdHijo, depE.level);
                 return dependencia;
             }
             catch (Exception ex)
@@ -108,10 +101,10 @@ namespace DALayer.Handlers
 
                     if (depTmp != null)
                     {
-                        depTmp.idUnidadDependiente = dep.idUnidadDependiente;
-                        depTmp.idInvestigacionDependiente = dep.idInvestigacionDependiente;
-                        depTmp.idUniQueDepende = dep.idUniQueDepende;
-                        depTmp.idInvQueDepende = dep.idInvQueDepende;
+                        depTmp.idProdPadre = dep.idProdPadre;
+                        depTmp.idProdHijo = dep.idProdHijo;
+                        depTmp.level = dep.level;
+
                         ctx.SaveChangesAsync().Wait();
                     }
                 }

@@ -8,14 +8,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 using DALayer.Entities;
 namespace DALayer.Entities
 {
-    public abstract class Unidad
+    public abstract class Unidad : Producto
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int id { get; set; }
-        public string nombre { get; set; }
-        public string descripcion { get; set; }
-        public byte[] foto { get; set; }
         List<Costo> costo { get; set; }
         List<Capacidad> capacidad { get; set; }
         public float ataque {get; set;}

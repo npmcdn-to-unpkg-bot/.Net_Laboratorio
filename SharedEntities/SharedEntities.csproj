@@ -55,6 +55,7 @@
     <Compile Include="Entities\Jugador.cs" />
     <Compile Include="Entities\MapaNode.cs" />
     <Compile Include="Entities\PaquetePaypal.cs" />
+    <Compile Include="Entities\Producto.cs" />
     <Compile Include="Entities\Recurso.cs" />
     <Compile Include="Entities\SolicitudJuego.cs" />
     <Compile Include="Entities\Dependencia.cs" />

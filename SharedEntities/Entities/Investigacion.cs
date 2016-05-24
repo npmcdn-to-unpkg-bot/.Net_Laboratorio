@@ -6,12 +6,8 @@ using System.Threading.Tasks;
 
 namespace SharedEntities.Entities
 {
-    public class Investigacion
+    public class Investigacion : Producto
     {
-        public int id;
-        public String nombre;
-        public String descripcion;
-        public byte[] foto;
         public Dictionary<String, float> costo;
         public Dictionary<String, float> factorCostoNivel;
         public int nivel;

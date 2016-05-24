@@ -6,12 +6,8 @@ using System.Threading.Tasks;
 
 namespace SharedEntities.Entities
 {
-    public abstract class Unidad
+    public abstract class Unidad : Producto
     {
-        public int id { get; set; }
-        public string nombre { get; set; }
-        public string descripcion { get; set; }
-        public byte[] foto { get; set; }
         public List<Costo> costo { get; set; }
         public List<Capacidad> capacidad { get; set; }
         public float ataque { get; set; }

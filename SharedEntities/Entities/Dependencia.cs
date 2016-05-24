@@ -10,19 +10,15 @@ namespace SharedEntities.Entities
     public class Dependencia
     {
         public int id;
-        public int idUnidadDependiente;
-        public int idInvestigacionDependiente;
-        public int idUniQueDepende;
-        public int idInvQueDepende;
+        public int idProdPadre;
+        public int idProdHijo;
         public int level;
 
-        public Dependencia(int id, int idUni, int idInv, int idUQD, int idIQD, int level)
+        public Dependencia(int id, int idPP, int idPH, int level)
         {
             this.id = id;
-            this.idUnidadDependiente = idUni;
-            this.idInvestigacionDependiente = idInv;
-            this.idUniQueDepende = idUQD;
-            this.idInvQueDepende = idIQD;
+            this.idProdPadre = idPP;
+            this.idProdHijo = idPH;
             this.level = level;
         }
 

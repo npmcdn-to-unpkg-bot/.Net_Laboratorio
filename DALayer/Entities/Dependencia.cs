@@ -10,10 +10,15 @@ namespace DALayer.Entities
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id { get; set; }
-        public int idUnidadDependiente { get; set; }
-        public int idInvestigacionDependiente { get; set; }
-        public int idUniQueDepende { get; set; }
-        public int idInvQueDepende { get; set; }
+        public int idProdPadre { get; set; }
+        public int idProdHijo { get; set; }
         public int level { get; set; }
+
+        public Dependencia(int idPP, int idPH, int nivel)
+        {
+            this.idProdPadre = idPP;
+            this.idProdHijo = idPH;
+            this.level = nivel;
+        }
     }
 }
