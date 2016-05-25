@@ -1,4 +1,8 @@
-﻿namespace DALayer.Entities
+﻿using Microsoft.AspNet.Identity;
+using System.Security.Claims;
+using System.Threading.Tasks;
+
+namespace DALayer.Entities
 {
     /**
     administrador del juego
@@ -6,5 +10,12 @@
     public class Admin: Usuario
     {
         public int telefono { get; set; }
+        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<Admin> manager)
+        {
+            // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
+            var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
+            // Add custom user claims here
+            return userIdentity;
+        }
     }
 }

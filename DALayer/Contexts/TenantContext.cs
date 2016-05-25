@@ -15,33 +15,27 @@ namespace DALayer
     public class TenantContext : IdentityDbContext<Usuario>, IDbModelCacheKeyProvider
     {
 
-        private String SchemaName;
+        public String SchemaName;
         public TenantContext(string connection, String TennantId)
             : base(connection)
         {  
             this.SchemaName = TennantId; 
         }
-        public TenantContext(string connection, DbCompiledModel model, String TennantId)
-           : base(connection, model)
+        public TenantContext()
+           : base("Admin")
         {
-
-            this.SchemaName = TennantId;
         }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             
             modelBuilder.Types()
               .Configure(c => c.ToTable(c.ClrType.Name, this.SchemaName));
-            modelBuilder.Entity<IdentityUser>().ToTable("Usuario", this.SchemaName);
-            modelBuilder.Entity<Usuario>().ToTable("Usuario", this.SchemaName);
+            modelBuilder.Entity<IdentityUser>().ToTable("Usuario", this.SchemaName); 
             modelBuilder.Entity<IdentityUserRole>().ToTable("UsuarioRol", this.SchemaName).HasKey(r => new { r.RoleId, r.UserId }); 
             modelBuilder.Entity<IdentityUserLogin>().ToTable("UsuarioLogins", this.SchemaName).HasKey<string>(l => l.UserId); 
             modelBuilder.Entity<IdentityUserClaim>().ToTable("UsuarioClaims", this.SchemaName);
             modelBuilder.Entity<IdentityRole>().ToTable("UsuarioRoles", this.SchemaName).HasKey<string>(l => l.Id);
         }
-
-        public virtual DbSet<Jugador> Jugador { get; set; }
-        public virtual DbSet<Admin> Admin { get; set; }
         public virtual DbSet<Recurso> Recurso { get; set; }
         public virtual DbSet<MapaNode> MapaNode { get; set; }
         public virtual DbSet<Alianza> Alianza { get; set; }

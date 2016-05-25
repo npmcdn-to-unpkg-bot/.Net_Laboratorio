@@ -12,6 +12,7 @@ namespace GameBuildPortal
     public static class WebApiConfig
     {
         private static IUnityContainer container;
+        public static string tenant = "newT2";
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
@@ -29,7 +30,7 @@ namespace GameBuildPortal
         }
        
         public static IGameBuilder BuilderService(string tenant) {
-            tenant = "newT1";
+            tenant = WebApiConfig.tenant;
             return container.Resolve<IGameBuilder>(new ParameterOverrides { { "tId", tenant }, { "IApi", container.Resolve<IApi>() } });
         }
     }
