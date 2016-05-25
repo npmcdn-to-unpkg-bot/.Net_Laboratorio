@@ -11,14 +11,13 @@ namespace GameBuildPortal
 {
     public static class WebApiConfig
     {
-        public static IGameBuilder blHandler;
+        private static IUnityContainer container;
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
-            IUnityContainer container = new UnityContainer();
+            container = new UnityContainer();
             container.LoadConfiguration();
-
-            blHandler = container.Resolve<IGameBuilder>(new ParameterOverrides { { "tId", "orgame" },{ "IApi", container.Resolve<IApi>() } });
+           
             // Web API routes
             config.MapHttpAttributeRoutes();
 
@@ -28,9 +27,9 @@ namespace GameBuildPortal
                 defaults: new { id = RouteParameter.Optional }
             );
         }
+       
         public static IGameBuilder BuilderService(string tenant) {
-            IUnityContainer container = new UnityContainer();
-            container.LoadConfiguration();
+            tenant = "newT1";
             return container.Resolve<IGameBuilder>(new ParameterOverrides { { "tId", tenant }, { "IApi", container.Resolve<IApi>() } });
         }
     }

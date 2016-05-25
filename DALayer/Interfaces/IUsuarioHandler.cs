@@ -11,13 +11,13 @@ namespace DALayer.Interfaces
     {
         void createJugador(Jugador jugador);
         void createAdmin(Admin admin);
-        void deleteJugador(int id);
-        void deleteAdmin(int id);
+        void deleteJugador(string id);
+        void deleteAdmin(string id);
         void updateJugador(Jugador jugador);
         void updateAdmin(Admin admin);
         List<Jugador> getAllJugadores();
         List<Admin> getAllAdmins();
-        Jugador getJugador(int id);
-        Admin getAdmin(int id);
+        Jugador getJugador(string id);
+        Admin getAdmin(string id);
     }
 }

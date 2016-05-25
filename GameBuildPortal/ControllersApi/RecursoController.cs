@@ -15,7 +15,7 @@ namespace GameBuildPortal.ControllersApi
 
         public RecursoController()
         {
-            blHandler = WebApiConfig.blHandler;
+            blHandler = WebApiConfig.BuilderService("");
         }
 
         [HttpGet]

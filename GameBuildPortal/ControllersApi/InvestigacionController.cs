@@ -15,7 +15,7 @@ namespace GameBuildPortal.ControllersApi
 
         public InvestigacionController()
         {
-            blHandler = WebApiConfig.blHandler;
+            blHandler = WebApiConfig.BuilderService("");
         }
 
         [HttpGet]
