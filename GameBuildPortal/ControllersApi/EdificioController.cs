@@ -15,7 +15,7 @@ namespace GameBuildPortal.ControllersApi
 
         public EdificioController()
         {
-            blHandler = WebApiConfig.blHandler;
+            blHandler = WebApiConfig.BuilderService("");
         }
 
         [HttpGet]

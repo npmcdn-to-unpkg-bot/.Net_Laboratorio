@@ -19,24 +19,7 @@ namespace DALayer.Handlers
 
         public void createAdmin(Admin admin)
         {
-            Entities.Admin admE = new Entities.Admin();
-            admE.nombre = admin.name;
-            admE.apellido = admin.apellidos;
-            admE.email = admin.email;
-            admE.usuario = admin.usuario;
-            admE.password = admin.password;
-            admE.foto = admin.foto;
-            admE.telefono = admin.telefono;
-
-            try
-            {
-                ctx.Admin.Add(admE);
-                ctx.SaveChanges();
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
+            
         }
 
         public void createJugador(Jugador jugador)
@@ -44,9 +27,8 @@ namespace DALayer.Handlers
             Entities.Jugador jugE = new Entities.Jugador();
             jugE.nombre = jugador.name;
             jugE.apellido = jugador.apellidos;
-            jugE.email = jugador.email;
-            jugE.usuario = jugador.usuario;
-            jugE.password = jugador.password;
+            jugE.Email = jugador.email;
+            jugE.UserName = jugador.UserName; 
             jugE.foto = jugador.foto;
             jugE.nickname = jugador.nickname;
             jugE.nivel = jugador.nivel;
@@ -63,10 +45,10 @@ namespace DALayer.Handlers
             }
         }
 
-        public void deleteAdmin(int id)
+        public void deleteAdmin(string id)
         {
             var admE = (from c in ctx.Admin
-                        where c.id == id
+                        where c.Id.Equals(id)
                         select c).SingleOrDefault();
             try
             {
@@ -79,10 +61,10 @@ namespace DALayer.Handlers
             }
         }
 
-        public void deleteJugador(int id)
+        public void deleteJugador(string id)
         {
             var jugE = (from c in ctx.Jugador
-                        where c.id == id
+                        where c.Id.Equals(id)
                         select c).SingleOrDefault();
             try
             {
@@ -95,15 +77,15 @@ namespace DALayer.Handlers
             }
         }
 
-        public Admin getAdmin(int id)
+        public Admin getAdmin(string id)
         {
             try
             {
                 var admE = (from c in ctx.Admin
-                             where c.id == id
-                             select c).SingleOrDefault();
+                             where c.Id.Equals(id)
+                            select c).SingleOrDefault();
 
-                Admin adm = new Admin(admE.id, admE.nombre, admE.apellido, admE.email, admE.usuario, admE.password,
+                Admin adm = new Admin(admE.Id, admE.nombre, admE.apellido, admE.Email, admE.UserName, 
                     admE.foto, admE.telefono);
                 return adm;
             }
@@ -121,7 +103,7 @@ namespace DALayer.Handlers
                 List<Entities.Admin> adE = ctx.Admin.ToList();
                 foreach (Entities.Admin item in adE)
                 {
-                    Admin temp = new Admin(item.id, item.nombre, item.apellido, item.email, item.usuario, item.password,
+                    Admin temp = new Admin(item.Id, item.nombre, item.apellido, item.Email, item.UserName,
                     item.foto, item.telefono);
                     admins.Add(temp);
                 }
@@ -142,7 +124,7 @@ namespace DALayer.Handlers
                 List<Entities.Jugador> jugE = ctx.Jugador.ToList();
                 foreach (Entities.Jugador item in jugE)
                 {
-                    Jugador temp = new Jugador(item.id, item.nombre, item.apellido, item.email, item.usuario, item.password,
+                    Jugador temp = new Jugador(item.Id, item.nombre, item.apellido, item.Email, item.UserName,
                     item.foto, item.nickname, item.nivel, item.experiencia);
                     jugadores.Add(temp);
                 }
@@ -155,15 +137,15 @@ namespace DALayer.Handlers
             }
         }
 
-        public Jugador getJugador(int id)
+        public Jugador getJugador(string id)
         {
             try
             {
                 var jugE = (from c in ctx.Jugador
-                            where c.id == id
+                            where c.Id.Equals(id)
                             select c).SingleOrDefault();
 
-                Jugador jug = new Jugador(jugE.id, jugE.nombre, jugE.apellido, jugE.email, jugE.usuario, jugE.password,
+                Jugador jug = new Jugador(jugE.Id, jugE.nombre, jugE.apellido, jugE.Email, jugE.UserName,
                     jugE.foto, jugE.nickname, jugE.nivel, jugE.experiencia);
                 return jug;
             }
@@ -178,17 +160,16 @@ namespace DALayer.Handlers
             try
             {
                 var adminE = ctx.Admin
-                    .Where(w => w.id == admin.id)
+                    .Where(w => w.Id.Equals(admin.id))
                     .SingleOrDefault();
 
                 if (adminE != null)
                 {
-                    adminE.id = admin.id;
+                    adminE.Id = admin.Id;
                     adminE.nombre = admin.name;
                     adminE.apellido = admin.apellidos;
-                    adminE.email = admin.email;
-                    adminE.usuario = admin.usuario;
-                    adminE.password = admin.password;
+                    adminE.Email = admin.email;
+                    adminE.UserName = admin.usuario; 
                     adminE.foto = admin.foto;
                     adminE.telefono = admin.telefono;
                     ctx.SaveChangesAsync().Wait();
@@ -205,17 +186,16 @@ namespace DALayer.Handlers
             try
             {
                 var jugadorE = ctx.Jugador
-                    .Where(w => w.id == jugador.id)
+                    .Where(w => w.Id.Equals(jugador.Id))
                     .SingleOrDefault();
 
                 if (jugadorE != null)
                 {
-                    jugadorE.id = jugador.id;
+                    jugadorE.Id = jugador.Id;
                     jugadorE.nombre = jugador.name;
                     jugadorE.apellido = jugador.apellidos;
-                    jugadorE.email = jugador.email;
-                    jugadorE.usuario = jugador.usuario;
-                    jugadorE.password = jugador.password;
+                    jugadorE.Email = jugador.email;
+                    jugadorE.UserName = jugador.usuario; 
                     jugadorE.foto = jugador.foto;
                     jugadorE.nickname = jugador.nickname;
                     jugadorE.nivel = jugador.nivel;

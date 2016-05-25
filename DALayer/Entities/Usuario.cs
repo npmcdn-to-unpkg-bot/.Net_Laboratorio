@@ -1,19 +1,26 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace DALayer.Entities
 {
-    public abstract class Usuario
+    public abstract class Usuario: IdentityUser
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int id{get; set;}
+        
         public String nombre{get; set;}
         public String apellido{get; set;}
-        public String email{get; set;}
-        public String usuario{get; set;}
-        public String password{get; set;}
+       
         public byte[] foto { get; set; }
+        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<Usuario> manager)
+        {
+            // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
+            var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
+            // Add custom user claims here
+            return userIdentity;
+        }
     }
 }

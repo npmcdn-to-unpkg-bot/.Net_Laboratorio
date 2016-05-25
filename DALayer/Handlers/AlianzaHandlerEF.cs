@@ -29,14 +29,13 @@ namespace DALayer.Handlers
             {
                 Entities.Jugador jug = new Entities.Jugador();
                 jug.apellido = item.apellidos;
-                jug.email = item.email;
+                jug.Email = item.email;
                 jug.experiencia = item.experiencia;
                 jug.foto = item.foto;
-                jug.id = item.id;
+                jug.Id = item.Id;
                 jug.nickname = item.nickname;
                 jug.nivel = item.nivel;
-                jug.password = item.password;
-                jug.usuario = item.usuario;
+                jug.UserName = item.UserName;
                 alli.miembros.Add(jug);
             }
 
@@ -45,14 +44,13 @@ namespace DALayer.Handlers
             {
                 Entities.Jugador jug2 = new Entities.Jugador();
                 jug2.apellido = item2.apellidos;
-                jug2.email = item2.email;
+                jug2.Email = item2.email;
                 jug2.experiencia = item2.experiencia;
                 jug2.foto = item2.foto;
-                jug2.id = item2.id;
+                jug2.Id = item2.Id;
                 jug2.nickname = item2.nickname;
-                jug2.nivel = item2.nivel;
-                jug2.password = item2.password;
-                jug2.usuario = item2.usuario;
+                jug2.nivel = item2.nivel; 
+                jug2.UserName = item2.UserName;
                 alli.admins.Add(jug2);
             }
 
@@ -107,14 +105,13 @@ namespace DALayer.Handlers
                     {
                         Entities.Jugador jug = new Entities.Jugador();
                         jug.apellido = item.apellidos;
-                        jug.email = item.email;
+                        jug.Email = item.email;
                         jug.experiencia = item.experiencia;
                         jug.foto = item.foto;
-                        jug.id = item.id;
+                        jug.Id = item.Id;
                         jug.nickname = item.nickname;
                         jug.nivel = item.nivel;
-                        jug.password = item.password;
-                        jug.usuario = item.usuario;
+                        jug.UserName = item.UserName;
                         alliTmp.miembros.Add(jug);
                     }
 
@@ -123,14 +120,13 @@ namespace DALayer.Handlers
                     {
                         Entities.Jugador jug2 = new Entities.Jugador();
                         jug2.apellido = item2.apellidos;
-                        jug2.email = item2.email;
+                        jug2.Email = item2.email;
                         jug2.experiencia = item2.experiencia;
                         jug2.foto = item2.foto;
-                        jug2.id = item2.id;
+                        jug2.Id = item2.Id;
                         jug2.nickname = item2.nickname;
                         jug2.nivel = item2.nivel;
-                        jug2.password = item2.password;
-                        jug2.usuario = item2.usuario;
+                        jug2.UserName = item2.UserName;
                         alliTmp.admins.Add(jug2);
                     }
 

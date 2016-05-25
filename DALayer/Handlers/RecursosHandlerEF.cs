@@ -56,7 +56,9 @@ namespace DALayer.Handlers
             List<Recurso> recursos = new List<Recurso>();
             try
             {
+                ctx.Database.Connection.Open();
                 List<Entities.Recurso> recursosTmp = ctx.Recurso.ToList();
+                ctx.Database.Connection.Close();
                 foreach (Entities.Recurso item in recursosTmp)
                 {
                     Recurso rec = new Recurso(item.id, item.nombre, item.descripcion, item.foto);
