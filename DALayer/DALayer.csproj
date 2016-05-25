@@ -59,6 +59,10 @@
     <Compile Include="Entities\Capacidad.cs" />
     <Compile Include="Entities\Costo.cs" />
     <Compile Include="Entities\Producto.cs" />
+    <Compile Include="Entities\RelJugadorDestacamento.cs" />
+    <Compile Include="Entities\RelJugadorEdificio.cs" />
+    <Compile Include="Entities\RelJugadorRecurso.cs" />
+    <Compile Include="Entities\RelJugadorInvestigacion.cs" />
     <Compile Include="Fatories\AdminFactory.cs" />
     <Compile Include="Contexts\TenantContext.cs" />
     <Compile Include="Contexts\AdminContext.cs" />
