@@ -10,13 +10,15 @@ namespace SharedEntities.Entities
     {
         public int id;
         public Jugador jugador;
+        public RelJugadorMapa colonia;
         public Investigacion investigacion;
         public int nivel;
 
-        public RelJugadorInvestigacion(int ID, Jugador jug, Investigacion invest, int niv)
+        public RelJugadorInvestigacion(int ID, Jugador jug, RelJugadorMapa col, Investigacion invest, int niv)
         {
             this.id = ID;
             this.jugador = jug;
+            this.colonia = col;
             this.investigacion = invest;
             this.nivel = niv;
         }

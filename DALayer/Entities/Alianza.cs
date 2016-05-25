@@ -12,7 +12,7 @@ namespace DALayer.Entities
         public int id { get; set; }
         public String nombre { get; set; }
         public List<Jugador> miembros{get; set;}
-        public List<Jugador> admins{get; set;}
+        public Jugador admin{get; set;}
         public String descripcion{get; set;}
         public byte[] foto{get; set;}
     }

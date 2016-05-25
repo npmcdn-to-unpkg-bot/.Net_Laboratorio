@@ -60,6 +60,7 @@
     <Compile Include="Entities\RelJugadorDestacamento.cs" />
     <Compile Include="Entities\RelJugadorEdificio.cs" />
     <Compile Include="Entities\RelJugadorInvestigacion.cs" />
+    <Compile Include="Entities\RelJugadorMapa.cs" />
     <Compile Include="Entities\RelJugadorRecurso.cs" />
     <Compile Include="Entities\SolicitudJuego.cs" />
     <Compile Include="Entities\Dependencia.cs" />

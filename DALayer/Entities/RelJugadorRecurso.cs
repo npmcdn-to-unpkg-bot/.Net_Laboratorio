@@ -15,6 +15,7 @@ namespace DALayer.Entities
         public int id { get; set; }
         public Jugador jugador { get; set; }
         public Recurso recurso { get; set; }
+        public RelJugadorMapa colonia { get; set; }
         public int capacidad { get; set; }
         public int cantidadR { get; set; }
         public float factorIncremento { get; set; }

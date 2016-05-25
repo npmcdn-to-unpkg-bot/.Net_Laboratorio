@@ -39,20 +39,15 @@ namespace DALayer.Handlers
                 alli.miembros.Add(jug);
             }
 
-            alli.admins = new List<Entities.Jugador>();
-            foreach (Jugador item2 in alliTmp.admins)
-            {
-                Entities.Jugador jug2 = new Entities.Jugador();
-                jug2.apellido = item2.apellidos;
-                jug2.Email = item2.email;
-                jug2.experiencia = item2.experiencia;
-                jug2.foto = item2.foto;
-                jug2.Id = item2.Id;
-                jug2.nickname = item2.nickname;
-                jug2.nivel = item2.nivel; 
-                jug2.UserName = item2.UserName;
-                alli.admins.Add(jug2);
-            }
+            alli.admin = new Entities.Jugador();
+            alli.admin.apellido = alliTmp.admin.apellidos;
+            alli.admin.Email = alliTmp.admin.email;
+            alli.admin.experiencia = alliTmp.admin.experiencia;
+            alli.admin.foto = alliTmp.admin.foto;
+            alli.admin.Id = alliTmp.admin.Id;
+            alli.admin.nickname = alliTmp.admin.nickname;
+            alli.admin.nivel = alliTmp.admin.nivel;
+            alli.admin.UserName = alliTmp.admin.UserName;
 
             alli.descripcion = alliTmp.descripcion;
             alli.foto = alliTmp.foto;
@@ -70,10 +65,10 @@ namespace DALayer.Handlers
             }
         }
 
-        public void deleteAlianza(Alianza alianza)
+        public void deleteAlianza(int id)
         {
             var alli = (from c in ctx.Alianza
-                        where c.id == alianza.id
+                        where c.id == id
                         select c).SingleOrDefault();
             try
             {
@@ -113,21 +108,6 @@ namespace DALayer.Handlers
                         jug.nivel = item.nivel;
                         jug.UserName = item.UserName;
                         alliTmp.miembros.Add(jug);
-                    }
-
-                    alliTmp.admins = new List<Entities.Jugador>();
-                    foreach (Jugador item2 in alli.admins)
-                    {
-                        Entities.Jugador jug2 = new Entities.Jugador();
-                        jug2.apellido = item2.apellidos;
-                        jug2.Email = item2.email;
-                        jug2.experiencia = item2.experiencia;
-                        jug2.foto = item2.foto;
-                        jug2.Id = item2.Id;
-                        jug2.nickname = item2.nickname;
-                        jug2.nivel = item2.nivel;
-                        jug2.UserName = item2.UserName;
-                        alliTmp.admins.Add(jug2);
                     }
 
                     ctx.SaveChangesAsync().Wait();

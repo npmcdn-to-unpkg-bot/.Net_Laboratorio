@@ -11,16 +11,16 @@ namespace SharedEntities.Entities
         public int id;
         public String nombre;
         public List<Jugador> miembros;
-        public List<Jugador> admins;
+        public Jugador admin;
         public String descripcion;
         public byte[] foto;
 
-        public Alianza(int id, string name, List<Jugador> members, List<Jugador> adm, string description, byte[] photo)
+        public Alianza(int id, string name, List<Jugador> members, Jugador adm, string description, byte[] photo)
         {
             this.id = id;
             this.nombre = name;
             this.miembros = members;
-            this.admins = adm;
+            this.admin = adm;
             this.descripcion = description;
             this.foto = photo;
         }

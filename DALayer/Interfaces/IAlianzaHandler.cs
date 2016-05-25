@@ -10,7 +10,7 @@ namespace DALayer.Interfaces
     public interface IAlianzaHandler
     {
         void createAlianza(Alianza ali);
-        void deleteAlianza(Alianza ali);
+        void deleteAlianza(int id);
         void updateAlianza(Alianza ali);
         Alianza getAlianza(int id);
         List<Alianza> getAllAlianzas();
