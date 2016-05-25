@@ -15,6 +15,6 @@ namespace DALayer.Entities
         public int id { get; set; }
         public Jugador jugador { get; set; }
         public Destacamento destacamento { get; set; }
-        public int nivelD { get; set; } 
+        public int cantidad { get; set; } 
     }
 }

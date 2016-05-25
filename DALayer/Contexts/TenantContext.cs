@@ -47,6 +47,9 @@ namespace DALayer
         public virtual DbSet<PaquetePaypal> PaquetePaypal { get; set; }
         public virtual DbSet<HistorialVentas> HistorialVentas { get; set; }
         public virtual DbSet<EstadoInicialJuego> EstadoInicialJuego { get; set; }
+        public virtual DbSet<Unidad> Unidad { get; set; }
+        public virtual DbSet<Usuario> Usuario { get; set; }
+        public virtual DbSet<Producto> Producto { get; set; }
         public virtual DbSet<RelJugadorDestacamento> RelJugadorDestacamento { get; set; }
         public virtual DbSet<RelJugadorEdificio> RelJugadorEdificio { get; set; }
         public virtual DbSet<RelJugadorInvestigacion> RelJugadorInvestigacion { get; set; }

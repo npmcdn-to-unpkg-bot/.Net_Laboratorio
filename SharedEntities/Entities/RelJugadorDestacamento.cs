@@ -11,14 +11,14 @@ namespace SharedEntities.Entities
         public int id;
         public Jugador jugador;
         public Destacamento destacamento;
-        public int nivelD;
+        public int cantidad;
 
-        public RelJugadorDestacamento(int ID, Jugador jug, Destacamento desta, int levelD)
+        public RelJugadorDestacamento(int ID, Jugador jug, Destacamento desta, int cant)
         {
             this.id = ID;
             this.jugador = jug;
             this.destacamento = desta;
-            this.nivelD = levelD;
+            this.cantidad = cant;
         }
     }
 }
