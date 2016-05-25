@@ -45,6 +45,11 @@ namespace DALayer
             TenantContext t;
 
             using (var ctx = new AdminContext()) {
+
+                if (!ctx.Database.Exists()) {
+                    ctx.Database.CreateIfNotExists();
+                }
+
                 var juego = from j in ctx.Juego
                               where j.nombreJuego.Equals(tenant)
                               select j;
@@ -71,7 +76,7 @@ namespace DALayer
                 else {
                     t = new TenantContext(connectionStr, tenant);
                 }
-
+                ctx.Database.Connection.Close();
             } 
             return t;
 
