@@ -130,6 +130,9 @@
     <Compile Include="Handlers\MapaNodeHandlerEF.cs" />
     <Compile Include="Handlers\PaquetePaypalHandlerEF.cs" />
     <Compile Include="Handlers\RecursosHandlerEF.cs" />
+    <Compile Include="Handlers\RelJugadorEdificioHandlerEF.cs" />
+    <Compile Include="Handlers\RelJugadorInvestigacionHandlerEF.cs" />
+    <Compile Include="Handlers\RelJugadorRecursoHandlerEF.cs" />
     <Compile Include="Handlers\SolicitudJuegoHandlerEF.cs" />
     <Compile Include="Handlers\TenantHandlerEF.cs" />
     <Compile Include="Handlers\UnidadHandlerEF.cs" />
@@ -144,6 +147,9 @@
     <Compile Include="Interfaces\IAlianzaHandler.cs" />
     <Compile Include="Interfaces\IPaquetePayPalHandler.cs" />
     <Compile Include="Interfaces\IRecursoHandler.cs" />
+    <Compile Include="Interfaces\IRelJugadorEdificioHandler.cs" />
+    <Compile Include="Interfaces\IRelJugadorInvestigacionHandler.cs" />
+    <Compile Include="Interfaces\IRelJugadorRecursoHandler.cs" />
     <Compile Include="Interfaces\ISolicitudJuegoHandler.cs" />
     <Compile Include="Interfaces\ITenantHandler.cs" />
     <Compile Include="Interfaces\IUnidadHandler.cs" />

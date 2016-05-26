@@ -20,4 +20,5 @@ namespace DALayer.Entities
         public int cantidadR { get; set; }
         public float factorIncremento { get; set; }
     }
+
 }
