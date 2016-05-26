@@ -86,11 +86,6 @@ namespace DALayer.Handlers
             }
         }
 
-        public void getDependenciaByUser()
-            {
-                throw new NotImplementedException();
-            }
-
             public void updateDependencia(Dependencia dep)
             {
                 try
@@ -112,11 +107,6 @@ namespace DALayer.Handlers
                 {
                     throw ex;
                 }
-            }
-
-            public void updateDependenciaByUser()
-            {
-                throw new NotImplementedException();
             }
         }    
 }

@@ -14,7 +14,6 @@ namespace DALayer.Api
         private AdminContext actx;
         private AlianzaHandlerEF alianzaHandler;
         private DependenciaHandlerEF dependenciaHandler;
-        private FlotaHandlerEF flotaHandler;
         private HistorialVentasHandlerEF historialVHandler;
         private InvestigacionHandlerEF investigacionHandler;
         private JuegoHandlerEF juegoHandler;
@@ -99,19 +98,6 @@ namespace DALayer.Api
                 dependenciaHandler = new DependenciaHandlerEF(ctx);
             }
             return dependenciaHandler;
-        }
-
-        public IFlotaHandler getFlotaHandler()
-        {
-            if (ctx == null)
-            {
-                throw new Exception("Tenes que llamar a la funcion setTenant despues de inicializar esta clase");
-            }
-            if (flotaHandler == null)
-            {
-                flotaHandler = new FlotaHandlerEF(ctx);
-            }
-            return flotaHandler;
         }
 
         public IHistorialVentasHandler getHVHandler()

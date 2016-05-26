@@ -111,7 +111,6 @@
     <Compile Include="Entities\Dependencia.cs" />
     <Compile Include="Entities\Destacamento.cs" />
     <Compile Include="Entities\Edificio.cs" />
-    <Compile Include="Entities\Flota.cs" />
     <Compile Include="Entities\Investigacion.cs" />
     <Compile Include="Entities\Juego.cs" />
     <Compile Include="Entities\Jugador.cs" />
@@ -123,7 +122,6 @@
     <Compile Include="Entities\Usuario.cs" />
     <Compile Include="Handlers\AlianzaHandlerEF.cs" />
     <Compile Include="Handlers\DependenciaHandlerEF.cs" />
-    <Compile Include="Handlers\FlotaHandlerEF.cs" />
     <Compile Include="Handlers\HistorialVentasHandlerEF.cs" />
     <Compile Include="Handlers\InvestigacionHandlerEF.cs" />
     <Compile Include="Handlers\JuegoHandlerEF.cs" />
@@ -139,7 +137,6 @@
     <Compile Include="Handlers\UsuarioHandlerEF.cs" />
     <Compile Include="Interfaces\IApi.cs" />
     <Compile Include="Interfaces\IDependenciaHandler.cs" />
-    <Compile Include="Interfaces\IFlotaHandler.cs" />
     <Compile Include="Interfaces\IHistorialVentasHandler.cs" />
     <Compile Include="Interfaces\IJuegoHandler.cs" />
     <Compile Include="Interfaces\IMapaNodeHandler.cs" />

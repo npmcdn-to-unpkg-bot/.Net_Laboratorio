@@ -11,7 +11,6 @@ namespace DALayer.Interfaces
         ITenantHandler getTenantHandler();
         IAlianzaHandler getAlianzaHandler();
         IDependenciaHandler getDependenciaHandler();
-        IFlotaHandler getFlotaHandler();
         IHistorialVentasHandler getHVHandler();
         IInvestigacionHandler getInvestigacionHandler();
         IJuegoHandler getJuegoHandler();

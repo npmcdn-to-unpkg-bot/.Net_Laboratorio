@@ -17,12 +17,9 @@ namespace DALayer.Handlers
             ctx = tc;
         }
 
-        public void createRecurso(Recurso recTmp)
+        public void createRecurso(Recurso r)
         {
-            Entities.Recurso rec = new Entities.Recurso();
-            rec.descripcion = recTmp.descripcion;
-            rec.foto = recTmp.foto;
-            rec.nombre = recTmp.nombre;
+            Entities.Recurso rec = new Entities.Recurso(r.nombre, r.descripcion, r.foto);
             try
             {
                 ctx.Recurso.Add(rec);
@@ -111,16 +108,6 @@ namespace DALayer.Handlers
             {
                 throw ex;
             }
-        }
-
-        public void getRecursoByUser()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void updateRecursoByUser()
-        {
-            throw new NotImplementedException();
         }
     }
 }

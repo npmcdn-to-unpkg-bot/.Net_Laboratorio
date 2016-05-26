@@ -44,7 +44,6 @@ namespace DALayer
         public virtual DbSet<Edificio> Edificio { get; set; }
         public virtual DbSet<Costo> Costo { get; set; }
         public virtual DbSet<Capacidad> Capacidad { get; set; }
-        public virtual DbSet<Flota> Flota { get; set; }
         public virtual DbSet<Investigacion> Investigacion { get; set; }
         public virtual DbSet<PaquetePaypal> PaquetePaypal { get; set; }
         public virtual DbSet<HistorialVentas> HistorialVentas { get; set; }
