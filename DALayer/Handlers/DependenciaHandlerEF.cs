@@ -17,6 +17,7 @@ namespace DALayer.Handlers
             {
                 ctx = tc;
             }
+
             public void createDependencia(Dependencia d)
             {
 
@@ -51,22 +52,21 @@ namespace DALayer.Handlers
 
             public List<Dependencia> getAllDependencias()
             {
-            List<Dependencia> dependencias = new List<Dependencia>();
-            try
-            {
-                List<Entities.Dependencia> dependenciasTmp = ctx.Dependencia.ToList();
-                foreach (Entities.Dependencia item in dependenciasTmp)
+                List<Dependencia> dependencias = new List<Dependencia>();
+                try
                 {
-                    Dependencia dep = new Dependencia(item.id, item.idProdPadre, item.idProdHijo, item.level);
-                    dependencias.Add(dep);
+                    List<Entities.Dependencia> dependenciasTmp = ctx.Dependencia.ToList();
+                    foreach (Entities.Dependencia item in dependenciasTmp)
+                    {
+                        Dependencia dep = new Dependencia(item.id, item.idProdPadre, item.idProdHijo, item.level);
+                        dependencias.Add(dep);
+                    }
+                    return dependencias;
                 }
-                return dependencias;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            throw new NotImplementedException();
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
             }
 
         public Dependencia getDependencia(int id)
@@ -86,8 +86,8 @@ namespace DALayer.Handlers
             }
         }
 
-            public void updateDependencia(Dependencia dep)
-            {
+        public void updateDependencia(Dependencia dep)
+        {
                 try
                 {
                     var depTmp = ctx.Dependencia
@@ -107,6 +107,28 @@ namespace DALayer.Handlers
                 {
                     throw ex;
                 }
+        }
+
+        public List<Dependencia> getDependenciasByProdId(int id)
+        {
+            var dependencias = new List<Dependencia>();
+            try
+            {
+                ctx.Database.Connection.Open();
+                List<Entities.Dependencia> depE = ctx.Dependencia.Where(w => w.idProdPadre == id).ToList();
+                ctx.Database.Connection.Close();
+                foreach (var item in depE)
+                {
+                    var rel = getDependencia(item.id);
+                    dependencias.Add(rel);
+                }
+
+                return dependencias;
             }
-        }    
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+    }    
 }
