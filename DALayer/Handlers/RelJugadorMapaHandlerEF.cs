@@ -98,7 +98,7 @@ namespace DALayer.Handlers
             try
             {
                 ctx.Database.Connection.Open();
-                List<Entities.RelJugadorMapa> mapasE = ctx.RelJugadorMapa.Where(w => w.j.nickname == j.nickname).ToList();
+                List<Entities.RelJugadorMapa> mapasE = ctx.RelJugadorMapa.Where(w => w.j.Id == j.id).ToList();
                 ctx.Database.Connection.Close();
                 foreach (var item in mapasE)
                 {

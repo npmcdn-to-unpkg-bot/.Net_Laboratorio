@@ -44,15 +44,8 @@ namespace DALayer.Handlers
 
         public void createEdificio(Edificio edificio)
         {
-            Entities.Edificio EdificioE = new Entities.Edificio();
-
-            EdificioE.descripcion = edificio.descripcion;
-            EdificioE.foto = edificio.foto; 
-            EdificioE.ataque = edificio.ataque;
-            EdificioE.escudo = edificio.escudo;
-            EdificioE.efectividadAtaque = edificio.efectividadAtaque;
-            EdificioE.vida = edificio.vida;
-            EdificioE.nombre = edificio.nombre;
+            Entities.Edificio EdificioE = new Entities.Edificio(edificio.nombre, edificio.descripcion, edificio.foto, edificio.costo,
+                edificio.capacidad, edificio.ataque, edificio.escudo, edificio.efectividadAtaque, edificio.vida);
 
             try
             {

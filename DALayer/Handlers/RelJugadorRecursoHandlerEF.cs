@@ -16,22 +16,14 @@ namespace DALayer.Handlers
         {
             ctx = tc;
         }
-        public void createRelJugadorRecurso(RelJugadorRecurso rjrTmp)
+
+        public void createRelJugadorRecurso(RelJugadorRecurso r)
         {
-            Entities.RelJugadorRecurso rjr = new Entities.RelJugadorRecurso();
-            
-            //pasa recurso de SharedEntities a Entities
-            pasarRecursoShaToEnt(rjr.recurso, rjrTmp.recurso);
-            //pasa colonia de SharedEntities a Entities
-            pasarColoniaShaToEnt(rjr.colonia, rjrTmp.colonia);
-            rjr.capacidad = rjrTmp.capacidad;
-            rjr.cantidadR = rjrTmp.cantidadR;
-            rjr.factorIncremento = rjrTmp.factorIncremento;
+            var rjr = new Entities.RelJugadorRecurso(r.recurso, r.colonia, r.capacidad, r.cantidadR, r.factorIncremento);
 
             try
             {
                 ctx.RelJugadorRecurso.Add(rjr);
-
                 ctx.SaveChanges();
             }
             catch (Exception e)
@@ -60,19 +52,18 @@ namespace DALayer.Handlers
         {
             try
             {
-                var rjr = (from c in ctx.RelJugadorRecurso
+                var r = (from c in ctx.RelJugadorRecurso
                            where c.id == id
                            select c).SingleOrDefault();
 
-                Recurso rec = new Recurso(rjr.recurso.id, rjr.recurso.nombre, rjr.recurso.descripcion, rjr.recurso.foto);
-                Jugador jug2 = new Jugador(rjr.colonia.j.Id, rjr.colonia.j.nombre, rjr.colonia.j.apellido,
-                                            rjr.colonia.j.Email, rjr.colonia.j.UserName, rjr.colonia.j.PasswordHash,
-                                            rjr.colonia.j.foto, rjr.colonia.j.nickname,
-                                            rjr.colonia.j.nivel, rjr.colonia.j.experiencia);
-                RelJugadorMapa col = new RelJugadorMapa(rjr.colonia.id, rjr.colonia.nivel1, rjr.colonia.nivel2, rjr.colonia.nivel3,
-                                                        rjr.colonia.nivel4, rjr.colonia.nivel5, jug2);
-                pasarColoniaEntToSha(col, rjr.colonia);
-                RelJugadorRecurso relacion = new RelJugadorRecurso(rjr.id, rec, col, rjr.capacidad, rjr.cantidadR, rjr.factorIncremento);
+                Recurso rec = new Recurso(r.recurso.id, r.recurso.nombre, r.recurso.descripcion, r.recurso.foto);
+                Jugador jug = new Jugador(r.colonia.j.Id, r.colonia.j.nombre, r.colonia.j.apellido,
+                                            r.colonia.j.Email, r.colonia.j.UserName, r.colonia.j.PasswordHash,
+                                            r.colonia.j.foto, r.colonia.j.nickname,
+                                            r.colonia.j.nivel, r.colonia.j.experiencia);
+                RelJugadorMapa col = new RelJugadorMapa(r.colonia.id, r.colonia.nivel1, r.colonia.nivel2, r.colonia.nivel3,
+                                                        r.colonia.nivel4, r.colonia.nivel5, jug);
+                RelJugadorRecurso relacion = new RelJugadorRecurso(r.id, rec, col, r.capacidad, r.cantidadR, r.factorIncremento);
                 return relacion;
             }
             catch (Exception ex)
@@ -81,20 +72,18 @@ namespace DALayer.Handlers
             }
         }
 
-        public void updateRelJugadorRecurso(RelJugadorRecurso rjr)
+        public void updateRelJugadorRecurso(RelJugadorRecurso rS)
         {
             try
             {
-                var rjrTmp = ctx.RelJugadorRecurso
-                    .Where(w => w.id == rjr.id)
+                var r = ctx.RelJugadorRecurso
+                    .Where(w => w.id == rS.id)
                     .SingleOrDefault();
 
-                if (rjrTmp != null)
+                if (r != null)
                 {
-                    pasarRecursoShaToEnt(rjrTmp.recurso, rjr.recurso);
-                    pasarColoniaShaToEnt(rjrTmp.colonia, rjr.colonia);
-                    rjrTmp.capacidad = rjr.capacidad;
-                    rjrTmp.cantidadR = rjr.cantidadR;
+                    r.capacidad = rS.capacidad;
+                    r.cantidadR = rS.cantidadR;
                     ctx.SaveChangesAsync().Wait();
                 }
             }
@@ -106,69 +95,24 @@ namespace DALayer.Handlers
 
         public List<RelJugadorRecurso> getRecursosByColonia(int id)
         {
-            throw new NotImplementedException();
-        }
+            var recursos = new List<RelJugadorRecurso>();
+            try
+            {
+                ctx.Database.Connection.Open();
+                List<Entities.RelJugadorRecurso> recursosE = ctx.RelJugadorRecurso.Where(w => w.colonia.id == id).ToList();
+                ctx.Database.Connection.Close();
+                foreach (var item in recursosE)
+                {
+                    var rel = getRelJugadorRecurso(item.id);
+                    recursos.Add(rel);
+                }
 
-        private void pasarJugadorShaToEnt(Entities.Jugador jugEnt, Jugador jugSha)
-        {
-            jugEnt.nombre = jugSha.nombre;
-            jugEnt.apellido = jugSha.apellido;
-            jugEnt.Email = jugSha.email;
-            jugEnt.UserName = jugSha.usuario;
-            jugEnt.foto = jugSha.foto;
-            jugEnt.nickname = jugSha.nickname;
-            jugEnt.nivel = jugSha.nivel;
-            jugEnt.experiencia = jugSha.experiencia;                 
-        }
-
-        private void pasarJugadorEntToSha(Jugador jugEnt, Entities.Jugador jugSha)
-        {
-            jugSha.nombre = jugEnt.nombre;
-            jugSha.apellido = jugEnt.apellido;
-            jugSha.Email = jugEnt.email;
-            jugSha.UserName = jugEnt.usuario;
-            jugSha.foto = jugEnt.foto;
-            jugSha.nickname = jugEnt.nickname;
-            jugSha.nivel = jugEnt.nivel;
-            jugSha.experiencia = jugEnt.experiencia;
-        }
-
-        private void pasarRecursoShaToEnt(Entities.Recurso recEnt, Recurso recSha)
-        {
-            recEnt.id = recSha.id;
-            recEnt.nombre = recSha.nombre;
-            recEnt.descripcion = recSha.descripcion;
-            recEnt.foto = recSha.foto;
-        }
-
-        private void pasarRecursoEntToSha(Recurso recSha, Entities.Recurso recEnt)
-        {
-            recSha.id = recEnt.id;
-            recSha.nombre = recEnt.nombre;
-            recSha.descripcion = recEnt.descripcion;
-            recSha.foto = recEnt.foto;
-        }
-
-        private void pasarColoniaShaToEnt(Entities.RelJugadorMapa relEnt, RelJugadorMapa relSha)
-        {
-            relEnt.id = relSha.id;
-            pasarJugadorShaToEnt(relEnt.j, relSha.jugador);
-            relEnt.nivel1 = relSha.nivel1;
-            relEnt.nivel2 = relSha.nivel2;
-            relEnt.nivel3 = relSha.nivel3;
-            relEnt.nivel4 = relSha.nivel4;
-            relEnt.nivel5 = relSha.nivel5;
-        }
-
-        private void pasarColoniaEntToSha(RelJugadorMapa relSha, Entities.RelJugadorMapa relEnt)
-        {
-            relSha.id = relEnt.id;
-            pasarJugadorEntToSha(relSha.jugador, relEnt.j);
-            relSha.nivel1 = relEnt.nivel1;
-            relSha.nivel2 = relEnt.nivel2;
-            relSha.nivel3 = relEnt.nivel3;
-            relSha.nivel4 = relEnt.nivel4;
-            relSha.nivel5 = relEnt.nivel5;
+                return recursos;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

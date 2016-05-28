@@ -16,15 +16,10 @@ namespace DALayer.Handlers
         {
             ctx = tc;
         }
-        public void createRelJugadorEdificio(RelJugadorEdificio rjeTmp)
+
+        public void createRelJugadorEdificio(RelJugadorEdificio r)
         {
-            Entities.RelJugadorEdificio rje = new Entities.RelJugadorEdificio();
-            
-            //pasa edificio de SharedEntities a Entities
-            pasarEdificioShaToEnt(rje.edificio, rjeTmp.edificio);
-            //pasa colonia de SharedEntities a Entities
-            pasarColoniaShaToEnt(rje.colonia, rjeTmp.colonia);
-            rje.nivelE = rjeTmp.nivelE;
+            var rje = new Entities.RelJugadorEdificio(r.colonia, r.edificio, r.nivelE);
 
             try
             {
@@ -64,13 +59,12 @@ namespace DALayer.Handlers
 
                 Edificio edi = new Edificio(rje.edificio.id, rje.edificio.descripcion, rje.edificio.foto, rje.edificio.ataque,
                                             rje.edificio.escudo, rje.edificio.efectividadAtaque, rje.edificio.vida, rje.edificio.nombre);
-                Jugador jug2 = new Jugador(rje.colonia.j.Id, rje.colonia.j.nombre, rje.colonia.j.apellido,
+                Jugador jug = new Jugador(rje.colonia.j.Id, rje.colonia.j.nombre, rje.colonia.j.apellido,
                                             rje.colonia.j.Email, rje.colonia.j.UserName, rje.colonia.j.PasswordHash,
                                             rje.colonia.j.foto, rje.colonia.j.nickname,
                                             rje.colonia.j.nivel, rje.colonia.j.experiencia);
                 RelJugadorMapa col = new RelJugadorMapa(rje.colonia.id, rje.colonia.nivel1, rje.colonia.nivel2, rje.colonia.nivel3,
-                                                        rje.colonia.nivel4, rje.colonia.nivel5, jug2);
-                pasarColoniaEntToSha(col, rje.colonia);
+                                                        rje.colonia.nivel4, rje.colonia.nivel5, jug);
                 RelJugadorEdificio edificio = new RelJugadorEdificio(rje.id, col, edi, rje.nivelE);
                 return edificio;
             }
@@ -84,15 +78,13 @@ namespace DALayer.Handlers
         {
             try
             {
-                var rjeTmp = ctx.RelJugadorEdificio
+                var r = ctx.RelJugadorEdificio
                     .Where(w => w.id == rje.id)
                     .SingleOrDefault();
 
-                if (rjeTmp != null)
+                if (r != null)
                 {
-                    pasarEdificioShaToEnt(rjeTmp.edificio, rje.edificio);
-                    pasarColoniaShaToEnt(rjeTmp.colonia, rje.colonia);
-                    rjeTmp.nivelE = rje.nivelE;
+                    r.nivelE = rje.nivelE;
                     ctx.SaveChangesAsync().Wait();
                 }
             }
@@ -104,77 +96,24 @@ namespace DALayer.Handlers
 
         public List<RelJugadorEdificio> getEdificiosByColonia(int id)
         {
-            throw new NotImplementedException();
-        }
+            var edificios = new List<RelJugadorEdificio>();
+            try
+            {
+                ctx.Database.Connection.Open();
+                List<Entities.RelJugadorEdificio> edificiosE = ctx.RelJugadorEdificio.Where(w => w.colonia.id == id).ToList();
+                ctx.Database.Connection.Close();
+                foreach (var item in edificiosE)
+                {
+                    var ed = getRelJugadorEdificio(item.id);
+                    edificios.Add(ed);
+                }
 
-        private void pasarJugadorShaToEnt(Entities.Jugador jugEnt, Jugador jugSha)
-        {
-            jugEnt.nombre = jugSha.nombre;
-            jugEnt.apellido = jugSha.apellido;
-            jugEnt.Email = jugSha.email;
-            jugEnt.UserName = jugSha.usuario;
-            jugEnt.foto = jugSha.foto;
-            jugEnt.nickname = jugSha.nickname;
-            jugEnt.nivel = jugSha.nivel;
-            jugEnt.experiencia = jugSha.experiencia;
-        }
-
-        private void pasarJugadorEntToSha(Jugador jugEnt, Entities.Jugador jugSha)
-        {
-            jugSha.nombre = jugEnt.nombre;
-            jugSha.apellido = jugEnt.apellido;
-            jugSha.Email = jugEnt.email;
-            jugSha.UserName = jugEnt.usuario;
-            jugSha.foto = jugEnt.foto;
-            jugSha.nickname = jugEnt.nickname;
-            jugSha.nivel = jugEnt.nivel;
-            jugSha.experiencia = jugEnt.experiencia;
-        }
-
-        private void pasarEdificioShaToEnt(Entities.Edificio ediEnt, Edificio ediSha)
-        {
-            ediEnt.id = ediSha.id;
-            ediEnt.nombre = ediSha.nombre;
-            ediEnt.descripcion = ediSha.descripcion;
-            ediEnt.foto = ediSha.foto;
-            ediEnt.ataque = ediSha.ataque;
-            ediEnt.escudo = ediSha.escudo;
-            ediEnt.efectividadAtaque = ediSha.efectividadAtaque;
-            ediEnt.vida = ediSha.vida;
-        }
-
-        private void pasarEdificioEntToSha(Edificio ediSha, Entities.Edificio ediEnt)
-        {
-            ediSha.id = ediEnt.id;
-            ediSha.nombre = ediEnt.nombre;
-            ediSha.descripcion = ediEnt.descripcion;
-            ediSha.foto = ediEnt.foto;
-            ediSha.ataque = ediEnt.ataque;
-            ediSha.escudo = ediEnt.escudo;
-            ediSha.efectividadAtaque = ediEnt.efectividadAtaque;
-            ediSha.vida = ediEnt.vida;
-        }
-
-        private void pasarColoniaShaToEnt(Entities.RelJugadorMapa relEnt, RelJugadorMapa relSha)
-        {
-            relEnt.id = relSha.id;
-            pasarJugadorShaToEnt(relEnt.j, relSha.jugador);
-            relEnt.nivel1 = relSha.nivel1;
-            relEnt.nivel2 = relSha.nivel2;
-            relEnt.nivel3 = relSha.nivel3;
-            relEnt.nivel4 = relSha.nivel4;
-            relEnt.nivel5 = relSha.nivel5;
-        }
-
-        private void pasarColoniaEntToSha(RelJugadorMapa relSha, Entities.RelJugadorMapa relEnt)
-        {
-            relSha.id = relEnt.id;
-            pasarJugadorEntToSha(relSha.jugador, relEnt.j);
-            relSha.nivel1 = relEnt.nivel1;
-            relSha.nivel2 = relEnt.nivel2;
-            relSha.nivel3 = relEnt.nivel3;
-            relSha.nivel4 = relEnt.nivel4;
-            relSha.nivel5 = relEnt.nivel5;
+                return edificios;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }
