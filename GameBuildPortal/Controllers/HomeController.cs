@@ -1,5 +1,10 @@
 ﻿using BLayer.Interfaces;
+using DALayer;
+using DALayer.Entities;
 using DALayer.Interfaces;
+using GameBuildPortal.Modules;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Practices.Unity;
 using Microsoft.Practices.Unity.Configuration;
 using System;
@@ -14,12 +19,18 @@ namespace GameBuildPortal.Controllers
     {
         public ActionResult Index()
         {
-            // Web API configuration and services
-            //IUnityContainer container = new UnityContainer();
-            //container.LoadConfiguration();
-            //String s = DateTime.Now.Second.ToString() + DateTime.Now.Millisecond.ToString();
-            //IGameBuilder blHandler = container.Resolve<IGameBuilder>(new ParameterOverrides { { "tId", "orgasszm2o"+s }, { "IApi", container.Resolve<IApi>() } });
-            //blHandler.createRecurso("s"+s, "s", null);
+            ApplicationUserManager _userManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            string id = User.Identity.GetUserId(); 
+            UsuarioHelper UHelper = new UsuarioHelper(_userManager, id);
+            Admin adm;
+            Jugador jug;
+            if (UHelper.isAdmin)
+            {
+                adm = UHelper.getAdmin();
+            }
+            else {
+                jug = UHelper.getJugador();
+            }
 
             return View();
         }

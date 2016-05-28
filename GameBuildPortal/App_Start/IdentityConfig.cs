@@ -34,18 +34,18 @@ namespace GameBuildPortal
     }
 
     // Configure the application user manager used in this application. UserManager is defined in ASP.NET Identity and is used by the application.
-    public class ApplicationUserManager : UserManager<Admin>
+    public class ApplicationUserManager : UserManager<Usuario>
     {
-        public ApplicationUserManager(IUserStore<Admin> store)
+        public ApplicationUserManager(IUserStore<Usuario> store)
             : base(store)
         {
         }
 
         public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context) 
         {
-            var manager = new ApplicationUserManager(new UserStore<Admin>(context.Get<ApplicationDbContext>()));
+            var manager = new ApplicationUserManager(new UserStore<Usuario>(context.Get<ApplicationDbContext>()));
             // Configure validation logic for usernames
-            manager.UserValidator = new UserValidator<Admin>(manager)
+            manager.UserValidator = new UserValidator<Usuario>(manager)
             {
                 AllowOnlyAlphanumericUserNames = false,
                 RequireUniqueEmail = true
@@ -68,11 +68,11 @@ namespace GameBuildPortal
 
             // Register two factor authentication providers. This application uses Phone and Emails as a step of receiving a code for verifying the user
             // You can write your own provider and plug it in here.
-            manager.RegisterTwoFactorProvider("Phone Code", new PhoneNumberTokenProvider<Admin>
+            manager.RegisterTwoFactorProvider("Phone Code", new PhoneNumberTokenProvider<Usuario>
             {
                 MessageFormat = "Your security code is {0}"
             });
-            manager.RegisterTwoFactorProvider("Email Code", new EmailTokenProvider<Admin>
+            manager.RegisterTwoFactorProvider("Email Code", new EmailTokenProvider<Usuario>
             {
                 Subject = "Security Code",
                 BodyFormat = "Your security code is {0}"
@@ -83,21 +83,21 @@ namespace GameBuildPortal
             if (dataProtectionProvider != null)
             {
                 manager.UserTokenProvider = 
-                    new DataProtectorTokenProvider<Admin>(dataProtectionProvider.Create("ASP.NET Identity"));
+                    new DataProtectorTokenProvider<Usuario>(dataProtectionProvider.Create("ASP.NET Identity"));
             }
             return manager;
         }
     }
 
     // Configure the application sign-in manager which is used in this application.
-    public class ApplicationSignInManager : SignInManager<Admin, string>
+    public class ApplicationSignInManager : SignInManager<Usuario, string>
     {
         public ApplicationSignInManager(ApplicationUserManager userManager, IAuthenticationManager authenticationManager)
             : base(userManager, authenticationManager)
         {
         }
 
-        public override Task<ClaimsIdentity> CreateUserIdentityAsync(Admin user)
+        public override Task<ClaimsIdentity> CreateUserIdentityAsync(Usuario user)
         {
             return user.GenerateUserIdentityAsync((ApplicationUserManager)UserManager);
         }

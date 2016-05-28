@@ -36,6 +36,9 @@ namespace DALayer
             modelBuilder.Entity<IdentityUserClaim>().ToTable("UsuarioClaims", this.SchemaName);
             modelBuilder.Entity<IdentityRole>().ToTable("UsuarioRoles", this.SchemaName).HasKey<string>(l => l.Id);
         }
+
+        public virtual DbSet<Admin> Admin { get; set; }
+        public virtual DbSet<Jugador> Jugador { get; set; }
         public virtual DbSet<Recurso> Recurso { get; set; }
         public virtual DbSet<MapaNode> MapaNode { get; set; }
         public virtual DbSet<Alianza> Alianza { get; set; }
