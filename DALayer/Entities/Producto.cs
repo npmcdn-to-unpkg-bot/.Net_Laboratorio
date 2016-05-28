@@ -12,25 +12,25 @@ namespace DALayer.Entities
         public string nombre { get; set; }
         public string descripcion { get; set; }
         public byte[] foto { get; set; }
-        public List<Costo> costo { get; set; }
+        public List<Costo> costos { get; set; }
 
         public void addCosto(Costo c)
         {
-            if (this.costo == null)
+            if (this.costos == null)
             {
-                this.costo = new List<Costo>();
+                this.costos = new List<Costo>();
             }
-            this.costo.Add(c);
+            this.costos.Add(c);
         }
 
         public void setCosto(List<Costo> c)
         {
-            this.costo = c;
+            this.costos = c;
         }
 
         public List<Costo> getCosto()
         {
-            return this.costo;
+            return this.costos;
         }
     }
 }

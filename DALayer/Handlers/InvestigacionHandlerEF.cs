@@ -19,7 +19,14 @@ namespace DALayer.Handlers
 
         public void createInvestigacion(Investigacion i)
         {
-            var inv = new Entities.Investigacion(i.nombre, i.descripcion, i.foto, i.costo, i.factorCostoNivel);
+            List<Entities.Costo> cos = new List<Entities.Costo>();
+            foreach (var item in i.costos)
+            {
+                var c = new Entities.Costo(item.idRecurso, item.valor, item.incrementoNivel);
+                cos.Add(c);
+            }
+
+            var inv = new Entities.Investigacion(i.nombre, i.descripcion, i.foto, cos, i.factorCostoNivel);
             
             try
             {
@@ -117,7 +124,7 @@ namespace DALayer.Handlers
                     invTmp.descripcion = inv.descripcion;
                     invTmp.foto = inv.foto;
                     invTmp.factorCostoNivel = inv.factorCostoNivel;
-                    invTmp.costo = costos;
+                    invTmp.costos = costos;
                     ctx.SaveChangesAsync().Wait();
                 }
             }
