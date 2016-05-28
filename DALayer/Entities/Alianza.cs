@@ -17,5 +17,15 @@ namespace DALayer.Entities
         public byte[] foto{get; set;}
 
         public Alianza() { }
+
+        public Alianza(int ide, string name, List<Jugador> ljug, Jugador adm, string desc, byte[] photo)
+        {
+            this.id = ide;
+            this.nombre = name;
+            this.miembros = ljug;
+            this.admin = adm;
+            this.descripcion = desc;
+            this.foto = photo;
+        }
     }
 }
