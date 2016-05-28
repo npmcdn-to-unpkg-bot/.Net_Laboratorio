@@ -18,5 +18,7 @@ namespace DALayer.Entities
         public int cantidad { get; set; }
         public int precio { get; set; }
         public bool ofertaActiva { get; set; }
+
+        public PaquetePaypal() { }
     }
 }

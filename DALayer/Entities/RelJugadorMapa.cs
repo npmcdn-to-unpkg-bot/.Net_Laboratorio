@@ -21,6 +21,8 @@ namespace DALayer.Entities
         public int nivel5 { get; set; }
         public Jugador j { get; set; }
 
+        public RelJugadorMapa() { }
+
         public RelJugadorMapa(int nivel1, int nivel2, int nivel3, int nivel4, int nivel5, SharedEntities.Entities.Jugador j)
         {
             var j2 = new Entities.Jugador(j.nombre, j.apellido, j.foto, j.nickname, j.nivel, j.experiencia);

@@ -17,5 +17,7 @@ namespace DALayer.Entities
             // Add custom user claims here
             return userIdentity;
         }
+
+        public Admin() { }
     }
 }

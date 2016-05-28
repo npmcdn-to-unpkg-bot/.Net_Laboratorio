@@ -12,6 +12,8 @@ namespace DALayer.Entities
     {
         public float factorCostoNivel;
 
+        public Investigacion() { }
+
         public Investigacion(string nombre, string descripcion, byte[] foto, List<SharedEntities.Entities.Costo> costosS, float factorCostoNivel)
         {
             var costos = new List<Costo>();

@@ -17,11 +17,15 @@ namespace DALayer.Entities
         public int nivel { get; set; }
         public int cantidad { get; set; }
 
+        public MapaNode() { }
+
         public MapaNode(string nombre, int nivel, int cantidad)
         {
             this.nombre = nombre;
             this.nivel = nivel;
             this.cantidad = cantidad;
         }
+
+        
     }
 }

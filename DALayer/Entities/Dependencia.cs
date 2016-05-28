@@ -14,6 +14,8 @@ namespace DALayer.Entities
         public int idProdHijo { get; set; }
         public int level { get; set; }
 
+        public Dependencia() { }
+
         public Dependencia(int idPP, int idPH, int nivel)
         {
             this.idProdPadre = idPP;

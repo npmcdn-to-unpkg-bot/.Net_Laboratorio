@@ -9,6 +9,7 @@ namespace DALayer.Entities
 {
     public class Edificio : Unidad
     {
+        public Edificio() { }
 
         public Edificio(string nombre, string descripcion, byte[] foto, List<SharedEntities.Entities.Costo> costo1, List<SharedEntities.Entities.Capacidad> capacidad1, float ataque, float escudo, float efectividadAtaque, float vida)
         {

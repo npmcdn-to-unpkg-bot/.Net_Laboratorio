@@ -20,6 +20,8 @@ namespace DALayer.Entities
         public int cantidadR { get; set; }
         public float factorIncremento { get; set; }
 
+        public RelJugadorRecurso() { }
+
         public RelJugadorRecurso(SharedEntities.Entities.Recurso r, SharedEntities.Entities.RelJugadorMapa c, int capacidad, int cantidadR, float factorIncremento)
         {
             var rec = new Entities.Recurso(r.nombre, r.descripcion, r.foto);
