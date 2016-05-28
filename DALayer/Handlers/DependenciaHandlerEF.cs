@@ -20,8 +20,14 @@ namespace DALayer.Handlers
 
             public void createDependencia(Dependencia d)
             {
+            var padre = (from c in ctx.Producto
+                        where c.id == d.padre.id
+                        select c).SingleOrDefault();
+            var hijo = (from c in ctx.Producto
+                         where c.id == d.hijo.id
+                         select c).SingleOrDefault();
 
-                Entities.Dependencia dep = new Entities.Dependencia(d.padre, d.hijo, d.level);
+            Entities.Dependencia dep = new Entities.Dependencia(padre, hijo, d.level);
                 try
                 {
                     ctx.Dependencia.Add(dep);
@@ -58,7 +64,7 @@ namespace DALayer.Handlers
                     List<Entities.Dependencia> dependenciasTmp = ctx.Dependencia.ToList();
                     foreach (Entities.Dependencia item in dependenciasTmp)
                     {
-                        Dependencia dep = new Dependencia(item.id, item.padre, item.hijo, item.level);
+                    Dependencia dep = getDependencia(item.id);
                         dependencias.Add(dep);
                     }
                     return dependencias;
@@ -73,11 +79,12 @@ namespace DALayer.Handlers
         {
             try
             {
-                var depE = (from c in ctx.Dependencia
+                var d = (from c in ctx.Dependencia
                            where c.id == id
                            select c).SingleOrDefault();
 
-                Dependencia dependencia = new Dependencia(depE.id, depE.padre, depE.hijo, depE.level);
+
+                Dependencia dependencia = new Dependencia(d.id, prodEntToSha(d.padre), prodEntToSha(d.hijo), d.level);
                 return dependencia;
             }
             catch (Exception ex)
@@ -96,8 +103,8 @@ namespace DALayer.Handlers
 
                     if (depTmp != null)
                     {
-                        depTmp.padre = dep.padre;
-                        depTmp.hijo = dep.hijo;
+                        //depTmp.padre = dep.padre;
+                        //depTmp.hijo = dep.hijo;
                         depTmp.level = dep.level;
 
                         ctx.SaveChangesAsync().Wait();
@@ -129,6 +136,27 @@ namespace DALayer.Handlers
             {
                 throw ex;
             }
+        }
+
+        Producto prodEntToSha(Entities.Producto p)
+        {
+                UnidadHandlerEF uHandler = new UnidadHandlerEF(ctx);
+            InvestigacionHandlerEF iHandler = new InvestigacionHandlerEF(ctx);
+            Producto prod;
+            if (p is Entities.Edificio)
+            {
+                prod = uHandler.getEdificio(p.id);
+            }
+            else if (p is Entities.Destacamento)
+            {
+                prod = uHandler.getDestacamento(p.id);
+            }
+            else
+            {
+                prod = iHandler.getInvestigacion(p.id);
+            }
+
+            return prod;
         }
     }    
 }

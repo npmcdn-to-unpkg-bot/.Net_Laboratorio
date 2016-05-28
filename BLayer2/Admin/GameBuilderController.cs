@@ -251,7 +251,7 @@ namespace BLayer.Admin
             builder.getRelJugadorEdificioHandler().deleteRelJugadorEdificio(id);
         }
 
-        public List<RelJugadorEdificio> getEdficiosByColonia(int id)
+        public List<RelJugadorEdificio> getEdificiosByColonia(int id)
         {
             return builder.getRelJugadorEdificioHandler().getEdificiosByColonia(id);
         }
@@ -268,7 +268,7 @@ namespace BLayer.Admin
             builder.getRelJugadorInvestigacionHandler().createRelJugadorInvestigacion(reljugadorinvestigacion);
         }
 
-        public void updateRelInvestigacionEdificio(RelJugadorInvestigacion reljugadorinvestigacion)
+        public void updateRelJugadorInvestigacion(RelJugadorInvestigacion reljugadorinvestigacion)
         {
             builder.getRelJugadorInvestigacionHandler().updateRelJugadorInvestigacion(reljugadorinvestigacion);
         }
@@ -278,7 +278,7 @@ namespace BLayer.Admin
             builder.getRelJugadorInvestigacionHandler().deleteRelJugadorInvestigacion(id);
         }
 
-        public List<RelJugadorInvestigacion> getInvestigacionByColonia(int id)
+        public List<RelJugadorInvestigacion> getInvestigacionesByColonia(int id)
         {
             return builder.getRelJugadorInvestigacionHandler().getInvestigacionesByColonia(id);
         }
@@ -290,7 +290,7 @@ namespace BLayer.Admin
             return builder.getRelJugadorMapaHandler().getRelJugadorMapa(id);
         }
 
-        public void createRelJugadorDestacamento(RelJugadorMapa reljugadormapa)
+        public void createRelJugadorMapa(RelJugadorMapa reljugadormapa)
         {
             builder.getRelJugadorMapaHandler().createRelJugadorMapa(reljugadormapa);
         }

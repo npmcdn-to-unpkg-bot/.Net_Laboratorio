@@ -112,30 +112,21 @@ namespace DALayer.Handlers
         public List<Destacamento> getAllDestacamentos()
         {
             List<Destacamento> destacamentos = new List<Destacamento>();
-            //try
-            //{
+            try
+            {
                 List<Entities.Destacamento> destE = ctx.Destacamento.ToList();
                 foreach (Entities.Destacamento item in destE)
                 {
-                    List<Costo> cos = new List<Costo>();
-                    foreach (Entities.Costo item2 in item.costos)
-                    {
-                        var c = new Costo(item2.idRecurso, item2.valor, item2.incrementoNivel);
-                        cos.Add(c);
-                    }
-                List<Capacidad> cap = new List<Capacidad>();
-
-                    Destacamento dest = new Destacamento(item.id, item.descripcion, item.foto, item.ataque,
-                        item.escudo, item.efectividadAtaque, item.vida, item.velocidad, item.enMision, item.nombre, cos);
+                    Destacamento dest = getDestacamento(item.id);
                     destacamentos.Add(dest);
                 }
 
                 return destacamentos;
-            //}
-            //catch (Exception ex)
-            //{
-            //    throw ex;
-            //}
+            }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
         }
 
         public List<Edificio> getAllEdificios()
@@ -179,8 +170,14 @@ namespace DALayer.Handlers
                     var c = new Costo(item.idRecurso, item.valor, item.incrementoNivel);
                     cos.Add(c);
                 }
+                List<Capacidad> cap = new List<Capacidad>();
+                foreach (var item in destE.capacidad)
+                {
+                    var c = new Capacidad(item.idRecurso, item.valor, item.incrementoNivel);
+                    cap.Add(c);
+                }
                 Destacamento dest = new Destacamento(destE.id, destE.descripcion, destE.foto, destE.ataque,
-                        destE.escudo, destE.efectividadAtaque, destE.vida, destE.velocidad, destE.enMision, destE.nombre, cos);
+                        destE.escudo, destE.efectividadAtaque, destE.vida, destE.velocidad, destE.enMision, destE.nombre, cos, cap);
                 return dest;
             }
             catch (Exception ex)
