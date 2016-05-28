@@ -13,3 +13,5 @@ SharedEntities/obj/
 SharedEntities/bin/
 SuperAdmin/bin/
 SuperAdmin/obj/Debug/SuperAdmin.dll
+SuperAdmin/obj/Debug/SuperAdmin.csprojResolveAssemblyReference.cache
+SuperAdmin/obj/Debug/SuperAdmin.pdb
