@@ -10,6 +10,7 @@ namespace DALayer.Entities
 {
     public class Jugador: Usuario
     {
+
         public string nickname { get; set; }
         public int nivel { get; set; }
         public float experiencia { get; set; }
@@ -19,6 +20,20 @@ namespace DALayer.Entities
             var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
             // Add custom user claims here
             return userIdentity;
+        }
+
+        public Jugador(string nombre, string apellido, byte[] foto, string nickname, int nivel, float experiencia)
+        {
+            this.nombre = nombre;
+            this.apellido = apellido;
+            this.foto = foto;
+            this.nickname = nickname;
+            this.nivel = nivel;
+            this.experiencia = experiencia;
+        }
+
+        public Jugador()
+        {
         }
     }
 }

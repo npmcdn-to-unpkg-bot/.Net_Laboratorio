@@ -11,8 +11,8 @@ namespace DALayer.Interfaces
     {
         void createRelJugadorEdificio(RelJugadorEdificio relacion);
         void deleteRelJugadorEdificio(int id);
-        List<RelJugadorEdificio> getAllRelJugadorEdificio();
         void updateRelJugadorEdificio(RelJugadorEdificio relacion);
         RelJugadorEdificio getRelJugadorEdificio(int id);
+        List<RelJugadorEdificio> getEdificiosByColonia(int id);
     }
 }

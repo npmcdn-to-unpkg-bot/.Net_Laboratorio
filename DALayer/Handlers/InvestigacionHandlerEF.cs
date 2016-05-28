@@ -17,16 +17,9 @@ namespace DALayer.Handlers
             ctx = tc;
         }
 
-        public void createInvestigacion(Investigacion invTmp)
+        public void createInvestigacion(Investigacion i)
         {
-            Entities.Investigacion inv = new Entities.Investigacion();
-            
-            inv.nombre = invTmp.nombre;
-            inv.descripcion = invTmp.descripcion;
-            inv.foto = invTmp.foto;
-            inv.costo = invTmp.costo;
-            inv.factorCostoNivel = invTmp.factorCostoNivel;
-            inv.nivel = invTmp.nivel;
+            var inv = new Entities.Investigacion(i.nombre, i.descripcion, i.foto, i.costo, i.factorCostoNivel);
             
             try
             {
@@ -58,16 +51,22 @@ namespace DALayer.Handlers
 
         public List<Investigacion> getAllInvestigaciones()
         {
-            List<Investigacion> invest = new List<Investigacion>();
+            var investigacionesS = new List<Investigacion>();
             try
             {
-                List<Entities.Investigacion> invTmp = ctx.Investigacion.ToList();
-                foreach (Entities.Investigacion item in invTmp)
+                var investigacionesE = ctx.Investigacion.ToList();
+                foreach (var i in investigacionesE)
                 {
-                    Investigacion inv = new Investigacion(item.id, item.nombre, item.descripcion, item.foto, item.costo, item.factorCostoNivel, item.nivel);
-                    invest.Add(inv);
+                    var costos = new List<Costo>();
+                    foreach (var c in i.getCosto())
+                    {
+                        var cos = new Costo(c.idRecurso, c.valor, c.incrementoNivel);
+                        costos.Add(cos);
+                    }
+                    var inv = new Investigacion(i.id, i.nombre, i.descripcion, i.foto, costos, i.factorCostoNivel);
+                    investigacionesS.Add(inv);
                 }
-                return invest;
+                return investigacionesS;
             }
             catch (Exception ex)
             {
@@ -83,7 +82,13 @@ namespace DALayer.Handlers
                            where c.id == id
                            select c).SingleOrDefault();
 
-                Investigacion investigacion = new Investigacion(inv.id, inv.nombre, inv.descripcion, inv.foto, inv.costo, inv.factorCostoNivel, inv.nivel);
+                var costos = new List<Costo>();
+                foreach (var c in inv.getCosto())
+                {
+                    var cos = new Costo(c.idRecurso, c.valor, c.incrementoNivel);
+                    costos.Add(cos);
+                }
+                Investigacion investigacion = new Investigacion(inv.id, inv.nombre, inv.descripcion, inv.foto, costos, inv.factorCostoNivel);
                 return investigacion;
             }
             catch (Exception ex)
@@ -102,12 +107,17 @@ namespace DALayer.Handlers
 
                 if (invTmp != null)
                 {
+                    var costos = new List<Entities.Costo>();
+                    foreach (var c in invTmp.getCosto())
+                    {
+                        var cos = new Entities.Costo(c.idRecurso, c.valor, c.incrementoNivel);
+                        costos.Add(cos);
+                    }
                     invTmp.nombre = inv.nombre;
                     invTmp.descripcion = inv.descripcion;
                     invTmp.foto = inv.foto;
                     invTmp.factorCostoNivel = inv.factorCostoNivel;
-                    invTmp.costo = inv.costo;
-                    invTmp.nivel = inv.nivel;
+                    invTmp.costo = costos;
                     ctx.SaveChangesAsync().Wait();
                 }
             }

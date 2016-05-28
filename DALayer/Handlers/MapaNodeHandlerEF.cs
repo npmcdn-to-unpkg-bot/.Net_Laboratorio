@@ -16,12 +16,9 @@ namespace DALayer.Handlers
         {
             ctx = tc;
         }
-        public void CreateMapa(MapaNode mapa)
+        public void CreateMapa(MapaNode m)
         {
-            Entities.MapaNode mapaE = new Entities.MapaNode();
-            mapaE.nombre = mapa.nombre;
-            mapaE.nivel = mapa.nivel;
-            mapaE.cantidad = mapa.cantidad;
+            var mapaE = new Entities.MapaNode(m.nombre, m.nivel, m.cantidad);
 
             try
             {
@@ -52,16 +49,16 @@ namespace DALayer.Handlers
 
         public List<MapaNode> getAllMapas()
         {
-            List<MapaNode> mapas = new List<MapaNode>();
+            var mapasS = new List<MapaNode>();
             try
             {
-                List<Entities.MapaNode> mapasE = ctx.MapaNode.ToList();
-                foreach (Entities.MapaNode item in mapasE)
+                var mapasE = ctx.MapaNode.ToList();
+                foreach (var item in mapasE)
                 {
                     MapaNode map = new MapaNode(item.id, item.nombre, item.nivel, item.cantidad);
-                    mapas.Add(map);
+                    mapasS.Add(map);
                 }
-                return mapas;
+                return mapasS;
             }
             catch (Exception ex)
             {

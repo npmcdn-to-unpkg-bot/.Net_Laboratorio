@@ -8,20 +8,13 @@ namespace SharedEntities.Entities
 {
     public abstract class Unidad : Producto
     {
-        public List<Costo> costo { get; set; }
         public List<Capacidad> capacidad { get; set; }
         public float ataque { get; set; }
         public float escudo { get; set; }
         public float efectividadAtaque { get; set; }
         public float vida { get; set; }
 
-        public void addCosto(Costo c)
-        {
-            if (this.costo == null) {
-                this.costo = new List<Costo>();
-            }
-            this.costo.Add(c);
-        }
+        
         public void addCapacidad(Capacidad c)
         {
             if (this.capacidad == null)
@@ -30,10 +23,7 @@ namespace SharedEntities.Entities
             }
             this.capacidad.Add(c);
         }
-        public void setCosto(List<Costo> c)
-        {
-            this.costo = c;
-        }
+        
         public void setCapacidad(List<Capacidad> c)
         {
             this.capacidad = c;

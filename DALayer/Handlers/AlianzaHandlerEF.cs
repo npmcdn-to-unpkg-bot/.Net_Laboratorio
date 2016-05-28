@@ -27,27 +27,13 @@ namespace DALayer.Handlers
             alli.miembros = new List<Entities.Jugador>();
             foreach (Jugador item in alliTmp.miembros)
             {
-                Entities.Jugador jug = new Entities.Jugador();
-                jug.apellido = item.apellidos;
-                jug.Email = item.email;
-                jug.experiencia = item.experiencia;
-                jug.foto = item.foto;
-                jug.Id = item.Id;
-                jug.nickname = item.nickname;
-                jug.nivel = item.nivel;
-                jug.UserName = item.UserName;
+                Entities.Jugador jug = new Entities.Jugador(item.nombre, item.apellido, item.foto, item.nickname,
+                    item.nivel, item.experiencia);
                 alli.miembros.Add(jug);
             }
 
-            alli.admin = new Entities.Jugador();
-            alli.admin.apellido = alliTmp.admin.apellidos;
-            alli.admin.Email = alliTmp.admin.email;
-            alli.admin.experiencia = alliTmp.admin.experiencia;
-            alli.admin.foto = alliTmp.admin.foto;
-            alli.admin.Id = alliTmp.admin.Id;
-            alli.admin.nickname = alliTmp.admin.nickname;
-            alli.admin.nivel = alliTmp.admin.nivel;
-            alli.admin.UserName = alliTmp.admin.UserName;
+            alli.admin = new Entities.Jugador(alliTmp.admin.nombre, alliTmp.admin.apellido, alliTmp.admin.foto,
+                alliTmp.admin.nickname, alliTmp.admin.nivel, alliTmp.admin.experiencia);
 
             alli.descripcion = alliTmp.descripcion;
             alli.foto = alliTmp.foto;
@@ -98,15 +84,8 @@ namespace DALayer.Handlers
                     alliTmp.miembros = new List<Entities.Jugador>();
                     foreach (Jugador item in alli.miembros)
                     {
-                        Entities.Jugador jug = new Entities.Jugador();
-                        jug.apellido = item.apellidos;
-                        jug.Email = item.email;
-                        jug.experiencia = item.experiencia;
-                        jug.foto = item.foto;
-                        jug.Id = item.Id;
-                        jug.nickname = item.nickname;
-                        jug.nivel = item.nivel;
-                        jug.UserName = item.UserName;
+                        Entities.Jugador jug = new Entities.Jugador(item.nombre, item.apellido, item.foto, item.nickname,
+                    item.nivel, item.experiencia);
                         alliTmp.miembros.Add(jug);
                     }
 

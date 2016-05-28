@@ -11,8 +11,8 @@ namespace DALayer.Interfaces
     {
         void createRelJugadorRecurso(RelJugadorRecurso relacion);
         void deleteRelJugadorRecurso(int id);
-        List<RelJugadorRecurso> getAllRelJugadorRecurso();
         void updateRelJugadorRecurso(RelJugadorRecurso relacion);
         RelJugadorRecurso getRelJugadorRecurso(int id);
+        List<RelJugadorRecurso> getRecursosByColonia(int id);
     }
 }

@@ -11,8 +11,8 @@ namespace DALayer.Interfaces
     {
         void createRelJugadorInvestigacion(RelJugadorInvestigacion relacion);
         void deleteRelJugadorInvestigacion(int id);
-        List<RelJugadorInvestigacion> getAllRelJugadorInvestigacion();
         void updateRelJugadorInvestigacion(RelJugadorInvestigacion relacion);
         RelJugadorInvestigacion getRelJugadorInvestigacion(int id);
+        List<RelJugadorInvestigacion> getInvestigacionesByColonia(int id);
     }
 }

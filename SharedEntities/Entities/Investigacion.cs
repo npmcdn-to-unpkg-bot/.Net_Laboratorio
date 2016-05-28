@@ -8,11 +8,9 @@ namespace SharedEntities.Entities
 {
     public class Investigacion : Producto
     {
-        public Dictionary<String, float> costo;
-        public Dictionary<String, float> factorCostoNivel;
-        public int nivel;
+        public float factorCostoNivel;
 
-        public Investigacion(int id, string name, string description, byte[] photo, Dictionary<String, float> cost, Dictionary<String, float> costLevelFactor, int level )
+        public Investigacion(int id, string name, string description, byte[] photo, List<Costo> cost, float costLevelFactor)
         {
             this.id = id;
             this.nombre = name;
@@ -20,7 +18,6 @@ namespace SharedEntities.Entities
             this.foto = photo;
             this.costo = cost;
             this.factorCostoNivel = costLevelFactor;
-            this.nivel = level;
         }
     }
 }

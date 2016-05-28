@@ -2,9 +2,9 @@
 {
     public class Costo
     {
-        string idRecurso { get; set; }
-        int valor { get; set; }
-        float incrementoNivel { get; set; }
+        public string idRecurso { get; set; }
+        public int valor { get; set; }
+        public float incrementoNivel { get; set; }
 
         public Costo(string idRecurso, int valor, float inc) {
             this.idRecurso = idRecurso;

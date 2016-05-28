@@ -8,12 +8,12 @@ namespace SharedEntities.Entities
 {
     public abstract class Usuario
     {
-        public String name;
-        public String apellidos;
+        public String nombre;
+        public String apellido;
         public String email;
         public String usuario;
         public String password;
         public byte[] foto;
-        public int id;
+        public string id;
     }
 }

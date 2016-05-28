@@ -19,9 +19,7 @@ namespace DALayer.Handlers
         public void createRelJugadorInvestigacion(RelJugadorInvestigacion rjiTmp)
         {
             Entities.RelJugadorInvestigacion rji = new Entities.RelJugadorInvestigacion();
-
-            //pasa jugador de SharedEntities a Entities 
-            pasarJugadorShaToEnt(rji.jugador, rjiTmp.jugador);
+            
             //pasa investigacion de SharedEntities a Entities
             pasarInvestigacionShaToEnt(rji.investigacion, rjiTmp.investigacion);
             //pasa colonia de SharedEntities a Entities
@@ -56,68 +54,6 @@ namespace DALayer.Handlers
             }
         }
 
-        public List<RelJugadorInvestigacion> getAllRelJugadorInvestigacion()
-        {
-            List<RelJugadorInvestigacion> listRel = new List<RelJugadorInvestigacion>();
-            try
-            {
-                List<Entities.RelJugadorInvestigacion> rjiTmp = ctx.RelJugadorInvestigacion.ToList();
-                foreach (Entities.RelJugadorInvestigacion item in rjiTmp)
-                {
-                    Jugador jug = new Jugador(item.jugador.Id, item.jugador.nombre, item.jugador.apellido,
-                                              item.jugador.Email, item.jugador.UserName, item.jugador.foto,
-                                              item.jugador.nickname, item.jugador.nivel, item.jugador.experiencia);
-                    Investigacion inv = new Investigacion(item.investigacion.id, item.investigacion.nombre, item.investigacion.descripcion, 
-                                                          item.investigacion.foto, item.investigacion.costo, item.investigacion.factorCostoNivel,
-                                                          item.nivel);
-                    Jugador jug2 = new Jugador(item.colonia.jugador.Id, item.colonia.jugador.nombre, item.colonia.jugador.apellido,
-                                                item.colonia.jugador.Email, item.colonia.jugador.UserName,
-                                                item.colonia.jugador.foto, item.colonia.jugador.nickname,
-                                                item.colonia.jugador.nivel, item.colonia.jugador.experiencia);
-                    RelJugadorMapa col = new RelJugadorMapa(item.colonia.id, item.colonia.nivel1, item.colonia.nivel2, item.colonia.nivel3,
-                                                            item.colonia.nivel4, item.colonia.nivel5, jug2);
-                    pasarColoniaEntToSha(col, item.colonia);
-                    RelJugadorInvestigacion rel = new RelJugadorInvestigacion(item.id, jug, col, inv, item.nivel);
-                                                                    
-                    listRel.Add(rel);
-                }
-                return listRel;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-        public RelJugadorInvestigacion getRelJugadorInvestigacion(int id)
-        {
-            try
-            {
-                var rji = (from c in ctx.RelJugadorInvestigacion
-                           where c.id == id
-                           select c).SingleOrDefault();
-                Jugador jug = new Jugador(rji.jugador.Id, rji.jugador.nombre, rji.jugador.apellido,
-                                          rji.jugador.Email, rji.jugador.UserName, rji.jugador.foto,
-                                          rji.jugador.nickname, rji.jugador.nivel, rji.jugador.experiencia);
-                Investigacion inv = new Investigacion(rji.investigacion.id, rji.investigacion.nombre, rji.investigacion.descripcion, 
-                                                        rji.investigacion.foto, rji.investigacion.costo, 
-                                                        rji.investigacion.factorCostoNivel, rji.investigacion.nivel);
-                Jugador jug2 = new Jugador(rji.colonia.jugador.Id, rji.colonia.jugador.nombre, rji.colonia.jugador.apellido,
-                                            rji.colonia.jugador.Email, rji.colonia.jugador.UserName,
-                                            rji.colonia.jugador.foto, rji.colonia.jugador.nickname,
-                                            rji.colonia.jugador.nivel, rji.colonia.jugador.experiencia);
-                RelJugadorMapa col = new RelJugadorMapa(rji.colonia.id, rji.colonia.nivel1, rji.colonia.nivel2, rji.colonia.nivel3,
-                                                        rji.colonia.nivel4, rji.colonia.nivel5, jug2);
-                pasarColoniaEntToSha(col, rji.colonia);
-                RelJugadorInvestigacion investigacion = new RelJugadorInvestigacion(rji.id, jug, col, inv, rji.nivel);
-                return investigacion;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
         public void updateRelJugadorInvestigacion(RelJugadorInvestigacion rji)
         {
             try
@@ -128,7 +64,6 @@ namespace DALayer.Handlers
 
                 if (rjiTmp != null)
                 {
-                    pasarJugadorShaToEnt(rjiTmp.jugador, rji.jugador);
                     pasarInvestigacionShaToEnt(rjiTmp.investigacion, rji.investigacion);
                     pasarColoniaShaToEnt(rjiTmp.colonia, rji.colonia);
                     rjiTmp.nivel = rji.nivel;
@@ -141,11 +76,20 @@ namespace DALayer.Handlers
             }
         }
 
+        public RelJugadorInvestigacion getRelJugadorInvestigacion(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<RelJugadorInvestigacion> getInvestigacionesByColonia(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         private void pasarJugadorShaToEnt(Entities.Jugador jugEnt, Jugador jugSha)
         {
-            jugEnt.Id = jugSha.Id;
-            jugEnt.nombre = jugSha.name;
-            jugEnt.apellido = jugSha.apellidos;
+            jugEnt.nombre = jugSha.nombre;
+            jugEnt.apellido = jugSha.apellido;
             jugEnt.Email = jugSha.email;
             jugEnt.UserName = jugSha.usuario;
             jugEnt.foto = jugSha.foto;
@@ -156,9 +100,8 @@ namespace DALayer.Handlers
 
         private void pasarJugadorEntToSha(Jugador jugEnt, Entities.Jugador jugSha)
         {
-            jugSha.Id = jugEnt.Id;
-            jugSha.nombre = jugEnt.name;
-            jugSha.apellido = jugEnt.apellidos;
+            jugSha.nombre = jugEnt.nombre;
+            jugSha.apellido = jugEnt.apellido;
             jugSha.Email = jugEnt.email;
             jugSha.UserName = jugEnt.usuario;
             jugSha.foto = jugEnt.foto;
@@ -173,7 +116,6 @@ namespace DALayer.Handlers
             invEnt.nombre = invSha.nombre;
             invEnt.descripcion = invSha.descripcion;
             invEnt.foto = invSha.foto;
-            invEnt.nivel = invSha.nivel;
             invEnt.factorCostoNivel = invSha.factorCostoNivel;
         }
 
@@ -183,14 +125,13 @@ namespace DALayer.Handlers
             invSha.nombre = invEnt.nombre;
             invSha.descripcion = invEnt.descripcion;
             invSha.foto = invEnt.foto;
-            invSha.nivel = invEnt.nivel;
             invSha.factorCostoNivel = invEnt.factorCostoNivel;
         }
 
         private void pasarColoniaShaToEnt(Entities.RelJugadorMapa relEnt, RelJugadorMapa relSha)
         {
             relEnt.id = relSha.id;
-            pasarJugadorShaToEnt(relEnt.jugador, relSha.jugador);
+            pasarJugadorShaToEnt(relEnt.j, relSha.jugador);
             relEnt.nivel1 = relSha.nivel1;
             relEnt.nivel2 = relSha.nivel2;
             relEnt.nivel3 = relSha.nivel3;
@@ -201,7 +142,7 @@ namespace DALayer.Handlers
         private void pasarColoniaEntToSha(RelJugadorMapa relSha, Entities.RelJugadorMapa relEnt)
         {
             relSha.id = relEnt.id;
-            pasarJugadorEntToSha(relSha.jugador, relEnt.jugador);
+            pasarJugadorEntToSha(relSha.jugador, relEnt.j);
             relSha.nivel1 = relEnt.nivel1;
             relSha.nivel2 = relEnt.nivel2;
             relSha.nivel3 = relEnt.nivel3;
