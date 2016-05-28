@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DALayer.Api
 {
-    public class EFApi: IApi
+    public class EFApi : IApi
     {
         private TenantContext ctx;
         private AdminContext actx;
@@ -24,6 +24,11 @@ namespace DALayer.Api
         private UnidadHandlerEF unidadHandler;
         private UsuarioHandlerEF usuarioHandler;
         private TenantHandlerEF tenantHandler;
+        private RelJugadorEdificioHandlerEF relJugadorEdificioHandler;
+        private RelJugadorInvestigacionHandlerEF relJugadorInvestigacionHandler;
+        private RelJugadorMapaHandlerEF relJugadorMapaHandler;
+        private RelJugadorRecursoHandlerEF relJugadorRecursoHandler;
+        private RelJugadorDestacamentoHandlerEF relJugadorDestacamentoHandler;
 
         public ITenantHandler getTenantHandler() {
             if (tenantHandler == null)
@@ -176,6 +181,71 @@ namespace DALayer.Api
                 usuarioHandler = new UsuarioHandlerEF(ctx);
             }
             return usuarioHandler;
+        }
+
+        public IRelJugadorEdificioHandler getRelJugadorEdificioHandler()
+        {
+            if (ctx == null)
+            {
+                throw new Exception("Tenes que llamar a la funcion setTenant despues de inicializar esta clase");
+            }
+            if (relJugadorEdificioHandler == null)
+            {
+                relJugadorEdificioHandler = new RelJugadorEdificioHandlerEF(ctx);
+            }
+            return relJugadorEdificioHandler;
+        }
+
+        public IRelJugadorMapaHandler getRelJugadorMapaHandler()
+        {
+            if (ctx == null)
+            {
+                throw new Exception("Tenes que llamar a la funcion setTenant despues de inicializar esta clase");
+            }
+            if (relJugadorMapaHandler == null)
+            {
+                relJugadorMapaHandler = new RelJugadorMapaHandlerEF(ctx);
+            }
+            return relJugadorMapaHandler;
+        }
+        
+        public IRelJugadorRecursoHandler getRelJugadorRecursoHandler()
+        {
+            if (ctx == null)
+            {
+                throw new Exception("Tenes que llamar a la funcion setTenant despues de inicializar esta clase");
+            }
+            if (relJugadorRecursoHandler == null)
+            {
+                relJugadorRecursoHandler = new RelJugadorRecursoHandlerEF(ctx);
+            }
+            return relJugadorRecursoHandler;
+        }
+
+        public IRelJugadorInvestigacionHandler getRelJugadorInvestigacionHandler()
+        {
+            if (ctx == null)
+            {
+                throw new Exception("Tenes que llamar a la funcion setTenant despues de inicializar esta clase");
+            }
+            if (relJugadorInvestigacionHandler == null)
+            {
+                relJugadorInvestigacionHandler = new RelJugadorInvestigacionHandlerEF(ctx);
+            }
+            return relJugadorInvestigacionHandler;
+        }
+
+        public IRelJugadorDestacamentoHandler getRelJugadorDestacamentoHandler()
+        {
+            if (ctx == null)
+            {
+                throw new Exception("Tenes que llamar a la funcion setTenant despues de inicializar esta clase");
+            }
+            if (relJugadorDestacamentoHandler == null)
+            {
+                relJugadorDestacamentoHandler = new RelJugadorDestacamentoHandlerEF(ctx);
+            }
+            return relJugadorDestacamentoHandler;
         }
     }
 }

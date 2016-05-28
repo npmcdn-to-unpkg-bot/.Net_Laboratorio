@@ -14,9 +14,10 @@ namespace DALayer.Entities
         // Duda de si es una entidad
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int id { get; set; }
-        public Dictionary<String, float> estadoInicial { get; set; }
-
+        public int id { get; set; }       
+        public RelJugadorMapa mapaInicial { get; set; }
+        public RelJugadorRecurso recursoInicial { set; get; }
+            
         public EstadoInicialJuego() { }
     }
 }

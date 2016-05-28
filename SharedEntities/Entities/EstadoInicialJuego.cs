@@ -9,6 +9,7 @@ namespace SharedEntities.Entities
     public class EstadoInicialJuego
     {
         public int id;
-        public Dictionary<String, float> estadoInicial;
+        public RelJugadorMapa mapaInicial;
+        public RelJugadorRecurso recursoInicial;
     }
 }
