@@ -16,5 +16,7 @@ namespace DALayer.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id { get; set; }
         public Dictionary<String, float> estadoInicial { get; set; }
+
+        public EstadoInicialJuego() { }
     }
 }

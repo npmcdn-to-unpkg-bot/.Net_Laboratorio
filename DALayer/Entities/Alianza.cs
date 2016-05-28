@@ -15,5 +15,7 @@ namespace DALayer.Entities
         public Jugador admin{get; set;}
         public String descripcion{get; set;}
         public byte[] foto{get; set;}
+
+        public Alianza() { }
     }
 }

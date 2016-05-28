@@ -13,6 +13,8 @@ namespace DALayer.Entities
         public string descripcion { get; set; }
         public byte[] foto { get; set; }
 
+        public Recurso() { }
+
         public Recurso(string nombre, string descripcion, byte[] foto)
         {
             this.nombre = nombre;

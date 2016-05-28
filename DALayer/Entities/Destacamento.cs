@@ -10,5 +10,7 @@ namespace DALayer.Entities
     {
         public float velocidad { get; set; }
         public Boolean enMision { get; set; }
+
+        public Destacamento() { }
     }
 }

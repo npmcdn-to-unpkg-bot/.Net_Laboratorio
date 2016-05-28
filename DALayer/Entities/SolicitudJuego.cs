@@ -15,5 +15,6 @@ namespace DALayer.Entities
         public String token { get; set; }
         public DateTime expirationTime { get; set; }
 
+        public SolicitudJuego() { }
     }
 }

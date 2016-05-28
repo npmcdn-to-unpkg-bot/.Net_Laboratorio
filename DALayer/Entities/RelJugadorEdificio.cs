@@ -18,6 +18,8 @@ namespace DALayer.Entities
         public Edificio edificio { get; set; }
         public int nivelE { get; set; }
 
+        public RelJugadorEdificio() { }
+
         public RelJugadorEdificio(SharedEntities.Entities.RelJugadorMapa c, SharedEntities.Entities.Edificio e, int nivelE)
         {
             var col = new RelJugadorMapa(c.nivel1, c.nivel2, c.nivel3, c.nivel4, c.nivel5, c.jugador);

@@ -16,5 +16,7 @@ namespace DALayer.Entities
         public int idusuario { get; set; }
         public string nombreOferta { get; set; }
         public DateTime fechaCompra { get; set; }
+
+        public HistorialVentas() { }
     }
 }

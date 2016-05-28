@@ -16,5 +16,7 @@ namespace DALayer.Entities
         public RelJugadorMapa colonia { get; set; }
         public Destacamento destacamento { get; set; }
         public int cantidad { get; set; } 
+
+        public RelJugadorDestacamento() { }
     }
 }

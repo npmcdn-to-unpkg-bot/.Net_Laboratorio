@@ -9,6 +9,8 @@ namespace DALayer.Entities
         public int valor { get; set; }
         public float incrementoNivel { get; set; }
 
+        public Capacidad() { }
+
         public Capacidad(string idRecurso, int valor, float incrementoNivel)
         {
             this.idRecurso = idRecurso;
