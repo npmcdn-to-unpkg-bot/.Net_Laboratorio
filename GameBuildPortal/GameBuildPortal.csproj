@@ -590,6 +590,11 @@
     <Content Include="SPA\admin\views\recurso\add.html" />
     <Content Include="SPA\admin\views\recurso\edit.html" />
     <Content Include="SPA\admin\views\recurso\list.html" />
+    <Content Include="SPA\front\services\jugador_destacamento.js" />
+    <Content Include="SPA\front\services\jugador_edificio.js" />
+    <Content Include="SPA\front\services\jugador_investigacion.js" />
+    <Content Include="SPA\front\services\jugador_mapa.js" />
+    <Content Include="SPA\front\services\jugador_recurso.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
