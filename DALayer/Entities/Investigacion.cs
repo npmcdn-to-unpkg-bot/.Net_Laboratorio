@@ -10,7 +10,7 @@ namespace DALayer.Entities
 {
     public class Investigacion : Producto
     {
-        public float factorCostoNivel;
+        public float factorCostoNivel { get; set; }
 
         public Investigacion() { }
 
