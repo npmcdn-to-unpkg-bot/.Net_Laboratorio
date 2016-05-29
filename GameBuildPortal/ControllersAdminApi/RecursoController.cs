@@ -9,49 +9,49 @@ using System.Web.Http;
 
 namespace GameBuildPortal.ControllersApi
 {
-    public class DependenciaController : ApiController
+    public class RecursoController : ApiController
     {
-        public static IGameBuilder blHandler;
+        public static IAdmin blHandler;
 
-        public DependenciaController()
+        public RecursoController()
         {
-            blHandler = WebApiConfig.BuilderService(""); 
+            blHandler = WebApiConfig.BuilderService("");
         }
 
         [HttpGet]
-        public Dependencia Get(int id)
+        public Recurso Get(int id)
         {
-            Dependencia dependencia = blHandler.getDependencia(id);
-            if (dependencia == null)
+            Recurso recurso = blHandler.getRecurso(id);
+            if (recurso == null)
             {
                 throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.NotFound));
             }
 
-            return dependencia;
+            return recurso;
         }
 
         [HttpGet]
-        public IEnumerable<Dependencia> Get()
+        public IEnumerable<Recurso> Get()
         {
-            return blHandler.getAllDependencias();
+            return blHandler.getAllRecursos();
         }
 
         [HttpPut]
-        public HttpResponseMessage Put(int id, Dependencia dependencia)
+        public HttpResponseMessage Put(int id, Recurso recurso)
         {
             if (!ModelState.IsValid)
             {
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
             }
 
-            if (id != dependencia.id)
+            if (id != recurso.id)
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest);
             }
 
             try
             {
-                blHandler.updateDependencia(dependencia);
+                blHandler.updateRecurso(recurso);
             }
             catch (Exception ex)
             {
@@ -62,13 +62,13 @@ namespace GameBuildPortal.ControllersApi
         }
 
         [HttpPost]
-        public HttpResponseMessage Post(Dependencia dependencia)
+        public HttpResponseMessage Post(Recurso recurso)
         {
             if (ModelState.IsValid)
             {
-                blHandler.createDependencia(dependencia);
+                blHandler.createRecurso(recurso);
 
-                HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, dependencia);
+                HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, recurso);
                 response.Headers.Location = new Uri(Url.Link("DefaultApi", new { controller = "Admin" }));
                 return response;
             }
@@ -83,7 +83,7 @@ namespace GameBuildPortal.ControllersApi
         {
             try
             {
-                blHandler.deleteDependencia(id);
+                blHandler.deleteRecurso(id);
             }
             catch (Exception ex)
             {

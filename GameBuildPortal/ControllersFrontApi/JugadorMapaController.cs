@@ -1,57 +1,57 @@
-﻿using BLayer.Interfaces;
-using SharedEntities.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using BLayer.Interfaces;
+using SharedEntities.Entities;
 
-namespace GameBuildPortal.ControllersApi
+namespace GameBuildPortal.ControllersFrontApi
 {
-    public class DestacamentoController : ApiController
+    public class JugadorMapaController : ApiController
     {
-        public static IGameBuilder blHandler;
+        public static IFront blHandler;
 
-        public DestacamentoController()
+        public JugadorMapaController()
         {
-            blHandler = WebApiConfig.BuilderService("");
+            blHandler = WebApiConfig.FrontService("");
         }
 
         [HttpGet]
-        public Destacamento Get(int id)
+        public RelJugadorMapa Get(int id)
         {
-            Destacamento destacamento = blHandler.getDestacamento(id);
-            if (destacamento == null)
+            RelJugadorMapa colonia = blHandler.getRelJugadorMapa(id);
+            if (colonia == null)
             {
                 throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.NotFound));
             }
 
-            return destacamento;
+            return colonia;
         }
 
         [HttpGet]
-        public IEnumerable<Destacamento> Get()
+        public IEnumerable<MapaNode> Get()
         {
-            return blHandler.getAllDestacamentos();
+            return blHandler.getAllMapas();
         }
 
         [HttpPut]
-        public HttpResponseMessage Put(int id, Destacamento destacamento)
+        public HttpResponseMessage Put(int id, MapaNode mapa)
         {
             if (!ModelState.IsValid)
             {
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
             }
 
-            if (id != destacamento.id)
+            if (id != mapa.id)
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest);
             }
 
             try
             {
-                blHandler.updateDestacamento(destacamento);
+                blHandler.updateMapa(mapa);
             }
             catch (Exception ex)
             {
@@ -62,13 +62,13 @@ namespace GameBuildPortal.ControllersApi
         }
 
         [HttpPost]
-        public HttpResponseMessage Post(Destacamento destacamento)
+        public HttpResponseMessage Post(MapaNode mapa)
         {
             if (ModelState.IsValid)
             {
-                blHandler.createDestacamento(destacamento);
+                blHandler.createMapa(mapa);
 
-                HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, destacamento);
+                HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, mapa);
                 response.Headers.Location = new Uri(Url.Link("DefaultApi", new { controller = "Admin" }));
                 return response;
             }
@@ -83,7 +83,7 @@ namespace GameBuildPortal.ControllersApi
         {
             try
             {
-                blHandler.deleteDestacamento(id);
+                blHandler.deleteMapa(id);
             }
             catch (Exception ex)
             {

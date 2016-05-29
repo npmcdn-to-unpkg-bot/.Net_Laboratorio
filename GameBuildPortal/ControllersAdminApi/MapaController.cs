@@ -1,57 +1,57 @@
-﻿using BLayer.Interfaces;
-using SharedEntities.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using BLayer.Interfaces;
+using SharedEntities.Entities;
 
 namespace GameBuildPortal.ControllersApi
 {
-    public class RecursoController : ApiController
+    public class MapaController : ApiController
     {
-        public static IGameBuilder blHandler;
+        public static IAdmin blHandler;
 
-        public RecursoController()
+        public MapaController()
         {
             blHandler = WebApiConfig.BuilderService("");
         }
 
         [HttpGet]
-        public Recurso Get(int id)
+        public MapaNode Get(int id)
         {
-            Recurso recurso = blHandler.getRecurso(id);
-            if (recurso == null)
+            MapaNode mapa = blHandler.getMapa(id);
+            if (mapa == null)
             {
                 throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.NotFound));
             }
 
-            return recurso;
+            return mapa;
         }
 
         [HttpGet]
-        public IEnumerable<Recurso> Get()
+        public IEnumerable<MapaNode> Get()
         {
-            return blHandler.getAllRecursos();
+            return blHandler.getAllMapas();
         }
 
         [HttpPut]
-        public HttpResponseMessage Put(int id, Recurso recurso)
+        public HttpResponseMessage Put(int id, MapaNode mapa)
         {
             if (!ModelState.IsValid)
             {
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
             }
 
-            if (id != recurso.id)
+            if (id != mapa.id)
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest);
             }
 
             try
             {
-                blHandler.updateRecurso(recurso);
+                blHandler.updateMapa(mapa);
             }
             catch (Exception ex)
             {
@@ -62,13 +62,13 @@ namespace GameBuildPortal.ControllersApi
         }
 
         [HttpPost]
-        public HttpResponseMessage Post(Recurso recurso)
+        public HttpResponseMessage Post(MapaNode mapa)
         {
             if (ModelState.IsValid)
             {
-                blHandler.createRecurso(recurso);
+                blHandler.createMapa(mapa);
 
-                HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, recurso);
+                HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, mapa);
                 response.Headers.Location = new Uri(Url.Link("DefaultApi", new { controller = "Admin" }));
                 return response;
             }
@@ -83,7 +83,7 @@ namespace GameBuildPortal.ControllersApi
         {
             try
             {
-                blHandler.deleteRecurso(id);
+                blHandler.deleteMapa(id);
             }
             catch (Exception ex)
             {

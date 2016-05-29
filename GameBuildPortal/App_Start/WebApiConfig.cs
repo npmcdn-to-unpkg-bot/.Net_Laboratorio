@@ -29,9 +29,15 @@ namespace GameBuildPortal
             );
         }
        
-        public static IGameBuilder BuilderService(string tenant) {
+        public static IAdmin BuilderService(string tenant) {
             tenant = WebApiConfig.tenant;
-            return container.Resolve<IGameBuilder>(new ParameterOverrides { { "tId", tenant }, { "IApi", container.Resolve<IApi>() } });
+            return container.Resolve<IAdmin>(new ParameterOverrides { { "tId", tenant }, { "IApi", container.Resolve<IApi>() } });
+        }
+
+        public static IFront FrontService(string tenant)
+        {
+            tenant = WebApiConfig.tenant;
+            return container.Resolve<IFront>(new ParameterOverrides { { "tId", tenant }, { "IApi", container.Resolve<IApi>() } });
         }
     }
 }

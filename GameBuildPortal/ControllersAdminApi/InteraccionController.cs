@@ -11,7 +11,7 @@ namespace GameBuildPortal.ControllersApi
 {
     public class InteraccionController : ApiController
     {
-        public static IGameBuilder blHandler;
+        public static IAdmin blHandler;
 
         public InteraccionController()
         {

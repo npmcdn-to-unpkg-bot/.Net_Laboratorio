@@ -68,8 +68,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Admin\GameBuilderController.cs" />
-    <Compile Include="Interfaces\IGameBuilder.cs" />
+    <Compile Include="Admin\AdminController.cs" />
+    <Compile Include="Front\FrontController.cs" />
+    <Compile Include="Interfaces\IFront.cs" />
+    <Compile Include="Interfaces\IAdmin.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
