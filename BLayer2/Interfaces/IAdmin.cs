@@ -56,5 +56,6 @@ namespace BLayer.Interfaces
         void deleteDependencia(int id);
         void updateDependencia(Dependencia dependencia);
         Dependencia getDependencia(int id);
+        List<Producto> getAllProductos();
     }
 }

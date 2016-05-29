@@ -138,6 +138,25 @@ namespace DALayer.Handlers
             }
         }
 
+        public List<Producto> getAllProductos()
+        {
+            List<Producto> productos = new List<Producto>();
+            try
+            {
+                List<Entities.Producto> prodE = ctx.Producto.ToList();
+                foreach (Entities.Producto item in prodE)
+                {
+                    Producto prod = prodEntToSha(item);
+                    productos.Add(prod);
+                }
+                return productos;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         Producto prodEntToSha(Entities.Producto p)
         {
                 UnidadHandlerEF uHandler = new UnidadHandlerEF(ctx);

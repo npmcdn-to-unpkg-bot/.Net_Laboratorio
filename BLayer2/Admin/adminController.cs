@@ -201,5 +201,10 @@ namespace BLayer.Admin
         {
             builder.getDependenciaHandler().deleteDependencia(id);
         }
+
+        public List<Producto> getAllProductos()
+        {
+            return builder.getDependenciaHandler().getAllProductos();
+        }
     }
 }

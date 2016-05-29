@@ -15,5 +15,6 @@ namespace DALayer.Interfaces
         Dependencia getDependencia(int id);
         List<Dependencia> getAllDependencias();
         List<Dependencia> getDependenciasByProdId(int id);
+        List<Producto> getAllProductos();
     }
 }
