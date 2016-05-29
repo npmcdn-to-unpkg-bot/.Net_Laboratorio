@@ -102,6 +102,10 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http.Owin, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Owin.5.2.3\lib\net45\System.Web.Http.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -229,6 +233,7 @@
     <Compile Include="ControllersAdminApi\MapaController.cs" />
     <Compile Include="ControllersAdminApi\ProductoController.cs" />
     <Compile Include="ControllersAdminApi\RecursoController.cs" />
+    <Compile Include="ControllersAdminApi\UiController.cs" />
     <Compile Include="ControllersFrontApi\JugadorDestacamentoController.cs" />
     <Compile Include="ControllersFrontApi\JugadorEdificioController.cs" />
     <Compile Include="ControllersFrontApi\JugadorInvestigacionController.cs" />
@@ -607,8 +612,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />

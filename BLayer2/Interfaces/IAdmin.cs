@@ -57,5 +57,11 @@ namespace BLayer.Interfaces
         void updateDependencia(Dependencia dependencia);
         Dependencia getDependencia(int id);
         List<Producto> getAllProductos();
+
+        // RECURSO
+        void createUi(Ui ui);
+        void deleteUi(int id);
+        void updateUi(Ui ui);
+        Ui getUi(int id);
     }
 }

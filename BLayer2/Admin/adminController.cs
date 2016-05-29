@@ -17,10 +17,12 @@ namespace BLayer.Admin
             tId = tId.Replace(" ", "_");
             builder.setTenant(tId);
         }
+
         //TENANT
         public bool existGame(string gameName) {
             return builder.getTenantHandler().tenantExist(gameName);
         }
+
         //RECURSOS
         public List<Recurso> getAllRecursos()
         {
@@ -205,6 +207,27 @@ namespace BLayer.Admin
         public List<Producto> getAllProductos()
         {
             return builder.getDependenciaHandler().getAllProductos();
+        }
+
+        //UI
+        public Ui getUi(int id)
+        {
+            return builder.getUiHandler().getUi(id);
+        }
+
+        public void createUi(Ui ui)
+        {
+            builder.getUiHandler().createUi(ui);
+        }
+
+        public void updateUi(Ui ui)
+        {
+            builder.getUiHandler().updateUi(ui);
+        }
+
+        public void deleteUi(int id)
+        {
+            builder.getUiHandler().deleteUi(id);
         }
     }
 }
