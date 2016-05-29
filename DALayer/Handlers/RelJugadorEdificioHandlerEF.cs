@@ -26,20 +26,20 @@ namespace DALayer.Handlers
                 r.colonia.nivel5, j2);
             col.id = r.colonia.id;
 
-            List<Entities.Costo> cos = new List<Entities.Costo>();
-            foreach (var item in r.edificio.costos)
-            {
-                var c = new Entities.Costo(item.idRecurso, item.valor, item.incrementoNivel);
-                cos.Add(c);
-            }
-            List<Entities.Capacidad> cap = new List<Entities.Capacidad>();
-            foreach (var item in r.edificio.capacidad)
-            {
-                var c = new Entities.Capacidad(item.idRecurso, item.valor, item.incrementoNivel);
-                cap.Add(c);
-            }
-            var ed = new Entities.Edificio(r.edificio.nombre, r.edificio.descripcion, r.edificio.foto, cos,
-                cap, r.edificio.ataque, r.edificio.escudo, r.edificio.efectividadAtaque, r.edificio.vida);
+            //List<Entities.Costo> cos = new List<Entities.Costo>();
+            //foreach (var item in r.edificio.costos)
+            //{
+            //    var c = new Entities.Costo(item.idRecurso, item.valor, item.incrementoNivel);
+            //    cos.Add(c);
+            //}
+            //List<Entities.Capacidad> cap = new List<Entities.Capacidad>();
+            //foreach (var item in r.edificio.capacidad)
+            //{
+            //    var c = new Entities.Capacidad(item.idRecurso, item.valor, item.incrementoNivel);
+            //    cap.Add(c);
+            //}
+            var ed = new Entities.Edificio(r.edificio.nombre, r.edificio.descripcion, r.edificio.foto,/* cos,
+                cap,*/ r.edificio.ataque, r.edificio.escudo, r.edificio.efectividadAtaque, r.edificio.vida);
             ed.id = r.edificio.id;
 
             var rje = new Entities.RelJugadorEdificio(col, ed, r.nivelE);
@@ -80,15 +80,15 @@ namespace DALayer.Handlers
                            where c.id == id
                            select c).SingleOrDefault();
 
-                List<Costo> cos = new List<Costo>();
-                foreach (var item2 in rje.edificio.costos)
-                {
-                    var c = new Costo(item2.idRecurso, item2.valor, item2.incrementoNivel);
-                    cos.Add(c);
-                }
+                //List<Costo> cos = new List<Costo>();
+                //foreach (var item2 in rje.edificio.costos)
+                //{
+                //    var c = new Costo(item2.idRecurso, item2.valor, item2.incrementoNivel);
+                //    cos.Add(c);
+                //}
                 Edificio edi = new Edificio(rje.edificio.id, rje.edificio.descripcion, rje.edificio.foto, rje.edificio.ataque,
                                             rje.edificio.escudo, rje.edificio.efectividadAtaque, rje.edificio.vida,
-                                            rje.edificio.nombre, cos);
+                                            rje.edificio.nombre/*, cos*/);
                 Jugador jug = new Jugador(rje.colonia.j.Id, rje.colonia.j.nombre, rje.colonia.j.apellido,
                                             rje.colonia.j.Email, rje.colonia.j.UserName, rje.colonia.j.PasswordHash,
                                             rje.colonia.j.foto, rje.colonia.j.nickname,

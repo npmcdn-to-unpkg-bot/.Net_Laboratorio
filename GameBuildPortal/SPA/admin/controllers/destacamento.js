@@ -44,7 +44,7 @@
             $scope.saving    = true;
             var destacamento = this.destacamento;
 
-            destacamento['costo'] = $scope.costos;
+            destacamento['costos'] = $scope.costos;
             destacamento['capacidad'] = $scope.capacidades;
 
             destacamentoService.add(destacamento).then(

@@ -12,7 +12,7 @@ namespace SharedEntities.Entities
         public Boolean enMision;
 
         public Destacamento(int id, string description, byte[] photo, float ataque, float escudo,
-            float efectividadAtaque, float vida, float velocidad, Boolean enMission, string name, List<Costo> costos, List<Capacidad> capacidad)
+            float efectividadAtaque, float vida, float velocidad, Boolean enMission, string name/*, List<Costo> costos, List<Capacidad> capacidad*/)
         {
             this.id = id;
             this.descripcion = description;
@@ -24,8 +24,8 @@ namespace SharedEntities.Entities
             this.velocidad = velocidad;
             this.enMision = enMission;
             this.nombre = name;
-            this.costos = costos;
-            this.capacidad = capacidad;
+            //this.costos = costos;
+            //this.capacidad = capacidad;
         }
     }
 }

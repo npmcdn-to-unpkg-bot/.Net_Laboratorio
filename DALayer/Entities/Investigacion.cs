@@ -14,12 +14,12 @@ namespace DALayer.Entities
 
         public Investigacion() { }
 
-        public Investigacion(string nombre, string descripcion, byte[] foto, List<Costo> costos, float factorCostoNivel)
+        public Investigacion(string nombre, string descripcion, byte[] foto,/* List<Costo> costos,*/ float factorCostoNivel)
         {
             this.nombre = nombre;
             this.descripcion = descripcion;
             this.foto = foto;
-            this.costos = costos;
+            //this.costos = costos;
             this.factorCostoNivel = factorCostoNivel;
         }
     }
