@@ -12,7 +12,7 @@ namespace SharedEntities.Entities
         public float factorCostoNivel;
         public float factorCapacidad;
 
-       
+        public Edificio() { }
 
         public Edificio(int id, string descripcion, byte[] foto, float ataque, float escudo, float efectividadAtaque, float vida, int nivel, float factorCostoNivel, float factorCapacidad, string nombre)
         {

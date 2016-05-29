@@ -11,22 +11,25 @@ namespace GameBuildPortal
 {
     public static class WebApiConfig
     {
-        private static IUnityContainer container;
-        public static string tenant = "newT2";
+        private static IUnityContainer container = null;
+        public static string tenant = "FirstOnlinetenant2";
         public static void Register(HttpConfiguration config)
         {
-            // Web API configuration and services
-            container = new UnityContainer();
-            container.LoadConfiguration();
-           
-            // Web API routes
-            config.MapHttpAttributeRoutes();
+            if (container == null)
+            {
+                // Web API configuration and services
+                container = new UnityContainer();
+                container.LoadConfiguration();
 
-            config.Routes.MapHttpRoute(
-                name: "DefaultApi",
-                routeTemplate: "admin/api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
-            );
+                // Web API routes
+                config.MapHttpAttributeRoutes();
+
+                config.Routes.MapHttpRoute(
+                    name: "DefaultApi",
+                    routeTemplate: "admin/api/{controller}/{id}",
+                    defaults: new { id = RouteParameter.Optional }
+                );
+            }
         }
        
         public static IGameBuilder BuilderService(string tenant) {
