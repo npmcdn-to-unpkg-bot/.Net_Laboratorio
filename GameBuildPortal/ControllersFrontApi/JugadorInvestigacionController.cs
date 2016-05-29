@@ -9,35 +9,35 @@ using SharedEntities.Entities;
 
 namespace GameBuildPortal.ControllersFrontApi
 {
-    public class JugadorMapaController : ApiController
+    public class JugadorInvestigacionController : ApiController
     {
         public static IFront blHandler;
 
-        public JugadorMapaController()
+        public JugadorInvestigacionController()
         {
             blHandler = WebApiConfig.FrontService("");
         }
 
         [HttpGet]
-        public RelJugadorMapa Get(int id)
+        public IEnumerable<RelJugadorInvestigacion> Get(int id)
         {
-            RelJugadorMapa colonia = blHandler.getRelJugadorMapa(id);
-            if (colonia == null)
+            IEnumerable<RelJugadorInvestigacion> investigaciones = blHandler.getInvestigacionesByColonia(id);
+            if (investigaciones == null)
             {
                 throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.NotFound));
             }
 
-            return colonia;
+            return investigaciones;
         }
 
-        [HttpGet]
-        public IEnumerable<RelJugadorMapa> Get(Jugador j)
-        {
-            return blHandler.getMapasByJugador(j);
-        }
+        //[HttpGet]
+        //public IEnumerable<RelJugadorEdificio> Get(Jugador j)
+        //{
+        //    return blHandler.getMapasByJugador(j);
+        //}
 
         [HttpPut]
-        public HttpResponseMessage Put(int id, RelJugadorMapa r)
+        public HttpResponseMessage Put(int id, RelJugadorInvestigacion r)
         {
             if (!ModelState.IsValid)
             {
@@ -51,7 +51,7 @@ namespace GameBuildPortal.ControllersFrontApi
 
             try
             {
-                blHandler.updateRelJugadorMapa(r);
+                blHandler.updateRelJugadorInvestigacion(r);
             }
             catch (Exception ex)
             {
@@ -62,11 +62,11 @@ namespace GameBuildPortal.ControllersFrontApi
         }
 
         [HttpPost]
-        public HttpResponseMessage Post(RelJugadorMapa r)
+        public HttpResponseMessage Post(RelJugadorInvestigacion r)
         {
             if (ModelState.IsValid)
             {
-                blHandler.createRelJugadorMapa(r);
+                blHandler.createRelJugadorInvestigacion(r);
 
                 HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, r);
                 response.Headers.Location = new Uri(Url.Link("DefaultApi", new { controller = "Admin" }));
@@ -83,7 +83,7 @@ namespace GameBuildPortal.ControllersFrontApi
         {
             try
             {
-                blHandler.deleteRelJugadorMapa(id);
+                blHandler.deleteRelJugadorInvestigacion(id);
             }
             catch (Exception ex)
             {
