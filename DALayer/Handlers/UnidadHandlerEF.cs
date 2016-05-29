@@ -137,14 +137,7 @@ namespace DALayer.Handlers
                 List<Entities.Edificio> ediE = ctx.Edificio.ToList();
                 foreach (Entities.Edificio item in ediE)
                 {
-                    //List<Costo> cos = new List<Costo>();
-                    //foreach (var item2 in item.costos)
-                    //{
-                    //    var c = new Costo(item2.idRecurso, item2.valor, item2.incrementoNivel);
-                    //    cos.Add(c);
-                    //}
-                    Edificio edi = new Edificio(item.id,item.descripcion, item.foto, item.ataque,
-                        item.escudo, item.efectividadAtaque, item.vida, item.nombre/*, cos*/);
+                    var edi = getEdificio(item.id);
                     edificios.Add(edi);
                 }
 
