@@ -16,7 +16,7 @@ namespace GameBuildPortal.ControllersAdminApi
 
         public UiController()
         {
-            blHandler = WebApiConfig.BuilderService("");
+            blHandler = WebApiConfig.BuilderService(null);
         }
 
         [HttpPost]

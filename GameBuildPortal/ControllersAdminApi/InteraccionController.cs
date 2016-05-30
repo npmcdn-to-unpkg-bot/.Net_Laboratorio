@@ -15,7 +15,7 @@ namespace GameBuildPortal.ControllersApi
 
         public InteraccionController()
         {
-            blHandler = WebApiConfig.BuilderService("");
+            blHandler = WebApiConfig.BuilderService(null);
         }
         //QUEDA PARA HABILITAR CUANDO ESTEN LAS INTERACCIONES
         //[HttpGet]
