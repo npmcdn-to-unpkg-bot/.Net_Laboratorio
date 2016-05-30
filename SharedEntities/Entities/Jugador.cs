@@ -26,5 +26,9 @@ namespace SharedEntities.Entities
             this.nivel = nivel;
             this.experiencia = exp;
         }
+
+        public Jugador()
+        {
+        }
     }
 }
