@@ -12,22 +12,27 @@ namespace GameBuildPortal.Controllers
 {
     public class AdminController : Controller
     {
+        public ActionResult Login()
+        {
+            return View();
+        }
+
         public ActionResult Index()
         {
 
-            ApplicationUserManager _userManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            string id = User.Identity.GetUserId();
-            UsuarioHelper UHelper = new UsuarioHelper(_userManager, id);
-            Admin adm;
-            Jugador jug;
-            if (UHelper.isAdmin)
-            {
-                adm = UHelper.getAdmin();
-            }
-            else
-            {
-                jug = UHelper.getJugador();
-            }
+            //ApplicationUserManager _userManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            //string id = User.Identity.GetUserId();
+            //UsuarioHelper UHelper = new UsuarioHelper(_userManager, id);
+            //Admin adm;
+            //Jugador jug;
+            //if (UHelper.isAdmin)
+            //{
+            //    adm = UHelper.getAdmin();
+            //}
+            //else
+            //{
+            //    jug = UHelper.getJugador();
+            //}
 
             return View();
         }
