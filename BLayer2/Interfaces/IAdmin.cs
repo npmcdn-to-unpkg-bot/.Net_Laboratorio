@@ -57,5 +57,13 @@ namespace BLayer.Interfaces
         void updateDependencia(Dependencia dependencia);
         Dependencia getDependencia(int id);
         List<Producto> getAllProductos();
+
+        //ESTADO INICIAL JUGADOR
+        void createEstadoInicial(EstadoInicialJuego eij);
+        void deleteEstadoInicial(int id);
+        void updateEstadoInicial(EstadoInicialJuego eij);
+        EstadoInicialJuego getEstadoInicial(int id);
+        List<EstadoInicialJuego> getAllEstados();
+        void inicializarJugador(Jugador j);
     }
 }

@@ -23,6 +23,7 @@ namespace DALayer.Api
         private SolicitudJuegoHandlerEF solicitudJHandler;
         private UnidadHandlerEF unidadHandler;
         private UsuarioHandlerEF usuarioHandler;
+        private EstadoInicialHandlerEF estadoInicialHandler;
         private TenantHandlerEF tenantHandler;
         private RelJugadorEdificioHandlerEF relJugadorEdificioHandler;
         private RelJugadorInvestigacionHandlerEF relJugadorInvestigacionHandler;
@@ -246,6 +247,19 @@ namespace DALayer.Api
                 relJugadorDestacamentoHandler = new RelJugadorDestacamentoHandlerEF(ctx);
             }
             return relJugadorDestacamentoHandler;
+        }
+
+        public IEstadoInicial getEstadoIHandler()
+        {
+            if (ctx == null)
+            {
+                throw new Exception("Tenes que llamar a la funcion setTenant despues de inicializar esta clase");
+            }
+            if (estadoInicialHandler == null)
+            {
+                estadoInicialHandler = new EstadoInicialHandlerEF(ctx);
+            }
+            return estadoInicialHandler;
         }
     }
 }

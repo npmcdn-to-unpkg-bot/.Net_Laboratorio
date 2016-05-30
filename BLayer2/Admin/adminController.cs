@@ -206,5 +206,36 @@ namespace BLayer.Admin
         {
             return builder.getDependenciaHandler().getAllProductos();
         }
+
+        //ESTADO INICIAL JUADOR
+        public void createEstadoInicial(EstadoInicialJuego eij)
+        {
+            builder.getEstadoIHandler().createEstadoInicial(eij);
+        }
+
+        public void deleteEstadoInicial(int id)
+        {
+            builder.getEstadoIHandler().deleteEstadoInicial(id);
+        }
+
+        public void updateEstadoInicial(EstadoInicialJuego eij)
+        {
+            builder.getEstadoIHandler().updateEstadoInicial(eij);
+        }
+
+        public EstadoInicialJuego getEstadoInicial(int id)
+        {
+            return builder.getEstadoIHandler().getEstadoInicial(id);
+        }
+
+        public List<EstadoInicialJuego> getAllEstados()
+        {
+            return builder.getEstadoIHandler().getAllEstados();
+        }
+
+        public void inicializarJugador(Jugador j)
+        {
+            var niveles = builder.getMapaNodeHandler().getAllMapas().Count();
+        }
     }
 }

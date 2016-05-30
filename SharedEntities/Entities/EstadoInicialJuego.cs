@@ -9,7 +9,14 @@ namespace SharedEntities.Entities
     public class EstadoInicialJuego
     {
         public int id;
-        public RelJugadorMapa mapaInicial;
-        public RelJugadorRecurso recursoInicial;
+        public Recurso r;
+        public int cantidad;
+
+        public EstadoInicialJuego(int id, Recurso r, int cantidad)
+        {
+            this.id = id;
+            this.r = r;
+            this.cantidad = cantidad;
+        }
     }
 }

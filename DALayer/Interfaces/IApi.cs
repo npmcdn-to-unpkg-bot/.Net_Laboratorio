@@ -20,6 +20,7 @@ namespace DALayer.Interfaces
         ISolicitudJuegoHandler getSJHandler();
         IUnidadHandler getUnidadHandler();
         IUsuarioHandler getUsuarioHandler();
+        IEstadoInicial getEstadoIHandler();
         IRelJugadorEdificioHandler getRelJugadorEdificioHandler();
         IRelJugadorInvestigacionHandler getRelJugadorInvestigacionHandler();
         IRelJugadorMapaHandler getRelJugadorMapaHandler();
