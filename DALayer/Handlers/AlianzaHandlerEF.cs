@@ -101,22 +101,21 @@ namespace DALayer.Handlers
 
         public List<Alianza> getAllAlianzas()
         {
-            //List<Alianza> alianzas = new List<Alianza>();
-            //try
-            //{
-            //    List<Entities.Alianza> alliTmp = ctx.Alianza.ToList();
-            //    foreach (Entities.Alianza item in alliTmp)
-            //    {
-            //        Alianza all = new Alianza(item.id,item.nombre, item.miembros, item.admin, item.descripcion, item.foto);
-            //        alianzas.Add(all);
-            //    }
-            //    return alianzas;
-            //}
-            //catch (Exception ex)
-            //{
-            //    throw ex;
-            //}
-            throw new NotImplementedException();
+            List<Alianza> alianzas = new List<Alianza>();
+            try
+            {
+                List<Entities.Alianza> alliTmp = ctx.Alianza.ToList();
+                foreach (Entities.Alianza item in alliTmp)
+                {
+                    Alianza all = getAlianza(item.id);
+                    alianzas.Add(all);
+                }
+                return alianzas;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public Alianza getAlianza(int id)
@@ -134,10 +133,10 @@ namespace DALayer.Handlers
                                                        item.PasswordHash, item.foto, item.nickname, item.nivel, item.experiencia);
                     ljug.Add(c);
                 }
-                var j2 = new SharedEntities.Entities.Jugador(ali.admin.Id, ali.admin.nombre, ali.admin.apellido, ali.admin.Email, ali.admin.UserName,
+                var adm = new SharedEntities.Entities.Jugador(ali.admin.Id, ali.admin.nombre, ali.admin.apellido, ali.admin.Email, ali.admin.UserName,
                                                        ali.admin.PasswordHash, ali.admin.foto, ali.admin.nickname, ali.admin.nivel, ali.admin.experiencia);
                                                 
-                Alianza alianza = new Alianza(ali.id, ali.nombre, ljug, j2, ali.descripcion, ali.foto);
+                Alianza alianza = new Alianza(ali.id, ali.nombre, ljug, adm, ali.descripcion, ali.foto);
                 return alianza;
             }
             catch (Exception ex)
