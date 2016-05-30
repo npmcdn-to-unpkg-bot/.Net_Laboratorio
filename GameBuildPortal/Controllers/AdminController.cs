@@ -19,22 +19,16 @@ namespace GameBuildPortal.Controllers
 
         public ActionResult Index()
         {
-
             //ApplicationUserManager _userManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
             //string id = User.Identity.GetUserId();
             //UsuarioHelper UHelper = new UsuarioHelper(_userManager, id);
-            //Admin adm;
-            //Jugador jug;
+
             //if (UHelper.isAdmin)
             //{
-            //    adm = UHelper.getAdmin();
-            //}
-            //else
-            //{
-            //    jug = UHelper.getJugador();
+                return View();
             //}
 
-            return View();
+            //return RedirectToAction("Login", "Admin");
         }
     }
 }
