@@ -15,7 +15,7 @@ namespace GameBuildPortal.ControllersApi
 
         public DestacamentoController()
         {
-            blHandler = WebApiConfig.BuilderService("");
+            blHandler = WebApiConfig.BuilderService(null);
         }
 
         [HttpGet]

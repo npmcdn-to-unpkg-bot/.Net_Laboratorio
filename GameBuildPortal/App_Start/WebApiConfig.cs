@@ -34,14 +34,16 @@ namespace GameBuildPortal
         }
        
         public static IGameBuilder BuilderService(string tenant) {
-            tenant = WebApiConfig.tenant;
-            string host = HttpContext.Current.Request.Url.Host;
-            var nodes = host.Split('.');
-            int startNode = 0;
-            if (nodes[0] == "www") startNode = 1;
-            if(nodes[startNode] != "atlas2")
-            {
-                tenant = nodes[startNode];
+            if (tenant == null) {
+                tenant = WebApiConfig.tenant;
+                string host = HttpContext.Current.Request.Url.Host;
+                var nodes = host.Split('.');
+                int startNode = 0;
+                if (nodes[0] == "www") startNode = 1;
+                if (nodes[startNode] != "atlas2" && nodes[startNode] != "localhost")
+                {
+                    tenant = nodes[startNode];
+                }
             }
             return container.Resolve<IGameBuilder>(new ParameterOverrides { { "tId", tenant }, { "IApi", container.Resolve<IApi>() } });
         }
