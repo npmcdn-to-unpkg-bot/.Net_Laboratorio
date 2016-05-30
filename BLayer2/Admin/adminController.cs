@@ -237,7 +237,18 @@ namespace BLayer.Admin
 
         public void inicializarJugador(Jugador j)
         {
-            var niveles = builder.getMapaNodeHandler().getAllMapas().Count();
+            var mapas = builder.getMapaNodeHandler().getAllMapas();
+            Random rnd = new Random();
+            int[] nivel = { -1, -1, -1, -1, -1 };
+            int i = 0;
+            foreach (var m in mapas)
+            {
+                nivel[i] = rnd.Next(1, m.cantidad+1);
+                i++;
+            }
+
+            var rel = new RelJugadorMapa(1, nivel[0], nivel[1], nivel[2], nivel[3], nivel[4], j);
+            builder.getRelJugadorMapaHandler().createRelJugadorMapa(rel);
         }
 
         //UI
