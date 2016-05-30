@@ -19,7 +19,7 @@ namespace DALayer.Entities
         public int nivel3 { get; set; }
         public int nivel4 { get; set; }
         public int nivel5 { get; set; }
-        public Jugador j { get; set; }
+        public virtual Jugador j { get; set; }
 
         public RelJugadorMapa() { }
 

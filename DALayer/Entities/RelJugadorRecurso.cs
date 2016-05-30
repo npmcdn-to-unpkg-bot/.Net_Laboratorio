@@ -14,8 +14,8 @@ namespace DALayer.Entities
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id { get; set; }
-        public Recurso recurso { get; set; }
-        public RelJugadorMapa colonia { get; set; }
+        public virtual Recurso recurso { get; set; }
+        public virtual RelJugadorMapa colonia { get; set; }
         public int capacidad { get; set; }
         public int cantidadR { get; set; }
         public float factorIncremento { get; set; }

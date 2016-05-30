@@ -20,8 +20,8 @@
                         Unidad <span class="required">*</span>
                     </label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
-                        <select class="form-control" id="padre" ng-model="dependencia.padre" required="required">
-                            <option ng-repeat="nivel in [1,2,3,4,5]">{{nivel}}</option>
+                        <select class="form-control" id="padre" ng-model="dependencia.padreId" required="required">
+                            <option ng-repeat="producto1 in productos" value="{{producto1.id}}" ng-selected="dependencia.padreId == producto1.id">{{producto1.nombre}}</option>
                         </select>
                         <ul class="parsley-errors-list" id="parsley-id-padre"></ul>
                     </div>
@@ -31,8 +31,8 @@
                         Depende <span class="required">*</span>
                     </label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
-                        <select class="form-control" id="hijo" ng-model="dependencia.hijo" required="required">
-                            <option ng-repeat="nivel in [1,2,3,4,5]">{{nivel}}</option>
+                        <select class="form-control" id="hijo" ng-model="dependencia.hijoId" required">
+                            <option ng-repeat="producto2 in productos" value="{{producto.id}}" ng-selected="dependencia.hijoId == producto2.id">{{producto2.nombre}}</option>
                         </select>
                         <ul class="parsley-errors-list" id="parsley-id-hijo"></ul>
                     </div>

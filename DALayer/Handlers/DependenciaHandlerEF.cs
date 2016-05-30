@@ -20,14 +20,15 @@ namespace DALayer.Handlers
 
             public void createDependencia(Dependencia d)
             {
-            var padre = (from c in ctx.Producto
-                        where c.id == d.padre.id
-                        select c).SingleOrDefault();
-            var hijo = (from c in ctx.Producto
-                         where c.id == d.hijo.id
-                         select c).SingleOrDefault();
+                var padre = (from c in ctx.Producto
+                            where c.id == d.padreId
+                            select c).SingleOrDefault();
+                var hijo = (from c in ctx.Producto
+                             where c.id == d.hijoId
+                            select c).SingleOrDefault();
 
-            Entities.Dependencia dep = new Entities.Dependencia(padre, hijo, d.level);
+                Entities.Dependencia dep = new Entities.Dependencia(padre, hijo, d.nivel);
+
                 try
                 {
                     ctx.Dependencia.Add(dep);
@@ -64,7 +65,7 @@ namespace DALayer.Handlers
                     List<Entities.Dependencia> dependenciasTmp = ctx.Dependencia.ToList();
                     foreach (Entities.Dependencia item in dependenciasTmp)
                     {
-                    Dependencia dep = getDependencia(item.id);
+                        Dependencia dep = getDependencia(item.id);
                         dependencias.Add(dep);
                     }
                     return dependencias;
@@ -73,7 +74,7 @@ namespace DALayer.Handlers
                 {
                     throw ex;
                 }
-            }
+        }
 
         public Dependencia getDependencia(int id)
         {
@@ -84,7 +85,7 @@ namespace DALayer.Handlers
                            select c).SingleOrDefault();
 
 
-                Dependencia dependencia = new Dependencia(d.id, prodEntToSha(d.padre), prodEntToSha(d.hijo), d.level);
+                Dependencia dependencia = new Dependencia(d.id, prodEntToSha(d.padre), d.padre.id, prodEntToSha(d.hijo), d.hijo.id, d.nivel);
                 return dependencia;
             }
             catch (Exception ex)
@@ -103,9 +104,9 @@ namespace DALayer.Handlers
 
                     if (depTmp != null)
                     {
-                        //depTmp.padre = dep.padre;
-                        //depTmp.hijo = dep.hijo;
-                        depTmp.level = dep.level;
+                    depTmp.padre = dep.padre;
+                    depTmp.hijo = dep.hijo;
+                    depTmp.nivel = dep.nivel;
 
                         ctx.SaveChangesAsync().Wait();
                     }

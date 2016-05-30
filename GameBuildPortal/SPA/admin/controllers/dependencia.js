@@ -1,16 +1,20 @@
 ﻿(function () {
     'use strict';
-    angular.module('atlas2').controller('dependenciaCtrl', ['$scope', '$routeParams', '$location', 'dependenciaService', dependenciaCtrl]);
+    angular.module('atlas2').controller('dependenciaCtrl', ['$scope', '$routeParams', '$location', 'dependenciaService', 'productoService', dependenciaCtrl]);
 
-    function dependenciaCtrl($scope, $routeParams, $location, dependenciaService) {
+    function dependenciaCtrl($scope, $routeParams, $location, dependenciaService, productoService) {
         $scope.dependencias = [];
-        $scope.dependencia  = null;
+        $scope.dependencia = null;
+        $scope.productos = null;
         $scope.saving   = false;
 
         var path = $location.path();
 
         var initialize = function () {
             if (path.indexOf('edit') > -1 || path.indexOf('add') > -1) {
+                productoService.getAll().then(function (data) {
+                    $scope.productos = data;
+                });
                 var id = $routeParams && $routeParams['id'] ? $routeParams['id'] : null
                 if (id) {
                     dependenciaService.getId(id).then(function (data) {

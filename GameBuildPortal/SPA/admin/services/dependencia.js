@@ -21,6 +21,9 @@
         var add = function (dependencia) {
             var defer = $q.defer();
 
+            dependencia['hijoId'] = parseInt(dependencia['hijoId']);
+            dependencia['padreId'] = parseInt(dependencia['padreId']);
+
             $http.post('/admin/api/dependencia', dependencia)
             .success(function (dependencia) {
                 defer.resolve(dependencia);

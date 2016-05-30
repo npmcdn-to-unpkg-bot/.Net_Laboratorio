@@ -10,9 +10,9 @@ namespace DALayer.Entities
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id { get; set; }
-        public Producto padre { get; set; }
-        public Producto hijo { get; set; }
-        public int level { get; set; }
+        public virtual Producto padre { get; set; }
+        public virtual Producto hijo { get; set; }
+        public int nivel { get; set; }
 
         public Dependencia() { }
 
@@ -20,7 +20,7 @@ namespace DALayer.Entities
         {
             this.padre = padre;
             this.hijo = hijo;
-            this.level = nivel;
+            this.nivel = nivel;
         }
     }
 }

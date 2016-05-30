@@ -14,8 +14,8 @@ namespace DALayer.Entities
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id { get; set; }
-        public RelJugadorMapa colonia { get; set; }
-        public Investigacion investigacion { get; set; }
+        public virtual RelJugadorMapa colonia { get; set; }
+        public virtual Investigacion investigacion { get; set; }
         public int nivel { get; set; }
 
         public RelJugadorInvestigacion() { }

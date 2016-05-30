@@ -14,8 +14,8 @@ namespace DALayer.Entities
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id { get; set;}
-        public RelJugadorMapa colonia { get; set; }
-        public Edificio edificio { get; set; }
+        public virtual RelJugadorMapa colonia { get; set; }
+        public virtual Edificio edificio { get; set; }
         public int nivelE { get; set; }
 
         public RelJugadorEdificio() { }

@@ -13,8 +13,8 @@ namespace DALayer.Entities
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id { get; set; }
-        public RelJugadorMapa colonia { get; set; }
-        public Destacamento destacamento { get; set; }
+        public virtual RelJugadorMapa colonia { get; set; }
+        public virtual Destacamento destacamento { get; set; }
         public int cantidad { get; set; } 
 
         public RelJugadorDestacamento() { }
