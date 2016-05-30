@@ -100,6 +100,7 @@
     <Compile Include="Entities\RelJugadorRecurso.cs" />
     <Compile Include="Entities\RelJugadorInvestigacion.cs" />
     <Compile Include="Entities\RelJugadorMapa.cs" />
+    <Compile Include="Entities\Ui.cs" />
     <Compile Include="Fatories\AdminFactory.cs" />
     <Compile Include="Contexts\TenantContext.cs" />
     <Compile Include="Contexts\AdminContext.cs" />
@@ -128,6 +129,7 @@
     <Compile Include="Handlers\JuegoHandlerEF.cs" />
     <Compile Include="Handlers\MapaNodeHandlerEF.cs" />
     <Compile Include="Handlers\PaquetePaypalHandlerEF.cs" />
+    <Compile Include="Handlers\UiHandlerEF.cs" />
     <Compile Include="Handlers\RecursosHandlerEF.cs" />
     <Compile Include="Handlers\RelJugadorDestacamentoHandlerEF.cs" />
     <Compile Include="Handlers\RelJugadorEdificioHandlerEF.cs" />
@@ -147,6 +149,7 @@
     <Compile Include="Interfaces\IInvestigacionHandler.cs" />
     <Compile Include="Interfaces\IAlianzaHandler.cs" />
     <Compile Include="Interfaces\IPaquetePayPalHandler.cs" />
+    <Compile Include="Interfaces\IUiHandler.cs" />
     <Compile Include="Interfaces\IRecursoHandler.cs" />
     <Compile Include="Interfaces\IRelJugadorDestacamentoHandler.cs" />
     <Compile Include="Interfaces\IRelJugadorEdificioHandler.cs" />

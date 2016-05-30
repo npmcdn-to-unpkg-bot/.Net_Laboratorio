@@ -14,6 +14,8 @@ namespace GameBuildPortal.Modules
         private string _Id;
         private Jugador jgr;
         private Admin adm;
+
+        public bool isLogged { get; private set; }
         public bool isAdmin { get; private set; }
 
         public UsuarioHelper(ApplicationUserManager _userManager, string id)
@@ -25,24 +27,37 @@ namespace GameBuildPortal.Modules
 
         public void RefreshUser() {
             var user = _userManager.FindById(_Id);
-            var userType = user.GetType();
-            if (userType.BaseType.FullName == typeof(Jugador).FullName)
+            if(user != null)
+            {
+                isLogged = true;
+                var userType = user.GetType();
+                if (userType.BaseType.FullName == typeof(Jugador).FullName)
+                {
+                    isAdmin = false;
+                    jgr = (Jugador)user;
+                }
+                if (userType.BaseType.FullName == typeof(Admin).FullName)
+                {
+                    isAdmin = true;
+                    adm = (Admin)user;
+                }
+            }
+            else
             {
                 isAdmin = false;
-                jgr = (Jugador)user;
+                isLogged = false;
             }
-            if (userType.BaseType.FullName == typeof(Admin).FullName)
-            {
-                isAdmin = true;
-                adm = (Admin)user;
-            }
+            
         }
+
         public Jugador getJugador() {
-            if (!isAdmin) {
+            if (!isAdmin)
+            {
                 return jgr;
             }
             return null;
         }
+
         public Admin getAdmin()
         {
             if (isAdmin)

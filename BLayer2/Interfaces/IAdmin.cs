@@ -65,5 +65,11 @@ namespace BLayer.Interfaces
         EstadoInicialJuego getEstadoInicial(int id);
         List<EstadoInicialJuego> getAllEstados();
         void inicializarJugador(Jugador j);
+
+        // RECURSO
+        void createUi(Ui ui);
+        void deleteUi(int id);
+        void updateUi(Ui ui);
+        Ui getUi(int id);
     }
 }
