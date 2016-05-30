@@ -16,7 +16,7 @@ namespace GameBuildPortal.ControllersAdminApi
         // GET: Producto
         public ProductoController()
         {
-            blHandler = WebApiConfig.BuilderService("");
+            blHandler = WebApiConfig.BuilderService(null);
         }
 
         [HttpGet]
