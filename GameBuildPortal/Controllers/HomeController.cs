@@ -20,7 +20,7 @@ namespace GameBuildPortal.Controllers
         public ActionResult Index()
         {
             ApplicationUserManager _userManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            string id = User.Identity.GetUserId(); 
+            string id = User.Identity.GetUserId();
             UsuarioHelper UHelper = new UsuarioHelper(_userManager, id);
             Admin adm;
             Jugador jug;
@@ -28,10 +28,16 @@ namespace GameBuildPortal.Controllers
             {
                 adm = UHelper.getAdmin();
             }
-            else {
+            else
+            {
                 jug = UHelper.getJugador();
             }
 
+            return View();
+        }
+
+        public ActionResult Home()
+        {
             return View();
         }
     }
