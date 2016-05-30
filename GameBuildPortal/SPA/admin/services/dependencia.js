@@ -38,6 +38,12 @@
         var edit = function (dependencia) {
             var defer = $q.defer();
 
+            dependencia['hijoId'] = parseInt(dependencia['hijoId']);
+            dependencia['padreId'] = parseInt(dependencia['padreId']);
+
+            delete dependencia.hijo;
+            delete dependencia.padre;
+
             $http.put('/admin/api/dependencia?id=' + dependencia.id, dependencia)
             .success(function (dependencia) {
                 defer.resolve(dependencia);

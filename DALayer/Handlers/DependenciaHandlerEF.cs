@@ -96,25 +96,31 @@ namespace DALayer.Handlers
 
         public void updateDependencia(Dependencia dep)
         {
-                try
-                {
-                    var depTmp = ctx.Dependencia
-                        .Where(w => w.id == dep.id)
-                        .SingleOrDefault();
+            try
+            {
+                var depTmp = ctx.Dependencia
+                    .Where(w => w.id == dep.id)
+                    .SingleOrDefault();
+                var padre = ctx.Producto
+                    .Where(w => w.id == dep.padreId)
+                    .SingleOrDefault();
+                var hijo = ctx.Producto
+                    .Where(w => w.id == dep.hijoId)
+                    .SingleOrDefault();
 
-                    if (depTmp != null)
-                    {
-                    depTmp.padre = dep.padre;
-                    depTmp.hijo = dep.hijo;
+                if (depTmp != null)
+                {
+                    depTmp.padre = padre;
+                    depTmp.hijo = hijo;
                     depTmp.nivel = dep.nivel;
 
-                        ctx.SaveChangesAsync().Wait();
-                    }
+                    ctx.SaveChangesAsync().Wait();
                 }
-                catch (Exception ex)
-                {
-                    throw ex;
-                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public List<Dependencia> getDependenciasByProdId(int id)
