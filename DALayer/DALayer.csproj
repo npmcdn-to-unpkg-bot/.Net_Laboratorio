@@ -92,6 +92,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Api\EFApi.cs" />
+    <Compile Include="Api\SuperAdminApi.cs" />
     <Compile Include="Entities\Capacidad.cs" />
     <Compile Include="Entities\Costo.cs" />
     <Compile Include="Entities\Producto.cs" />
@@ -149,6 +150,7 @@
     <Compile Include="Interfaces\IInvestigacionHandler.cs" />
     <Compile Include="Interfaces\IAlianzaHandler.cs" />
     <Compile Include="Interfaces\IPaquetePayPalHandler.cs" />
+    <Compile Include="Interfaces\ISuperAdminApi.cs" />
     <Compile Include="Interfaces\IUiHandler.cs" />
     <Compile Include="Interfaces\IRecursoHandler.cs" />
     <Compile Include="Interfaces\IRelJugadorDestacamentoHandler.cs" />

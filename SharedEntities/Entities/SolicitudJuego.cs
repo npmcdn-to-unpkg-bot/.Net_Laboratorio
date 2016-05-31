@@ -24,5 +24,8 @@ namespace SharedEntities.Entities
             this.token = tok;
             this.expirationTime = fechaExpiracion;
         }
+        public SolicitudJuego()
+        { 
+        }
     }
 }
