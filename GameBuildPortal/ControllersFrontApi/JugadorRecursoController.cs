@@ -19,7 +19,7 @@ namespace GameBuildPortal.ControllersFrontApi
         }
 
         [HttpGet]
-        public IEnumerable<RelJugadorRecurso> Get(int id)
+        public IEnumerable<RelJugadorRecurso> GetByColonia(int id)
         {
             IEnumerable<RelJugadorRecurso> recurso = blHandler.getRecursosByColonia(id);
             if (recurso == null)
@@ -28,69 +28,6 @@ namespace GameBuildPortal.ControllersFrontApi
             }
 
             return recurso;
-        }
-
-        //[HttpGet]
-        //public IEnumerable<RelJugadorMapa> Get(Jugador j)
-        //{
-        //    return blHandler.getMapasByJugador(j);
-        //}
-
-        [HttpPut]
-        public HttpResponseMessage Put(int id, RelJugadorRecurso r)
-        {
-            if (!ModelState.IsValid)
-            {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
-            }
-
-            if (id != r.id)
-            {
-                return Request.CreateResponse(HttpStatusCode.BadRequest);
-            }
-
-            try
-            {
-                blHandler.updateRelJugadorRecurso(r);
-            }
-            catch (Exception ex)
-            {
-                return Request.CreateErrorResponse(HttpStatusCode.NotFound, ex);
-            }
-
-            return Request.CreateResponse(HttpStatusCode.OK);
-        }
-
-        [HttpPost]
-        public HttpResponseMessage Post(RelJugadorRecurso r)
-        {
-            if (ModelState.IsValid)
-            {
-                blHandler.createRelJugadorRecurso(r);
-
-                HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, r);
-                response.Headers.Location = new Uri(Url.Link("DefaultApi", new { controller = "Admin" }));
-                return response;
-            }
-            else
-            {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
-            }
-        }
-
-        [HttpDelete]
-        public HttpResponseMessage Delete(int id)
-        {
-            try
-            {
-                blHandler.deleteRelJugadorRecurso(id);
-            }
-            catch (Exception ex)
-            {
-                return Request.CreateErrorResponse(HttpStatusCode.NotFound, ex);
-            }
-
-            return Request.CreateResponse(HttpStatusCode.OK);
         }
     }
 }

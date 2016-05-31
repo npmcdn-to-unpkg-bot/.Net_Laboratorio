@@ -37,28 +37,33 @@
 
         $scope.subirNivel = function (edificio) {
             $scope.showLoading = edificio.id;
-
-            jugadorEdificioService.subirNivel(edificio.relId).then(
-                function (data) {
-                    $scope.showLoading = null;
-                    edificio.nivel ++;
-                }, function () {
-                    $scope.showLoading = null;
-                }
-            );
+            
+            setTimeout(function () {
+                jugadorEdificioService.subirNivel(edificio.relId).then(
+                    function (data) {
+                        $scope.showLoading = null;
+                        edificio.nivel++;
+                    }, function () {
+                        $scope.showLoading = null;
+                    }
+                );
+            }, 3000);
+            
         }
 
         $scope.bajarNivel = function (edificio) {
             $scope.showLoading = edificio.id;
-
-            jugadorEdificioService.bajarNivel(edificio.relId).then(
-                function (data) {
-                    $scope.showLoading = null;
-                    edificio.nivel--;
-                }, function () {
-                    $scope.showLoading = null;
-                }
-            );
+            
+            setTimeout(function () {
+                jugadorEdificioService.bajarNivel(edificio.relId).then(
+                    function (data) {
+                        $scope.showLoading = null;
+                        edificio.nivel--;
+                    }, function () {
+                        $scope.showLoading = null;
+                    }
+                );
+            }, 3000);
         }
 
         $scope.mostrarInfo = function (edificio) {

@@ -4,14 +4,37 @@
 
     function appCtrl($scope, jugadorMapaService, jugadorRecursoService, coloniaFactory) {
         $scope.recursos = null;
+        var currentMapa = coloniaFactory.getCurrent();
 
-        jugadorRecursoService.getAllRecursos().then(function (data) {
-            $scope.recursos = data;
+        var initialize = function () {
+            jugadorRecursoService.getRecursoByColonia(currentMapa.id).then(function (jugadorRecurso) {
+                var recursoArray = [];
+                for (var r in jugadorRecurso) {
+                    var rel = jugadorRecurso[r];
+
+                    rel.recurso['cantidad'] = rel.cantidadR;
+                    rel.recurso['capacidad'] = rel.capacidad;
+
+                    recursoArray.push(rel.recurso);
+                }
+
+                $scope.recursos = recursoArray;
+            });
+        }
+
+        jugadorMapaService.getAll().then(function (mapas) {
+            coloniaFactory.set(mapas);
         });
 
-        jugadorMapaService.getAll().then(function (data) {
-            coloniaFactory.set(data);
+        $scope.$on('mapa:current', function (event, data) {
+            currentMapa = coloniaFactory.getCurrent();
+
+            initialize();
         });
+
+        if (currentMapa) {
+            initialize();
+        }
     }
 
 })();
