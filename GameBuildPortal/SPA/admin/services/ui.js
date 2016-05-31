@@ -7,7 +7,7 @@
         var getAll = function () {
             var defer = $q.defer();
 
-            //$http.get('/admin/api/mapa')
+            //$http.get('/api/mapa')
             //.success(function (mapas) {
             //    defer.resolve(mapas);
             //})

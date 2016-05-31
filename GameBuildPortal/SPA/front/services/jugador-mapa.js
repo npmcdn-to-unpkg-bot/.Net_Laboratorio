@@ -4,12 +4,12 @@
 
     function jugadorMapaService($http, $q) {
 
-        var getMap = function () {
+        var getAll = function () {
             var defer = $q.defer();
 
-            $http.get('/api/jugador_mapa')
-            .success(function (jugador_mapas) {
-                defer.resolve(jugador_mapas);
+            $http.get('/api/jugadorMapa')
+            .success(function (jugadorMapas) {
+                defer.resolve(jugadorMapas);
             })
             .error(function () {
                 defer.reject('server error')
@@ -18,12 +18,12 @@
             return defer.promise;
         };
 
-        var add = function (jugador_mapa) {
+        var add = function (jugadorMapa) {
             var defer = $q.defer();
 
-            $http.post('/api/jugador_mapa', jugador_mapa)
-            .success(function (jugador_mapa) {
-                defer.resolve(jugador_mapa);
+            $http.post('/api/jugadorMapa', jugadorMapa)
+            .success(function (jugadorMapa) {
+                defer.resolve(jugadorMapa);
             })
             .error(function () {
                 defer.reject('server error')
@@ -32,10 +32,10 @@
             return defer.promise;
         };
 
-        var edit = function (jugador_mapa) {
+        var edit = function (jugadorMapa) {
             var defer = $q.defer();
 
-            $http.put('/api/jugador_mapa?id=' + jugador_mapa.id, jugador_mapa)
+            $http.put('/api/jugadorMapa?id=' + jugadorMapa.id, jugadorMapa)
             .success(function (jugador_mapa) {
                 defer.resolve(jugador_mapa);
             })
@@ -49,9 +49,9 @@
         var borrar = function (id) {
             var defer = $q.defer();
 
-            $http.delete('/api/jugador_mapa?id=' + id)
-            .success(function (jugador_mapa) {
-                defer.resolve(jugador_mapa);
+            $http.delete('/api/jugadorMapa?id=' + id)
+            .success(function (jugadorMapa) {
+                defer.resolve(jugadorMapa);
             })
             .error(function () {
                 defer.reject('server error')
@@ -63,9 +63,9 @@
         var getId = function (id) {
             var defer = $q.defer();
 
-            $http.get('/api/jugador_mapa?id=' + id)
-            .success(function (jugador_mapa) {
-                defer.resolve(jugador_mapa);
+            $http.get('/api/jugadorMapa?id=' + id)
+            .success(function (jugadorMapa) {
+                defer.resolve(jugadorMapa);
             })
             .error(function () {
                 defer.reject('server error')
@@ -75,7 +75,7 @@
         };
 
         return {
-            getMap: getMap,
+            getAll: getAll,
             getId: getId,
             add: add,
             borrar: borrar,

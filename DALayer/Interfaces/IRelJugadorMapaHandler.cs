@@ -13,7 +13,7 @@ namespace DALayer.Interfaces
         void deleteRelJugadorMapa(int id);
         void updateRelJugadorMapa(RelJugadorMapa r);
         RelJugadorMapa getRelJugadorMapa(int id);
-        List<RelJugadorMapa> getMapasByJugador(Jugador j);
+        List<RelJugadorMapa> getMapasByJugador(string id);
         List<RelJugadorMapa> getColoniasByCoord(int n1, int n2, int n3, int n4);
     }
 }

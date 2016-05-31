@@ -93,13 +93,13 @@ namespace DALayer.Handlers
             }
         }
 
-        public List<RelJugadorMapa> getMapasByJugador(Jugador j)
+        public List<RelJugadorMapa> getMapasByJugador(string id)
         {
             var mapas = new List<RelJugadorMapa>();
             try
             {
                 ctx.Database.Connection.Open();
-                List<Entities.RelJugadorMapa> mapasE = ctx.RelJugadorMapa.Where(w => w.j.Id == j.id).ToList();
+                List<Entities.RelJugadorMapa> mapasE = ctx.RelJugadorMapa.Where(w => w.j.Id == id).ToList();
                 ctx.Database.Connection.Close();
                 foreach (var item in mapasE)
                 {

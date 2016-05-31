@@ -1504,15 +1504,16 @@
     <Content Include="SPA\front\controllers\edificio.js" />
     <Content Include="SPA\front\controllers\home.js" />
     <Content Include="SPA\front\controllers\investigacion.js" />
+    <Content Include="SPA\front\controllers\app.js" />
     <Content Include="SPA\front\controllers\zona.js" />
     <Content Include="SPA\front\directives\recurso.js" />
     <Content Include="SPA\front\directives\unidad-construccion.js" />
     <Content Include="SPA\front\directives\unidad.js" />
-    <Content Include="SPA\front\services\jugador_destacamento.js" />
-    <Content Include="SPA\front\services\jugador_edificio.js" />
-    <Content Include="SPA\front\services\jugador_investigacion.js" />
-    <Content Include="SPA\front\services\jugador_mapa.js" />
-    <Content Include="SPA\front\services\jugador_recurso.js" />
+    <Content Include="SPA\front\services\jugador-destacamento.js" />
+    <Content Include="SPA\front\services\jugador-edificio.js" />
+    <Content Include="SPA\front\services\jugador-investigacion.js" />
+    <Content Include="SPA\front\services\jugador-mapa.js" />
+    <Content Include="SPA\front\services\jugador-recurso.js" />
     <Content Include="SPA\front\views\destacamento.html" />
     <Content Include="SPA\front\views\edificio.html" />
     <Content Include="SPA\front\views\home.html" />
@@ -1557,7 +1558,6 @@
     <Content Include="Views\Activate\Create.cshtml" />
     <Content Include="Views\Account\RegisterJugador.cshtml" />
     <Content Include="Views\Admin\Login.cshtml" />
-    <Content Include="SPA\front\views\.DS_Store" />
     <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>

@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using BLayer.Interfaces;
 using SharedEntities.Entities;
+using Microsoft.AspNet.Identity;
 
 namespace GameBuildPortal.ControllersFrontApi
 {
@@ -15,7 +16,7 @@ namespace GameBuildPortal.ControllersFrontApi
 
         public JugadorMapaController()
         {
-            blHandler = WebApiConfig.FrontService("");
+            blHandler = WebApiConfig.FrontService(null);
         }
 
         [HttpGet]
@@ -31,9 +32,10 @@ namespace GameBuildPortal.ControllersFrontApi
         }
 
         [HttpGet]
-        public IEnumerable<RelJugadorMapa> Get(Jugador j)
+        public IEnumerable<RelJugadorMapa> Get()
         {
-            return blHandler.getMapasByJugador(j);
+            string id = User.Identity.GetUserId();
+            return blHandler.getMapasByJugador(id);
         }
 
         [HttpPut]

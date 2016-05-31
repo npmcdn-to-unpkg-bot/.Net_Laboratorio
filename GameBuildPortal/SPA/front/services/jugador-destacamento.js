@@ -4,12 +4,26 @@
 
     function jugadorDestacamentoService($http, $q) {
 
+        var getAllDestacamentos = function () {
+            var defer = $q.defer();
+
+            $http.get('/api/destacamento')
+            .success(function (jugadorDestacamentos) {
+                defer.resolve(jugadorDestacamentos);
+            })
+            .error(function () {
+                defer.reject('server error')
+            });
+
+            return defer.promise;
+        };
+
         var getDes = function () {
             var defer = $q.defer();
 
-            $http.get('/api/jugador_destacamento')
-            .success(function (jugador_destacamentos) {
-                defer.resolve(jugador_destacamentos);
+            $http.get('/api/jugadorDestacamento')
+            .success(function (jugadorDestacamentos) {
+                defer.resolve(jugadorDestacamentos);
             })
             .error(function () {
                 defer.reject('server error')
@@ -18,12 +32,12 @@
             return defer.promise;
         };
 
-        var add = function (jugador_destacamento) {
+        var add = function (jugadorDestacamento) {
             var defer = $q.defer();
 
-            $http.post('/api/jugador_destacamento', jugador_destacamento)
-            .success(function (jugador_destacamento) {
-                defer.resolve(jugador_destacamento);
+            $http.post('/api/jugadorDestacamento', jugadorDestacamento)
+            .success(function (jugadorDestacamento) {
+                defer.resolve(jugadorDestacamento);
             })
             .error(function () {
                 defer.reject('server error')
@@ -32,12 +46,12 @@
             return defer.promise;
         };
 
-        var edit = function (jugador_destacamento) {
+        var edit = function (jugadorDestacamento) {
             var defer = $q.defer();
 
-            $http.put('/api/jugador_destacamento?id=' + jugador_destacamento.id, jugador_destacamento)
-            .success(function (jugador_destacamento) {
-                defer.resolve(jugador_destacamento);
+            $http.put('/api/jugadorDestacamento?id=' + jugadorDestacamento.id, jugadorDestacamento)
+            .success(function (jugadorDestacamento) {
+                defer.resolve(jugadorDestacamento);
             })
             .error(function () {
                 defer.reject('server error')
@@ -49,9 +63,9 @@
         var borrar = function (id) {
             var defer = $q.defer();
 
-            $http.delete('/api/jugador_destacamento?id=' + id)
-            .success(function (jugador_destacamento) {
-                defer.resolve(jugador_destacamento);
+            $http.delete('/api/jugadorDestacamento?id=' + id)
+            .success(function (jugadorDestacamento) {
+                defer.resolve(jugadorDestacamento);
             })
             .error(function () {
                 defer.reject('server error')
@@ -63,9 +77,9 @@
         var getId = function (id) {
             var defer = $q.defer();
 
-            $http.get('/api/jugador_destacamento?id=' + id)
-            .success(function (jugador_destacamento) {
-                defer.resolve(jugador_destacamento);
+            $http.get('/api/jugadorDestacamento?id=' + id)
+            .success(function (jugadorDestacamento) {
+                defer.resolve(jugadorDestacamento);
             })
             .error(function () {
                 defer.reject('server error')
@@ -80,6 +94,7 @@
             add: add,
             borrar: borrar,
             edit: edit,
+            getAllDestacamentos: getAllDestacamentos
         }
 
     }

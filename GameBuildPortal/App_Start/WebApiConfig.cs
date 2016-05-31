@@ -27,7 +27,7 @@ namespace GameBuildPortal
 
                 config.Routes.MapHttpRoute(
                     name: "DefaultApi",
-                    routeTemplate: "admin/api/{controller}/{id}",
+                    routeTemplate: "api/{controller}/{id}",
                     defaults: new { id = RouteParameter.Optional }
                 );
             }
@@ -50,7 +50,18 @@ namespace GameBuildPortal
 
         public static IFront FrontService(string tenant)
         {
-            tenant = WebApiConfig.tenant;
+            if (tenant == null)
+            {
+                tenant = WebApiConfig.tenant;
+                string host = HttpContext.Current.Request.Url.Host;
+                var nodes = host.Split('.');
+                int startNode = 0;
+                if (nodes[0] == "www") startNode = 1;
+                if (nodes[startNode] != "atlas2" && nodes[startNode] != "localhost")
+                {
+                    tenant = nodes[startNode];
+                }
+            }
             return container.Resolve<IFront>(new ParameterOverrides { { "tId", tenant }, { "IApi", container.Resolve<IApi>() } });
         }
     }

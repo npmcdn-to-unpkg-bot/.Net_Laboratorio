@@ -4,12 +4,12 @@
 
     function jugadorRecursoService($http, $q) {
 
-        var getRec = function () {
+        var getAllRecursos = function () {
             var defer = $q.defer();
 
-            $http.get('/api/jugador_recurso')
-            .success(function (jugador_recursos) {
-                defer.resolve(jugador_recursos);
+            $http.get('/api/recurso')
+            .success(function (recursos) {
+                defer.resolve(recursos);
             })
             .error(function () {
                 defer.reject('server error')
@@ -18,12 +18,12 @@
             return defer.promise;
         };
 
-        var add = function (jugador_recurso) {
+        var getRec = function (colonia) {
             var defer = $q.defer();
 
-            $http.post('/api/jugador_recurso', jugador_recurso)
-            .success(function (jugador_recurso) {
-                defer.resolve(jugador_recurso);
+            $http.get('/api/jugadorRecurso?id=' + colonia)
+            .success(function (jugadorRecursos) {
+                defer.resolve(jugadorRecursos);
             })
             .error(function () {
                 defer.reject('server error')
@@ -32,12 +32,26 @@
             return defer.promise;
         };
 
-        var edit = function (jugador_recurso) {
+        var add = function (jugadorRecurso) {
             var defer = $q.defer();
 
-            $http.put('/api/jugador_recurso?id=' + jugador_recurso.id, jugador_recurso)
-            .success(function (jugador_recurso) {
-                defer.resolve(jugador_recurso);
+            $http.post('/api/jugadorRecurso', jugadorRecurso)
+            .success(function (jugadorRecurso) {
+                defer.resolve(jugadorRecurso);
+            })
+            .error(function () {
+                defer.reject('server error')
+            });
+
+            return defer.promise;
+        };
+
+        var edit = function (jugadorRecurso) {
+            var defer = $q.defer();
+
+            $http.put('/api/jugadorRecurso?id=' + jugadorRecurso.id, jugadorRecurso)
+            .success(function (jugadorRecurso) {
+                defer.resolve(jugadorRecurso);
             })
             .error(function () {
                 defer.reject('server error')
@@ -49,9 +63,9 @@
         var borrar = function (id) {
             var defer = $q.defer();
 
-            $http.delete('/api/jugador_recurso?id=' + id)
-            .success(function (jugador_recurso) {
-                defer.resolve(jugador_recurso);
+            $http.delete('/api/jugadorRecurso?id=' + id)
+            .success(function (jugadorRecurso) {
+                defer.resolve(jugadorRecurso);
             })
             .error(function () {
                 defer.reject('server error')
@@ -63,9 +77,9 @@
         var getId = function (id) {
             var defer = $q.defer();
 
-            $http.get('/api/jugador_recurso?id=' + id)
-            .success(function (jugador_recurso) {
-                defer.resolve(jugador_recurso);
+            $http.get('/api/jugadorRecurso?id=' + id)
+            .success(function (jugadorRecurso) {
+                defer.resolve(jugadorRecurso);
             })
             .error(function () {
                 defer.reject('server error')
@@ -75,6 +89,7 @@
         };
 
         return {
+            getAllRecursos : getAllRecursos,
             getRec: getRec,
             getId: getId,
             add: add,

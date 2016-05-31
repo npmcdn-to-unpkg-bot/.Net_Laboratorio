@@ -10,7 +10,6 @@ namespace BLayer.Interfaces
     public interface IFront
     {
         // RELJUGADOREDIFICIO
-
         void createRelJugadorEdificio(RelJugadorEdificio relacion);
         void deleteRelJugadorEdificio(int id);
         void updateRelJugadorEdificio(RelJugadorEdificio relacion);
@@ -18,7 +17,6 @@ namespace BLayer.Interfaces
         List<RelJugadorEdificio> getEdificiosByColonia(int id);
 
         //RELJUGADORINVESTIGACION
-
         void createRelJugadorInvestigacion(RelJugadorInvestigacion relacion);
         void deleteRelJugadorInvestigacion(int id);
         void updateRelJugadorInvestigacion(RelJugadorInvestigacion relacion);
@@ -26,15 +24,13 @@ namespace BLayer.Interfaces
         List<RelJugadorInvestigacion> getInvestigacionesByColonia(int id);
 
         //RELJUGADORMAPA
-
         void createRelJugadorMapa(RelJugadorMapa r);
         void deleteRelJugadorMapa(int id);
         void updateRelJugadorMapa(RelJugadorMapa r);
         RelJugadorMapa getRelJugadorMapa(int id);
-        List<RelJugadorMapa> getMapasByJugador(Jugador j);
+        List<RelJugadorMapa> getMapasByJugador(string id);
 
         //RELJUGADORRECURSO
-
         void createRelJugadorRecurso(RelJugadorRecurso relacion);
         void deleteRelJugadorRecurso(int id);
         void updateRelJugadorRecurso(RelJugadorRecurso relacion);
@@ -42,7 +38,6 @@ namespace BLayer.Interfaces
         List<RelJugadorRecurso> getRecursosByColonia(int id);
 
         //RELJUGADORDESTACAMENTO
-
         void createRelJugadorDestacamento(RelJugadorDestacamento relacion);
         void deleteRelJugadorDestacamento(int id);
         void updateRelJugadorDestacamento(RelJugadorDestacamento relacion);

@@ -15,7 +15,7 @@ namespace GameBuildPortal.ControllersFrontApi
 
         public JugadorDestacamentoController()
         {
-            blHandler = WebApiConfig.FrontService("");
+            blHandler = WebApiConfig.FrontService(null);
         }
 
         [HttpGet]

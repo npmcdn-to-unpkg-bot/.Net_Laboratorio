@@ -19,13 +19,14 @@ namespace BLayer.Front
             tId = tId.Replace(" ", "_");
             builder.setTenant(tId);
         }
+
         //TENANT
         public bool existGame(string gameName)
         {
             return builder.getTenantHandler().tenantExist(gameName);
         }
-        //RELJUGADORRECURSOS
 
+        //RELJUGADORRECURSOS
         public RelJugadorRecurso getRelJugadorRecurso(int id)
         {
             return builder.getRelJugadorRecursoHandler().getRelJugadorRecurso(id);
@@ -52,7 +53,6 @@ namespace BLayer.Front
         }
 
         //RELJUGADOREDIFICIOS
-
         public RelJugadorEdificio getRelJugadorEdificio(int id)
         {
             return builder.getRelJugadorEdificioHandler().getRelJugadorEdificio(id);
@@ -79,7 +79,6 @@ namespace BLayer.Front
         }
 
         //RELJUGADORINVESTIGACION
-
         public RelJugadorInvestigacion getRelJugadorInvestigacion(int id)
         {
             return builder.getRelJugadorInvestigacionHandler().getRelJugadorInvestigacion(id);
@@ -106,7 +105,6 @@ namespace BLayer.Front
         }
 
         //RELJUGADORMAPAS
-
         public RelJugadorMapa getRelJugadorMapa(int id)
         {
             return builder.getRelJugadorMapaHandler().getRelJugadorMapa(id);
@@ -127,13 +125,12 @@ namespace BLayer.Front
             builder.getRelJugadorMapaHandler().deleteRelJugadorMapa(id);
         }
 
-        public List<RelJugadorMapa> getMapasByJugador(Jugador jugador)
+        public List<RelJugadorMapa> getMapasByJugador(string id)
         {
-            return builder.getRelJugadorMapaHandler().getMapasByJugador(jugador);
+            return builder.getRelJugadorMapaHandler().getMapasByJugador(id);
         }
 
         //RELJUGADORDESTACAMENTOS
-
         public RelJugadorDestacamento getRelJugadorDestacamento(int id)
         {
             return builder.getRelJugadorDestacamentoHandler().getRelJugadorDestacamento(id);

@@ -4,12 +4,26 @@
 
     function jugadorEdificioService($http, $q) {
 
+        var getAllEdificios = function () {
+            var defer = $q.defer();
+
+            $http.get('/api/edificio')
+            .success(function (jugadorEdificios) {
+                defer.resolve(jugadorEdificios);
+            })
+            .error(function () {
+                defer.reject('server error')
+            });
+
+            return defer.promise;
+
+        };
         var getEdi = function () {
             var defer = $q.defer();
 
-            $http.get('/api/jugador_edificio')
-            .success(function (jugador_edificios) {
-                defer.resolve(jugador_edificios);
+            $http.get('/api/jugadorEdificio')
+            .success(function (jugadorEdificios) {
+                defer.resolve(jugadorEdificios);
             })
             .error(function () {
                 defer.reject('server error')
@@ -18,12 +32,12 @@
             return defer.promise;
         };
 
-        var add = function (jugador_edificio) {
+        var add = function (jugadorEdificio) {
             var defer = $q.defer();
 
-            $http.post('/api/jugador_edificio', jugador_edificio)
-            .success(function (jugador_edificio) {
-                defer.resolve(jugador_edificio);
+            $http.post('/api/jugadorEdificio', jugadorEdificio)
+            .success(function (jugadorEdificio) {
+                defer.resolve(jugadorEdificio);
             })
             .error(function () {
                 defer.reject('server error')
@@ -32,12 +46,12 @@
             return defer.promise;
         };
 
-        var edit = function (jugador_edificio) {
+        var edit = function (jugadorEdificio) {
             var defer = $q.defer();
 
-            $http.put('/api/jugador_edificio?id=' + jugador_edificio.id, jugador_edificio)
-            .success(function (jugador_edificio) {
-                defer.resolve(jugador_edificio);
+            $http.put('/api/jugadorEdificio?id=' + jugadorEdificio.id, jugadorEdificio)
+            .success(function (jugadorEdificio) {
+                defer.resolve(jugadorEdificio);
             })
             .error(function () {
                 defer.reject('server error')
@@ -49,9 +63,9 @@
         var borrar = function (id) {
             var defer = $q.defer();
 
-            $http.delete('/api/jugador_edificio?id=' + id)
-            .success(function (jugador_edificio) {
-                defer.resolve(jugador_edificio);
+            $http.delete('/api/jugadorEdificio?id=' + id)
+            .success(function (jugadorEdificio) {
+                defer.resolve(jugadorEdificio);
             })
             .error(function () {
                 defer.reject('server error')
@@ -63,9 +77,9 @@
         var getId = function (id) {
             var defer = $q.defer();
 
-            $http.get('/api/jugador_edificio?id=' + id)
-            .success(function (jugador_edificio) {
-                defer.resolve(jugador_edificio);
+            $http.get('/api/jugadorEdificio?id=' + id)
+            .success(function (jugadorEdificio) {
+                defer.resolve(jugadorEdificio);
             })
             .error(function () {
                 defer.reject('server error')
@@ -80,6 +94,7 @@
             add: add,
             borrar: borrar,
             edit: edit,
+            getAllEdificios: getAllEdificios
         }
 
     }
