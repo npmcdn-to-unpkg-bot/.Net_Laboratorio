@@ -31,12 +31,12 @@
             });
         });
 
-        $scope.subirNivel = function (id) {
-            console.log('subirNivel', id);
+        $scope.subirNivel = function (edificio) {
+            console.log('subirNivel', edificio);
 
             var edificio = {
-                colonia: currentMapa.id,
-                edificio: id
+                col: currentMapa.id,
+                edi: edificio.id
             }
 
             jugadorEdificioService.add(edificio).then(
