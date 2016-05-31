@@ -1,8 +1,8 @@
 ﻿(function () {
     'use strict';
-    angular.module('atlas2-juego').controller('appCtrl', ['$scope', 'jugadorMapaService', 'jugadorRecursoService', 'colonias', appCtrl]);
+    angular.module('atlas2-juego').controller('appCtrl', ['$scope', 'jugadorMapaService', 'jugadorRecursoService', 'coloniaFactory', appCtrl]);
 
-    function appCtrl($scope, jugadorMapaService, jugadorRecursoService, colonias) {
+    function appCtrl($scope, jugadorMapaService, jugadorRecursoService, coloniaFactory) {
         $scope.recursos = null;
 
         jugadorRecursoService.getAllRecursos().then(function (data) {
@@ -10,9 +10,8 @@
         });
 
         jugadorMapaService.getAll().then(function (data) {
-            colonias.set(data);
+            coloniaFactory.set(data);
         });
-
     }
 
 })();

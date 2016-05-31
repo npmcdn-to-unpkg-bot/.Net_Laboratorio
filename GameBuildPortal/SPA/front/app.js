@@ -39,7 +39,7 @@
         });
     }
 
-    angular.module('atlas2-juego').factory('colonias', ['$rootScope', function ($rootScope) {
+    angular.module('atlas2-juego').factory('coloniaFactory', ['$rootScope', function ($rootScope) {
         var mapas = null;
         var mapa = null;
 
@@ -61,8 +61,6 @@
 
         var setCurrent = function (m) {
             mapa = m;
-
-            console.log(m);
 
             $rootScope.$broadcast('mapa:current', mapa);
         };

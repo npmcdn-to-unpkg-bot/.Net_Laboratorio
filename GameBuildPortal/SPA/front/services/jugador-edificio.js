@@ -1,6 +1,6 @@
 ﻿(function () {
     'use strict';
-    angular.module('atlas2-juego').service('jugadorEdificioService', ["$http", "$q", jugadorEdificioService]);
+    angular.module('atlas2-juego').service('jugadorEdificioService', ['$http', '$q', jugadorEdificioService]);
 
     function jugadorEdificioService($http, $q) {
 
@@ -16,12 +16,12 @@
             });
 
             return defer.promise;
-
         };
-        var getEdi = function () {
+
+        var getEdificioByColonia = function (id) {
             var defer = $q.defer();
 
-            $http.get('/api/jugadorEdificio')
+            $http.get('/api/jugadorEdificio?id=' + id)
             .success(function (jugadorEdificios) {
                 defer.resolve(jugadorEdificios);
             })
@@ -89,7 +89,7 @@
         };
 
         return {
-            getEdi: getEdi,
+            getEdificioByColonia: getEdificioByColonia,
             getId: getId,
             add: add,
             borrar: borrar,

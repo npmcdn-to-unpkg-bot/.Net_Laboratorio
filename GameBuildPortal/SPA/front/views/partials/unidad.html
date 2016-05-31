@@ -5,6 +5,7 @@
     <h3 class="profile-username text-center">{{unidad.nombre}}</h3>
 
     <p class="text-muted text-center">{{unidad.descripcion}}</p>
+    <p class="text-muted text-center">{{unidad.nivel}}</p>
 
     <ul class="list-group list-group-unbordered">
       <li class="list-group-item">
@@ -18,7 +19,7 @@
       </li>
     </ul>
 
-    <a class="btn btn-primary btn-block"><b>Mejorar</b></a>
+    <a class="btn btn-primary btn-block" ng-click="subirNivel(unidad.id)"><b>Mejorar</b></a>
   </div>
   <!-- /.box-body -->
 </div>
