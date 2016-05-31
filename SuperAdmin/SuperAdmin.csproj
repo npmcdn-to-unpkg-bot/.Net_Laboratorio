@@ -206,14 +206,15 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\SolicitudJuegoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\SolicitudJuegoModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -254,9 +255,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
@@ -277,6 +275,7 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\SolicitudJuego\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -297,6 +296,10 @@
     <ProjectReference Include="..\DALayer\DALayer.csproj">
       <Project>{1771106e-4b5f-421d-96f1-a07436f59a56}</Project>
       <Name>DALayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SharedEntities\SharedEntities.csproj">
+      <Project>{730c64c0-b03b-4706-9116-058c34f66c42}</Project>
+      <Name>SharedEntities</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
