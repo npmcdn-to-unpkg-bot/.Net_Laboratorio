@@ -47,7 +47,6 @@
     <Compile Include="Entities\Costo.cs" />
     <Compile Include="Entities\Destacamento.cs" />
     <Compile Include="Entities\Edificio.cs" />
-    <Compile Include="Entities\EstadoInicialJuego.cs" />
     <Compile Include="Entities\Flota.cs" />
     <Compile Include="Entities\HistorialVentas.cs" />
     <Compile Include="Entities\Investigacion.cs" />

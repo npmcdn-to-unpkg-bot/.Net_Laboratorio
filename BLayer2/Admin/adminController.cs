@@ -210,30 +210,6 @@ namespace BLayer.Admin
         }
 
         //ESTADO INICIAL JUADOR
-        public void createEstadoInicial(EstadoInicialJuego eij)
-        {
-            builder.getEstadoIHandler().createEstadoInicial(eij);
-        }
-
-        public void deleteEstadoInicial(int id)
-        {
-            builder.getEstadoIHandler().deleteEstadoInicial(id);
-        }
-
-        public void updateEstadoInicial(EstadoInicialJuego eij)
-        {
-            builder.getEstadoIHandler().updateEstadoInicial(eij);
-        }
-
-        public EstadoInicialJuego getEstadoInicial(int id)
-        {
-            return builder.getEstadoIHandler().getEstadoInicial(id);
-        }
-
-        public List<EstadoInicialJuego> getAllEstados()
-        {
-            return builder.getEstadoIHandler().getAllEstados();
-        }
 
         public void inicializarJugador(Jugador j)
         {
@@ -247,8 +223,39 @@ namespace BLayer.Admin
                 i++;
             }
 
-            var rel = new RelJugadorMapa(1, nivel[0], nivel[1], nivel[2], nivel[3], nivel[4], j);
-            builder.getRelJugadorMapaHandler().createRelJugadorMapa(rel);
+            var reljm = new RelJugadorMapa(1, nivel[0], nivel[1], nivel[2], nivel[3], nivel[4], j);
+            builder.getRelJugadorMapaHandler().createRelJugadorMapa(reljm);
+
+            List<RelJugadorMapa> colonias = builder.getRelJugadorMapaHandler().getMapasByJugador(j.id);
+            var colonia = colonias.First();
+
+            List<Recurso> recursos = builder.getRecursoHandler().getAllRecursos();
+            foreach (var rec in recursos)
+            {
+                var rel = new RelJugadorRecurso(1, rec, colonia, rec.cantInicial, rec.cantInicial, 0);
+                builder.getRelJugadorRecursoHandler().createRelJugadorRecurso(rel);
+            }
+
+            List<Edificio> edificios = builder.getUnidadHandler().getAllEdificios();
+            foreach (var ed in edificios)
+            {
+                var rel = new RelJugadorEdificio(1, colonia, ed, 0);
+                builder.getRelJugadorEdificioHandler().createRelJugadorEdificio(rel);
+            }
+
+            List<Destacamento> destacamentos = builder.getUnidadHandler().getAllDestacamentos();
+            foreach (var des in destacamentos)
+            {
+                var rel = new RelJugadorDestacamento(1, colonia, des, 0);
+                builder.getRelJugadorDestacamentoHandler().createRelJugadorDestacamento(rel);
+            }
+
+            List<Investigacion> investigaciones = builder.getInvestigacionHandler().getAllInvestigaciones();
+            foreach (var inv in investigaciones)
+            {
+                var rel = new RelJugadorInvestigacion(1, colonia, inv, 0);
+                builder.getRelJugadorInvestigacionHandler().createRelJugadorInvestigacion(rel);
+            }
         }
 
         //UI

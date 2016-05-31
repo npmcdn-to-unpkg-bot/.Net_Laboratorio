@@ -11,6 +11,7 @@ namespace DALayer.Api
     public class SuperAdminApi: ISuperAdminApi
     {
         private ISolicitudJuegoHandler solicitudJHandler;
+        private IJuegoHandler juegoHandler;
 
         public ISolicitudJuegoHandler getSJHandler()
         {
@@ -19,6 +20,14 @@ namespace DALayer.Api
                 solicitudJHandler = new SolicitudJuegoHandlerEF(AdminFactory.getAdminCtx());
             }
             return solicitudJHandler;
+        }
+        public IJuegoHandler getJuegoHandler()
+        {
+            if (juegoHandler == null)
+            {
+                juegoHandler = new JuegoHandlerEF(AdminFactory.getAdminCtx());
+            }
+            return juegoHandler;
         }
     }
 }

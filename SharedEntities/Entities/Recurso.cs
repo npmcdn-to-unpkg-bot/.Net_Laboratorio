@@ -11,13 +11,15 @@ namespace SharedEntities.Entities
         public int id;
         public string nombre;
         public string descripcion;
+        public int cantInicial;
         public byte[] foto; 
 
-        public Recurso(int id, string nombre, string description, byte[] foto)
+        public Recurso(int id, string nombre, string description, int cantInicial, byte[] foto)
         {
             this.id = id;
             this.nombre = nombre;
             this.descripcion = description;
+            this.cantInicial = cantInicial;
             this.foto = foto;
         }
     }

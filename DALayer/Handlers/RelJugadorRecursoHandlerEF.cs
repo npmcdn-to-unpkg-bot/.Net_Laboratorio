@@ -19,15 +19,8 @@ namespace DALayer.Handlers
 
         public void createRelJugadorRecurso(RelJugadorRecurso r)
         {
-            var rec = new Entities.Recurso(r.recurso.nombre, r.recurso.descripcion, r.recurso.foto);
-            rec.id = r.recurso.id;
-
-            var j2 = new Entities.Jugador(r.colonia.jugador.nombre, r.colonia.jugador.apellido, r.colonia.jugador.foto,
-                r.colonia.jugador.nickname, r.colonia.jugador.nivel, r.colonia.jugador.experiencia);
-            j2.Id = r.colonia.jugador.id;
-            var col = new Entities.RelJugadorMapa(r.colonia.nivel1, r.colonia.nivel2, r.colonia.nivel3, r.colonia.nivel4,
-                r.colonia.nivel5, j2);
-            col.id = r.colonia.id;
+            var rec = ctx.Recurso.Where(w => w.id == r.recurso.id).SingleOrDefault();
+            var col = ctx.RelJugadorMapa.Where(w => w.id == r.colonia.id).SingleOrDefault();
 
             var rjr = new Entities.RelJugadorRecurso(rec, col, r.capacidad, r.cantidadR, r.factorIncremento);
 
@@ -66,7 +59,7 @@ namespace DALayer.Handlers
                            where c.id == id
                            select c).SingleOrDefault();
 
-                Recurso rec = new Recurso(r.recurso.id, r.recurso.nombre, r.recurso.descripcion, r.recurso.foto);
+                Recurso rec = new Recurso(r.recurso.id, r.recurso.nombre, r.recurso.descripcion, r.recurso.cantInicial, r.recurso.foto);
                 Jugador jug = new Jugador(r.colonia.j.Id, r.colonia.j.nombre, r.colonia.j.apellido,
                                             r.colonia.j.Email, r.colonia.j.UserName, r.colonia.j.PasswordHash,
                                             r.colonia.j.foto, r.colonia.j.nickname,
