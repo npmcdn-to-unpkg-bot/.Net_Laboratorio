@@ -1559,7 +1559,7 @@
     <Content Include="Views\Account\RegisterJugador.cshtml" />
     <Content Include="Views\Admin\Login.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Activate\View.cshtml" />
+    <Content Include="Views\Activate\Expired.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
