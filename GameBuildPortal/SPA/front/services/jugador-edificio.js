@@ -4,10 +4,10 @@
 
     function jugadorEdificioService($http, $q) {
 
-        var getAllEdificios = function () {
+        var getEdificioByColonia = function (colonia) {
             var defer = $q.defer();
 
-            $http.get('/api/edificio')
+            $http.get('/api/jugadorEdificio/ByColonia?id=' + colonia)
             .success(function (jugadorEdificios) {
                 defer.resolve(jugadorEdificios);
             })
@@ -18,24 +18,10 @@
             return defer.promise;
         };
 
-        var getEdificioByColonia = function (id) {
+        var subirNivel = function (id) {
             var defer = $q.defer();
 
-            $http.get('/api/jugadorEdificio?id=' + id)
-            .success(function (jugadorEdificios) {
-                defer.resolve(jugadorEdificios);
-            })
-            .error(function () {
-                defer.reject('server error')
-            });
-
-            return defer.promise;
-        };
-
-        var add = function (jugadorEdificio) {
-            var defer = $q.defer();
-
-            $http.post('/api/jugadorEdificio', jugadorEdificio)
+            $http.put('/api/jugadorEdificio/SubirNivel?id=' + id)
             .success(function (jugadorEdificio) {
                 defer.resolve(jugadorEdificio);
             })
@@ -46,24 +32,10 @@
             return defer.promise;
         };
 
-        var edit = function (jugadorEdificio) {
+        var bajarNivel = function (id) {
             var defer = $q.defer();
 
-            $http.put('/api/jugadorEdificio?id=' + jugadorEdificio.id, jugadorEdificio)
-            .success(function (jugadorEdificio) {
-                defer.resolve(jugadorEdificio);
-            })
-            .error(function () {
-                defer.reject('server error')
-            });
-
-            return defer.promise;
-        };
-
-        var borrar = function (id) {
-            var defer = $q.defer();
-
-            $http.delete('/api/jugadorEdificio?id=' + id)
+            $http.delete('/api/jugadorEdificio/BajarNivel?id=' + id)
             .success(function (jugadorEdificio) {
                 defer.resolve(jugadorEdificio);
             })
@@ -77,7 +49,7 @@
         var getId = function (id) {
             var defer = $q.defer();
 
-            $http.get('/api/jugadorEdificio?id=' + id)
+            $http.get('/api/jugadorEdificio/' + id)
             .success(function (jugadorEdificio) {
                 defer.resolve(jugadorEdificio);
             })
@@ -91,10 +63,8 @@
         return {
             getEdificioByColonia: getEdificioByColonia,
             getId: getId,
-            add: add,
-            borrar: borrar,
-            edit: edit,
-            getAllEdificios: getAllEdificios
+            subirNivel: subirNivel,
+            bajarNivel: bajarNivel,
         }
 
     }

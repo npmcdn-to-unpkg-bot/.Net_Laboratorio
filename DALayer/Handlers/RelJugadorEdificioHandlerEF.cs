@@ -49,15 +49,19 @@ namespace DALayer.Handlers
             }
         }
 
-        public void deleteRelJugadorEdificio(int id)
+        public void bajarNivel(int id)
         {
-            var rje = (from c in ctx.RelJugadorEdificio
-                       where c.id == id
-                       select c).SingleOrDefault();
             try
             {
-                ctx.RelJugadorEdificio.Remove(rje);
-                ctx.SaveChangesAsync().Wait();
+                var r = ctx.RelJugadorEdificio
+                   .Where(w => w.id == id)
+                   .SingleOrDefault();
+
+                if (r != null)
+                {
+                    r.nivelE -= 1;
+                    ctx.SaveChangesAsync().Wait();
+                }
             }
             catch (Exception ex)
             {
@@ -97,17 +101,17 @@ namespace DALayer.Handlers
             }
         }
 
-        public void updateRelJugadorEdificio(RelJugadorEdificio rje)
+        public void subirNivel(int id)
         {
             try
             {
                 var r = ctx.RelJugadorEdificio
-                    .Where(w => w.id == rje.id)
+                    .Where(w => w.id == id)
                     .SingleOrDefault();
 
                 if (r != null)
                 {
-                    r.nivelE = rje.nivelE;
+                    r.nivelE += 1;
                     ctx.SaveChangesAsync().Wait();
                 }
             }

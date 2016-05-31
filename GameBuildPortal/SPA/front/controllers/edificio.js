@@ -4,49 +4,71 @@
 
     function edificioCtrl($scope, $filter, jugadorEdificioService, coloniaFactory) {
         $scope.edificios = null;
-        var currentMapa = null;
+        $scope.edificio = null;
+        $scope.showLoading = null;
+
+        var currentMapa = coloniaFactory.getCurrent();
+        
+        var initialize = function () {
+            jugadorEdificioService.getEdificioByColonia(currentMapa.id).then(function (jugadorEdificio) {
+                var edificioArray = [];
+                for (var r in jugadorEdificio) {
+                    var rel = jugadorEdificio[r];
+
+                    rel.edificio['nivel'] = rel.nivelE;
+                    rel.edificio['relId']= rel.id;
+
+                    edificioArray.push(rel.edificio);
+                }
+
+                $scope.edificios = edificioArray;
+            });
+        };
 
         $scope.$on('mapa:current', function (event, data) {
             currentMapa = coloniaFactory.getCurrent();
 
-            jugadorEdificioService.getAllEdificios().then(function (edificios) {
-
-                console.log('edificios', edificios, currentMapa);
-
-                jugadorEdificioService.getEdificioByColonia(currentMapa.id).then(function (jugadorEdificio) {
-                    console.log('data', jugadorEdificio);
-
-                    for (var e in edificios) {
-                        var ediData = edificios[e];
-                        var edi = $filter('filter')(edificios, { 'id': ediData.id });
-
-                        if (edi) {
-                            ediData['nivel']= edi.nivelE;
-                        }
-                    }
-
-                    $scope.edificios = edificios;
-                });
-
-            });
+            initialize();
         });
 
+        if (currentMapa) {
+            initialize();
+        }
+
         $scope.subirNivel = function (edificio) {
-            console.log('subirNivel', edificio);
+            $scope.showLoading = edificio.id;
 
-            var edificio = {
-                col: currentMapa.id,
-                edi: edificio.id
-            }
-
-            jugadorEdificioService.add(edificio).then(
+            jugadorEdificioService.subirNivel(edificio.relId).then(
                 function (data) {
-
+                    $scope.showLoading = null;
+                    edificio.nivel ++;
                 }, function () {
-
+                    $scope.showLoading = null;
                 }
             );
         }
+
+        $scope.bajarNivel = function (edificio) {
+            $scope.showLoading = edificio.id;
+
+            jugadorEdificioService.bajarNivel(edificio.relId).then(
+                function (data) {
+                    $scope.showLoading = null;
+                    edificio.nivel--;
+                }, function () {
+                    $scope.showLoading = null;
+                }
+            );
+        }
+
+        $scope.mostrarInfo = function (edificio) {
+            $scope.edificio = edificio;
+            $('#modal-info-edificio').modal('show');
+        }
+
+        $('#modal-info-edificio').on('hidden.bs.modal', function (e) {
+            $scope.edificio = null;
+        })
     }
 
 })();

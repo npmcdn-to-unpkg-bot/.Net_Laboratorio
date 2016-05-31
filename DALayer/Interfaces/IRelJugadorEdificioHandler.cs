@@ -10,8 +10,8 @@ namespace DALayer.Interfaces
     public interface IRelJugadorEdificioHandler
     {
         void createRelJugadorEdificio(RelJugadorEdificio relacion);
-        void deleteRelJugadorEdificio(int id);
-        void updateRelJugadorEdificio(RelJugadorEdificio relacion);
+        void bajarNivel(int id);
+        void subirNivel(int id);
         RelJugadorEdificio getRelJugadorEdificio(int id);
         List<RelJugadorEdificio> getEdificiosByColonia(int id);
     }

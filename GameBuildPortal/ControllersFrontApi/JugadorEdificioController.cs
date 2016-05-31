@@ -19,7 +19,7 @@ namespace GameBuildPortal.ControllersFrontApi
         }
 
         [HttpGet]
-        public IEnumerable<RelJugadorEdificio> Get(int id)
+        public IEnumerable<RelJugadorEdificio> GetByColonia(int id)
         {
             IEnumerable<RelJugadorEdificio> edicicios = blHandler.getEdificiosByColonia(id);
             if (edicicios == null)
@@ -30,28 +30,17 @@ namespace GameBuildPortal.ControllersFrontApi
             return edicicios;
         }
 
-        //[HttpGet]
-        //public IEnumerable<RelJugadorEdificio> Get(Jugador j)
-        //{
-        //    return blHandler.getMapasByJugador(j);
-        //}
-
         [HttpPut]
-        public HttpResponseMessage Put(int id, RelJugadorEdificio r)
+        public HttpResponseMessage PutSubirNivel(int id)
         {
             if (!ModelState.IsValid)
             {
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
             }
-
-            if (id != r.id)
-            {
-                return Request.CreateResponse(HttpStatusCode.BadRequest);
-            }
-
+            
             try
             {
-                blHandler.updateRelJugadorEdificio(r);
+                blHandler.subirNivel(id);
             }
             catch (Exception ex)
             {
@@ -61,29 +50,12 @@ namespace GameBuildPortal.ControllersFrontApi
             return Request.CreateResponse(HttpStatusCode.OK);
         }
 
-        [HttpPost]
-        public HttpResponseMessage Post(RelJugadorEdificio r)
-        {
-            if (ModelState.IsValid)
-            {
-                blHandler.createRelJugadorEdificio(r);
-
-                HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, r);
-                response.Headers.Location = new Uri(Url.Link("DefaultApi", new { controller = "Admin" }));
-                return response;
-            }
-            else
-            {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
-            }
-        }
-
         [HttpDelete]
-        public HttpResponseMessage Delete(int id)
+        public HttpResponseMessage DeleteBajarNivel(int id)
         {
             try
             {
-                blHandler.deleteRelJugadorEdificio(id);
+                blHandler.bajarNivel(id);
             }
             catch (Exception ex)
             {

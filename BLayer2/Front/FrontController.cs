@@ -63,14 +63,14 @@ namespace BLayer.Front
             builder.getRelJugadorEdificioHandler().createRelJugadorEdificio(reljugadoredificio);
         }
 
-        public void updateRelJugadorEdificio(RelJugadorEdificio reljugadoredificio)
+        public void subirNivel(int id)
         {
-            builder.getRelJugadorEdificioHandler().updateRelJugadorEdificio(reljugadoredificio);
+            builder.getRelJugadorEdificioHandler().subirNivel(id);
         }
 
-        public void deleteRelJugadorEdificio(int id)
+        public void bajarNivel(int id)
         {
-            builder.getRelJugadorEdificioHandler().deleteRelJugadorEdificio(id);
+            builder.getRelJugadorEdificioHandler().bajarNivel(id);
         }
 
         public List<RelJugadorEdificio> getEdificiosByColonia(int id)
