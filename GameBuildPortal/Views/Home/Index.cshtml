@@ -1,4 +1,5 @@
-﻿@{
+﻿@model SharedEntities.Entities.Ui
+@{
     Layout = "";
 }
 
@@ -29,6 +30,10 @@
     <![endif]-->
 
     <title>Orgame</title>
+
+    <style type="text/css">
+       @Model.css
+    </style>
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini layout-boxed sidebar-collapse" ng-app="atlas2-juego">

@@ -19,6 +19,18 @@ namespace GameBuildPortal.ControllersAdminApi
             blHandler = WebApiConfig.BuilderService(null);
         }
 
+        [HttpGet]
+        public HttpResponseMessage Get(int id)
+        {
+            Ui ui = blHandler.getUi(id);
+            if (ui == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+
+            return Request.CreateResponse(HttpStatusCode.OK, ui);
+        }
+
         [HttpPost]
         public HttpResponseMessage Post(Ui ui)
         {

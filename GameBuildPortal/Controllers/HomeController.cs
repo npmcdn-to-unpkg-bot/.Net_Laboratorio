@@ -17,6 +17,8 @@ namespace GameBuildPortal.Controllers
 {
     public class HomeController : Controller
     {
+        public static IAdmin blHandler;
+
         public ActionResult Index()
         {
             if (User.Identity.IsAuthenticated)
@@ -27,7 +29,10 @@ namespace GameBuildPortal.Controllers
 
                 if (!UHelper.isAdmin)
                 {
-                    return View();
+                    blHandler = WebApiConfig.BuilderService(null);
+                    SharedEntities.Entities.Ui ui = blHandler.getUi(1);
+
+                    return View(ui);
                 }
             }
 
@@ -48,7 +53,6 @@ namespace GameBuildPortal.Controllers
                 }
             }
             
-
             return View();
         }
     }

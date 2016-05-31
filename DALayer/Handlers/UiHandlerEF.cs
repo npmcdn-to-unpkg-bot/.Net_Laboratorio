@@ -56,8 +56,13 @@ namespace DALayer.Handlers
                          where c.id == id
                            select c).SingleOrDefault();
 
-                Ui ui = new Ui(u.id, u.css);
-                return ui;
+                if (u != null)
+                {
+                    Ui ui = new Ui(u.id, u.css);
+                    return ui;
+                }
+
+                return null;
             }
             catch (Exception ex)
             {
