@@ -92,7 +92,7 @@ namespace DALayer.Handlers
                                             invE.colonia.j.foto, invE.colonia.j.nickname,
                                             invE.colonia.j.nivel, invE.colonia.j.experiencia);
                 RelJugadorMapa col = new RelJugadorMapa(invE.colonia.id, invE.colonia.nivel1, invE.colonia.nivel2, invE.colonia.nivel3,
-                                                        invE.colonia.nivel4, invE.colonia.nivel5, jug);
+                                                        invE.colonia.nivel4, invE.colonia.nivel5, invE.colonia.coord, jug);
                 //var costos = new List<Costo>();
                 //foreach (var item in invE.investigacion.costos)
                 //{

@@ -29,6 +29,7 @@ namespace BLayer.Interfaces
         void updateRelJugadorMapa(RelJugadorMapa r);
         RelJugadorMapa getRelJugadorMapa(int id);
         List<RelJugadorMapa> getMapasByJugador(string id);
+        List<RelJugadorMapa> getColoniasPorVista(int[] coordenadas);
 
         //RELJUGADORRECURSO
         void createRelJugadorRecurso(RelJugadorRecurso relacion);

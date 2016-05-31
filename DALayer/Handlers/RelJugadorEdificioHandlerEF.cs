@@ -91,7 +91,7 @@ namespace DALayer.Handlers
                                             rje.colonia.j.foto, rje.colonia.j.nickname,
                                             rje.colonia.j.nivel, rje.colonia.j.experiencia);
                 RelJugadorMapa col = new RelJugadorMapa(rje.colonia.id, rje.colonia.nivel1, rje.colonia.nivel2, rje.colonia.nivel3,
-                                                        rje.colonia.nivel4, rje.colonia.nivel5, jug);
+                                                        rje.colonia.nivel4, rje.colonia.nivel5, rje.colonia.coord, jug);
                 RelJugadorEdificio edificio = new RelJugadorEdificio(rje.id, col, edi, rje.nivelE);
                 return edificio;
             }
