@@ -17,8 +17,6 @@ namespace GameBuildPortal.Controllers
 {
     public class HomeController : Controller
     {
-        public static IAdmin blHandler;
-
         public ActionResult Index()
         {
             if (User.Identity.IsAuthenticated)
@@ -29,8 +27,8 @@ namespace GameBuildPortal.Controllers
 
                 if (!UHelper.isAdmin)
                 {
-                    blHandler = WebApiConfig.BuilderService(null);
-                    SharedEntities.Entities.Ui ui = blHandler.getUi(1);
+                    // le agrega el css al juego
+                    SharedEntities.Entities.Ui ui = WebApiConfig.BuilderService(null).getUi(1);
 
                     return View(ui);
                 }
@@ -51,9 +49,16 @@ namespace GameBuildPortal.Controllers
                 {
                     return RedirectToAction("Index", "Home");
                 }
+                else
+                {
+                    return RedirectToAction("Index", "Admin");
+                }
             }
-            
-            return View();
+
+            // le agrega el css al juego
+            SharedEntities.Entities.Ui ui = WebApiConfig.BuilderService(null).getUi(1);
+
+            return View(ui);
         }
     }
 }

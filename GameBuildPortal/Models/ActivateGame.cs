@@ -11,7 +11,7 @@ namespace GameBuildPortal.Models
 
         /*Datos del tenant*/
         [Required]
-        [StringLength(15, ErrorMessage = "El nombre {0} es muy largo", MinimumLength = 6)]
+        [StringLength(15, ErrorMessage = "El nombre {0} es muy corto", MinimumLength = 4)]
         [DataType(DataType.Text)]
         [Display(Name = "Nombre del Juego")]
         public string nombreJuego { get; set; }
@@ -26,17 +26,17 @@ namespace GameBuildPortal.Models
 
         /*Datos admin*/
         [Required]
-        [StringLength(15, ErrorMessage = "El nombre {0} es muy largo", MinimumLength = 6)]
+        [StringLength(15, ErrorMessage = "El nombre {0} es muy corto", MinimumLength = 4)]
         [DataType(DataType.Text)]
-        [Display(Name = "Nombre Completo")]
+        [Display(Name = "Nombre")]
         public String nombre { get; set; }
         [Required]
-        [StringLength(15, ErrorMessage = "El nombre {0} es muy largo", MinimumLength = 6)]
+        [StringLength(15, ErrorMessage = "El nombre {0} es muy corto", MinimumLength = 2)]
         [DataType(DataType.Text)]
-        [Display(Name = "Nombre Completo")]
+        [Display(Name = "Apellido")]
         public String apellido { get; set; }
         [Required]
-        [StringLength(15, ErrorMessage = "El nombre {0} es muy largo", MinimumLength = 6)]
+        [StringLength(15, ErrorMessage = "El apellido {0} es muy corto", MinimumLength = 2)]
         [DataType(DataType.Upload)]
         [Display(Name = "Nombre Completo")]
         public byte[] foto { get; set; }
@@ -45,13 +45,13 @@ namespace GameBuildPortal.Models
         [Display(Name = "Email")]
         public String Email { get; set; }
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "El mail no es el correcto", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Clave")]
         public string Password { get; set; }
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Display(Name = "Confirmar Clave")]
+        [Compare("Password", ErrorMessage = "Las claves no coinciden.")]
         public string ConfirmPassword { get; set; }
  
         [Required] 

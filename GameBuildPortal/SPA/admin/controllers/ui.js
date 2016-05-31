@@ -4,11 +4,16 @@
 
     function uiCtrl($scope, uiService) {
         $scope.ui = null;
+
         $scope.saving = false;
 
-        uiService.getId('1').then(function (data) {
-            $scope.ui = data;
-        });
+        uiService.getId('1').then(
+            function (data) {
+                $scope.ui = data;
+            }, function () {
+                $scope.ui = { css: '' };
+            }
+        );
 
         $scope.guardar = function () {
             var ui = this.ui;

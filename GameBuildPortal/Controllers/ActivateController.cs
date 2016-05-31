@@ -26,6 +26,7 @@ namespace GameBuildPortal.Controllers
             UserManager = userManager;
             SignInManager = signInManager;
         }
+
         // GET: Activate/Details/5
         public ActionResult Create(string usuario, string password, string token)
         {
@@ -66,6 +67,7 @@ namespace GameBuildPortal.Controllers
         {
             return View();
         }
+
         [HttpPost]
         public async System.Threading.Tasks.Task<ActionResult> Create(ActivateGame g)
         {
@@ -73,15 +75,16 @@ namespace GameBuildPortal.Controllers
             //si juego no existe 
             //creo el tenant
             WebApiConfig.BuilderService(g.nombreJuego);
-
-            //
+            
             DALayer.Entities.Usuario us = new DALayer.Entities.Admin { UserName = g.Email, Email = g.Email, apellido = g.apellido, telefono = g.teléfono};
             var result = await UserManager.CreateAsync(us, g.Password);
             if (result.Succeeded)
             {
                 await SignInManager.SignInAsync(us, isPersistent: false, rememberBrowser: false);
 
+                return RedirectToAction("Index", "Admin");
             }
+
             AddErrors(result);
             return View();
         }
