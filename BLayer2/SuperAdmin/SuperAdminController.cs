@@ -12,18 +12,18 @@ namespace BLayer.SuperAdmin
 {
     public class SuperAdminController : ISuperAdmin
     {
-        ISuperAdminApi api;
-        ISolicitudJuegoHandler handler;
+        ISuperAdminApi api; 
         public SuperAdminController() {
-            api = new SuperAdminApi();
-            handler = api.getSJHandler();
+            api = new SuperAdminApi(); 
         }
 
-       
 
+        public List<Juego> ListarJuegos() {
+            return api.getJuegoHandler().getAllJuegos();
+        }
         public void createSolicitud(SolicitudJuego sol)
         {
-            handler.createSolicitudJuego(sol);
+            api.getSJHandler().createSolicitudJuego(sol);
         }
 
         public string getActivateURL(SolicitudJuego sol)
@@ -36,14 +36,14 @@ namespace BLayer.SuperAdmin
             string token = Base64Decode(parse[parse.Length - 1]);
             string password = Base64Decode(parse[parse.Length - 2]);
             string user = Base64Decode(parse[parse.Length - 3]);
-            return handler.getAllSolicitudes().Where(c => c.user.Equals(user) && c.password.Equals(password) && c.token.Equals(token)).First<SolicitudJuego>();
+            return api.getSJHandler().getAllSolicitudes().Where(c => c.user.Equals(user) && c.password.Equals(password) && c.token.Equals(token)).First<SolicitudJuego>();
         }
         public SolicitudJuego getSolicitudByParam(string usuario, string password, string token)
         {
             token = Base64Decode(token);
             password = Base64Decode(password);
             usuario = Base64Decode(usuario);
-            return handler.getAllSolicitudes().Where(c => c.user.Equals(usuario) && c.password.Equals(password) && c.token.Equals(token)).First<SolicitudJuego>();
+            return api.getSJHandler().getAllSolicitudes().Where(c => c.user.Equals(usuario) && c.password.Equals(password) && c.token.Equals(token)).First<SolicitudJuego>();
         }
         public static string Base64Decode(string base64EncodedData)
         {

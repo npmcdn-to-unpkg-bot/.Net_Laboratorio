@@ -13,7 +13,7 @@ namespace SuperAdmin.Models
         [Display(Name = "Dirreccion de email del cliente")]
         public String email { get; set; }
         [Required]
-        [DataType(DataType.DateTime)]
+        [DataType(DataType.Date)]
         [Display(Name = "Tiempo de expiracion")]
         public DateTime expirationTime { get; set; }
     }

@@ -642,6 +642,7 @@
     <Content Include="Scripts\front\plugins\datatables\extensions\TableTools\Readme.md" />
     <Content Include="Scripts\front\plugins\input-mask\phone-codes\phone-be.json" />
     <Content Include="Scripts\front\plugins\input-mask\phone-codes\phone-codes.json" />
+    <None Include="Properties\PublishProfiles\dist.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\front\js\angular-route.min.js" />
     <Content Include="Scripts\front\js\angular.min.js" />
@@ -1522,7 +1523,9 @@
     <Content Include="SPA\front\views\partials\recurso.html" />
     <Content Include="SPA\front\views\partials\unidad.html" />
     <Content Include="SPA\front\views\zona.html" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -1555,11 +1558,12 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
-    <Content Include="Views\Activate\Create.cshtml" />
+    <Content Include="Views\Activate\Create22.cshtml" />
     <Content Include="Views\Account\RegisterJugador.cshtml" />
     <Content Include="Views\Admin\Login.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Activate\Expired.cshtml" />
+    <Content Include="Views\Activate\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
