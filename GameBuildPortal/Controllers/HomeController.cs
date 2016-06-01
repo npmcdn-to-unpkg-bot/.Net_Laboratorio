@@ -55,10 +55,7 @@ namespace GameBuildPortal.Controllers
                 }
             }
 
-            // le agrega el css al juego
-            SharedEntities.Entities.Ui ui = WebApiConfig.BuilderService(null).getUi(1);
-
-            return View(ui);
+            return View();
         }
     }
 }

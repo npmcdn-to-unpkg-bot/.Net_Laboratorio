@@ -65,4 +65,4 @@ namespace GameBuildPortal.ControllersFrontApi
             return Request.CreateResponse(HttpStatusCode.OK);
         }
     }
-    }
+}
