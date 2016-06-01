@@ -11,11 +11,17 @@
 </p>
 <table class="table">
     <tr>
-        <th></th>
+        <th>Nombre Juego</th>
+        <th>DNS</th>
+        <th>Estado</th>
+        <th>Acciones</th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
+        <td>@item.nombreJuego</td>
+        <td>@item.dominio</td>
+        <td>@item.estado</td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
             @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
