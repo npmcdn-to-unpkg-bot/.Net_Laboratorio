@@ -12,15 +12,19 @@ namespace DALayer.Entities
         public string nombre { get; set; }
         public string descripcion { get; set; }
         public int cantInicial { get; set; }
+        public int capacidadInicial { get; set; }
+        public int produccionXTiempo { get; set; }
         public byte[] foto { get; set; }
 
         public Recurso() { }
 
-        public Recurso(string nombre, string descripcion, int cantInicial, byte[] foto)
+        public Recurso(string nombre, string descripcion, int cantInicial, int capacidadInicial, int produccionXTiempo, byte[] foto)
         {
             this.nombre = nombre;
             this.descripcion = descripcion;
             this.cantInicial = cantInicial;
+            this.capacidadInicial = capacidadInicial;
+            this.produccionXTiempo = produccionXTiempo;
             this.foto = foto;
         }
     }

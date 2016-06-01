@@ -19,7 +19,7 @@ namespace DALayer.Handlers
 
         public void createRecurso(Recurso r)
         {
-            Entities.Recurso rec = new Entities.Recurso(r.nombre, r.descripcion, r.cantInicial, r.foto);
+            Entities.Recurso rec = new Entities.Recurso(r.nombre, r.descripcion, r.cantInicial, r.capacidadInicial, r.produccionXTiempo, r.foto);
             try
             {
                 ctx.Recurso.Add(rec);
@@ -58,7 +58,8 @@ namespace DALayer.Handlers
                 ctx.Database.Connection.Close();
                 foreach (Entities.Recurso item in recursosTmp)
                 {
-                    Recurso rec = new Recurso(item.id, item.nombre, item.descripcion, item.cantInicial, item.foto);
+                    Recurso rec = new Recurso(item.id, item.nombre, item.descripcion, item.cantInicial, item.capacidadInicial,
+                        item.produccionXTiempo, item.foto);
                     recursos.Add(rec);
                 }
 
@@ -78,7 +79,7 @@ namespace DALayer.Handlers
                            where c.id == id
                            select c).SingleOrDefault();
 
-                Recurso recurso = new Recurso(rec.id, rec.nombre, rec.descripcion, rec.cantInicial, rec.foto);
+                Recurso recurso = new Recurso(rec.id, rec.nombre, rec.descripcion, rec.cantInicial, rec.capacidadInicial, rec.produccionXTiempo, rec.foto);
                 return recurso;
             }
             catch (Exception ex)
@@ -101,6 +102,8 @@ namespace DALayer.Handlers
                     recT.descripcion = rec.descripcion;
                     recT.foto = rec.foto;
                     recT.cantInicial = rec.cantInicial;
+                    recT.capacidadInicial = rec.capacidadInicial;
+                    recT.produccionXTiempo = rec.produccionXTiempo;
                     ctx.SaveChangesAsync().Wait();
                 }
                 

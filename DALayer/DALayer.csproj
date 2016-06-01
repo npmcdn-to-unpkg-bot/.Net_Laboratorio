@@ -102,6 +102,7 @@
     <Compile Include="Entities\RelJugadorInvestigacion.cs" />
     <Compile Include="Entities\RelJugadorMapa.cs" />
     <Compile Include="Entities\Ui.cs" />
+    <Compile Include="Entities\UserLogin.cs" />
     <Compile Include="Fatories\AdminFactory.cs" />
     <Compile Include="Contexts\TenantContext.cs" />
     <Compile Include="Contexts\AdminContext.cs" />

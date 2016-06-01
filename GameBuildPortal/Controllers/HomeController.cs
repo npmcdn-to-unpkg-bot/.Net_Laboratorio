@@ -4,6 +4,7 @@ using DALayer.Entities;
 using DALayer.Interfaces;
 using GameBuildPortal.Modules;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Practices.Unity;
 using Microsoft.Practices.Unity.Configuration;
@@ -24,10 +25,10 @@ namespace GameBuildPortal.Controllers
                 ApplicationUserManager _userManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
                 string id = User.Identity.GetUserId();
                 UsuarioHelper UHelper = new UsuarioHelper(_userManager, id);
-
                 if (!UHelper.isAdmin)
                 {
-                    // le agrega el css al juego
+                   
+                    WebApiConfig.BuilderService(null).registerLogin(id);
                     SharedEntities.Entities.Ui ui = WebApiConfig.BuilderService(null).getUi(1);
 
                     return View(ui);

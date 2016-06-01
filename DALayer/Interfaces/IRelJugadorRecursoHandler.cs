@@ -14,5 +14,6 @@ namespace DALayer.Interfaces
         void updateRelJugadorRecurso(RelJugadorRecurso relacion);
         RelJugadorRecurso getRelJugadorRecurso(int id);
         List<RelJugadorRecurso> getRecursosByColonia(int id);
+        void calcularRecursosByIdCol(int id);
     }
 }
