@@ -19,12 +19,8 @@ namespace DALayer.Handlers
 
         public void createRelJugadorInvestigacion(RelJugadorInvestigacion r)
         {
-            var j2 = new Entities.Jugador(r.colonia.jugador.nombre, r.colonia.jugador.apellido, r.colonia.jugador.foto,
-                r.colonia.jugador.nickname, r.colonia.jugador.nivel, r.colonia.jugador.experiencia);
-            j2.Id = r.colonia.jugador.id;
-            var col = new Entities.RelJugadorMapa(r.colonia.nivel1, r.colonia.nivel2, r.colonia.nivel3, r.colonia.nivel4,
-                r.colonia.nivel5, j2);
-            col.id = r.colonia.id;
+            var col = ctx.RelJugadorMapa.Where(w => w.id == r.colonia.id).SingleOrDefault();
+            var inv = ctx.Investigacion.Where(w => w.id == r.investigacion.id).SingleOrDefault();
 
             //List<Entities.Costo> cos = new List<Entities.Costo>();
             //foreach (var item in r.investigacion.costos)
@@ -32,9 +28,6 @@ namespace DALayer.Handlers
             //    var c = new Entities.Costo(item.idRecurso, item.valor, item.incrementoNivel);
             //    cos.Add(c);
             //}
-            var inv = new Entities.Investigacion(r.investigacion.nombre, r.investigacion.descripcion, r.investigacion.foto,
-                /*cos,*/ r.investigacion.factorCostoNivel);
-            inv.id = r.investigacion.id;
 
             Entities.RelJugadorInvestigacion rji = new Entities.RelJugadorInvestigacion(col, inv, r.nivel);
             

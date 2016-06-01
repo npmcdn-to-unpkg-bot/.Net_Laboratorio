@@ -19,12 +19,8 @@ namespace DALayer.Handlers
 
         public void createRelJugadorDestacamento(RelJugadorDestacamento r)
         {
-            var j2 = new Entities.Jugador(r.colonia.jugador.nombre, r.colonia.jugador.apellido, r.colonia.jugador.foto,
-                 r.colonia.jugador.nickname, r.colonia.jugador.nivel, r.colonia.jugador.experiencia);
-            j2.Id = r.colonia.jugador.id;
-            var col = new Entities.RelJugadorMapa(r.colonia.nivel1, r.colonia.nivel2, r.colonia.nivel3, r.colonia.nivel4,
-                r.colonia.nivel5, j2);
-            col.id = r.colonia.id;
+            var col = ctx.RelJugadorMapa.Where(w => w.id == r.colonia.id).SingleOrDefault();
+            var des = ctx.Destacamento.Where(w => w.id == r.destacamento.id).SingleOrDefault();
 
             //List<Entities.Costo> cos = new List<Entities.Costo>();
             //foreach (var item in r.destacamento.costos)
@@ -38,12 +34,8 @@ namespace DALayer.Handlers
             //    var c = new Entities.Capacidad(item.idRecurso, item.valor, item.incrementoNivel);
             //    cap.Add(c);
             //}
-            var ed = new Entities.Destacamento(r.destacamento.nombre, r.destacamento.descripcion, r.destacamento.foto,/* cos,
-                cap,*/ r.destacamento.ataque, r.destacamento.escudo, r.destacamento.efectividadAtaque, r.destacamento.vida, r.destacamento.velocidad, r.destacamento.enMision);
-            ed.id = r.destacamento.id;
 
-            var rje = new Entities.RelJugadorDestacamento(col, ed, r.cantidad);
-
+            var rje = new Entities.RelJugadorDestacamento(col, des, r.cantidad);
 
             try
             {

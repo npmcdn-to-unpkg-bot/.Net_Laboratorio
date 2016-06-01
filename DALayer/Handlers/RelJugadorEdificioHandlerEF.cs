@@ -19,12 +19,8 @@ namespace DALayer.Handlers
 
         public void createRelJugadorEdificio(RelJugadorEdificio r)
         {
-            var j2 = new Entities.Jugador(r.colonia.jugador.nombre, r.colonia.jugador.apellido, r.colonia.jugador.foto,
-                r.colonia.jugador.nickname, r.colonia.jugador.nivel, r.colonia.jugador.experiencia);
-            j2.Id = r.colonia.jugador.id;
-            var col = new Entities.RelJugadorMapa(r.colonia.nivel1, r.colonia.nivel2, r.colonia.nivel3, r.colonia.nivel4,
-                r.colonia.nivel5, j2);
-            col.id = r.colonia.id;
+            var col = ctx.RelJugadorMapa.Where(w => w.id == r.colonia.id).SingleOrDefault();
+            var ed = ctx.Edificio.Where(w => w.id == r.edificio.id).SingleOrDefault();
 
             //List<Entities.Costo> cos = new List<Entities.Costo>();
             //foreach (var item in r.edificio.costos)
@@ -38,9 +34,6 @@ namespace DALayer.Handlers
             //    var c = new Entities.Capacidad(item.idRecurso, item.valor, item.incrementoNivel);
             //    cap.Add(c);
             //}
-            var ed = new Entities.Edificio(r.edificio.nombre, r.edificio.descripcion, r.edificio.foto,/* cos,
-                cap,*/ r.edificio.ataque, r.edificio.escudo, r.edificio.efectividadAtaque, r.edificio.vida);
-            ed.id = r.edificio.id;
 
             var rje = new Entities.RelJugadorEdificio(col, ed, r.nivelE);
 

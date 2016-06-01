@@ -19,7 +19,6 @@ namespace DALayer.Interfaces
         IPaquetePayPalHandler getPPHandler();
         IUnidadHandler getUnidadHandler();
         IUsuarioHandler getUsuarioHandler();
-        IEstadoInicial getEstadoIHandler();
         IRelJugadorEdificioHandler getRelJugadorEdificioHandler();
         IRelJugadorInvestigacionHandler getRelJugadorInvestigacionHandler();
         IRelJugadorMapaHandler getRelJugadorMapaHandler();
