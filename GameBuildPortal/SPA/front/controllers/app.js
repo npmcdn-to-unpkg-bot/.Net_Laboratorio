@@ -22,7 +22,7 @@
             });
         }
 
-        jugadorMapaService.getAll().then(function (mapas) {
+        jugadorMapaService.getColonias().then(function (mapas) {
             coloniaFactory.set(mapas);
         });
 

@@ -6,35 +6,11 @@
       <div class="row">
           <div class="col-md-12">
               <div class="row">
-                  <div class="col-md-3">
+                  <div class="col-md-3" ng-repeat="mapa in mapas">
                       <div class="form-group">
-                          <label>Mapa 1</label>
-                          <select class="form-control" ng-model="filtro.nivel1">
-                              <option ng-repeat="nivel in [1,2,3,4,5,6,7,8,9,10]">{{nivel}}</option>
-                          </select>
-                      </div>
-                  </div>
-                  <div class="col-md-3">
-                      <div class="form-group">
-                          <label>Mapa 2</label>
-                          <select class="form-control" ng-model="filtro.nivel2">
-                              <option ng-repeat="nivel in [1,2,3,4,5,6,7,8,9,10]">{{nivel}}</option>
-                          </select>
-                      </div>
-                  </div>
-                  <div class="col-md-3">
-                      <div class="form-group">
-                          <label>Mapa 3</label>
-                          <select class="form-control" ng-model="filtro.nivel3">
-                              <option ng-repeat="nivel in [1,2,3,4,5,6,7,8,9,10]">{{nivel}}</option>
-                          </select>
-                      </div>
-                  </div>
-                  <div class="col-md-3">
-                      <div class="form-group">
-                          <label>Mapa 4</label>
-                          <select class="form-control" ng-model="filtro.nivel4">
-                              <option ng-repeat="nivel in [1,2,3,4,5,6,7,8,9,10]">{{nivel}}</option>
+                          <label>{{mapa.nombre}}</label>
+                          <select class="form-control" ng-model="filtro" ng-change="recargarZona(mapa.nivel)">
+                              <option ng-repeat="cant in mapa.zonas" ng-selected="cant == mapa.selected" value="{{cant}}">{{cant}} {{mapa.selected}}</option>
                           </select>
                       </div>
                   </div>
@@ -44,8 +20,8 @@
   </div>
   <div class="box-body">
     <div class="table-responsive mailbox-messages">
-      <table class="table table-hover table-striped">
-        <tbody>
+      <table class="table">
+        <thead>
           <tr>
             <th>#</th>
             <th>Nombre</th>
@@ -53,98 +29,13 @@
             <th>Alianza</th>
             <th>Acciones</th>
           </tr>
-          <tr>
-            <td>1</td>
-            <td>Planeta 1</td>
-            <td><a>andrulo</a></td>
-            <td>Alianza 1</td>
-            <td>
-              <div class="btn-group">
-                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-comments"></i></button>
-                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-user"></i></button>
-                  <button type="button" class="btn btn-default btn-sm" ng-click="mostrarIteraccion()"><i class="fa fa-money"></i></button>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>Planeta 3</td>
-            <td><a>andrulo3</a></td>
-            <td></td>
-            <td>
-              <div class="btn-group">
-                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-comments"></i></button>
-                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-user"></i></button>
-                  <button type="button" class="btn btn-default btn-sm" ng-click="mostrarIteraccion()"><i class="fa fa-money"></i></button>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>4</td>
-            <td>Planeta 4</td>
-            <td><a>andrulo4</a></td>
-            <td>Alianza 2</td>
-            <td>
-              <div class="btn-group">
-                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-comments"></i></button>
-                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-user"></i></button>
-                  <button type="button" class="btn btn-default btn-sm" ng-click="mostrarIteraccion()"><i class="fa fa-money"></i></button>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>5</td>
-            <td>Planeta 5</td>
-            <td><a>andrulo5</a></td>
-            <td>Alianza 1</td>
-            <td>
-              <div class="btn-group">
-                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-comments"></i></button>
-                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-user"></i></button>
-                  <button type="button" class="btn btn-default btn-sm" ng-click="mostrarIteraccion()"><i class="fa fa-money"></i></button>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>6</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>7</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>8</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>9</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>10</td>
-            <td>Planta 10</td>
-            <td><a>andrulo10</a></td>
-            <td></td>
+        </thead>
+        <tbody>
+          <tr ng-repeat="row in zonaRows" class="{{row.classRow}}">
+            <td>{{row.id}}</td>
+            <td>{{row.nombre}}</td>
+            <td><a>{{row.jugador.usuario}}</a></td>
+            <td>{{row.alianza}}</td>
             <td>
               <div class="btn-group">
                 <button type="button" class="btn btn-default btn-sm"><i class="fa fa-comments"></i></button>

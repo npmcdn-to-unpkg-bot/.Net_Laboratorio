@@ -115,11 +115,6 @@ namespace DALayer.Handlers
             }
         }
 
-        public List<RelJugadorMapa> getColoniasByCoord(int n1, int n2, int n3, int n4)
-        {
-            throw new NotImplementedException();
-        }
-
         public List<RelJugadorMapa> getColoniasPorVista(int[] coordenadas)
         {
             string coord = "/";
