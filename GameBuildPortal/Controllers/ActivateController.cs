@@ -31,7 +31,7 @@ namespace GameBuildPortal.Controllers
         {
             SuperAdminController sac = new SuperAdminController();
             SolicitudJuego sol = sac.getSolicitudByParam(usuario, password, token);
-            if (sol != null && sol.expirationTime.CompareTo(DateTime.Now) < 1)
+            if (sol != null && sol.expirationTime.CompareTo(DateTime.Now) >= 0)
             {
                 return View();
             }
