@@ -6,6 +6,7 @@
         $scope.destacamentos = null;
         $scope.destacamento = null;
         $scope.showLoading = null;
+        $scope.cantidad = 1;
 
         var currentMapa = coloniaFactory.getCurrent();
 
@@ -35,14 +36,16 @@
             initialize();
         }
 
-        $scope.subirCantidad = function (edificio) {
-            $scope.showLoading = edificio.id;
+        $scope.subirCantidad = function (destacamento, cantidad) {
+            $scope.showLoading = destacamento.id;
+
+            var cantAntes = destacamento.cantidad;
 
             setTimeout(function () {
-                jugadorDestacamentoService.subirCantidad(edificio.relId).then(
+                jugadorDestacamentoService.subirCantidad(destacamento, cantidad).then(
                     function (data) {
                         $scope.showLoading = null;
-                        edificio.nivel++;
+                        destacamento.cantidad = cantAntes + parseInt(cantidad);
                     }, function () {
                         $scope.showLoading = null;
                     }
@@ -51,14 +54,16 @@
 
         }
 
-        $scope.bajarCantidad = function (destacamento) {
+        $scope.bajarCantidad = function (destacamento, cantidad) {
             $scope.showLoading = destacamento.id;
 
+            var cantAntes = destacamento.cantidad;
+
             setTimeout(function () {
-                jugadorDestacamentoService.bajarCantidad(destacamento.relId).then(
+                jugadorDestacamentoService.bajarCantidad(destacamento, cantidad).then(
                     function (data) {
                         $scope.showLoading = null;
-                        //edificio.nivel--;
+                        destacamento.cantidad = cantAntes - parseInt(cantidad);
                     }, function () {
                         $scope.showLoading = null;
                     }

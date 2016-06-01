@@ -18,10 +18,12 @@
             return defer.promise;
         };
 
-        var subirCantidad = function (destacamento) {
+        var subirCantidad = function (destacamento, cantidad) {
             var defer = $q.defer();
 
-            $http.post('/api/jugadorDestacamento/SubirCantidad?id=' + destacamento.id, destacamento.cant)
+            destacamento.cantidad += parseInt(cantidad);
+            destacamento.id = destacamento.relId;
+            $http.put('/api/jugadorDestacamento/actualizarCantidad?id=' + destacamento.relId, destacamento)
             .success(function (jugadorDestacamento) {
                 defer.resolve(jugadorDestacamento);
             })
@@ -32,10 +34,12 @@
             return defer.promise;
         };
 
-        var bajarCantidad = function (destacamento) {
+        var bajarCantidad = function (destacamento, cantidad) {
             var defer = $q.defer();
 
-            $http.delete('/api/jugadorDestacamento/BajarCantidad?id=' + destacamento.id, destacamento.cant)
+            destacamento.cantidad -= parseInt(cantidad);
+            destacamento.id = destacamento.relId;
+            $http.put('/api/jugadorDestacamento/actualizarCantidad?id=' + destacamento.relId, destacamento)
             .success(function (jugadorDestacamento) {
                 defer.resolve(jugadorDestacamento);
             })

@@ -30,8 +30,8 @@ namespace GameBuildPortal.ControllersFrontApi
             return destacamentos;
         }
 
-        [HttpPost]
-        public HttpResponseMessage PostSubirCantidad(int id, int cant)
+        [HttpPut]
+        public HttpResponseMessage PutSubirCantidad(int id, RelJugadorDestacamento rjd)
         {
             if (!ModelState.IsValid)
             {
@@ -40,22 +40,7 @@ namespace GameBuildPortal.ControllersFrontApi
 
             try
             {
-                blHandler.subirCantidadDestacamento(id, cant);
-            }
-            catch (Exception ex)
-            {
-                return Request.CreateErrorResponse(HttpStatusCode.NotFound, ex);
-            }
-
-            return Request.CreateResponse(HttpStatusCode.OK);
-        }
-
-        [HttpDelete]
-        public HttpResponseMessage DeleteBajarCantidad(int id, int baja)
-        {
-            try
-            {
-                blHandler.bajarCantidadDestacamento(id, baja);
+                blHandler.updateRelJugadorDestacamento(rjd);
             }
             catch (Exception ex)
             {
