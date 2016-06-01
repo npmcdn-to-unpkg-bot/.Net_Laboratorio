@@ -9,5 +9,6 @@ namespace DALayer.Interfaces
     public interface ISuperAdminApi
     {
         ISolicitudJuegoHandler getSJHandler();
+        IJuegoHandler getJuegoHandler();
     }
 }

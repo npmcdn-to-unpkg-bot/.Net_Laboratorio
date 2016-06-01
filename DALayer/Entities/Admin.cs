@@ -9,7 +9,7 @@ namespace DALayer.Entities
     **/
     public class Admin: Usuario
     {
-        public int telefono { get; set; }
+        public string telefono { get; set; }
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<Admin> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
