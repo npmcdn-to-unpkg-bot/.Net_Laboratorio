@@ -130,6 +130,11 @@ namespace BLayer.Front
             return builder.getRelJugadorMapaHandler().getMapasByJugador(id);
         }
 
+        public List<RelJugadorMapa> getColoniasPorVista(int[] coordenadas)
+        {
+            return builder.getRelJugadorMapaHandler().getColoniasPorVista(coordenadas);
+        }
+
         //RELJUGADORDESTACAMENTOS
         public RelJugadorDestacamento getRelJugadorDestacamento(int id)
         {

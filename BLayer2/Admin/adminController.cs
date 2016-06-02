@@ -217,13 +217,17 @@ namespace BLayer.Admin
             Random rnd = new Random();
             int[] nivel = { -1, -1, -1, -1, -1 };
             int i = 0;
+            string coord = "";
+            string c = "/";
             foreach (var m in mapas)
             {
                 nivel[i] = rnd.Next(1, m.cantidad+1);
+                coord += c;
+                c = nivel[i] + "/";
                 i++;
             }
 
-            var reljm = new RelJugadorMapa(1, nivel[0], nivel[1], nivel[2], nivel[3], nivel[4], j);
+            var reljm = new RelJugadorMapa(1, nivel[0], nivel[1], nivel[2], nivel[3], nivel[4], coord, j);
             builder.getRelJugadorMapaHandler().createRelJugadorMapa(reljm);
 
             List<RelJugadorMapa> colonias = builder.getRelJugadorMapaHandler().getMapasByJugador(j.id);

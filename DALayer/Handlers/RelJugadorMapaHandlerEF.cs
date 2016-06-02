@@ -19,7 +19,7 @@ namespace DALayer.Handlers
         public void createRelJugadorMapa(RelJugadorMapa r)
         {
             var j = ctx.Jugador.Where(w => w.Id == r.jugador.id).SingleOrDefault();
-            var rel = new Entities.RelJugadorMapa(r.nivel1, r.nivel2, r.nivel3, r.nivel4, r.nivel5, j);
+            var rel = new Entities.RelJugadorMapa(r.nivel1, r.nivel2, r.nivel3, r.nivel4, r.nivel5, r.coord, j);
             try
             {
                 ctx.RelJugadorMapa.Add(rel);
@@ -57,7 +57,7 @@ namespace DALayer.Handlers
 
                 var j = new Jugador(rel.j.Id, rel.j.nombre, rel.j.apellido, rel.j.Email, rel.j.UserName, rel.j.PasswordHash, rel.j.foto,
                     rel.j.nickname, rel.j.nivel, rel.j.experiencia);
-                var rjm = new RelJugadorMapa(rel.id, rel.nivel1, rel.nivel2, rel.nivel3, rel.nivel4, rel.nivel5, j);
+                var rjm = new RelJugadorMapa(rel.id, rel.nivel1, rel.nivel2, rel.nivel3, rel.nivel4, rel.nivel5, rel.coord, j);
                 return rjm;
             }
             catch (Exception ex)
@@ -118,6 +118,25 @@ namespace DALayer.Handlers
         public List<RelJugadorMapa> getColoniasByCoord(int n1, int n2, int n3, int n4)
         {
             throw new NotImplementedException();
+        }
+
+        public List<RelJugadorMapa> getColoniasPorVista(int[] coordenadas)
+        {
+            string coord = "/";
+            foreach (var num in coordenadas)
+            {
+                coord += num.ToString() + "/";
+            }
+
+            List<Entities.RelJugadorMapa> colE = ctx.RelJugadorMapa.Where(w => w.coord == coord).ToList();
+            List<RelJugadorMapa> colonias = new List<RelJugadorMapa>();
+            foreach (var item in colE)
+            {
+                var colS = getRelJugadorMapa(item.id);
+                colonias.Add(colS);
+            }
+
+            return colonias;
         }
     }
 }

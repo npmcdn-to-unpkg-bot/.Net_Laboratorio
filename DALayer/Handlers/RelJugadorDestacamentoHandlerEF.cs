@@ -95,7 +95,7 @@ namespace DALayer.Handlers
                                             rjd.colonia.j.foto, rjd.colonia.j.nickname,
                                             rjd.colonia.j.nivel, rjd.colonia.j.experiencia);
                 RelJugadorMapa col = new RelJugadorMapa(rjd.colonia.id, rjd.colonia.nivel1, rjd.colonia.nivel2, rjd.colonia.nivel3,
-                                                        rjd.colonia.nivel4, rjd.colonia.nivel5, jug);
+                                                        rjd.colonia.nivel4, rjd.colonia.nivel5, rjd.colonia.coord, jug);
                 RelJugadorDestacamento destacamento = new RelJugadorDestacamento(rjd.id, col, des, rjd.cantidad);
                 return destacamento;
             }

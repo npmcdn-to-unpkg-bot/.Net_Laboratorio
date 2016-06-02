@@ -14,9 +14,10 @@ namespace SharedEntities.Entities
         public int nivel3;
         public int nivel4;
         public int nivel5;
+        public string coord;
         public Jugador jugador;
 
-        public RelJugadorMapa(int ide, int niv1, int niv2, int niv3, int niv4, int niv5, Jugador jug)
+        public RelJugadorMapa(int ide, int niv1, int niv2, int niv3, int niv4, int niv5, string coord, Jugador jug)
         {
             this.id = ide;
             this.nivel1 = niv1;
@@ -24,6 +25,7 @@ namespace SharedEntities.Entities
             this.nivel3 = niv3;
             this.nivel4 = niv4;
             this.nivel5 = niv5;
+            this.coord = coord;
             this.jugador = jug;
         }
     }
