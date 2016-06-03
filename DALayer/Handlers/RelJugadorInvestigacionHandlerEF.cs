@@ -132,5 +132,45 @@ namespace DALayer.Handlers
                 throw ex;
             }
         }
+
+        public void subirNivelI(int id)
+        {
+            try
+            {
+                var r = ctx.RelJugadorInvestigacion
+                    .Where(w => w.id == id)
+                    .SingleOrDefault();
+
+                if (r != null)
+                {
+                    r.nivel += 1;
+                    ctx.SaveChangesAsync().Wait();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void bajarNivelI(int id)
+        {
+            try
+            {
+                var r = ctx.RelJugadorInvestigacion
+                   .Where(w => w.id == id)
+                   .SingleOrDefault();
+
+                if (r != null)
+                {
+                    r.nivel -= 1;
+                    ctx.SaveChangesAsync().Wait();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

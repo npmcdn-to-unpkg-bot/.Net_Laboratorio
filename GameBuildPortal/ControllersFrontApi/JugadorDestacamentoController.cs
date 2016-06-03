@@ -19,7 +19,7 @@ namespace GameBuildPortal.ControllersFrontApi
         }
 
         [HttpGet]
-        public IEnumerable<RelJugadorDestacamento> Get(int id)
+        public IEnumerable<RelJugadorDestacamento> GetByColonia(int id)
         {
             IEnumerable<RelJugadorDestacamento> destacamentos = blHandler.getDestacamentosByColonia(id);
             if (destacamentos == null)
@@ -30,28 +30,17 @@ namespace GameBuildPortal.ControllersFrontApi
             return destacamentos;
         }
 
-        //[HttpGet]
-        //public IEnumerable<RelJugadorEdificio> Get(Jugador j)
-        //{
-        //    return blHandler.getMapasByJugador(j);
-        //}
-
         [HttpPut]
-        public HttpResponseMessage Put(int id, RelJugadorDestacamento r)
+        public HttpResponseMessage PutSubirCantidad(int id)
         {
             if (!ModelState.IsValid)
             {
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
             }
 
-            if (id != r.id)
-            {
-                return Request.CreateResponse(HttpStatusCode.BadRequest);
-            }
-
             try
             {
-                blHandler.updateRelJugadorDestacamento(r);
+                blHandler.subirCantidadD(id);
             }
             catch (Exception ex)
             {
@@ -61,29 +50,12 @@ namespace GameBuildPortal.ControllersFrontApi
             return Request.CreateResponse(HttpStatusCode.OK);
         }
 
-        [HttpPost]
-        public HttpResponseMessage Post(RelJugadorDestacamento r)
-        {
-            if (ModelState.IsValid)
-            {
-                blHandler.createRelJugadorDestacamento(r);
-
-                HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, r);
-                response.Headers.Location = new Uri(Url.Link("DefaultApi", new { controller = "Admin" }));
-                return response;
-            }
-            else
-            {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
-            }
-        }
-
         [HttpDelete]
-        public HttpResponseMessage Delete(int id)
+        public HttpResponseMessage DeleteBajarCantidad(int id)
         {
             try
             {
-                blHandler.deleteRelJugadorDestacamento(id);
+                blHandler.bajarCantidadD(id);
             }
             catch (Exception ex)
             {
@@ -93,4 +65,4 @@ namespace GameBuildPortal.ControllersFrontApi
             return Request.CreateResponse(HttpStatusCode.OK);
         }
     }
-}
+    }

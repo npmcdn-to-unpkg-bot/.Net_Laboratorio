@@ -40,7 +40,7 @@ namespace GameBuildPortal.ControllersFrontApi
 
             try
             {
-                blHandler.subirNivel(id);
+                blHandler.subirNivelI(id);
             }
             catch (Exception ex)
             {
@@ -55,7 +55,7 @@ namespace GameBuildPortal.ControllersFrontApi
         {
             try
             {
-                blHandler.bajarNivel(id);
+                blHandler.bajarNivelI(id);
             }
             catch (Exception ex)
             {

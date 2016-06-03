@@ -20,6 +20,8 @@ namespace BLayer.Interfaces
         void createRelJugadorInvestigacion(RelJugadorInvestigacion relacion);
         void deleteRelJugadorInvestigacion(int id);
         void updateRelJugadorInvestigacion(RelJugadorInvestigacion relacion);
+        void bajarNivelI(int id);
+        void subirNivelI(int id);
         RelJugadorInvestigacion getRelJugadorInvestigacion(int id);
         List<RelJugadorInvestigacion> getInvestigacionesByColonia(int id);
 
@@ -44,5 +46,7 @@ namespace BLayer.Interfaces
         void updateRelJugadorDestacamento(RelJugadorDestacamento relacion);
         RelJugadorDestacamento getRelJugadorDestacamento(int id);
         List<RelJugadorDestacamento> getDestacamentosByColonia(int id);
+        void bajarCantidadD(int id);
+        void subirCantidadD(int id);
     }
 }

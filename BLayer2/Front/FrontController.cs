@@ -104,6 +104,16 @@ namespace BLayer.Front
             return builder.getRelJugadorInvestigacionHandler().getInvestigacionesByColonia(id);
         }
 
+        public void subirNivelI(int id)
+        {
+            builder.getRelJugadorInvestigacionHandler().subirNivelI(id);
+        }
+
+        public void bajarNivelI(int id)
+        {
+            builder.getRelJugadorInvestigacionHandler().bajarNivelI(id);
+        }
+
         //RELJUGADORMAPAS
         public RelJugadorMapa getRelJugadorMapa(int id)
         {
@@ -159,6 +169,16 @@ namespace BLayer.Front
         public List<RelJugadorDestacamento> getDestacamentosByColonia(int id)
         {
             return builder.getRelJugadorDestacamentoHandler().getDestacamentosByColonia(id);
+        }
+
+        public void subirCantidadD(int id)
+        {
+            builder.getRelJugadorDestacamentoHandler().subirCantidadD(id);
+        }
+
+        public void bajarCantidadD(int id)
+        {
+            builder.getRelJugadorDestacamentoHandler().bajarCantidadD(id);
         }
     }
 }
