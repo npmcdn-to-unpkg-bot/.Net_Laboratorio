@@ -4,10 +4,10 @@
 
     function jugadorInvestigacionService($http, $q) {
 
-        var getAllInvestigaciones = function () {
+        var getInvestigacionByColonia = function (colonia) {
             var defer = $q.defer();
 
-            $http.get('/api/investigacion')
+            $http.get('/api/jugadorInvestigacion/ByColonia?id=' + colonia)
             .success(function (jugadorInvestigaciones) {
                 defer.resolve(jugadorInvestigaciones);
             })
@@ -18,24 +18,10 @@
             return defer.promise;
         };
 
-        var getInv = function () {
+        var subirNivel = function (id) {
             var defer = $q.defer();
 
-            $http.get('/api/jugadorInvestigacion')
-            .success(function (jugadorInvestigaciones) {
-                defer.resolve(jugadorInvestigaciones);
-            })
-            .error(function () {
-                defer.reject('server error')
-            });
-
-            return defer.promise;
-        };
-
-        var add = function (jugadorInvestigacion) {
-            var defer = $q.defer();
-
-            $http.post('/api/jugadorInvestigacion', jugadorInvestigacion)
+            $http.put('/api/jugadorInvestigacion/SubirNivel?id=' + id)
             .success(function (jugadorInvestigacion) {
                 defer.resolve(jugadorInvestigacion);
             })
@@ -46,24 +32,10 @@
             return defer.promise;
         };
 
-        var edit = function (jugadorInvestigacion) {
+        var bajarNivel = function (id) {
             var defer = $q.defer();
 
-            $http.put('/api/jugadorInvestigacion?id=' + jugadorInvestigacion.id, jugadorInvestigacion)
-            .success(function (jugadorInvestigacion) {
-                defer.resolve(jugadorInvestigacion);
-            })
-            .error(function () {
-                defer.reject('server error')
-            });
-
-            return defer.promise;
-        };
-
-        var borrar = function (id) {
-            var defer = $q.defer();
-
-            $http.delete('/api/jugadorInvestigacion?id=' + id)
+            $http.delete('/api/jugadorInvestigacion/BajarNivel?id=' + id)
             .success(function (jugadorInvestigacion) {
                 defer.resolve(jugadorInvestigacion);
             })
@@ -77,7 +49,7 @@
         var getId = function (id) {
             var defer = $q.defer();
 
-            $http.get('/api/jugadorInvestigacion?id=' + id)
+            $http.get('/api/jugadorInvestigacion/' + id)
             .success(function (jugadorInvestigacion) {
                 defer.resolve(jugadorInvestigacion);
             })
@@ -89,12 +61,10 @@
         };
 
         return {
-            getInv: getInv,
+            getInvestigacionByColonia: getInvestigacionByColonia,
             getId: getId,
-            add: add,
-            borrar: borrar,
-            edit: edit,
-            getAllInvestigaciones: getAllInvestigaciones
+            subirNivel: subirNivel,
+            bajarNivel: bajarNivel,
         }
 
     }

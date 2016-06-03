@@ -19,7 +19,7 @@ namespace GameBuildPortal.ControllersFrontApi
         }
 
         [HttpGet]
-        public IEnumerable<RelJugadorInvestigacion> Get(int id)
+        public IEnumerable<RelJugadorInvestigacion> GetByColonia(int id)
         {
             IEnumerable<RelJugadorInvestigacion> investigaciones = blHandler.getInvestigacionesByColonia(id);
             if (investigaciones == null)
@@ -30,28 +30,17 @@ namespace GameBuildPortal.ControllersFrontApi
             return investigaciones;
         }
 
-        //[HttpGet]
-        //public IEnumerable<RelJugadorEdificio> Get(Jugador j)
-        //{
-        //    return blHandler.getMapasByJugador(j);
-        //}
-
         [HttpPut]
-        public HttpResponseMessage Put(int id, RelJugadorInvestigacion r)
+        public HttpResponseMessage PutSubirNivel(int id)
         {
             if (!ModelState.IsValid)
             {
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
             }
 
-            if (id != r.id)
-            {
-                return Request.CreateResponse(HttpStatusCode.BadRequest);
-            }
-
             try
             {
-                blHandler.updateRelJugadorInvestigacion(r);
+                blHandler.subirNivel(id);
             }
             catch (Exception ex)
             {
@@ -61,29 +50,12 @@ namespace GameBuildPortal.ControllersFrontApi
             return Request.CreateResponse(HttpStatusCode.OK);
         }
 
-        [HttpPost]
-        public HttpResponseMessage Post(RelJugadorInvestigacion r)
-        {
-            if (ModelState.IsValid)
-            {
-                blHandler.createRelJugadorInvestigacion(r);
-
-                HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, r);
-                response.Headers.Location = new Uri(Url.Link("DefaultApi", new { controller = "Admin" }));
-                return response;
-            }
-            else
-            {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
-            }
-        }
-
         [HttpDelete]
-        public HttpResponseMessage Delete(int id)
+        public HttpResponseMessage DeleteBajarNivel(int id)
         {
             try
             {
-                blHandler.deleteRelJugadorInvestigacion(id);
+                blHandler.bajarNivel(id);
             }
             catch (Exception ex)
             {
