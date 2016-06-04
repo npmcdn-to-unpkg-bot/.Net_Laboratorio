@@ -7,14 +7,13 @@
         var getByNuevos = function () {
             var defer = $q.defer();
 
-            //$http.get('/api/mapa')
-            //.success(function (mapas) {
-            //    defer.resolve(mapas);
-            //})
-            //.error(function () {
-            //    defer.reject('server error')
-            //});
-
+            $http.get('/api/reporte')
+            .success(function (dependencias) {
+                defer.resolve(dependencias);
+            })
+            .error(function () {
+                defer.reject('server error')
+            });
             var data = [
                 { "period": "Jan", "Hours worked": 80 },
               { "period": "Feb", "Hours worked": 125 },

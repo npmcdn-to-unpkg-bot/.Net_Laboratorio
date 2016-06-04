@@ -15,5 +15,6 @@ namespace SharedEntities.Entities
         public String password;
         public byte[] foto;
         public string id;
+        public DateTime CreatedDate { get; set; }
     }
 }

@@ -15,6 +15,7 @@ namespace DALayer.Entities
         public String apellido{get; set;}
        
         public byte[] foto { get; set; }
+        public DateTime CreatedDate { get; set; }
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<Usuario> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType

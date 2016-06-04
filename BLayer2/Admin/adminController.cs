@@ -2,6 +2,7 @@
 using DALayer.Interfaces;
 using SharedEntities.Entities;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -281,6 +282,22 @@ namespace BLayer.Admin
         public void deleteUi(int id)
         {
             builder.getUiHandler().deleteUi(id);
+        }
+
+        public object[] getReporteLogin()
+        {
+            List<Jugador> jugadores = builder.getUsuarioHandler().getAllJugadores();
+            IEnumerable<IGrouping<string, Jugador>> s = jugadores.GroupBy(jugador => (jugador.CreatedDate.Month + " " + jugador.CreatedDate.Year));
+            IEnumerator it =  s.GetEnumerator();
+            while (it.MoveNext()) {
+               object bb=  it.Current;
+
+
+            }
+
+            return new object[] { };
+
+
         }
     }
 }

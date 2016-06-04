@@ -9,8 +9,6 @@ namespace DALayer.Interfaces
 {
     public interface IUsuarioHandler
     {
-        void createJugador(Jugador jugador);
-        void createAdmin(Admin admin);
         void deleteJugador(string id);
         void deleteAdmin(string id);
         void updateJugador(Jugador jugador);

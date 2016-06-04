@@ -17,6 +17,7 @@ namespace BLayer.Interfaces
 
         //MAPA
         List<MapaNode> getAllMapas();
+        object[] getReporteLogin();
         void createMapa(MapaNode mapa);
         MapaNode getMapa(int id);
         void deleteMapa(int id);

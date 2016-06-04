@@ -11,6 +11,7 @@ namespace SharedEntities.Entities
         public string nickname;
         public int nivel;
         public float experiencia;
+        private string userName;
 
         public Jugador(string id, String nombre, String apellido, String email, String usuario, String password,
             byte[] foto, string nickname, int nivel, float exp)
@@ -29,6 +30,19 @@ namespace SharedEntities.Entities
 
         public Jugador()
         {
+        }
+
+        public Jugador(string id, string nombre, string apellido, string email, string userName, byte[] foto, string nickname, int nivel, float experiencia)
+        {
+            this.id = id;
+            this.nombre = nombre;
+            this.apellido = apellido;
+            this.email = email;
+            this.userName = userName;
+            this.foto = foto;
+            this.nickname = nickname;
+            this.nivel = nivel;
+            this.experiencia = experiencia;
         }
     }
 }

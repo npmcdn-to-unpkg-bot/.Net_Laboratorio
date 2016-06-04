@@ -11,9 +11,9 @@ namespace SharedEntities.Entities
     **/
     public class Admin: Usuario
     {
-        public int telefono;
+        public string telefono;
 
-        public Admin(string id1, string nombre, string apellido, string email, string userName, byte[] foto, int telefono)
+        public Admin(string id1, string nombre, string apellido, string email, string userName, byte[] foto, string telefono)
         {
             this.id = id1;
             this.nombre = nombre;
