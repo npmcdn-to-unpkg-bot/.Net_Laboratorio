@@ -233,6 +233,7 @@
     <Compile Include="ControllersAdminApi\MapaController.cs" />
     <Compile Include="ControllersAdminApi\ProductoController.cs" />
     <Compile Include="ControllersAdminApi\RecursoController.cs" />
+    <Compile Include="ControllersAdminApi\ReporteController.cs" />
     <Compile Include="ControllersAdminApi\UiController.cs" />
     <Compile Include="ControllersFrontApi\JugadorDestacamentoController.cs" />
     <Compile Include="ControllersFrontApi\JugadorEdificioController.cs" />
