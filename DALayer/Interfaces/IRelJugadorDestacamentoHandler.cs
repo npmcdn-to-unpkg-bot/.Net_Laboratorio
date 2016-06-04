@@ -10,12 +10,11 @@ namespace DALayer.Interfaces
     public interface IRelJugadorDestacamentoHandler
     {
         void createRelJugadorDestacamento(RelJugadorDestacamento destacamento);
-        void deleteRelJugadorDestacamento(int id);
         void updateRelJugadorDestacamento(RelJugadorDestacamento destacamento);
         RelJugadorDestacamento getRelJugadorDestacamento(int id);
         List<RelJugadorDestacamento> getDestacamentosByColonia(int id);
-        void bajarCantidadD(int id);
-        void subirCantidadD(int id);
+        void bajarCantidadDestacamento(int id, int baja);
+        void subirCantidadDestacamento(int id, int sube);
     }
 }
 

@@ -49,21 +49,6 @@ namespace DALayer.Handlers
             }
         }
 
-        public void deleteRelJugadorDestacamento(int id)
-        {
-            var rjd = (from c in ctx.RelJugadorDestacamento
-                       where c.id == id
-                       select c).SingleOrDefault();
-            try
-            {
-                ctx.RelJugadorDestacamento.Remove(rjd);
-                ctx.SaveChangesAsync().Wait();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
 
         public RelJugadorDestacamento getRelJugadorDestacamento(int id)
         {
@@ -147,7 +132,7 @@ namespace DALayer.Handlers
             }
         }
 
-        public void subirCantidadD(int id)
+        public void subirCantidadDestacamento(int id, int sube)
         {
             try
             {
@@ -157,7 +142,7 @@ namespace DALayer.Handlers
 
                 if (r != null)
                 {
-                    r.cantidad += 1;
+                    r.cantidad += sube;
                     ctx.SaveChangesAsync().Wait();
                 }
             }
@@ -167,7 +152,7 @@ namespace DALayer.Handlers
             }
         }
 
-        public void bajarCantidadD(int id)
+        public void bajarCantidadDestacamento(int id, int baja)
         {
             try
             {
@@ -177,7 +162,7 @@ namespace DALayer.Handlers
 
                 if (r != null)
                 {
-                    r.cantidad -= 1;
+                    r.cantidad -= baja;
                     ctx.SaveChangesAsync().Wait();
                 }
             }

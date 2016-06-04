@@ -161,24 +161,19 @@ namespace BLayer.Front
             builder.getRelJugadorDestacamentoHandler().updateRelJugadorDestacamento(reljugadoredificio);
         }
 
-        public void deleteRelJugadorDestacamento(int id)
-        {
-            builder.getRelJugadorDestacamentoHandler().deleteRelJugadorDestacamento(id);
-        }
-
         public List<RelJugadorDestacamento> getDestacamentosByColonia(int id)
         {
             return builder.getRelJugadorDestacamentoHandler().getDestacamentosByColonia(id);
         }
 
-        public void subirCantidadD(int id)
+        public void subirCantidadDestacamento(int id, int sube)
         {
-            builder.getRelJugadorDestacamentoHandler().subirCantidadD(id);
+            builder.getRelJugadorDestacamentoHandler().subirCantidadDestacamento(id, sube);
         }
 
-        public void bajarCantidadD(int id)
+        public void bajarCantidadDestacamento(int id, int baja)
         {
-            builder.getRelJugadorDestacamentoHandler().bajarCantidadD(id);
+            builder.getRelJugadorDestacamentoHandler().bajarCantidadDestacamento(id, baja);
         }
     }
 }

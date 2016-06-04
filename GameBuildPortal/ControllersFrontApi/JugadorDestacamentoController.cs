@@ -30,8 +30,8 @@ namespace GameBuildPortal.ControllersFrontApi
             return destacamentos;
         }
 
-        [HttpPut]
-        public HttpResponseMessage PutSubirCantidad(int id)
+        [HttpPost]
+        public HttpResponseMessage PostSubirCantidad(int id, int cant)
         {
             if (!ModelState.IsValid)
             {
@@ -40,7 +40,7 @@ namespace GameBuildPortal.ControllersFrontApi
 
             try
             {
-                blHandler.subirCantidadD(id);
+                blHandler.subirCantidadDestacamento(id, cant);
             }
             catch (Exception ex)
             {
@@ -51,11 +51,11 @@ namespace GameBuildPortal.ControllersFrontApi
         }
 
         [HttpDelete]
-        public HttpResponseMessage DeleteBajarCantidad(int id)
+        public HttpResponseMessage DeleteBajarCantidad(int id, int baja)
         {
             try
             {
-                blHandler.bajarCantidadD(id);
+                blHandler.bajarCantidadDestacamento(id, baja);
             }
             catch (Exception ex)
             {

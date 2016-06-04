@@ -42,11 +42,10 @@ namespace BLayer.Interfaces
 
         //RELJUGADORDESTACAMENTO
         void createRelJugadorDestacamento(RelJugadorDestacamento relacion);
-        void deleteRelJugadorDestacamento(int id);
         void updateRelJugadorDestacamento(RelJugadorDestacamento relacion);
         RelJugadorDestacamento getRelJugadorDestacamento(int id);
         List<RelJugadorDestacamento> getDestacamentosByColonia(int id);
-        void bajarCantidadD(int id);
-        void subirCantidadD(int id);
+        void bajarCantidadDestacamento(int id, int baja);
+        void subirCantidadDestacamento(int id, int sube);
     }
 }

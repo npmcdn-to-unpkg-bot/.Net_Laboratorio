@@ -18,10 +18,10 @@
             return defer.promise;
         };
 
-        var subirCantidad = function (id) {
+        var subirCantidad = function (id, sube) {
             var defer = $q.defer();
 
-            $http.put('/api/jugadorDestacamento/SubirCantidad?id=' + id)
+            $http.put('/api/jugadorDestacamento/SubirCantidad?id=' + id, sube)
             .success(function (jugadorDestacamento) {
                 defer.resolve(jugadorDestacamento);
             })
@@ -32,10 +32,10 @@
             return defer.promise;
         };
 
-        var bajarCantidad = function (id) {
+        var bajarCantidad = function (id, baja) {
             var defer = $q.defer();
 
-            $http.delete('/api/jugadorDestacamento/BajarCantidad?id=' + id)
+            $http.delete('/api/jugadorDestacamento/BajarCantidad?id=' + id, baja)
             .success(function (jugadorDestacamento) {
                 defer.resolve(jugadorDestacamento);
             })
