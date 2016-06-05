@@ -7,26 +7,20 @@
         var getByNuevos = function () {
             var defer = $q.defer();
 
-            $http.get('/api/reporte')
+            $http.get('/api/reporteregistro')
             .success(function (dependencias) {
                 defer.resolve(dependencias);
             })
             .error(function () {
                 defer.reject('server error')
             });
-            var data = [
-                { "period": "Jan", "Hours worked": 80 },
-              { "period": "Feb", "Hours worked": 125 },
-              { "period": "Mar", "Hours worked": 176 },
-              { "period": "Apr", "Hours worked": 224 },
-              { "period": "May", "Hours worked": 265 },
-              { "period": "Jun", "Hours worked": 314 },
-              { "period": "Jul", "Hours worked": 347 },
-              { "period": "Aug", "Hours worked": 287 },
-              { "period": "Sep", "Hours worked": 240 },
-              { "period": "Oct", "Hours worked": 211 }
-            ];
-            defer.resolve(data);
+            $http.get('/api/reportelogin')
+              .success(function (dependencias) {
+                  defer.resolve(dependencias);
+              })
+              .error(function () {
+                  defer.reject('server error')
+              });
 
             return defer.promise;
         };

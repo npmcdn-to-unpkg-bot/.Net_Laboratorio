@@ -32,12 +32,13 @@ namespace DALayer
               .Configure(c => c.ToTable(c.ClrType.Name, this.SchemaName));
             modelBuilder.Entity<IdentityUser>().ToTable("Usuario", this.SchemaName); 
             modelBuilder.Entity<IdentityUserRole>().ToTable("UsuarioRol", this.SchemaName).HasKey(r => new { r.RoleId, r.UserId }); 
-            modelBuilder.Entity<IdentityUserLogin>().ToTable("UsuarioLogins", this.SchemaName).HasKey<string>(l => l.UserId); 
+            modelBuilder.Entity<IdentityUserLogin>().ToTable("UserLogin", this.SchemaName).HasKey<string>(l => l.UserId); 
             modelBuilder.Entity<IdentityUserClaim>().ToTable("UsuarioClaims", this.SchemaName);
             modelBuilder.Entity<IdentityRole>().ToTable("UsuarioRoles", this.SchemaName).HasKey<string>(l => l.Id);
         }
 
         public virtual DbSet<Admin> Admin { get; set; }
+        public virtual DbSet<UserLogin> Login { get; set; }
         public virtual DbSet<Jugador> Jugador { get; set; }
         public virtual DbSet<Recurso> Recurso { get; set; }
         public virtual DbSet<MapaNode> MapaNode { get; set; }

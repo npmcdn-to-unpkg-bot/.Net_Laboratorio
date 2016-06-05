@@ -284,20 +284,45 @@ namespace BLayer.Admin
             builder.getUiHandler().deleteUi(id);
         }
 
-        public object[] getReporteLogin()
+        public List<object> getReporteRegistro()
         {
+            List<object> ret = new List<object>();
             List<Jugador> jugadores = builder.getUsuarioHandler().getAllJugadores();
-            IEnumerable<IGrouping<string, Jugador>> s = jugadores.GroupBy(jugador => (jugador.CreatedDate.Month + " " + jugador.CreatedDate.Year));
-            IEnumerator it =  s.GetEnumerator();
-            while (it.MoveNext()) {
-               object bb=  it.Current;
+           
+            var s = jugadores.GroupBy(jugador => jugador.LastLogin.Date).Select(group => new
+            {
+                key = group.Key,
+                Count = group.Count()
+            });
 
-
+            foreach (var line in s){
+                object obj = new { month = line.key, amount = line.Count };
+                ret.Add(obj);
             }
+            return ret;
+        }
+        public List<object> getReporteLogin()
+        {
+            List<object> ret = new List<object>();
+            List<Jugador> jugadores = builder.getUsuarioHandler().getAllJugadores();
 
-            return new object[] { };
+            var s = jugadores.GroupBy(jugador => jugador.LastLogin.Date).Select(group => new
+            {
+                key = group.Key,
+                Count = group.Count()
+            });
 
+            foreach (var line in s)
+            {
+                object obj = new { month = line.key, amount = line.Count };
+                ret.Add(obj);
+            }
+            return ret;
+        }
 
+        public void registerLogin(string id)
+        {
+            builder.getUsuarioHandler().registerLogin(id);
         }
     }
 }
