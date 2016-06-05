@@ -22,7 +22,7 @@ namespace DALayer.Handlers
             var rec = ctx.Recurso.Where(w => w.id == r.recurso.id).SingleOrDefault();
             var col = ctx.RelJugadorMapa.Where(w => w.id == r.colonia.id).SingleOrDefault();
 
-            var rjr = new Entities.RelJugadorRecurso(rec, col, r.capacidad, r.cantidadR, r.factorIncremento);
+            var rjr = new Entities.RelJugadorRecurso(rec, col, r.capacidad, r.cantidadR, r.produccionXTiempo, r.ultimaConsulta);
 
             try
             {
@@ -59,14 +59,15 @@ namespace DALayer.Handlers
                            where c.id == id
                            select c).SingleOrDefault();
 
-                Recurso rec = new Recurso(r.recurso.id, r.recurso.nombre, r.recurso.descripcion, r.recurso.cantInicial, r.recurso.foto);
+                Recurso rec = new Recurso(r.recurso.id, r.recurso.nombre, r.recurso.descripcion, r.recurso.cantInicial,
+                    r.recurso.capacidadInicial, r.recurso.produccionXTiempo, r.recurso.foto);
                 Jugador jug = new Jugador(r.colonia.j.Id, r.colonia.j.nombre, r.colonia.j.apellido,
                                             r.colonia.j.Email, r.colonia.j.UserName, r.colonia.j.PasswordHash,
                                             r.colonia.j.foto, r.colonia.j.nickname,
                                             r.colonia.j.nivel, r.colonia.j.experiencia);
                 RelJugadorMapa col = new RelJugadorMapa(r.colonia.id, r.colonia.nivel1, r.colonia.nivel2, r.colonia.nivel3,
                                                         r.colonia.nivel4, r.colonia.nivel5, r.colonia.coord, jug);
-                RelJugadorRecurso relacion = new RelJugadorRecurso(r.id, rec, col, r.capacidad, r.cantidadR, r.factorIncremento);
+                RelJugadorRecurso relacion = new RelJugadorRecurso(r.id, rec, col, r.capacidad, r.cantidadR, r.produccionXTiempo, r.ultimaConsulta);
                 return relacion;
             }
             catch (Exception ex)
@@ -87,6 +88,8 @@ namespace DALayer.Handlers
                 {
                     r.capacidad = rS.capacidad;
                     r.cantidadR = rS.cantidadR;
+                    r.produccionXTiempo = rS.produccionXTiempo;
+                    r.ultimaConsulta = rS.ultimaConsulta;
                     ctx.SaveChangesAsync().Wait();
                 }
             }
@@ -98,6 +101,7 @@ namespace DALayer.Handlers
 
         public List<RelJugadorRecurso> getRecursosByColonia(int id)
         {
+            calcularRecursosByIdCol(id);
             var recursos = new List<RelJugadorRecurso>();
             try
             {
@@ -115,6 +119,39 @@ namespace DALayer.Handlers
             catch (Exception ex)
             {
                 throw ex;
+            }
+        }
+
+        public void calcularRecursosByIdCol(int id)
+        {
+            var recursos = new List<RelJugadorRecurso>();
+            ctx.Database.Connection.Open();
+            List<Entities.RelJugadorRecurso> recursosE = ctx.RelJugadorRecurso.Where(w => w.colonia.id == id).ToList();
+            ctx.Database.Connection.Close();
+            foreach (var item in recursosE)
+            {
+                var rel = getRelJugadorRecurso(item.id);
+                recursos.Add(rel);
+            }
+            
+            DateTime ahora = DateTime.Now;
+            TimeSpan dif = new TimeSpan();
+            int segundos;
+            foreach (var rec in recursos)
+            {
+                dif = ahora.Subtract(rec.ultimaConsulta);
+                segundos = dif.Seconds;
+                int prod = Convert.ToInt32((rec.produccionXTiempo * segundos) / 3600);
+                if ((prod + rec.cantidadR) >= rec.capacidad)
+                {
+                    rec.cantidadR = rec.capacidad;
+                }
+                else
+                {
+                    rec.cantidadR += prod;
+                }
+                rec.ultimaConsulta = ahora;
+                updateRelJugadorRecurso(rec);
             }
         }
     }

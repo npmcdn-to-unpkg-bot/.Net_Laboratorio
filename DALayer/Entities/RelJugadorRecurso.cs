@@ -18,17 +18,19 @@ namespace DALayer.Entities
         public virtual RelJugadorMapa colonia { get; set; }
         public int capacidad { get; set; }
         public int cantidadR { get; set; }
-        public float factorIncremento { get; set; }
+        public float produccionXTiempo { get; set; }
+        public DateTime ultimaConsulta { get; set; }
 
         public RelJugadorRecurso() { }
 
-        public RelJugadorRecurso(Recurso r, RelJugadorMapa c, int capacidad, int cantidadR, float factorIncremento)
+        public RelJugadorRecurso(Recurso r, RelJugadorMapa c, int capacidad, int cantidadR, float produccionXTiempo, DateTime ultimaConsulta)
         {
             this.recurso = r;
             this.colonia = c;
             this.capacidad = capacidad;
             this.cantidadR = cantidadR;
-            this.factorIncremento = factorIncremento;
+            this.produccionXTiempo = produccionXTiempo;
+            this.ultimaConsulta = ultimaConsulta;
         }
     }
 

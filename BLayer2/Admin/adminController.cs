@@ -237,7 +237,7 @@ namespace BLayer.Admin
             List<Recurso> recursos = builder.getRecursoHandler().getAllRecursos();
             foreach (var rec in recursos)
             {
-                var rel = new RelJugadorRecurso(1, rec, colonia, rec.cantInicial, rec.cantInicial, 0);
+                var rel = new RelJugadorRecurso(1, rec, colonia, rec.capacidadInicial, rec.cantInicial, rec.produccionXTiempo, DateTime.Now);
                 builder.getRelJugadorRecursoHandler().createRelJugadorRecurso(rel);
             }
 
