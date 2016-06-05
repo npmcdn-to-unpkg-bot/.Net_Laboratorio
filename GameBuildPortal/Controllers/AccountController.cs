@@ -158,7 +158,7 @@ namespace GameBuildPortal.Controllers
         {
             if (ModelState.IsValid)
             { 
-                Usuario us = new Jugador { UserName = model.Email, Email = model.Email , CreatedDate = DateTime.Now};
+                Usuario us = new Jugador { UserName = model.Email, Email = model.Email , CreatedDate = DateTime.Now, lastLogin = DateTime.Now };
                 var result = await UserManager.CreateAsync(us, model.Password);
                 if (result.Succeeded)
                 {
@@ -189,7 +189,7 @@ namespace GameBuildPortal.Controllers
         {
             if (ModelState.IsValid)
             {
-                Usuario us = new Admin { UserName = model.Email, Email = model.Email, CreatedDate = DateTime.Now };
+                Usuario us = new Admin { UserName = model.Email, Email = model.Email, CreatedDate = DateTime.Now, lastLogin = DateTime.Now };
                 var result = await UserManager.CreateAsync(us, model.Password);
                 if (result.Succeeded)
                 {
@@ -404,7 +404,7 @@ namespace GameBuildPortal.Controllers
                 {
                     return View("ExternalLoginFailure");
                 }
-                var user = new Jugador { UserName = model.Email, Email = model.Email, CreatedDate = DateTime.Now };
+                var user = new Jugador { UserName = model.Email, Email = model.Email, CreatedDate = DateTime.Now , lastLogin = DateTime.Now };
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {

@@ -8,11 +8,11 @@
             Morris.Bar({
                 element: 'porNuevos',
                 data: data,
-                xkey: 'period',
+                xkey: 'month',
                 hideHover: 'auto',
                 barColors: ['#26B99A', '#34495E', '#ACADAC', '#3498DB'],
-                ykeys: ['Hours worked', 'sorned'],
-                labels: ['Hours worked', 'SORN'],
+                ykeys: ['amount', 'sorned'],
+                labels: ['amount', 'SORN'],
                 xLabelAngle: 60,
                 resize: true
             });
@@ -22,11 +22,11 @@
             Morris.Bar({
                 element: 'porSesion',
                 data: data,
-                xkey: 'period',
+                xkey: 'month',
                 hideHover: 'auto',
                 barColors: ['#26B99A', '#34495E', '#ACADAC', '#3498DB'],
-                ykeys: ['Hours worked', 'sorned'],
-                labels: ['Hours worked', 'SORN'],
+                ykeys: ['amount', 'sorned'],
+                labels: ['amount', 'SORN'],
                 xLabelAngle: 60,
                 resize: true
             });

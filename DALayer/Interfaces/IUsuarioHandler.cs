@@ -17,5 +17,6 @@ namespace DALayer.Interfaces
         List<Admin> getAllAdmins();
         Jugador getJugador(string id);
         Admin getAdmin(string id);
+        void registerLogin(string id);
     }
 }

@@ -41,6 +41,7 @@ namespace DALayer
                 first = false;
 
             }
+            tenant = "newT2";
             string connectionStr = SchemaHandler.getTenantConnectionString(tenant);
 
             TenantContext t;
@@ -52,7 +53,7 @@ namespace DALayer
                 if (juego.Count<Juego>() == 0)
                 {
                     try
-                    {
+                    { 
                         SchemaHandler.createTenant(tenant);
                         /*Esto debe llamar a la funcion de creacion de Juego del DJuego*/
                         Juego newJuego = new Juego();

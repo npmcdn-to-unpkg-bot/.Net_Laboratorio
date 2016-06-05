@@ -13,6 +13,8 @@ namespace SharedEntities.Entities
         public float experiencia;
         private string userName;
 
+        public DateTime LastLogin { get; set; }
+
         public Jugador(string id, String nombre, String apellido, String email, String usuario, String password,
             byte[] foto, string nickname, int nivel, float exp)
         {
