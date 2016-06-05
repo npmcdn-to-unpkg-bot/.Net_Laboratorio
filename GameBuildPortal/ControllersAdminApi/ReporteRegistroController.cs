@@ -8,16 +8,16 @@ using System.Web.Http;
 
 namespace GameBuildPortal.ControllersAdminApi
 {
-    public class ReporteController : ApiController
+    public class ReporteRegistroController : ApiController
     {
-        // GET: api/Reporte
-        public IEnumerable<string> Get()
+        // GET: api/ReporteLogin
+        public IEnumerable<object> Get()
         {
             IAdmin builder = WebApiConfig.BuilderService("");
-            object [] result  = builder.getReporteLogin();
-            return new string[] { "value1", "value2" };
+            List<object> res = builder.getReporteLogin();
+            return res;
         }
-
+       
         // GET: api/Reporte/5
         public string Get(int id)
         {
