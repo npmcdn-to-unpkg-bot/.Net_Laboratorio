@@ -30,6 +30,8 @@ namespace DALayer.Api
         private RelJugadorRecursoHandlerEF relJugadorRecursoHandler;
         private RelJugadorDestacamentoHandlerEF relJugadorDestacamentoHandler;
         private UiHandlerEF uiHandler;
+        private CostoHandlerEF costoHandler;
+        private CapacidadHandlerEF capacidadHandler;
 
         public ITenantHandler getTenantHandler() {
             if (tenantHandler == null)
@@ -261,6 +263,32 @@ namespace DALayer.Api
                 uiHandler = new UiHandlerEF(ctx);
             }
             return uiHandler;
+        }
+
+        public ICostoHandler getCostoHandler()
+        {
+            if (ctx == null)
+            {
+                throw new Exception("Tenes que llamar a la funcion setTenant despues de inicializar esta clase");
+            }
+            if (costoHandler == null)
+            {
+                costoHandler = new CostoHandlerEF(ctx);
+            }
+            return costoHandler;
+        }
+
+        public ICapacidadHandler getCapacidadHandler()
+        {
+            if (ctx == null)
+            {
+                throw new Exception("Tenes que llamar a la funcion setTenant despues de inicializar esta clase");
+            }
+            if (capacidadHandler == null)
+            {
+                capacidadHandler = new CapacidadHandlerEF(ctx);
+            }
+            return capacidadHandler;
         }
     }
 }

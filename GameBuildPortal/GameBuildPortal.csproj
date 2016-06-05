@@ -225,6 +225,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="ControllersAdminApi\CapacidadController.cs" />
+    <Compile Include="ControllersAdminApi\CostoController.cs" />
     <Compile Include="ControllersAdminApi\DependenciaController.cs" />
     <Compile Include="ControllersAdminApi\DestacamentoController.cs" />
     <Compile Include="ControllersAdminApi\EdificioController.cs" />
@@ -1468,6 +1470,8 @@
     <Content Include="SPA\admin\controllers\investigacion.js" />
     <Content Include="SPA\admin\controllers\mapa.js" />
     <Content Include="SPA\admin\controllers\recurso.js" />
+    <Content Include="SPA\admin\services\cantidad.js" />
+    <Content Include="SPA\admin\services\costo.js" />
     <Content Include="SPA\admin\services\producto.js" />
     <Content Include="SPA\admin\services\ui.js" />
     <Content Include="SPA\admin\services\dependencia.js" />
@@ -1568,6 +1572,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Capacidad\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

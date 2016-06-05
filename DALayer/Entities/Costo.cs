@@ -6,17 +6,20 @@ namespace DALayer.Entities
     public class Costo
     {
         public int Id { get; set; }
-        public string idRecurso { get; set; }
+        public Recurso recurso { get; set; }
         public int valor { get; set; }
         public float incrementoNivel { get; set; }
+        public Producto producto { get; set; }
 
         public Costo() { }
 
-        public Costo(string idRecurso, int valor, float incrementoNivel)
+        public Costo(int id, Recurso rec, int valor, float incrementoNivel, Producto prod)
         {
-            this.idRecurso = idRecurso;
+            this.Id = id;
+            this.recurso = rec;
             this.valor = valor;
             this.incrementoNivel = incrementoNivel;
+            this.producto = prod;
         }
     }
 }

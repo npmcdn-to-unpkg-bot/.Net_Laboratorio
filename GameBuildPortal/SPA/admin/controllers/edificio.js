@@ -44,7 +44,7 @@
             $scope.saving   = true;
             var edificio    = this.edificio;
 
-            edificio['costo'] = $scope.costos;
+            edificio['costos'] = $scope.costos;
             edificio['capacidad'] = $scope.capacidades;
 
             edificioService.add(edificio).then(

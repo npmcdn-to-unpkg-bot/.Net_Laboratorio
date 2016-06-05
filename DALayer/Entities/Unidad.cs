@@ -10,7 +10,7 @@ namespace DALayer.Entities
 {
     public abstract class Unidad : Producto
     {
-        //public List<Capacidad> capacidad { get; set; }
+        public List<Capacidad> capacidad { get; set; }
         public float ataque {get; set;}
         public float escudo {get; set;}
         public float efectividadAtaque {get; set;}

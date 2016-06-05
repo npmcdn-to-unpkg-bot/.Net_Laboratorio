@@ -13,13 +13,13 @@ namespace DALayer.Entities
 
         public Destacamento() { }
 
-        public Destacamento(string nombre, string descripcion, byte[] foto,/* List<Costo> costos, List<Capacidad> capacidad,*/ float ataque, float escudo, float efectividadAtaque, float vida, float velocidad, bool enMision)
+        public Destacamento(string nombre, string descripcion, byte[] foto, List<Costo> costos, List<Capacidad> capacidad, float ataque, float escudo, float efectividadAtaque, float vida, float velocidad, bool enMision)
         {
             this.nombre = nombre;
             this.descripcion = descripcion;
             this.foto = foto;
-            //this.costos = costos;
-            //this.capacidad = capacidad;
+            this.costos = costos;
+            this.capacidad = capacidad;
             this.ataque = ataque;
             this.escudo = escudo;
             this.efectividadAtaque = efectividadAtaque;

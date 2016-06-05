@@ -20,21 +20,23 @@ namespace DALayer.Handlers
 
         public void createDestacamento(Destacamento d)
         {
-            //List<Entities.Costo> costos = new List<Entities.Costo>();
-            //foreach (var item in d.costos)
-            //{
-            //    var c = new Entities.Costo(item.idRecurso, item.valor, item.incrementoNivel);
-            //    costos.Add(c);
-            //}
-            //List<Entities.Capacidad> capacidad = new List<Entities.Capacidad>();
-            //foreach (var item in d.capacidad)
-            //{
-            //    var c = new Entities.Capacidad(item.idRecurso, item.valor, item.incrementoNivel);
-            //    capacidad.Add(c);
-            //}
+            List<Entities.Costo> costos = new List<Entities.Costo>();
+            foreach (var item in d.costos)
+            {
+                Entities.Recurso rec = new Entities.Recurso(item.recurso.nombre, item.recurso.descripcion, item.recurso.cantInicial, item.recurso.foto);
+                var c = new Entities.Costo(item.Id, rec, item.valor, item.incrementoNivel);
+                costos.Add(c);
+            }
+            List<Entities.Capacidad> capacidad = new List<Entities.Capacidad>();
+            foreach (var item in d.capacidad)
+            {
+                Entities.Recurso rec = new Entities.Recurso(item.recurso.nombre, item.recurso.descripcion, item.recurso.cantInicial, item.recurso.foto);
+                var c = new Entities.Capacidad(item.Id, rec, item.valor, item.incrementoNivel);
+                capacidad.Add(c);
+            }
 
-            Entities.Destacamento desE = new Entities.Destacamento(d.nombre, d.descripcion, d.foto,/* costos,
-                capacidad,*/ d.ataque, d.escudo, d.efectividadAtaque, d.vida, d.velocidad, d.enMision);
+            Entities.Destacamento desE = new Entities.Destacamento(d.nombre, d.descripcion, d.foto, costos,
+                capacidad, d.ataque, d.escudo, d.efectividadAtaque, d.vida, d.velocidad, d.enMision);
 
             try
             {
@@ -49,21 +51,23 @@ namespace DALayer.Handlers
 
         public void createEdificio(Edificio edificio)
         {
-            //List<Entities.Costo> cos = new List<Entities.Costo>();
-            //foreach (var item in edificio.costos)
-            //{
-            //    var c = new Entities.Costo(item.idRecurso, item.valor, item.incrementoNivel);
-            //    cos.Add(c);
-            //}
-            //List<Entities.Capacidad> cap = new List<Entities.Capacidad>();
-            //foreach (var item in edificio.capacidad)
-            //{
-            //    var c = new Entities.Capacidad(item.idRecurso, item.valor, item.incrementoNivel);
-            //    cap.Add(c);
-            //}
+            List<Entities.Costo> cos = new List<Entities.Costo>();
+            foreach (var item in edificio.costos)
+            {
+                Entities.Recurso rec = new Entities.Recurso(item.recurso.nombre, item.recurso.descripcion, item.recurso.cantInicial, item.recurso.foto);
+                var c = new Entities.Costo(item.Id, rec, item.valor, item.incrementoNivel);
+                cos.Add(c);
+            }
+            List<Entities.Capacidad> cap = new List<Entities.Capacidad>();
+            foreach (var item in edificio.capacidad)
+            {
+                Entities.Recurso rec = new Entities.Recurso(item.recurso.nombre, item.recurso.descripcion, item.recurso.cantInicial, item.recurso.foto);
+                var c = new Entities.Capacidad(item.Id, rec, item.valor,item.incrementoNivel);
+                cap.Add(c);
+            }
 
-            Entities.Edificio EdificioE = new Entities.Edificio(edificio.nombre, edificio.descripcion, edificio.foto,/* cos,
-                cap,*/ edificio.ataque, edificio.escudo, edificio.efectividadAtaque, edificio.vida);
+            Entities.Edificio EdificioE = new Entities.Edificio(edificio.nombre, edificio.descripcion, edificio.foto, cos,
+                cap, edificio.ataque, edificio.escudo, edificio.efectividadAtaque, edificio.vida);
 
             try
             {
@@ -112,21 +116,22 @@ namespace DALayer.Handlers
         public List<Destacamento> getAllDestacamentos()
         {
             List<Destacamento> destacamentos = new List<Destacamento>();
-            try
-            {
+            //try
+            //{
                 List<Entities.Destacamento> destE = ctx.Destacamento.ToList();
+                Destacamento dest = new Destacamento();
                 foreach (Entities.Destacamento item in destE)
                 {
-                    Destacamento dest = getDestacamento(item.id);
+                    dest = getDestacamento(item.id);
                     destacamentos.Add(dest);
                 }
 
                 return destacamentos;
-            }
-                catch (Exception ex)
-                {
-                    throw ex;
-                }
+            //}
+                //catch (Exception ex)
+                //{
+                //    throw ex;
+                //}
         }
 
         public List<Edificio> getAllEdificios()
@@ -151,31 +156,42 @@ namespace DALayer.Handlers
 
         public Destacamento getDestacamento(int id)
         {
-            try
-            {
+            //try
+            //{
                 var destE = (from c in ctx.Destacamento
                            where c.id == id
                            select c).SingleOrDefault();
 
-                //List<Costo> cos = new List<Costo>();
-                //foreach (var item in destE.costos)
-                //{
-                //    var c = new Costo(item.idRecurso, item.valor, item.incrementoNivel);
-                //    cos.Add(c);
-                //}
-                //List<Capacidad> cap = new List<Capacidad>();
-                //foreach (var item in destE.capacidad)
-                //{
-                //    var c = new Capacidad(item.idRecurso, item.valor, item.incrementoNivel);
-                //    cap.Add(c);
-                //}
-                Destacamento dest = new Destacamento(destE.id, destE.descripcion, destE.foto, destE.ataque,
-                        destE.escudo, destE.efectividadAtaque, destE.vida, destE.velocidad, destE.enMision, destE.nombre/*, cos, cap*/);
-                return dest;
-            }
-            catch (Exception ex)
+            if (destE == null)
             {
-                throw ex;
+                return null;
+            }
+            else
+            {
+
+
+                List<Costo> cos = new List<Costo>();
+                foreach (var item in destE.costos)
+                {
+                    Recurso rec = new Recurso(item.recurso.id, item.recurso.nombre, item.recurso.descripcion, item.recurso.cantInicial, item.recurso.foto);
+                    var c = new Costo(rec, item.valor, item.incrementoNivel);
+                    cos.Add(c);
+                }
+                List<Capacidad> cap = new List<Capacidad>();
+                foreach (var item in destE.capacidad)
+                {
+                    Recurso rec = new Recurso(item.recurso.id, item.recurso.nombre, item.recurso.descripcion, item.recurso.cantInicial, item.recurso.foto);
+                    var c = new Capacidad(rec, item.valor, item.incrementoNivel);
+                    cap.Add(c);
+                }
+                Destacamento dest = new Destacamento(destE.id, destE.descripcion, destE.foto, destE.ataque,
+                        destE.escudo, destE.efectividadAtaque, destE.vida, destE.velocidad, destE.enMision, destE.nombre, cos, cap);
+                return dest;
+            //}
+            //catch (Exception ex)
+            //{
+            //    throw ex;
+            //}
             }
         }
 
@@ -187,14 +203,22 @@ namespace DALayer.Handlers
                            where c.id == id
                            select c).SingleOrDefault();
 
-                //List<Costo> cos = new List<Costo>();
-                //foreach (var item2 in ediE.costos)
-                //{
-                //    var c = new Costo(item2.idRecurso, item2.valor, item2.incrementoNivel);
-                //    cos.Add(c);
-                //}
+                List<Costo> cos = new List<Costo>();
+                foreach (var item2 in ediE.costos)
+                {
+                    Recurso rec = new Recurso(item2.recurso.id, item2.recurso.nombre, item2.recurso.descripcion, item2.recurso.cantInicial, item2.recurso.foto);
+                    var c = new Costo(rec, item2.valor, item2.incrementoNivel);
+                    cos.Add(c);
+                }
+                List<Capacidad> cap = new List<Capacidad>();
+                foreach (var item2 in ediE.capacidad)
+                {
+                    Recurso rec2 = new Recurso(item2.recurso.id, item2.recurso.nombre, item2.recurso.descripcion, item2.recurso.cantInicial, item2.recurso.foto);
+                    var c = new Capacidad(rec2, item2.valor, item2.incrementoNivel);
+                    cap.Add(c);
+                }
                 Edificio edi = new Edificio(ediE.id, ediE.descripcion, ediE.foto, ediE.ataque,
-                        ediE.escudo, ediE.efectividadAtaque, ediE.vida,  ediE.nombre/*, cos*/);
+                        ediE.escudo, ediE.efectividadAtaque, ediE.vida,  ediE.nombre, cos, cap);
                 return edi;
             }
             catch (Exception ex)

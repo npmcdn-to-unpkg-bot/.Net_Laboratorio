@@ -9,7 +9,7 @@ namespace SharedEntities.Entities
     public class Edificio: Unidad
     {
         public Edificio(int id, string descripcion, byte[] foto, float ataque, float escudo, float efectividadAtaque, float vida,/*
-            int nivel, float factorCostoNivel, float factorCapacidad,*/ string nombre)
+            float factorCostoNivel, float factorCapacidad,*/ string nombre, List<Costo> costos, List<Capacidad> capacidad)
         {
             this.id = id;
             this.descripcion = descripcion;
@@ -18,10 +18,11 @@ namespace SharedEntities.Entities
             this.escudo = escudo;
             this.efectividadAtaque = efectividadAtaque;
             this.vida = vida;
-            //this.nivel = nivel;
             //this.factorCostoNivel = factorCostoNivel;
             //this.factorCapacidad = factorCapacidad;
             this.nombre = nombre;
+            this.costos = costos;
+            this.capacidad = capacidad;
         }
     }
 }

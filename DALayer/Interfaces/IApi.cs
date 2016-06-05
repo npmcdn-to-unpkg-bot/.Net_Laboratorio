@@ -25,6 +25,8 @@ namespace DALayer.Interfaces
         IRelJugadorRecursoHandler getRelJugadorRecursoHandler();
         IRelJugadorDestacamentoHandler getRelJugadorDestacamentoHandler();
         IUiHandler getUiHandler();
+        ICostoHandler getCostoHandler();
+        ICapacidadHandler getCapacidadHandler();
 
         void setTenant(string tid);
     }

@@ -299,5 +299,57 @@ namespace BLayer.Admin
 
 
         }
+
+        //COSTO
+        public List<Costo> getAllCostos()
+        {
+            return builder.getCostoHandler().getAllCostos();
+        }
+
+        public Costo getCosto(int id)
+        {
+            return builder.getCostoHandler().getCosto(id);
+        }
+
+        public void createCosto(Costo costo)
+        {
+            builder.getCostoHandler().createCosto(costo);
+        }
+
+        public void updateCosto(Costo costo)
+        {
+            builder.getCostoHandler().updateCosto(costo);
+        }
+
+        public void deleteCosto(int id)
+        {
+            builder.getCostoHandler().deleteCosto(id);
+        }
+
+        //CAPACIDAD
+        public List<Capacidad> getAllCapacidades()
+        {
+            return builder.getCapacidadHandler().getAllCapacidades();
+        }
+
+        public Capacidad getCapacidad(int id)
+        {
+            return builder.getCapacidadHandler().getCapacidad(id);
+        }
+
+        public void createCapacidad(Capacidad capacidad)
+        {
+            builder.getCapacidadHandler().createCapacidad(capacidad);
+        }
+
+        public void updateCapacidad(Capacidad capacidad)
+        {
+            builder.getCapacidadHandler().updateCapacidad(capacidad);
+        }
+
+        public void deleteCapacidad(int id)
+        {
+            builder.getCapacidadHandler().deleteCapacidad(id);
+        }
     }
 }

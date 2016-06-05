@@ -122,6 +122,8 @@
     <Compile Include="Entities\Unidad.cs" />
     <Compile Include="Entities\Usuario.cs" />
     <Compile Include="Handlers\AlianzaHandlerEF.cs" />
+    <Compile Include="Handlers\CapacidadHandlerEF.cs" />
+    <Compile Include="Handlers\CostoHandlerEF.cs" />
     <Compile Include="Handlers\DependenciaHandlerEF.cs" />
     <Compile Include="Handlers\HistorialVentasHandlerEF.cs" />
     <Compile Include="Handlers\InvestigacionHandlerEF.cs" />
@@ -140,6 +142,8 @@
     <Compile Include="Handlers\UnidadHandlerEF.cs" />
     <Compile Include="Handlers\UsuarioHandlerEF.cs" />
     <Compile Include="Interfaces\IApi.cs" />
+    <Compile Include="Interfaces\ICapacidadHandler.cs" />
+    <Compile Include="Interfaces\ICostoHandler.cs" />
     <Compile Include="Interfaces\IDependenciaHandler.cs" />
     <Compile Include="Interfaces\IHistorialVentasHandler.cs" />
     <Compile Include="Interfaces\IJuegoHandler.cs" />

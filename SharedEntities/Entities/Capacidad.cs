@@ -2,13 +2,14 @@
 {
     public class Capacidad
     {
-        public string idRecurso { get; set; }
-        public int valor { get; set; }
-        public float incrementoNivel { get; set; }
+        public int Id;
+        public Recurso recurso;
+        public int valor;
+        public float incrementoNivel;
 
-        public Capacidad(string idRecurso, int valor, float inc)
+        public Capacidad(Recurso rec, int valor, float inc)
         {
-            this.idRecurso = idRecurso;
+            this.recurso = rec;
             this.valor = valor;
             this.incrementoNivel = inc;
         }

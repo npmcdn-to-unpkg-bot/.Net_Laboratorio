@@ -22,12 +22,13 @@ namespace DALayer.Handlers
             var col = ctx.RelJugadorMapa.Where(w => w.id == r.colonia.id).SingleOrDefault();
             var inv = ctx.Investigacion.Where(w => w.id == r.investigacion.id).SingleOrDefault();
 
-            //List<Entities.Costo> cos = new List<Entities.Costo>();
-            //foreach (var item in r.investigacion.costos)
-            //{
-            //    var c = new Entities.Costo(item.idRecurso, item.valor, item.incrementoNivel);
-            //    cos.Add(c);
-            //}
+            List<Entities.Costo> cos = new List<Entities.Costo>();
+            foreach (var item in r.investigacion.costos)
+            {
+                Entities.Recurso rec = new Entities.Recurso(item.recurso.nombre, item.recurso.descripcion, item.recurso.cantInicial, item.recurso.foto);
+                var c = new Entities.Costo(item.Id, rec, item.valor, item.incrementoNivel);
+                cos.Add(c);
+            }
 
             Entities.RelJugadorInvestigacion rji = new Entities.RelJugadorInvestigacion(col, inv, r.nivel);
             
@@ -93,14 +94,15 @@ namespace DALayer.Handlers
                                             invE.colonia.j.nivel, invE.colonia.j.experiencia);
                 RelJugadorMapa col = new RelJugadorMapa(invE.colonia.id, invE.colonia.nivel1, invE.colonia.nivel2, invE.colonia.nivel3,
                                                         invE.colonia.nivel4, invE.colonia.nivel5, invE.colonia.coord, jug);
-                //var costos = new List<Costo>();
-                //foreach (var item in invE.investigacion.costos)
-                //{
-                //    var c = new Costo(item.idRecurso, item.valor, item.incrementoNivel);
-                //    costos.Add(c);
-                //}
+                var costos = new List<Costo>();
+                foreach (var item in invE.investigacion.costos)
+                {
+                    Recurso rec = new Recurso(item.recurso.id, item.recurso.nombre, item.recurso.descripcion, item.recurso.cantInicial, item.recurso.foto);
+                    var c = new Costo(rec, item.valor, item.incrementoNivel);
+                    costos.Add(c);
+                }
                 Investigacion inv = new Investigacion(invE.investigacion.id, invE.investigacion.nombre, invE.investigacion.descripcion,
-                    invE.investigacion.foto,/* costos,*/ invE.investigacion.factorCostoNivel);
+                    invE.investigacion.foto,costos, invE.investigacion.factorCostoNivel);
 
                 RelJugadorInvestigacion investigacion = new RelJugadorInvestigacion(invE.id, col, inv, invE.nivel);
                 return investigacion;

@@ -10,13 +10,13 @@ namespace SharedEntities.Entities
     {
         public float factorCostoNivel;
 
-        public Investigacion(int id, string name, string description, byte[] photo,/* List<Costo> cost, */float costLevelFactor)
+        public Investigacion(int id, string name, string description, byte[] photo, List<Costo> cost, float costLevelFactor)
         {
             this.id = id;
             this.nombre = name;
             this.descripcion = description;
             this.foto = photo;
-            //this.costos = cost;
+            this.costos = cost;
             this.factorCostoNivel = costLevelFactor;
         }
     }

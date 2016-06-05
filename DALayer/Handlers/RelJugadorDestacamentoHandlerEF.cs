@@ -22,18 +22,20 @@ namespace DALayer.Handlers
             var col = ctx.RelJugadorMapa.Where(w => w.id == r.colonia.id).SingleOrDefault();
             var des = ctx.Destacamento.Where(w => w.id == r.destacamento.id).SingleOrDefault();
 
-            //List<Entities.Costo> cos = new List<Entities.Costo>();
-            //foreach (var item in r.destacamento.costos)
-            //{
-            //    var c = new Entities.Costo(item.idRecurso, item.valor, item.incrementoNivel);
-            //    cos.Add(c);
-            //}
-            //List<Entities.Capacidad> cap = new List<Entities.Capacidad>();
-            //foreach (var item in r.destacamento.capacidad)
-            //{
-            //    var c = new Entities.Capacidad(item.idRecurso, item.valor, item.incrementoNivel);
-            //    cap.Add(c);
-            //}
+            List<Entities.Costo> cos = new List<Entities.Costo>();
+            foreach (var item in r.destacamento.costos)
+            {
+                Entities.Recurso rec = new Entities.Recurso(item.recurso.nombre, item.recurso.descripcion, item.recurso.cantInicial, item.recurso.foto);
+                var c = new Entities.Costo(item.Id, rec, item.valor, item.incrementoNivel);
+                cos.Add(c);
+            }
+            List<Entities.Capacidad> cap = new List<Entities.Capacidad>();
+            foreach (var item in r.destacamento.capacidad)
+            {
+                Entities.Recurso rec = new Entities.Recurso(item.recurso.nombre, item.recurso.descripcion, item.recurso.cantInicial, item.recurso.foto);
+                var c = new Entities.Capacidad(item.Id, rec, item.valor, item.incrementoNivel);
+                cap.Add(c);
+            }
 
             var rje = new Entities.RelJugadorDestacamento(col, des, r.cantidad);
 
@@ -58,23 +60,25 @@ namespace DALayer.Handlers
                            where c.id == id
                            select c).SingleOrDefault();
 
-                //List<Costo> cos = new List<Costo>();
-                //foreach (var item2 in rjd.destacamento.costos)
-                //{
-                //    var c = new Costo(item2.idRecurso, item2.valor, item2.incrementoNivel);
-                //    cos.Add(c);
-                //}
+                List<Costo> cos = new List<Costo>();
+                foreach (var item2 in rjd.destacamento.costos)
+                {
+                    Recurso rec = new Recurso(item2.recurso.id, item2.recurso.nombre, item2.recurso.descripcion, item2.recurso.cantInicial, item2.recurso.foto);
+                    var c = new Costo(rec, item2.valor, item2.incrementoNivel);
+                    cos.Add(c);
+                }
 
-                //List<Capacidad> capa = new List<Capacidad>();
-                //foreach (var item3 in rjd.destacamento.capacidad)
-                //{
-                //    var c2 = new Capacidad(item3.idRecurso, item3.valor, item3.incrementoNivel);
-                //    capa.Add(c2);
-                //}
+                List<Capacidad> capa = new List<Capacidad>();
+                foreach (var item3 in rjd.destacamento.capacidad)
+                {
+                    Recurso rec = new Recurso(item3.recurso.id, item3.recurso.nombre, item3.recurso.descripcion, item3.recurso.cantInicial, item3.recurso.foto);
+                    var c2 = new Capacidad(rec, item3.valor, item3.incrementoNivel);
+                    capa.Add(c2);
+                }
 
                 Destacamento des = new Destacamento(rjd.destacamento.id, rjd.destacamento.descripcion, rjd.destacamento.foto, rjd.destacamento.ataque,
                                             rjd.destacamento.escudo, rjd.destacamento.efectividadAtaque, rjd.destacamento.vida,rjd.destacamento.velocidad,
-                                            rjd.destacamento.enMision, rjd.destacamento.nombre/*, cos, capa*/);
+                                            rjd.destacamento.enMision, rjd.destacamento.nombre, cos, capa);
                 Jugador jug = new Jugador(rjd.colonia.j.Id, rjd.colonia.j.nombre, rjd.colonia.j.apellido,
                                             rjd.colonia.j.Email, rjd.colonia.j.UserName, rjd.colonia.j.PasswordHash,
                                             rjd.colonia.j.foto, rjd.colonia.j.nickname,
