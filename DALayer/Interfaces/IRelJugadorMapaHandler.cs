@@ -14,7 +14,7 @@ namespace DALayer.Interfaces
         void updateRelJugadorMapa(RelJugadorMapa r);
         RelJugadorMapa getRelJugadorMapa(int id);
         List<RelJugadorMapa> getMapasByJugador(string id);
-        List<RelJugadorMapa> getColoniasByCoord(int n1, int n2, int n3, int n4);
+        Boolean existeColonia(int n1, int n2, int n3, int n4, int n5);
         List<RelJugadorMapa> getColoniasPorVista(int[] coordenadas);
     }
 }

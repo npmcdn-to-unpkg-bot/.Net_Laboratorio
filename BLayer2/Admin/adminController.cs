@@ -220,13 +220,22 @@ namespace BLayer.Admin
             int i = 0;
             string coord = "";
             string c = "/";
-            foreach (var m in mapas)
+            Boolean hayMapa = true;
+            do
             {
-                nivel[i] = rnd.Next(1, m.cantidad+1);
-                coord += c;
-                c = nivel[i] + "/";
-                i++;
-            }
+                i = 0;
+                coord = "";
+                c = "/";
+                foreach (var m in mapas)
+                {
+                    nivel[i] = rnd.Next(1, m.cantidad+1);
+                    coord += c;
+                    c = nivel[i] + "/";
+                    i++;
+                }
+                hayMapa = builder.getRelJugadorMapaHandler().existeColonia(nivel[0], nivel[1], nivel[2], nivel[3], nivel[4]);
+
+            } while (hayMapa == true);
 
             var reljm = new RelJugadorMapa(1, nivel[0], nivel[1], nivel[2], nivel[3], nivel[4], coord, j);
             builder.getRelJugadorMapaHandler().createRelJugadorMapa(reljm);
