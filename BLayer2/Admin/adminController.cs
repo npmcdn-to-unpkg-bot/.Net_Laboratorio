@@ -335,11 +335,6 @@ namespace BLayer.Admin
         }
 
         //COSTO
-        public List<Costo> getAllCostos()
-        {
-            return builder.getCostoHandler().getAllCostos();
-        }
-
         public Costo getCosto(int id)
         {
             return builder.getCostoHandler().getCosto(id);
@@ -361,11 +356,6 @@ namespace BLayer.Admin
         }
 
         //CAPACIDAD
-        public List<Capacidad> getAllCapacidades()
-        {
-            return builder.getCapacidadHandler().getAllCapacidades();
-        }
-
         public Capacidad getCapacidad(int id)
         {
             return builder.getCapacidadHandler().getCapacidad(id);
@@ -384,6 +374,28 @@ namespace BLayer.Admin
         public void deleteCapacidad(int id)
         {
             builder.getCapacidadHandler().deleteCapacidad(id);
+        }
+
+        //PRODUCE
+
+        public void createProduce(Produce p)
+        {
+            builder.getProduceHandler().createProduce(p);
+        }
+
+        public void deleteProduce(int id)
+        {
+            builder.getProduceHandler().deleteProduce(id);
+        }
+
+        public void updateProduce(Produce p)
+        {
+            builder.getProduceHandler().updateProduce(p);
+        }
+
+        public Produce getProduce(int id)
+        {
+            return builder.getProduceHandler().getProduce(id);
         }
     }
 }

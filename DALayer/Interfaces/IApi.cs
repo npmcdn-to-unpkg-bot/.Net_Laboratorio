@@ -27,6 +27,7 @@ namespace DALayer.Interfaces
         IUiHandler getUiHandler();
         ICostoHandler getCostoHandler();
         ICapacidadHandler getCapacidadHandler();
+        IProduceHandler getProduceHandler();
 
         void setTenant(string tid);
     }

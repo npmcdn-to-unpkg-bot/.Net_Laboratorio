@@ -13,6 +13,5 @@ namespace DALayer.Interfaces
         void deleteCosto(int id);
         void updateCosto(Costo cost);
         Costo getCosto(int id);
-        List<Costo> getAllCostos();
     }
 }

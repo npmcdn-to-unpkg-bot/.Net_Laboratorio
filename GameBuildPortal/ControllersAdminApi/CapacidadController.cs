@@ -30,11 +30,11 @@ namespace GameBuildPortal.ControllersApi
             return capacidad;
         }
 
-        [HttpGet]
-        public IEnumerable<Capacidad> Get()
-        {
-            return blHandler.getAllCapacidades();
-        }
+        //[HttpGet]
+        //public IEnumerable<Capacidad> Get()
+        //{
+        //    return blHandler.getAllCapacidades();
+        //}
 
         [HttpPut]
         public HttpResponseMessage Put(int id, Capacidad capacidad)

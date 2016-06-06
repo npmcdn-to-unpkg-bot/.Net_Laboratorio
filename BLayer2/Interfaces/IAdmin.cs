@@ -73,17 +73,21 @@ namespace BLayer.Interfaces
         Ui getUi(int id);
 
         //COSTO
-        List<Costo> getAllCostos();
         void createCosto(Costo costo);
         void deleteCosto(int id);
         void updateCosto(Costo costo);
         Costo getCosto(int id);
 
         //CAPACIDAD
-        List<Capacidad> getAllCapacidades();
         void createCapacidad(Capacidad capacidad);
         void deleteCapacidad(int id);
         void updateCapacidad(Capacidad capacidad);
         Capacidad getCapacidad(int id);
+
+        //PRODUCE
+        void createProduce(Produce p);
+        void deleteProduce(int id);
+        void updateProduce(Produce p);
+        Produce getProduce(int id);
     }
 }

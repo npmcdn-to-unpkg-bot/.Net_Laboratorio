@@ -30,11 +30,11 @@ namespace GameBuildPortal.ControllersApi
             return costo;
         }
 
-        [HttpGet]
-        public IEnumerable<Costo> Get()
-        {
-            return blHandler.getAllCostos();
-        }
+        //[HttpGet]
+        //public IEnumerable<Costo> Get()
+        //{
+        //    return blHandler.getAllCostos();
+        //}
 
         [HttpPut]
         public HttpResponseMessage Put(int id, Costo costo)

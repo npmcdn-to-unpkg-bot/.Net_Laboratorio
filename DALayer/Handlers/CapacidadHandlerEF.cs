@@ -51,28 +51,8 @@ namespace DALayer.Handlers
             }
         }
 
-        public List<Capacidad> getAllCapacidades()
-        {
-            var capacidadShared = new List<Capacidad>();
-            try
-            {
-                var capacidadEntities = ctx.Capacidad.ToList();
-                foreach (var c in capacidadEntities)
-                {
-                    var capacidad = getCapacidad(c.Id);
-                    capacidadShared.Add(capacidad);
-                }
-                return capacidadShared;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
         public Capacidad getCapacidad(int id)
         {
-
             DependenciaHandlerEF depHandler = new DependenciaHandlerEF(ctx);
             try
             {
@@ -83,7 +63,7 @@ namespace DALayer.Handlers
                 Recurso rec = new Recurso(c.recurso.id, c.recurso.nombre, c.recurso.descripcion, c.recurso.cantInicial,
                     c.recurso.capacidadInicial, c.recurso.produccionXTiempo, c.recurso.foto);
                 var prod = ctx.Producto.Where(w => w.id == c.producto.id).SingleOrDefault();
-                Capacidad capacidad = new Capacidad(c.Id, rec, depHandler.prodEntToSha(prod), c.valor, c.incrementoNivel);
+                Capacidad capacidad = new Capacidad(c.Id, rec, depHandler.prodEntToSha(prod), prod.id, c.valor, c.incrementoNivel);
                 return capacidad;
             }
             catch (Exception ex)

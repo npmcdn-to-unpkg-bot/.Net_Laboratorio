@@ -1,8 +1,14 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+
 namespace DALayer.Entities
 {
-    public class Costo
+    public class Produce
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -12,12 +18,12 @@ namespace DALayer.Entities
         public int valor { get; set; }
         public float incrementoNivel { get; set; }
 
-        public Costo() { }
+        public Produce() { }
 
-        public Costo(Recurso rec, Producto prod, int valor, float incrementoNivel)
+        public Produce(Recurso rec, Producto producto, int valor, float incrementoNivel)
         {
             this.recurso = rec;
-            this.producto = prod;
+            this.producto = producto;
             this.valor = valor;
             this.incrementoNivel = incrementoNivel;
         }

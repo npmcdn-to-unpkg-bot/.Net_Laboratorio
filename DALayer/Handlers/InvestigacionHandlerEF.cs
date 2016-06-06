@@ -19,16 +19,7 @@ namespace DALayer.Handlers
 
         public void createInvestigacion(Investigacion i)
         {
-            List<Entities.Costo> cos = new List<Entities.Costo>();
-            foreach (var item in i.costos)
-            {
-                var recurso = ctx.Recurso.Where(w => w.id == item.recurso.id).SingleOrDefault();
-                var prod = ctx.Producto.Where(w => w.id == item.recurso.id).SingleOrDefault();
-                var c = new Entities.Costo(recurso, prod, item.valor, item.incrementoNivel);
-                cos.Add(c);
-            }
-
-            var inv = new Entities.Investigacion(i.nombre, i.descripcion, i.foto, cos, i.factorCostoNivel);
+            var inv = new Entities.Investigacion(i.nombre, i.descripcion, i.foto);
             
             try
             {
@@ -92,7 +83,7 @@ namespace DALayer.Handlers
                     var cos = costoHandler.getCosto(c.Id);
                     costos.Add(cos);
                 }
-                Investigacion investigacion = new Investigacion(inv.id, inv.nombre, inv.descripcion, inv.foto, costos, inv.factorCostoNivel);
+                Investigacion investigacion = new Investigacion(inv.id, inv.nombre, inv.descripcion, inv.foto, costos);
                 return investigacion;
             }
             catch (Exception ex)
@@ -119,7 +110,6 @@ namespace DALayer.Handlers
                     invTmp.nombre = inv.nombre;
                     invTmp.descripcion = inv.descripcion;
                     invTmp.foto = inv.foto;
-                    invTmp.factorCostoNivel = inv.factorCostoNivel;
                     invTmp.costos = costos;
                     ctx.SaveChangesAsync().Wait();
                 }

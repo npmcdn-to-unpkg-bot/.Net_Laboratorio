@@ -13,6 +13,5 @@ namespace DALayer.Interfaces
         void deleteCapacidad(int id);
         void updateCapacidad(Capacidad capacidad);
         Capacidad getCapacidad(int id);
-        List<Capacidad> getAllCapacidades();
     }
 }

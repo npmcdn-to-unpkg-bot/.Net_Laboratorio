@@ -103,7 +103,7 @@ namespace DALayer.Handlers
                     costos.Add(c);
                 }
                 Investigacion inv = new Investigacion(invE.investigacion.id, invE.investigacion.nombre, invE.investigacion.descripcion,
-                    invE.investigacion.foto,costos, invE.investigacion.factorCostoNivel);
+                    invE.investigacion.foto,costos);
 
                 RelJugadorInvestigacion investigacion = new RelJugadorInvestigacion(invE.id, col, inv, invE.nivel);
                 return investigacion;

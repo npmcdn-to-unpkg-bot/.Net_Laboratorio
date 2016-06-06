@@ -7,8 +7,8 @@ namespace DALayer.Entities
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public Recurso recurso { get; set; }
-        public Producto producto { get; set; }
+        public virtual Recurso recurso { get; set; }
+        public virtual Producto producto { get; set; }
         public int valor { get; set; }
         public float incrementoNivel { get; set; }
 

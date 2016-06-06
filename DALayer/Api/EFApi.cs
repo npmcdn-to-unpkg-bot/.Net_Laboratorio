@@ -32,6 +32,7 @@ namespace DALayer.Api
         private UiHandlerEF uiHandler;
         private CostoHandlerEF costoHandler;
         private CapacidadHandlerEF capacidadHandler;
+        private ProduceHandlerEF produceHandler;
 
         public ITenantHandler getTenantHandler() {
             if (tenantHandler == null)
@@ -289,6 +290,19 @@ namespace DALayer.Api
                 capacidadHandler = new CapacidadHandlerEF(ctx);
             }
             return capacidadHandler;
+        }
+
+        public IProduceHandler getProduceHandler()
+        {
+            if (ctx == null)
+            {
+                throw new Exception("Tenes que llamar a la funcion setTenant despues de inicializar esta clase");
+            }
+            if (produceHandler == null)
+            {
+                produceHandler = new ProduceHandlerEF(ctx);
+            }
+            return produceHandler;
         }
     }
 }

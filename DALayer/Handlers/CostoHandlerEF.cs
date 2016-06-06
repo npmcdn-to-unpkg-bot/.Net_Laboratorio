@@ -51,25 +51,6 @@ namespace DALayer.Handlers
             }
         }
 
-        public List<Costo> getAllCostos()
-        {
-            var costosShared = new List<Costo>();
-            try
-            {
-                var costosEntities = ctx.Costo.ToList();
-                foreach (var c in costosEntities)
-                {
-                    var cost = getCosto(c.Id);
-                    costosShared.Add(cost);
-                }
-                return costosShared;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
         public Costo getCosto(int id)
         {
             RecursosHandlerEF recHandler = new RecursosHandlerEF(ctx);
@@ -82,7 +63,7 @@ namespace DALayer.Handlers
 
                 var rec = recHandler.getRecurso(cost.recurso.id);
                 var prod = ctx.Producto.Where(w => w.id == cost.producto.id).SingleOrDefault();
-                Costo costo = new Costo(cost.Id, rec, depHandler.prodEntToSha(prod), cost.valor, cost.incrementoNivel);
+                Costo costo = new Costo(cost.Id, rec, depHandler.prodEntToSha(prod), prod.id, cost.valor, cost.incrementoNivel);
                 return costo;
             }
             catch (Exception ex)
