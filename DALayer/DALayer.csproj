@@ -93,6 +93,7 @@
   <ItemGroup>
     <Compile Include="Api\EFApi.cs" />
     <Compile Include="Api\SuperAdminApi.cs" />
+    <Compile Include="Entities\ActividadJugador.cs" />
     <Compile Include="Entities\Capacidad.cs" />
     <Compile Include="Entities\Costo.cs" />
     <Compile Include="Entities\Producto.cs" />

@@ -99,7 +99,6 @@ namespace DALayer.Handlers
                 {
                     Jugador temp = new Jugador(item.Id, item.nombre, item.apellido, item.Email, item.UserName,
                     item.foto, item.nickname, item.nivel, item.experiencia);
-                    temp.LastLogin = item.lastLogin;
                     temp.CreatedDate = item.CreatedDate;
                     jugadores.Add(temp);
                 }
@@ -122,7 +121,6 @@ namespace DALayer.Handlers
 
                 Jugador jug = new Jugador(jugE.Id, jugE.nombre, jugE.apellido, jugE.Email, jugE.UserName,
                     jugE.foto, jugE.nickname, jugE.nivel, jugE.experiencia);
-                jug.LastLogin = jugE.lastLogin;
                 return jug;
             }
             catch (Exception ex)
@@ -131,16 +129,19 @@ namespace DALayer.Handlers
             }
         }
 
+        public List<Entities.ActividadJugador> getUserLogins()
+        {
+            return ctx.ActividadJugador.ToList();
+        }
+
         public void registerLogin(string id)
         {
-            DALayer.Entities.Jugador j = ctx.Jugador.Where(c => c.Id.Equals(id)).First();
+            Entities.ActividadJugador j = ctx.ActividadJugador.Where(c => c.UserId.Equals(id)).OrderByDescending(c => c.CreatedDate).FirstOrDefault();
 
-            if (j.lastLogin == null || j.lastLogin.Date.CompareTo(DateTime.Now.Date) != 0)
+            if (j == null || j.CreatedDate.Date.CompareTo(DateTime.Now.Date) != 0)
             {
-                j.lastLogin = DateTime.Now;
-                ctx.Jugador.Add(j);
-                ctx.Login.Add(new Entities.UserLogin { UserId = id, CreatedDate = DateTime.Now.Date });
-                ctx.SaveChanges();
+                    ctx.ActividadJugador.Add(new Entities.ActividadJugador { UserId = id, CreatedDate = DateTime.Now, tipo = "login" });
+                    ctx.SaveChanges();
             }
         }
 

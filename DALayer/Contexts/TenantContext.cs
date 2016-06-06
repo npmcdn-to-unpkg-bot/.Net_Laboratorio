@@ -21,15 +21,15 @@ namespace DALayer
         {  
             this.SchemaName = TennantId; 
         }
+
         public TenantContext()
            : base("Admin")
         {
         }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            
-            modelBuilder.Types()
-              .Configure(c => c.ToTable(c.ClrType.Name, this.SchemaName));
+            modelBuilder.Types().Configure(c => c.ToTable(c.ClrType.Name, this.SchemaName));
             modelBuilder.Entity<IdentityUser>().ToTable("Usuario", this.SchemaName); 
             modelBuilder.Entity<IdentityUserRole>().ToTable("UsuarioRol", this.SchemaName).HasKey(r => new { r.RoleId, r.UserId }); 
             modelBuilder.Entity<IdentityUserLogin>().ToTable("UserLogin", this.SchemaName).HasKey<string>(l => l.UserId); 
@@ -39,6 +39,7 @@ namespace DALayer
 
         public virtual DbSet<Admin> Admin { get; set; }
         public virtual DbSet<UserLogin> Login { get; set; }
+        public virtual DbSet<ActividadJugador> ActividadJugador { get; set; }
         public virtual DbSet<Jugador> Jugador { get; set; }
         public virtual DbSet<Recurso> Recurso { get; set; }
         public virtual DbSet<MapaNode> MapaNode { get; set; }
