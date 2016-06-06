@@ -13,30 +13,9 @@ namespace GameBuildPortal.ControllersAdminApi
         // GET: api/ReporteLogin
         public IEnumerable<object> Get()
         {
-            IAdmin builder = WebApiConfig.BuilderService("");
+            IAdmin builder = WebApiConfig.BuilderService(null);
             List<object> res = builder.getReporteLogin();
             return res;
-        }
-
-        // GET: api/ReporteLogin/5
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST: api/ReporteLogin
-        public void Post([FromBody]string value)
-        {
-        }
-
-        // PUT: api/ReporteLogin/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE: api/ReporteLogin/5
-        public void Delete(int id)
-        {
         }
     }
 }

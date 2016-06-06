@@ -298,7 +298,7 @@ namespace BLayer.Admin
             List<object> ret = new List<object>();
             List<Jugador> jugadores = builder.getUsuarioHandler().getAllJugadores();
            
-            var s = jugadores.GroupBy(jugador => jugador.LastLogin.Date).Select(group => new
+            var s = jugadores.GroupBy(jugador => jugador.CreatedDate.Date).Select(group => new
             {
                 key = group.Key,
                 Count = group.Count()
@@ -310,12 +310,13 @@ namespace BLayer.Admin
             }
             return ret;
         }
+
         public List<object> getReporteLogin()
         {
             List<object> ret = new List<object>();
-            List<Jugador> jugadores = builder.getUsuarioHandler().getAllJugadores();
+            List<DALayer.Entities.ActividadJugador> logins = builder.getUsuarioHandler().getUserLogins();
 
-            var s = jugadores.GroupBy(jugador => jugador.LastLogin.Date).Select(group => new
+            var s = logins.GroupBy(log => log.CreatedDate.Date).Select(group => new
             {
                 key = group.Key,
                 Count = group.Count()

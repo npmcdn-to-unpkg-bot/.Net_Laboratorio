@@ -1,8 +1,8 @@
 ﻿(function () {
     'use strict';
-    angular.module('atlas2').controller('edificioCtrl', ['$scope', '$routeParams', '$location','edificioService', 'recursoService', edificioCtrl]);
+    angular.module('atlas2').controller('edificioCtrl', ['$scope', '$routeParams', '$location', 'edificioService', 'recursoService', 'costoService', edificioCtrl]);
 
-    function edificioCtrl($scope, $routeParams, $location, edificioService, recursoService) {
+    function edificioCtrl($scope, $routeParams, $location, edificioService, recursoService, costoService) {
         $scope.saving = false;
 
         $scope.costos = [];
@@ -44,13 +44,21 @@
             $scope.saving   = true;
             var edificio    = this.edificio;
 
-            edificio['costos'] = $scope.costos;
-            edificio['capacidad'] = $scope.capacidades;
+            //edificio['costo'] = $scope.costos;
+            //edificio['capacidad'] = $scope.capacidades;
 
             edificioService.add(edificio).then(
-                function (data) {
-                    $scope.edificios.push(data);
-                    $scope.saving = false;
+                function (edificioData) {
+
+                    //Recorre los costos y los asigna uno por uno asignandole el producto correspondiente
+                    if ($scope.costos.length) {
+                        for (var i in $scope.costos) {
+                            var costo = $scope.costos[i];
+                            costo['producto'] = edificioData;
+
+                            costoService.add(costo);
+                        }
+                    }
 
                     mostrarNotificacion('success');
                     window.history.back();

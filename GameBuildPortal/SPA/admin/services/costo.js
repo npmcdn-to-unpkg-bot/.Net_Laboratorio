@@ -60,23 +60,23 @@
             return defer.promise;
         };
 
-        var getId = function (id) {
-            var defer = $q.defer();
+        //var getId = function (id) {
+        //    var defer = $q.defer();
 
-            $http.get('/api/costo?id=' + id)
-            .success(function (costo) {
-                defer.resolve(costo);
-            })
-            .error(function () {
-                defer.reject('server error')
-            });
+        //    $http.get('/api/costo?id=' + id)
+        //    .success(function (costo) {
+        //        defer.resolve(costo);
+        //    })
+        //    .error(function () {
+        //        defer.reject('server error')
+        //    });
 
-            return defer.promise;
-        };
+        //    return defer.promise;
+        //};
 
         return {
             getAll: getAll,
-            getId: getId,
+            //getId: getId,
             add: add,
             borrar: borrar,
             edit: edit,

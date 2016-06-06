@@ -75,7 +75,7 @@ namespace GameBuildPortal.Controllers
             //si juego no existe 
             //creo el tenant
             WebApiConfig.BuilderService(g.nombreJuego);
-            DALayer.Entities.Usuario us = new DALayer.Entities.Admin { UserName = g.Email, Email = g.Email, apellido = g.apellido, telefono = g.teléfono, CreatedDate = DateTime.Now, lastLogin = DateTime.Now };
+            DALayer.Entities.Usuario us = new DALayer.Entities.Admin { UserName = g.Email, Email = g.Email, apellido = g.apellido, telefono = g.teléfono, CreatedDate = DateTime.Now};
             var result = await UserManager.CreateAsync(us, g.Password);
             if (result.Succeeded)
             {

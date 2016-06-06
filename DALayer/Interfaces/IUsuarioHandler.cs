@@ -18,5 +18,6 @@ namespace DALayer.Interfaces
         Jugador getJugador(string id);
         Admin getAdmin(string id);
         void registerLogin(string id);
+        List<Entities.ActividadJugador> getUserLogins();
     }
 }

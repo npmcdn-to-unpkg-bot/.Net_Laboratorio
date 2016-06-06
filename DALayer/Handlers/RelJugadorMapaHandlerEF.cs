@@ -114,10 +114,10 @@ namespace DALayer.Handlers
                 throw ex;
             }
         }
-
+        
         public Boolean existeColonia(int n1, int n2, int n3, int n4, int n5)
         {
-            var hayMapa = ctx.RelJugadorMapa.Where(w => w.nivel1 == n1 && w.nivel2 == n2 && w.nivel3 == n3 && w.nivel4 == n4 && w.nivel5 == n5);
+            var hayMapa = ctx.RelJugadorMapa.Where(w => w.nivel1 == n1 && w.nivel2 == n2 && w.nivel3 == n3 && w.nivel4 == n4 && w.nivel5 == n5).FirstOrDefault();
             if (hayMapa == null)
             {
                 return false;

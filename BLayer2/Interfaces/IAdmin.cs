@@ -14,8 +14,10 @@ namespace BLayer.Interfaces
         void deleteRecurso(int id);
         void updateRecurso(Recurso recurso);
         Recurso getRecurso(int id);
+
         //Registro login
         void registerLogin(string id);
+
         //REPORTES
         List<object> getReporteLogin();
         List<object> getReporteRegistro();
