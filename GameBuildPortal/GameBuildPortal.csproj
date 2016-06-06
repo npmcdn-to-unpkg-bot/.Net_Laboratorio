@@ -1469,6 +1469,7 @@
     <Content Include="SPA\admin\controllers\investigacion.js" />
     <Content Include="SPA\admin\controllers\mapa.js" />
     <Content Include="SPA\admin\controllers\recurso.js" />
+    <Content Include="SPA\admin\services\costo.js" />
     <Content Include="SPA\admin\services\producto.js" />
     <Content Include="SPA\admin\services\ui.js" />
     <Content Include="SPA\admin\services\dependencia.js" />
