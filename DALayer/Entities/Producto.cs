@@ -13,6 +13,7 @@ namespace DALayer.Entities
         public string descripcion { get; set; }
         public byte[] foto { get; set; }
         public List<Costo> costos { get; set; }
+        public List<Capacidad> capacidad { get; set; }
 
         public void addCosto(Costo c)
         {

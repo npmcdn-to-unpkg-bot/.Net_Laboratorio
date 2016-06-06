@@ -23,15 +23,17 @@ namespace DALayer.Handlers
             List<Entities.Costo> costos = new List<Entities.Costo>();
             foreach (var item in d.costos)
             {
-                Entities.Recurso rec = new Entities.Recurso(item.recurso.nombre, item.recurso.descripcion, item.recurso.cantInicial, item.recurso.foto);
-                var c = new Entities.Costo(item.Id, rec, item.valor, item.incrementoNivel);
+                var rec = ctx.Recurso.Where(w => w.id == item.recurso.id).SingleOrDefault();
+                var prod = ctx.Producto.Where(w => w.id == item.producto.id).SingleOrDefault();
+                var c = new Entities.Costo(rec, prod, item.valor, item.incrementoNivel);
                 costos.Add(c);
             }
             List<Entities.Capacidad> capacidad = new List<Entities.Capacidad>();
             foreach (var item in d.capacidad)
             {
-                Entities.Recurso rec = new Entities.Recurso(item.recurso.nombre, item.recurso.descripcion, item.recurso.cantInicial, item.recurso.foto);
-                var c = new Entities.Capacidad(item.Id, rec, item.valor, item.incrementoNivel);
+                var rec = ctx.Recurso.Where(w => w.id == item.recurso.id).SingleOrDefault();
+                var prod = ctx.Producto.Where(w => w.id == item.producto.id).SingleOrDefault();
+                var c = new Entities.Capacidad(rec, prod, item.valor, item.incrementoNivel);
                 capacidad.Add(c);
             }
 
@@ -54,15 +56,17 @@ namespace DALayer.Handlers
             List<Entities.Costo> cos = new List<Entities.Costo>();
             foreach (var item in edificio.costos)
             {
-                Entities.Recurso rec = new Entities.Recurso(item.recurso.nombre, item.recurso.descripcion, item.recurso.cantInicial, item.recurso.foto);
-                var c = new Entities.Costo(item.Id, rec, item.valor, item.incrementoNivel);
+                var rec = ctx.Recurso.Where(w => w.id == item.recurso.id).SingleOrDefault();
+                var prod = ctx.Producto.Where(w => w.id == item.producto.id).SingleOrDefault();
+                var c = new Entities.Costo(rec, prod, item.valor, item.incrementoNivel);
                 cos.Add(c);
             }
             List<Entities.Capacidad> cap = new List<Entities.Capacidad>();
             foreach (var item in edificio.capacidad)
             {
-                Entities.Recurso rec = new Entities.Recurso(item.recurso.nombre, item.recurso.descripcion, item.recurso.cantInicial, item.recurso.foto);
-                var c = new Entities.Capacidad(item.Id, rec, item.valor,item.incrementoNivel);
+                var rec = ctx.Recurso.Where(w => w.id == item.recurso.id).SingleOrDefault();
+                var prod = ctx.Producto.Where(w => w.id == item.producto.id).SingleOrDefault();
+                var c = new Entities.Capacidad(rec, prod, item.valor, item.incrementoNivel);
                 cap.Add(c);
             }
 
@@ -116,8 +120,8 @@ namespace DALayer.Handlers
         public List<Destacamento> getAllDestacamentos()
         {
             List<Destacamento> destacamentos = new List<Destacamento>();
-            //try
-            //{
+            try
+            {
                 List<Entities.Destacamento> destE = ctx.Destacamento.ToList();
                 Destacamento dest = new Destacamento();
                 foreach (Entities.Destacamento item in destE)
@@ -127,12 +131,13 @@ namespace DALayer.Handlers
                 }
 
                 return destacamentos;
-            //}
-                //catch (Exception ex)
-                //{
-                //    throw ex;
-                //}
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
+
 
         public List<Edificio> getAllEdificios()
         {
@@ -156,47 +161,44 @@ namespace DALayer.Handlers
 
         public Destacamento getDestacamento(int id)
         {
-            //try
-            //{
+            DependenciaHandlerEF depeH = new DependenciaHandlerEF(ctx);
+            try
+            {
                 var destE = (from c in ctx.Destacamento
                            where c.id == id
                            select c).SingleOrDefault();
-
-            if (destE == null)
-            {
-                return null;
-            }
-            else
-            {
-
-
                 List<Costo> cos = new List<Costo>();
                 foreach (var item in destE.costos)
                 {
-                    Recurso rec = new Recurso(item.recurso.id, item.recurso.nombre, item.recurso.descripcion, item.recurso.cantInicial, item.recurso.foto);
-                    var c = new Costo(rec, item.valor, item.incrementoNivel);
+                    Recurso rec = new Recurso(item.recurso.id, item.recurso.nombre, item.recurso.descripcion, item.recurso.cantInicial, 
+                        item.recurso.capacidadInicial, item.recurso.produccionXTiempo, item.recurso.foto);
+                    var prod = ctx.Producto.Where(w => w.id == item.producto.id).SingleOrDefault();
+                    var c = new Costo(item.Id, rec, depeH.prodEntToSha(prod), item.valor, item.incrementoNivel);
                     cos.Add(c);
                 }
                 List<Capacidad> cap = new List<Capacidad>();
                 foreach (var item in destE.capacidad)
                 {
-                    Recurso rec = new Recurso(item.recurso.id, item.recurso.nombre, item.recurso.descripcion, item.recurso.cantInicial, item.recurso.foto);
-                    var c = new Capacidad(rec, item.valor, item.incrementoNivel);
+                    Recurso rec = new Recurso(item.recurso.id, item.recurso.nombre, item.recurso.descripcion, item.recurso.cantInicial,
+                        item.recurso.capacidadInicial, item.recurso.produccionXTiempo, item.recurso.foto);
+
+                    var prod = ctx.Producto.Where(w => w.id == item.producto.id).SingleOrDefault();
+                    var c = new Capacidad(item.Id, rec, depeH.prodEntToSha(prod), item.valor, item.incrementoNivel);
                     cap.Add(c);
                 }
                 Destacamento dest = new Destacamento(destE.id, destE.descripcion, destE.foto, destE.ataque,
-                        destE.escudo, destE.efectividadAtaque, destE.vida, destE.velocidad, destE.enMision, destE.nombre, cos, cap);
+                      destE.escudo, destE.efectividadAtaque, destE.vida, destE.velocidad, destE.enMision, destE.nombre, cos, cap);
                 return dest;
-            //}
-            //catch (Exception ex)
-            //{
-            //    throw ex;
-            //}
+            }
+            catch (Exception ex)
+            {
+                throw ex;
             }
         }
 
         public Edificio getEdificio(int id)
         {
+            DependenciaHandlerEF depeH = new DependenciaHandlerEF(ctx);
             try
             {
                 var ediE = (from c in ctx.Edificio
@@ -206,15 +208,19 @@ namespace DALayer.Handlers
                 List<Costo> cos = new List<Costo>();
                 foreach (var item2 in ediE.costos)
                 {
-                    Recurso rec = new Recurso(item2.recurso.id, item2.recurso.nombre, item2.recurso.descripcion, item2.recurso.cantInicial, item2.recurso.foto);
-                    var c = new Costo(rec, item2.valor, item2.incrementoNivel);
+                    Recurso rec = new Recurso(item2.recurso.id, item2.recurso.nombre, item2.recurso.descripcion, item2.recurso.cantInicial,
+                        item2.recurso.capacidadInicial, item2.recurso.produccionXTiempo, item2.recurso.foto);
+                    var prod = ctx.Producto.Where(w => w.id == item2.producto.id).SingleOrDefault();
+                    var c = new Costo(item2.Id, rec, depeH.prodEntToSha(prod), item2.valor, item2.incrementoNivel);
                     cos.Add(c);
                 }
                 List<Capacidad> cap = new List<Capacidad>();
                 foreach (var item2 in ediE.capacidad)
                 {
-                    Recurso rec2 = new Recurso(item2.recurso.id, item2.recurso.nombre, item2.recurso.descripcion, item2.recurso.cantInicial, item2.recurso.foto);
-                    var c = new Capacidad(rec2, item2.valor, item2.incrementoNivel);
+                    Recurso rec2 = new Recurso(item2.recurso.id, item2.recurso.nombre, item2.recurso.descripcion, item2.recurso.cantInicial,
+                        item2.recurso.capacidadInicial, item2.recurso.produccionXTiempo, item2.recurso.foto);
+                    var prod = ctx.Producto.Where(w => w.id == item2.producto.id).SingleOrDefault();
+                    var c = new Capacidad(item2.Id, rec2, depeH.prodEntToSha(prod), item2.valor, item2.incrementoNivel);
                     cap.Add(c);
                 }
                 Edificio edi = new Edificio(ediE.id, ediE.descripcion, ediE.foto, ediE.ataque,

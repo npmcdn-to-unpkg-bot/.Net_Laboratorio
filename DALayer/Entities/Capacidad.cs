@@ -4,21 +4,22 @@ namespace DALayer.Entities
 {
     public class Capacidad
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public Recurso recurso { get; set; }
+        public Producto producto { get; set; }
         public int valor { get; set; }
         public float incrementoNivel { get; set; }
-        public Unidad unidad { get; set; }
 
         public Capacidad() { }
 
-        public Capacidad(int id ,Recurso rec, int valor, float incrementoNivel, Unidad uni)
+        public Capacidad(Recurso rec, Producto producto, int valor, float incrementoNivel)
         {
-            this.Id = id;
             this.recurso = rec;
+            this.producto = producto;
             this.valor = valor;
             this.incrementoNivel = incrementoNivel;
-            this.unidad = uni;
         }
     }
 }

@@ -19,8 +19,9 @@ namespace DALayer.Handlers
 
         public void createCapacidad(Capacidad c)
         {
-            Entities.Recurso rec = new Entities.Recurso(c.recurso.nombre, c.recurso.descripcion, c.recurso.cantInicial, c.recurso.foto);
-            var capacity = new Entities.Capacidad(c.Id, rec, c.valor, c.incrementoNivel);
+            var recurso = ctx.Recurso.Where(w => w.id == c.recurso.id).SingleOrDefault();
+            var producto = ctx.Producto.Where(w => w.id == c.producto.id).SingleOrDefault();
+            var capacity = new Entities.Capacidad(recurso, producto, c.valor, c.incrementoNivel);
 
             try
             {
@@ -58,9 +59,8 @@ namespace DALayer.Handlers
                 var capacidadEntities = ctx.Capacidad.ToList();
                 foreach (var c in capacidadEntities)
                 {
-                    Recurso rec = new Recurso(c.recurso.id, c.recurso.nombre, c.recurso.descripcion, c.recurso.cantInicial, c.recurso.foto);
-                    var capacity = new Capacidad(rec, c.valor, c.incrementoNivel);
-                    capacidadShared.Add(capacity);
+                    var capacidad = getCapacidad(c.Id);
+                    capacidadShared.Add(capacidad);
                 }
                 return capacidadShared;
             }
@@ -72,15 +72,18 @@ namespace DALayer.Handlers
 
         public Capacidad getCapacidad(int id)
         {
+
+            DependenciaHandlerEF depHandler = new DependenciaHandlerEF(ctx);
             try
             {
-                var capacity = (from c in ctx.Capacidad
-                            where c.Id == id
-                            select c).SingleOrDefault();
+                var c = (from cap in ctx.Capacidad
+                            where cap.Id == id
+                            select cap).SingleOrDefault();
 
-                Recurso rec = new Recurso(capacity.recurso.id, capacity.recurso.nombre, capacity.recurso.descripcion, capacity.recurso.cantInicial,
-                                          capacity.recurso.foto);
-                Capacidad capacidad = new Capacidad(rec, capacity.valor, capacity.incrementoNivel);
+                Recurso rec = new Recurso(c.recurso.id, c.recurso.nombre, c.recurso.descripcion, c.recurso.cantInicial,
+                    c.recurso.capacidadInicial, c.recurso.produccionXTiempo, c.recurso.foto);
+                var prod = ctx.Producto.Where(w => w.id == c.producto.id).SingleOrDefault();
+                Capacidad capacidad = new Capacidad(c.Id, rec, depHandler.prodEntToSha(prod), c.valor, c.incrementoNivel);
                 return capacidad;
             }
             catch (Exception ex)
@@ -99,9 +102,10 @@ namespace DALayer.Handlers
 
                 if (capacityTmp != null)
                 {
-                    Entities.Recurso rec = new Entities.Recurso(capacity.recurso.nombre, capacity.recurso.descripcion, capacity.recurso.cantInicial,
-                                              capacity.recurso.foto);
+                    var rec = ctx.Recurso.Where(w => w.id == capacityTmp.recurso.id).SingleOrDefault();
+                    var prod = ctx.Producto.Where(w => w.id == capacityTmp.producto.id).SingleOrDefault();
                     capacityTmp.recurso = rec;
+                    capacityTmp.producto = prod;
                     capacityTmp.valor = capacity.valor;
                     capacityTmp.incrementoNivel = capacity.incrementoNivel;
 

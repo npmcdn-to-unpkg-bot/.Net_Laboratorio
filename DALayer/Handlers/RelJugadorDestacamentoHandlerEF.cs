@@ -19,21 +19,24 @@ namespace DALayer.Handlers
 
         public void createRelJugadorDestacamento(RelJugadorDestacamento r)
         {
+            CostoHandlerEF cosoH = new CostoHandlerEF(ctx);
             var col = ctx.RelJugadorMapa.Where(w => w.id == r.colonia.id).SingleOrDefault();
             var des = ctx.Destacamento.Where(w => w.id == r.destacamento.id).SingleOrDefault();
 
             List<Entities.Costo> cos = new List<Entities.Costo>();
             foreach (var item in r.destacamento.costos)
             {
-                Entities.Recurso rec = new Entities.Recurso(item.recurso.nombre, item.recurso.descripcion, item.recurso.cantInicial, item.recurso.foto);
-                var c = new Entities.Costo(item.Id, rec, item.valor, item.incrementoNivel);
+                var rec = ctx.Recurso.Where(w => w.id == item.recurso.id).SingleOrDefault();
+                var prod = ctx.Producto.Where(w => w.id == item.producto.id).SingleOrDefault();
+                var c = new Entities.Costo(rec, prod, item.valor, item.incrementoNivel);
                 cos.Add(c);
             }
             List<Entities.Capacidad> cap = new List<Entities.Capacidad>();
             foreach (var item in r.destacamento.capacidad)
             {
-                Entities.Recurso rec = new Entities.Recurso(item.recurso.nombre, item.recurso.descripcion, item.recurso.cantInicial, item.recurso.foto);
-                var c = new Entities.Capacidad(item.Id, rec, item.valor, item.incrementoNivel);
+                var rec = ctx.Recurso.Where(w => w.id == item.recurso.id).SingleOrDefault();
+                var prod = ctx.Producto.Where(w => w.id == item.producto.id).SingleOrDefault();
+                var c = new Entities.Capacidad(rec, prod, item.valor, item.incrementoNivel);
                 cap.Add(c);
             }
 
@@ -54,6 +57,8 @@ namespace DALayer.Handlers
 
         public RelJugadorDestacamento getRelJugadorDestacamento(int id)
         {
+            CostoHandlerEF costoH = new CostoHandlerEF(ctx);
+            CapacidadHandlerEF capaH = new CapacidadHandlerEF(ctx);
             try
             {
                 var rjd = (from c in ctx.RelJugadorDestacamento
@@ -63,16 +68,14 @@ namespace DALayer.Handlers
                 List<Costo> cos = new List<Costo>();
                 foreach (var item2 in rjd.destacamento.costos)
                 {
-                    Recurso rec = new Recurso(item2.recurso.id, item2.recurso.nombre, item2.recurso.descripcion, item2.recurso.cantInicial, item2.recurso.foto);
-                    var c = new Costo(rec, item2.valor, item2.incrementoNivel);
+                    var c = costoH.getCosto(item2.Id);
                     cos.Add(c);
                 }
 
                 List<Capacidad> capa = new List<Capacidad>();
                 foreach (var item3 in rjd.destacamento.capacidad)
                 {
-                    Recurso rec = new Recurso(item3.recurso.id, item3.recurso.nombre, item3.recurso.descripcion, item3.recurso.cantInicial, item3.recurso.foto);
-                    var c2 = new Capacidad(rec, item3.valor, item3.incrementoNivel);
+                    var c2 = capaH.getCapacidad(item3.Id);
                     capa.Add(c2);
                 }
 

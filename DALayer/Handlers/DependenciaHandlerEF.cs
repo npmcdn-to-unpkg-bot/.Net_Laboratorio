@@ -164,7 +164,7 @@ namespace DALayer.Handlers
             }
         }
 
-        Producto prodEntToSha(Entities.Producto p)
+        public Producto prodEntToSha(Entities.Producto p)
         {
                 UnidadHandlerEF uHandler = new UnidadHandlerEF(ctx);
             InvestigacionHandlerEF iHandler = new InvestigacionHandlerEF(ctx);

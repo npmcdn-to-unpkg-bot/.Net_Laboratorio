@@ -25,8 +25,9 @@ namespace DALayer.Handlers
             List<Entities.Costo> cos = new List<Entities.Costo>();
             foreach (var item in r.investigacion.costos)
             {
-                Entities.Recurso rec = new Entities.Recurso(item.recurso.nombre, item.recurso.descripcion, item.recurso.cantInicial, item.recurso.foto);
-                var c = new Entities.Costo(item.Id, rec, item.valor, item.incrementoNivel);
+                var rec = ctx.Recurso.Where(w => w.id == item.recurso.id).SingleOrDefault();
+                var prod = ctx.Producto.Where(w => w.id == item.producto.id).SingleOrDefault();
+                var c = new Entities.Costo(rec, prod, item.valor, item.incrementoNivel);
                 cos.Add(c);
             }
 
@@ -82,6 +83,7 @@ namespace DALayer.Handlers
 
         public RelJugadorInvestigacion getRelJugadorInvestigacion(int id)
         {
+            CostoHandlerEF costoH = new CostoHandlerEF(ctx);
             try
             {
                 var invE = (from c in ctx.RelJugadorInvestigacion
@@ -97,8 +99,7 @@ namespace DALayer.Handlers
                 var costos = new List<Costo>();
                 foreach (var item in invE.investigacion.costos)
                 {
-                    Recurso rec = new Recurso(item.recurso.id, item.recurso.nombre, item.recurso.descripcion, item.recurso.cantInicial, item.recurso.foto);
-                    var c = new Costo(rec, item.valor, item.incrementoNivel);
+                    var c = costoH.getCosto(item.Id);
                     costos.Add(c);
                 }
                 Investigacion inv = new Investigacion(invE.investigacion.id, invE.investigacion.nombre, invE.investigacion.descripcion,
