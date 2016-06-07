@@ -1,0 +1,8 @@
+D:\Workspace\.Net_Laboratorio\Comercio\bin\Debug\Comercio.exe.config
+D:\Workspace\.Net_Laboratorio\Comercio\bin\Debug\Comercio.exe
+D:\Workspace\.Net_Laboratorio\Comercio\bin\Debug\Comercio.pdb
+D:\Workspace\.Net_Laboratorio\Comercio\bin\Debug\InteractionSdk.exe
+D:\Workspace\.Net_Laboratorio\Comercio\bin\Debug\InteractionSdk.pdb
+D:\Workspace\.Net_Laboratorio\Comercio\obj\Debug\Comercio.csprojResolveAssemblyReference.cache
+D:\Workspace\.Net_Laboratorio\Comercio\obj\Debug\Comercio.exe
+D:\Workspace\.Net_Laboratorio\Comercio\obj\Debug\Comercio.pdb

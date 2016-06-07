@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using BLayer.Interfaces;
 using DALayer.Interfaces;
 using SharedEntities.Entities;
+using InteractionSdk.Interfaces;
 
 namespace BLayer.Front
 {
@@ -18,8 +19,27 @@ namespace BLayer.Front
             builder = gc;
             tId = tId.Replace(" ", "_");
             builder.setTenant(tId);
-        }
 
+            //testIntearction();
+
+
+        }
+        private void testIntearction() {
+            string player1 = "a0d56e00-5eb1-4c1d-a699-058dd1227682";
+            string player2 = "1644ca7c-3592-4459-9c5e-5d315ed4f3ea";
+            RelJugadorMapa player1Mapa = builder.getRelJugadorMapaHandler().getMapasByJugador(player1).First();
+            RelJugadorMapa player2Mapa =  builder.getRelJugadorMapaHandler().getMapasByJugador(player2).First();
+            Interactuable requester = new Interactuable(player1Mapa.id);
+            requester.SetFlota(getDestacamentosByColonia(player1Mapa.id).Cast<IDestacamento>().ToList());
+            requester.SetRecursos(getRecursosByColonia(player1Mapa.id).Cast<IResources>().ToList());
+            Interactuable receiver = new Interactuable(player2Mapa.id);
+            receiver.SetFlota(getDestacamentosByColonia(player2Mapa.id).Cast<IDestacamento>().ToList());
+            receiver.SetRecursos(getRecursosByColonia(player2Mapa.id).Cast<IResources>().ToList());
+
+            InteractionController ic = new InteractionController();
+            ic.LoadInteractionByName("");
+            ic.InitializeInteraction(requester, receiver);
+        }
         //TENANT
         public bool existGame(string gameName)
         {
@@ -63,9 +83,9 @@ namespace BLayer.Front
             builder.getRelJugadorEdificioHandler().createRelJugadorEdificio(reljugadoredificio);
         }
 
-        public void subirNivel(int id)
+        public RelJugadorEdificio subirNivel(int id)
         {
-            builder.getRelJugadorEdificioHandler().subirNivel(id);
+            return builder.getRelJugadorEdificioHandler().subirNivel(id);
         }
 
         public void bajarNivel(int id)
@@ -104,9 +124,9 @@ namespace BLayer.Front
             return builder.getRelJugadorInvestigacionHandler().getInvestigacionesByColonia(id);
         }
 
-        public void subirNivelI(int id)
+        public RelJugadorInvestigacion subirNivelI(int id)
         {
-            builder.getRelJugadorInvestigacionHandler().subirNivelI(id);
+            return builder.getRelJugadorInvestigacionHandler().subirNivelI(id);
         }
 
         public void bajarNivelI(int id)

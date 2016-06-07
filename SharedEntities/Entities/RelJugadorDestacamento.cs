@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InteractionSdk.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SharedEntities.Entities
 {
-    public class RelJugadorDestacamento
+    public class RelJugadorDestacamento: IDestacamento
     {
         public int id;
         public RelJugadorMapa colonia;
@@ -19,6 +20,46 @@ namespace SharedEntities.Entities
             this.colonia = col;
             this.destacamento = desta;
             this.cantidad = cant;
+        }
+
+        public float GetAtaque()
+        {
+            return destacamento.ataque;
+        }
+
+        public float GetEscudo()
+        {
+            return destacamento.escudo;
+        }
+
+        public float GetEfectividad()
+        {
+            return destacamento.efectividadAtaque;
+        }
+
+        public float GetVida()
+        {
+            return destacamento.vida;
+        }
+
+        public float GetVelocidad()
+        {
+            return destacamento.velocidad;
+        }
+
+        public string GetName()
+        {
+            return destacamento.nombre;
+        }
+
+        public double GetAmount()
+        {
+            return cantidad;
+        }
+
+        public int GetId()
+        {
+            return destacamento.id;
         }
     }
 }

@@ -33,13 +33,35 @@ namespace DALayer.Api
         private CostoHandlerEF costoHandler;
         private CapacidadHandlerEF capacidadHandler;
         private ProduceHandlerEF produceHandler;
-
+        private IInteractionHandler interactionHandler;
+        private IIntStateHandler intStateHandler;
+ 
         public ITenantHandler getTenantHandler() {
             if (tenantHandler == null)
             {
                 tenantHandler = new TenantHandlerEF();
             }
             return tenantHandler;
+        }
+        public IIntStateHandler getIntStateHandler()
+        {
+            if (intStateHandler == null)
+            {
+                intStateHandler = new IntStateHandler(ctx.SchemaName);
+            }
+            return intStateHandler;
+        }
+        public IInteractionHandler getInteractionHandler()
+        {
+            if (ctx == null)
+            {
+                throw new Exception("Tenes que llamar a la funcion setTenant despues de inicializar esta clase");
+            }
+            if (interactionHandler == null)
+            {
+                interactionHandler = new InteractionHandler(ctx);
+            }
+            return interactionHandler;
         }
 
         public IRecursoHandler getRecursoHandler()

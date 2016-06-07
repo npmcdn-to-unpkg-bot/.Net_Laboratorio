@@ -11,7 +11,7 @@ namespace DALayer.Interfaces
     {
         void createRelJugadorEdificio(RelJugadorEdificio relacion);
         void bajarNivel(int id);
-        void subirNivel(int id);
+        RelJugadorEdificio subirNivel(int id);
         RelJugadorEdificio getRelJugadorEdificio(int id);
         List<RelJugadorEdificio> getEdificiosByColonia(int id);
     }

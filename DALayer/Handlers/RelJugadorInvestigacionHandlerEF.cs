@@ -141,7 +141,7 @@ namespace DALayer.Handlers
             }
         }
 
-        public void subirNivelI(int id)
+        public RelJugadorInvestigacion subirNivelI(int id)
         {
             RelJugadorRecursoHandlerEF jrHandler = new RelJugadorRecursoHandlerEF(ctx);
             try
@@ -152,11 +152,12 @@ namespace DALayer.Handlers
 
                 if (r != null)
                 {
-                    List<Entities.Costo> costos = r.investigacion.calCostoXNivel(r.nivel);
+                    List<Entities.Costo> costos = r.investigacion.calCostoXNivel(r.nivel, 1);
                     jrHandler.restarCompra(r.colonia.id, costos);
                     r.nivel += 1;
                     ctx.SaveChangesAsync().Wait();
                 }
+                return getRelJugadorInvestigacion(r.id);
             }
             catch (Exception ex)
             {
