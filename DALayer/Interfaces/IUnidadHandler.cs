@@ -10,7 +10,7 @@ namespace DALayer.Interfaces
     public interface IUnidadHandler
     {
         int createEdificio(Edificio edificio);
-        void createDestacamento(Destacamento destacamento);
+        int createDestacamento(Destacamento destacamento);
         void deleteEdificio(int id);
         void deleteDestacamento(int id);
         void updateEdificio(Edificio edificio);

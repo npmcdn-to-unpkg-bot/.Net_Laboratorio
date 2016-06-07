@@ -63,7 +63,7 @@ namespace DALayer.Handlers
                 Recurso rec = new Recurso(c.recurso.id, c.recurso.nombre, c.recurso.descripcion, c.recurso.cantInicial,
                     c.recurso.capacidadInicial, c.recurso.produccionXTiempo, c.recurso.foto);
                 var prod = ctx.Producto.Where(w => w.id == c.producto.id).SingleOrDefault();
-                Capacidad capacidad = new Capacidad(c.Id, rec, depHandler.prodEntToSha(prod), prod.id, c.valor, c.incrementoNivel);
+                Capacidad capacidad = new Capacidad(c.Id, rec, prod.id, c.valor, c.incrementoNivel);
                 return capacidad;
             }
             catch (Exception ex)

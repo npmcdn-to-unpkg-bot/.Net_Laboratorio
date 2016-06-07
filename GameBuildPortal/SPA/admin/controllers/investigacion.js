@@ -1,8 +1,8 @@
 ﻿(function () {
     'use strict';
-    angular.module('atlas2').controller('investigacionCtrl', ['$scope', '$routeParams', '$location', 'investigacionService', 'recursoService', investigacionCtrl]);
+    angular.module('atlas2').controller('investigacionCtrl', ['$scope', '$routeParams', '$location', 'investigacionService', 'recursoService', 'costoService', 'capacidadService', investigacionCtrl]);
 
-    function investigacionCtrl($scope, $routeParams, $location, investigacionService, recursoService) {
+    function investigacionCtrl($scope, $routeParams, $location, investigacionService, recursoService, costoService, capacidadService) {
         $scope.saving = false;
 
         $scope.costos = [];
@@ -41,16 +41,44 @@
         }
 
         $scope.add = function () {
-            $scope.saving       = true;
-            var investigacion   = this.investigacion;
-            
-            investigacion['costos'] = $scope.costos;
-            investigacion['capacidad'] = $scope.capacidades;
+            $scope.saving = true;
+            var investigacion = this.investigacion;
 
             investigacionService.add(investigacion).then(
-                function (data) {
-                    $scope.investigaciones.push(data);
+                function (investigacionData) {
                     $scope.saving = false;
+
+                    //Recorre los costos y los asigno al producto
+                    if ($scope.costos.length) {
+                        for (var i in $scope.costos) {
+                            var costo = $scope.costos[i];
+
+                            var costoData = {
+                                inc: costo.incrementoNivel,
+                                idProducto: investigacionData,
+                                rec: { id: parseInt(costo.recurso) },
+                                valor: costo.valor
+                            }
+
+                            costoService.add(costoData);
+                        }
+                    }
+
+                    //Recorre lascapacidades y los asigno al producto
+                    if ($scope.capacidades.length) {
+                        for (var i in $scope.capacidades) {
+                            var capacidad = $scope.capacidades[i];
+
+                            var capacidadData = {
+                                inc: capacidad.incrementoNivel,
+                                idProducto: investigacionData,
+                                rec: { id: parseInt(capacidad.recurso) },
+                                valor: capacidad.valor
+                            }
+
+                            capacidadService.add(capacidadData);
+                        }
+                    }
 
                     mostrarNotificacion('success');
                     window.history.back();

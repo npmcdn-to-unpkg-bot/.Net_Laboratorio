@@ -1,8 +1,8 @@
 ﻿(function () {
     'use strict';
-    angular.module('atlas2').controller('edificioCtrl', ['$scope', '$routeParams', '$location', 'edificioService', 'recursoService', 'costoService', edificioCtrl]);
+    angular.module('atlas2').controller('edificioCtrl', ['$scope', '$routeParams', '$location', 'edificioService', 'recursoService', 'costoService', 'capacidadService', edificioCtrl]);
 
-    function edificioCtrl($scope, $routeParams, $location, edificioService, recursoService, costoService) {
+    function edificioCtrl($scope, $routeParams, $location, edificioService, recursoService, costoService, capacidadService) {
         $scope.saving = false;
 
         $scope.costos = [];
@@ -41,16 +41,14 @@
         }
 
         $scope.add = function () {
-            $scope.saving   = true;
-            var edificio    = this.edificio;
-
-            //edificio['costo'] = $scope.costos;
-            //edificio['capacidad'] = $scope.capacidades;
+            $scope.saving = true;
+            var edificio = this.edificio;
 
             edificioService.add(edificio).then(
                 function (edificioData) {
+                    $scope.saving = false;
 
-                    //Recorre los costos y los asigna uno por uno asignandole el producto correspondiente
+                    //Recorre los costos y los asigno al producto
                     if ($scope.costos.length) {
                         for (var i in $scope.costos) {
                             var costo = $scope.costos[i];
@@ -63,6 +61,22 @@
                             }
 
                             costoService.add(costoData);
+                        }
+                    }
+
+                    //Recorre lascapacidades y los asigno al producto
+                    if ($scope.capacidades.length) {
+                        for (var i in $scope.capacidades) {
+                            var capacidad = $scope.capacidades[i];
+
+                            var capacidadData = {
+                                inc: capacidad.incrementoNivel,
+                                idProducto: edificioData,
+                                rec: { id: parseInt(capacidad.recurso) },
+                                valor: capacidad.valor
+                            }
+
+                            capacidadService.add(capacidadData);
                         }
                     }
 

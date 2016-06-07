@@ -18,7 +18,7 @@ namespace DALayer.Handlers
             ctx = tc;
         }
 
-        public void createDestacamento(Destacamento d)
+        public int createDestacamento(Destacamento d)
         {
             Entities.Destacamento desE = new Entities.Destacamento(d.nombre, d.descripcion, d.foto, d.ataque, d.escudo,
                 d.efectividadAtaque, d.vida, d.velocidad, d.enMision);
@@ -27,6 +27,10 @@ namespace DALayer.Handlers
             {
                 ctx.Destacamento.Add(desE);
                 ctx.SaveChanges();
+
+                Entities.Destacamento des = ctx.Destacamento.ToList().LastOrDefault();
+
+                return des.id;
             }
             catch (Exception e)
             {
@@ -47,7 +51,6 @@ namespace DALayer.Handlers
                 Entities.Edificio edi = ctx.Edificio.ToList().LastOrDefault();
 
                 return edi.id;
-
             }
             catch (Exception e)
             {
@@ -146,6 +149,7 @@ namespace DALayer.Handlers
                     var c = new Costo(item.Id, rec, prod.id, item.valor, item.incrementoNivel);
                     cos.Add(c);
                 }
+
                 List<Capacidad> cap = new List<Capacidad>();
                 foreach (var item in destE.capacidad)
                 {
@@ -153,9 +157,10 @@ namespace DALayer.Handlers
                         item.recurso.capacidadInicial, item.recurso.produccionXTiempo, item.recurso.foto);
 
                     var prod = ctx.Producto.Where(w => w.id == item.producto.id).SingleOrDefault();
-                    var c = new Capacidad(item.Id, rec, depeH.prodEntToSha(prod), prod.id, item.valor, item.incrementoNivel);
+                    var c = new Capacidad(item.Id, rec, prod.id, item.valor, item.incrementoNivel);
                     cap.Add(c);
                 }
+
                 Destacamento dest = new Destacamento(destE.id, destE.descripcion, destE.foto, destE.ataque,
                       destE.escudo, destE.efectividadAtaque, destE.vida, destE.velocidad, destE.enMision, destE.nombre, cos, cap);
                 return dest;
@@ -192,7 +197,7 @@ namespace DALayer.Handlers
                     Recurso rec2 = new Recurso(item.recurso.id, item.recurso.nombre, item.recurso.descripcion, item.recurso.cantInicial,
                         item.recurso.capacidadInicial, item.recurso.produccionXTiempo, item.recurso.foto);
                     var prod = ctx.Producto.Where(w => w.id == item.producto.id).SingleOrDefault();
-                    var c = new Capacidad(item.Id, rec2, depeH.prodEntToSha(prod), prod.id, item.valor, item.incrementoNivel);
+                    var c = new Capacidad(item.Id, rec2, prod.id, item.valor, item.incrementoNivel);
                     cap.Add(c);
                 }
 

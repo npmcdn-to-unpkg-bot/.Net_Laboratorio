@@ -66,10 +66,9 @@ namespace GameBuildPortal.ControllersApi
         {
             if (ModelState.IsValid)
             {
-                blHandler.createDestacamento(destacamento);
+                int id = blHandler.createDestacamento(destacamento);
 
-                HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, destacamento);
-                response.Headers.Location = new Uri(Url.Link("DefaultApi", new { controller = "Admin" }));
+                HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, id);
                 return response;
             }
             else

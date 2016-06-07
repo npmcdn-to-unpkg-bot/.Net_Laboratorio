@@ -86,9 +86,9 @@ namespace BLayer.Admin
             return builder.getInvestigacionHandler().getInvestigacion(id);
         }
 
-        public void createInvestigacion(Investigacion investigacion)
+        public int createInvestigacion(Investigacion investigacion)
         {
-            builder.getInvestigacionHandler().createInvestigacion(investigacion);
+            return builder.getInvestigacionHandler().createInvestigacion(investigacion);
         }
 
         public void updateInvestigacion(Investigacion investigacion)
@@ -112,9 +112,9 @@ namespace BLayer.Admin
             return builder.getUnidadHandler().getDestacamento(id);
         }
 
-        public void createDestacamento(Destacamento destacamento)
+        public int createDestacamento(Destacamento destacamento)
         {
-            builder.getUnidadHandler().createDestacamento(destacamento);
+            return builder.getUnidadHandler().createDestacamento(destacamento);
         }
 
         public void updateDestacamento(Destacamento destacamento)

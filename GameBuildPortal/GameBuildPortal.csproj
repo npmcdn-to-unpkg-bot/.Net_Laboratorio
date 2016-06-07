@@ -1472,6 +1472,7 @@
     <Content Include="SPA\admin\controllers\mapa.js" />
     <Content Include="SPA\admin\controllers\recurso.js" />
     <Content Include="SPA\admin\services\cantidad.js" />
+    <Content Include="SPA\admin\services\capacidad.js" />
     <Content Include="SPA\admin\services\costo.js" />
     <Content Include="SPA\admin\services\producto.js" />
     <Content Include="SPA\admin\services\ui.js" />
@@ -1573,7 +1574,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Capacidad\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

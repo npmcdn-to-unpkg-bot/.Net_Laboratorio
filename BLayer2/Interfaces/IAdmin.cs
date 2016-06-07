@@ -31,14 +31,14 @@ namespace BLayer.Interfaces
 
         //INVESTIGACION
         List<Investigacion> getAllInvestigaciones();
-        void createInvestigacion(Investigacion investigacion);
+        int createInvestigacion(Investigacion investigacion);
         void deleteInvestigacion(int id);
         void updateInvestigacion(Investigacion investigacion);
         Investigacion getInvestigacion(int id);
 
         // DESTACAMENTO
         List<Destacamento> getAllDestacamentos();
-        void createDestacamento(Destacamento destacamento);
+        int createDestacamento(Destacamento destacamento);
         void deleteDestacamento(int id);
         void updateDestacamento(Destacamento destacamento);
         Destacamento getDestacamento(int id);

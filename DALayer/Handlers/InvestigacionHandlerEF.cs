@@ -17,15 +17,18 @@ namespace DALayer.Handlers
             ctx = tc;
         }
 
-        public void createInvestigacion(Investigacion i)
+        public int createInvestigacion(Investigacion i)
         {
             var inv = new Entities.Investigacion(i.nombre, i.descripcion, i.foto);
             
             try
             {
                 ctx.Investigacion.Add(inv);
-
                 ctx.SaveChanges();
+
+                Entities.Investigacion invs = ctx.Investigacion.ToList().LastOrDefault();
+
+                return invs.id;
             }
             catch (Exception e)
             {

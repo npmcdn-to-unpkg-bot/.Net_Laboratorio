@@ -1,8 +1,8 @@
 ﻿(function () {
     'use strict';
-    angular.module('atlas2').controller('destacamentoCtrl', ['$scope', '$routeParams', '$location', 'destacamentoService', 'recursoService', destacamentoCtrl]);
+    angular.module('atlas2').controller('destacamentoCtrl', ['$scope', '$routeParams', '$location', 'destacamentoService', 'recursoService', 'costoService', 'capacidadService', destacamentoCtrl]);
 
-    function destacamentoCtrl($scope, $routeParams, $location, destacamentoService, recursoService) {
+    function destacamentoCtrl($scope, $routeParams, $location, destacamentoService, recursoService, costoService, capacidadService) {
         $scope.saving           = false;
         
         $scope.costos           = [];
@@ -44,12 +44,41 @@
             $scope.saving    = true;
             var destacamento = this.destacamento;
 
-            destacamento['costos'] = $scope.costos;
-            destacamento['capacidad'] = $scope.capacidades;
-
             destacamentoService.add(destacamento).then(
-                function (data) {
+                function (destacamentoData) {
                     $scope.saving = false;
+
+                    //Recorre los costos y los asigno al producto
+                    if ($scope.costos.length) {
+                        for (var i in $scope.costos) {
+                            var costo = $scope.costos[i];
+
+                            var costoData = {
+                                inc: costo.incrementoNivel,
+                                idProducto: destacamentoData,
+                                rec: { id: parseInt(costo.recurso) },
+                                valor: costo.valor
+                            }
+
+                            costoService.add(costoData);
+                        }
+                    }
+
+                    //Recorre lascapacidades y los asigno al producto
+                    if ($scope.capacidades.length) {
+                        for (var i in $scope.capacidades) {
+                            var capacidad = $scope.capacidades[i];
+
+                            var capacidadData = {
+                                inc: capacidad.incrementoNivel,
+                                idProducto: destacamentoData,
+                                rec: { id: parseInt(capacidad.recurso) },
+                                valor: capacidad.valor
+                            }
+
+                            capacidadService.add(capacidadData);
+                        }
+                    }
 
                     mostrarNotificacion('success');
                     window.history.back();
