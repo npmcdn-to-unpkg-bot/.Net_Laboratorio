@@ -45,7 +45,7 @@ namespace BLayer.Interfaces
 
         // EDIFICIO
         List<Edificio> getAllEdificios();
-        void createEdificio(Edificio edificio);
+        int createEdificio(Edificio edificio);
         void deleteEdificio(int id);
         void updateEdificio(Edificio edificio);
         Edificio getEdificio(int id);

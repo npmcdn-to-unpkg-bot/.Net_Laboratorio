@@ -26,7 +26,7 @@ namespace DALayer.Handlers
             foreach (var item in r.investigacion.costos)
             {
                 var rec = ctx.Recurso.Where(w => w.id == item.recurso.id).SingleOrDefault();
-                var prod = ctx.Producto.Where(w => w.id == item.producto.id).SingleOrDefault();
+                var prod = ctx.Producto.Where(w => w.id == item.idProducto).SingleOrDefault();
                 var c = new Entities.Costo(rec, prod, item.valor, item.incrementoNivel);
                 cos.Add(c);
             }

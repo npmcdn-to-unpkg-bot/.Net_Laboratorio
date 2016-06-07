@@ -19,7 +19,7 @@ namespace DALayer.Handlers
         public void createProduce(Produce p)
         {
             Entities.Recurso rec = ctx.Recurso.Where(w => w.id == p.recurso.id).SingleOrDefault();
-            var prod = ctx.Producto.Where(w => w.id == p.producto.id).SingleOrDefault();
+            var prod = ctx.Producto.Where(w => w.id == p.idProducto).SingleOrDefault();
             var produce = new Entities.Produce(rec, prod, p.valor, p.incrementoNivel);
 
             try

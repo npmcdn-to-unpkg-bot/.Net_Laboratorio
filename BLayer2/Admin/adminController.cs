@@ -138,9 +138,9 @@ namespace BLayer.Admin
             return builder.getUnidadHandler().getEdificio(id);
         }
 
-        public void createEdificio(Edificio edificio)
+        public int createEdificio(Edificio edificio)
         {
-            builder.getUnidadHandler().createEdificio(edificio);
+            return builder.getUnidadHandler().createEdificio(edificio);
         }
 
         public void updateEdificio(Edificio edificio)

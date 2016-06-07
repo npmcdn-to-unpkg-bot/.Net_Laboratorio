@@ -54,9 +54,15 @@
                     if ($scope.costos.length) {
                         for (var i in $scope.costos) {
                             var costo = $scope.costos[i];
-                            costo['producto'] = edificioData;
 
-                            costoService.add(costo);
+                            var costoData = {
+                                inc: costo.incrementoNivel,
+                                idProducto: edificioData,
+                                rec: { id: parseInt(costo.recurso) },
+                                valor : costo.valor
+                            }
+
+                            costoService.add(costoData);
                         }
                     }
 

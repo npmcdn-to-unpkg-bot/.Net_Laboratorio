@@ -20,7 +20,7 @@ namespace DALayer.Handlers
         public void createCosto(Costo c)
         {
             Entities.Recurso rec = ctx.Recurso.Where(w => w.id == c.recurso.id).SingleOrDefault();
-            var prod = ctx.Producto.Where(w => w.id == c.producto.id).SingleOrDefault();
+            var prod = ctx.Producto.Where(w => w.id == c.idProducto).SingleOrDefault();
             var cost = new Entities.Costo(rec, prod, c.valor, c.incrementoNivel);
 
             try
@@ -63,7 +63,7 @@ namespace DALayer.Handlers
 
                 var rec = recHandler.getRecurso(cost.recurso.id);
                 var prod = ctx.Producto.Where(w => w.id == cost.producto.id).SingleOrDefault();
-                Costo costo = new Costo(cost.Id, rec, depHandler.prodEntToSha(prod), prod.id, cost.valor, cost.incrementoNivel);
+                Costo costo = new Costo(cost.Id, rec, prod.id, cost.valor, cost.incrementoNivel);
                 return costo;
             }
             catch (Exception ex)
@@ -83,7 +83,7 @@ namespace DALayer.Handlers
                 if (costTmp != null)
                 {
                     var rec = ctx.Recurso.Where(w => w.id == cost.recurso.id).SingleOrDefault();
-                    var prod = ctx.Producto.Where(w => w.id == cost.producto.id).SingleOrDefault();
+                    var prod = ctx.Producto.Where(w => w.id == cost.idProducto).SingleOrDefault();
                     costTmp.recurso = rec;
                     costTmp.producto = prod;
                     costTmp.valor = cost.valor;
