@@ -29,25 +29,19 @@
                             <span class="description-text"><i class="glyphicon glyphicon-fire"></i></span>
                             <h5 class="description-header">{{edificio.ataque}}</h5>
                         </div>
-                        <!-- /.description-block -->
                     </div>
-                    <!-- /.col -->
                     <div class="col-sm-4">
                         <div class="description-block">
                             <span class="description-text"><i class="glyphicon glyphicon-heart"></i></span>
                             <h5 class="description-header">{{edificio.vida}}</h5>
                         </div>
-                        <!-- /.description-block -->
                     </div>
-                    <!-- /.col -->
                     <div class="col-sm-4">
                         <div class="description-block">
                             <span class="description-text"><i class="glyphicon glyphicon-tower"></i></span>
                             <h5 class="description-header">{{edificio.escudo}}</h5>
                         </div>
-                        <!-- /.description-block -->
                     </div>
-                    <!-- /.col -->
                 </div>
             </div>
             <div class="modal-footer">
@@ -55,30 +49,13 @@
                     <div class="col-sm-12">
                         <h5 class="text-center">Costo siguiente nivel</h5>
                     </div>
-                    <div class="col-sm-4">
+                    <div ng-repeat="costo in edificio.costos" class="col-sm-{{12 / edificio.costos.length | number}}">
                         <div class="description-block">
-                            <h5 class="description-header">9,200</h5>
-                            <span class="description-text">Oro</span>
+                            <h5 class="description-header">{{costo.valor}}</h5>
+                            <span class="description-text">{{costo.recurso.nombre}}</span>
                         </div>
-                        <!-- /.description-block -->
                     </div>
-                    <!-- /.col -->
-                    <div class="col-sm-4">
-                        <div class="description-block">
-                            <h5 class="description-header">1,300</h5>
-                            <span class="description-text">Metal</span>
-                        </div>
-                        <!-- /.description-block -->
-                    </div>
-                    <!-- /.col -->
-                    <div class="col-sm-4">
-                        <div class="description-block">
-                            <h5 class="description-header">350</h5>
-                            <span class="description-text">Madera</span>
-                        </div>
-                        <!-- /.description-block -->
-                    </div>
-                    <!-- /.col -->
+
                 </div>
             </div>
         </div>

@@ -4,9 +4,8 @@
     <div class="info-box-content">
       <span class="info-box-text">{{recurso.nombre}}</span>
       <span class="info-box-number">{{recurso.cantidad}}</span>
-
       <div class="progress">
-        <div class="progress-bar" style="width: 70%"></div>
+        <div class="progress-bar" style="width: {{(100 * recurso.cantidad) / recurso.capacidad}}%"></div>
       </div>
       <span class="progress-description">
         {{recurso.cantidad}} de {{recurso.capacidad}}

@@ -7,7 +7,7 @@
         var getRecursoByColonia = function (colonia) {
             var defer = $q.defer();
 
-            $http.get('/api/jugadorRecurso/ByColonia?id=' + colonia)
+            $http.get('/api/jugadorRecurso/' + colonia)
             .success(function (jugadorRecursos) {
                 defer.resolve(jugadorRecursos);
             })

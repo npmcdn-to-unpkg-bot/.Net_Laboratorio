@@ -7,7 +7,7 @@
         var getInvestigacionByColonia = function (colonia) {
             var defer = $q.defer();
 
-            $http.get('/api/jugadorInvestigacion/ByColonia?id=' + colonia)
+            $http.get('/api/jugadorInvestigacion/' + colonia)
             .success(function (jugadorInvestigaciones) {
                 defer.resolve(jugadorInvestigaciones);
             })
@@ -46,23 +46,8 @@
             return defer.promise;
         };
 
-        var getId = function (id) {
-            var defer = $q.defer();
-
-            $http.get('/api/jugadorInvestigacion/' + id)
-            .success(function (jugadorInvestigacion) {
-                defer.resolve(jugadorInvestigacion);
-            })
-            .error(function () {
-                defer.reject('server error')
-            });
-
-            return defer.promise;
-        };
-
         return {
             getInvestigacionByColonia: getInvestigacionByColonia,
-            getId: getId,
             subirNivel: subirNivel,
             bajarNivel: bajarNivel,
         }

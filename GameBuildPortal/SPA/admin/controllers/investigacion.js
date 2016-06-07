@@ -44,6 +44,13 @@
             $scope.saving = true;
             var investigacion = this.investigacion;
 
+            if (!$scope.costos.length) {
+                $scope.saving = false;
+
+                mostrarNotificacion('error', 'Debe agregar al menos un costo.');
+                return;
+            }
+
             investigacionService.add(investigacion).then(
                 function (investigacionData) {
                     $scope.saving = false;
@@ -129,16 +136,15 @@
             }
         }
 
-        var mostrarNotificacion = function (tipo) {
+        var mostrarNotificacion = function (tipo, text) {
             var title = '';
-            var text = '';
 
             if (tipo == 'success') {
                 var title = 'Exito!';
-                var text = 'Acción realizada con exito.';
+                var text = text || 'Acción realizada con exito.';
             } else if (tipo == 'error') {
                 var title = 'Oh No!';
-                var text = 'Ha ocurrido un error.';
+                var text = text || 'Ha ocurrido un error.';
             }
 
             new PNotify({

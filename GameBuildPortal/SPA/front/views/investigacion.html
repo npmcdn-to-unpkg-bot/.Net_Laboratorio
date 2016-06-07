@@ -27,30 +27,12 @@
                     <div class="col-sm-12">
                         <h5 class="text-center">Costo siguiente nivel</h5>
                     </div>
-                    <div class="col-sm-4">
+                    <div ng-repeat="costo in investigacion.costos" class="col-sm-{{12 / investigacion.costos.length | number}}">
                         <div class="description-block">
-                            <h5 class="description-header">9,200</h5>
-                            <span class="description-text">Oro</span>
+                            <h5 class="description-header">{{costo.valor}}</h5>
+                            <span class="description-text">{{costo.recurso.nombre}}</span>
                         </div>
-                        <!-- /.description-block -->
                     </div>
-                    <!-- /.col -->
-                    <div class="col-sm-4">
-                        <div class="description-block">
-                            <h5 class="description-header">1,300</h5>
-                            <span class="description-text">Metal</span>
-                        </div>
-                        <!-- /.description-block -->
-                    </div>
-                    <!-- /.col -->
-                    <div class="col-sm-4">
-                        <div class="description-block">
-                            <h5 class="description-header">350</h5>
-                            <span class="description-text">Madera</span>
-                        </div>
-                        <!-- /.description-block -->
-                    </div>
-                    <!-- /.col -->
                 </div>
             </div>
         </div>

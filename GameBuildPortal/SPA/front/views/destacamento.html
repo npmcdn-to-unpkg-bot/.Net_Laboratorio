@@ -35,24 +35,12 @@
                        
                         <div class="row">
                             <div class="col-sm-12">
-                                <h5 class="text-center">Costos</h5>
+                                <h5 class="text-center">Costos por unidad</h5>
                             </div>
-                            <div class="col-sm-4">
+                            <div ng-repeat="costo in unidad.costos" class="col-sm-{{12 / unidad.costos.length | number}}">
                                 <div class="description-block">
-                                    <h5 class="description-header">9,200</h5>
-                                    <span class="description-text">Oro</span>
-                                </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <div class="description-block">
-                                    <h5 class="description-header">1,300</h5>
-                                    <span class="description-text">Metal</span>
-                                </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <div class="description-block">
-                                    <h5 class="description-header">350</h5>
-                                    <span class="description-text">Madera</span>
+                                    <h5 class="description-header">{{costo.valor}}</h5>
+                                    <span class="description-text">{{costo.recurso.nombre}}</span>
                                 </div>
                             </div>
                         </div>
