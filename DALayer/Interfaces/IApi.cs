@@ -24,11 +24,13 @@ namespace DALayer.Interfaces
         IRelJugadorMapaHandler getRelJugadorMapaHandler();
         IRelJugadorRecursoHandler getRelJugadorRecursoHandler();
         IRelJugadorDestacamentoHandler getRelJugadorDestacamentoHandler();
-        IUiHandler getUiHandler();
+        IUiHandler getUiHandler(); 
         ICostoHandler getCostoHandler();
         ICapacidadHandler getCapacidadHandler();
         IProduceHandler getProduceHandler();
-
+ 
+        IInteractionHandler getInteractionHandler();
+        IIntStateHandler getIntStateHandler();
         void setTenant(string tid);
     }
 }

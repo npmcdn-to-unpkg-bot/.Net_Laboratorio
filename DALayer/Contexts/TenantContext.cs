@@ -25,6 +25,7 @@ namespace DALayer
         public TenantContext()
            : base("Admin")
         {
+
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -62,6 +63,7 @@ namespace DALayer
         public virtual DbSet<RelJugadorMapa> RelJugadorMapa { get; set; }
         public virtual DbSet<Ui> Ui { get; set; }
 
+        public virtual DbSet<Interaction> Interaction{get; set;}
         public string CacheKey
         {
             get

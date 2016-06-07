@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InteractionSdk.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SharedEntities.Entities
 {
-    public class RelJugadorRecurso
+    public class RelJugadorRecurso: IResources
     {
         public int id;
         public Recurso recurso;
@@ -25,6 +26,16 @@ namespace SharedEntities.Entities
             this.cantidadR = cantR;
             this.produccionXTiempo = produccionXTiempo;
             this.ultimaConsulta = ultimaConsulta;
+        }
+
+        public int GetId()
+        {
+            return recurso.id;
+        }
+
+        public int GetAmount()
+        {
+            return cantidadR;
         }
     }
 }
