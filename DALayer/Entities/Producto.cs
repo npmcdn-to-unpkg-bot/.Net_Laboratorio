@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -32,6 +33,22 @@ namespace DALayer.Entities
         public List<Costo> getCosto()
         {
             return this.costos;
+        }
+
+        public List<Costo> calCostoXNivel(int nivel)
+        {
+            var lista = new List<Costo>();
+            foreach (var costo in costos)
+            {
+                var c = new Costo(costo.recurso, costo.producto, costo.valor, costo.incrementoNivel);
+                c.incrementoNivel = costo.incrementoNivel / 100 + 1;
+                for (int i = 0; i < nivel; i++)
+                {
+                    c.valor = Convert.ToInt32(c.valor * c.incrementoNivel);
+                }
+                lista.Add(c);
+            }
+            return lista;
         }
     }
 }

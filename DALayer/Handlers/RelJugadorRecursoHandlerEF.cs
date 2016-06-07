@@ -154,5 +154,21 @@ namespace DALayer.Handlers
                 updateRelJugadorRecurso(rec);
             }
         }
+
+        public void restarCompra(int idColonia, List<Entities.Costo> gastos)
+        {
+            List<Entities.RelJugadorRecurso> recursos = ctx.RelJugadorRecurso.Where(w => w.colonia.id == idColonia).ToList();
+            foreach (var g in gastos)
+            {
+                foreach (var r in recursos)
+                {
+                    if (g.recurso.id == r.recurso.id)
+                    {
+                        r.cantidadR -= g.valor;
+                    }
+                }
+            }
+            ctx.SaveChangesAsync().Wait();
+        }
     }
 }

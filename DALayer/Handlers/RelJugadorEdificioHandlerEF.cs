@@ -98,6 +98,7 @@ namespace DALayer.Handlers
 
         public void subirNivel(int id)
         {
+            RelJugadorRecursoHandlerEF jrHandler = new RelJugadorRecursoHandlerEF(ctx);
             try
             {
                 var r = ctx.RelJugadorEdificio
@@ -106,6 +107,8 @@ namespace DALayer.Handlers
 
                 if (r != null)
                 {
+                    List<Entities.Costo> costos = r.edificio.calCostoXNivel(r.nivelE);
+                    jrHandler.restarCompra(r.colonia.id, costos);
                     r.nivelE += 1;
                     ctx.SaveChangesAsync().Wait();
                 }
