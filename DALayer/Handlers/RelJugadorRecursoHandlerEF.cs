@@ -124,35 +124,26 @@ namespace DALayer.Handlers
 
         public void calcularRecursosByIdCol(int id)
         {
-            var recursos = new List<RelJugadorRecurso>();
-            ctx.Database.Connection.Open();
-            List<Entities.RelJugadorRecurso> recursosE = ctx.RelJugadorRecurso.Where(w => w.colonia.id == id).ToList();
-            ctx.Database.Connection.Close();
-            foreach (var item in recursosE)
-            {
-                var rel = getRelJugadorRecurso(item.id);
-                recursos.Add(rel);
-            }
+            List<Entities.RelJugadorRecurso> relJR = ctx.RelJugadorRecurso.Where(w => w.colonia.id == id).ToList();
             
             DateTime ahora = DateTime.Now;
-            TimeSpan dif = new TimeSpan();
-            int segundos;
-            foreach (var rec in recursos)
+            TimeSpan dif = ahora.Subtract(relJR.FirstOrDefault().ultimaConsulta);
+            int segundos = Convert.ToInt32(dif.TotalSeconds);
+            foreach (var rel in relJR)
             {
-                dif = ahora.Subtract(rec.ultimaConsulta);
-                segundos = dif.Seconds;
-                int prod = Convert.ToInt32((rec.produccionXTiempo * segundos) / 3600);
-                if ((prod + rec.cantidadR) >= rec.capacidad)
+                int prod = Convert.ToInt32((rel.produccionXTiempo * segundos) / 3600);
+                if ((prod + rel.cantidadR) >= rel.capacidad)
                 {
-                    rec.cantidadR = rec.capacidad;
+                    rel.cantidadR = rel.capacidad;
                 }
                 else
                 {
-                    rec.cantidadR += prod;
+                    rel.cantidadR += prod;
                 }
-                rec.ultimaConsulta = ahora;
-                updateRelJugadorRecurso(rec);
+                rel.ultimaConsulta = ahora;
             }
+            ctx.SaveChangesAsync().Wait();
+
         }
 
         public void restarCompra(int idColonia, List<Entities.Costo> gastos)

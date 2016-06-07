@@ -70,6 +70,11 @@ namespace DALayer.Handlers
                 foreach (var item2 in rje.edificio.costos)
                 {
                     var c = costoH.getCosto(item2.Id);
+                    c.incrementoNivel = item2.incrementoNivel / 100 + 1;
+                    for (int i = 0; i < rje.nivelE; i++)
+                    {
+                        c.valor = Convert.ToInt32(c.valor * c.incrementoNivel);
+                    }
                     cos.Add(c);
                 }
                 List<Capacidad> cap = new List<Capacidad>();

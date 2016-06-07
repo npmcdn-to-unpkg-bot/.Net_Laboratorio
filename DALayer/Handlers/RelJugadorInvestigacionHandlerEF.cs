@@ -100,6 +100,11 @@ namespace DALayer.Handlers
                 foreach (var item in invE.investigacion.costos)
                 {
                     var c = costoH.getCosto(item.Id);
+                    c.incrementoNivel = item.incrementoNivel / 100 + 1;
+                    for (int i = 0; i < invE.nivel; i++)
+                    {
+                        c.valor = Convert.ToInt32(c.valor * c.incrementoNivel);
+                    }
                     costos.Add(c);
                 }
                 Investigacion inv = new Investigacion(invE.investigacion.id, invE.investigacion.nombre, invE.investigacion.descripcion,
@@ -138,6 +143,7 @@ namespace DALayer.Handlers
 
         public void subirNivelI(int id)
         {
+            RelJugadorRecursoHandlerEF jrHandler = new RelJugadorRecursoHandlerEF(ctx);
             try
             {
                 var r = ctx.RelJugadorInvestigacion
@@ -146,6 +152,8 @@ namespace DALayer.Handlers
 
                 if (r != null)
                 {
+                    List<Entities.Costo> costos = r.investigacion.calCostoXNivel(r.nivel);
+                    jrHandler.restarCompra(r.colonia.id, costos);
                     r.nivel += 1;
                     ctx.SaveChangesAsync().Wait();
                 }
