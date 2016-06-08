@@ -83,9 +83,9 @@ namespace BLayer.Front
             builder.getRelJugadorEdificioHandler().createRelJugadorEdificio(reljugadoredificio);
         }
 
-        public void subirNivel(int id)
+        public RelJugadorEdificio subirNivel(int id)
         {
-            builder.getRelJugadorEdificioHandler().subirNivel(id);
+            return builder.getRelJugadorEdificioHandler().subirNivel(id);
         }
 
         public void bajarNivel(int id)
@@ -124,9 +124,9 @@ namespace BLayer.Front
             return builder.getRelJugadorInvestigacionHandler().getInvestigacionesByColonia(id);
         }
 
-        public void subirNivelI(int id)
+        public RelJugadorInvestigacion subirNivelI(int id)
         {
-            builder.getRelJugadorInvestigacionHandler().subirNivelI(id);
+            return builder.getRelJugadorInvestigacionHandler().subirNivelI(id);
         }
 
         public void bajarNivelI(int id)

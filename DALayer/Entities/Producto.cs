@@ -35,7 +35,7 @@ namespace DALayer.Entities
             return this.costos;
         }
 
-        public List<Costo> calCostoXNivel(int nivel)
+        public List<Costo> calCostoXNivel(int nivel, int cant)
         {
             var lista = new List<Costo>();
             foreach (var costo in costos)
@@ -46,6 +46,7 @@ namespace DALayer.Entities
                 {
                     c.valor = Convert.ToInt32(c.valor * c.incrementoNivel);
                 }
+                c.valor *= cant;
                 lista.Add(c);
             }
             return lista;

@@ -12,7 +12,7 @@ namespace BLayer.Interfaces
         // RELJUGADOREDIFICIO
         void createRelJugadorEdificio(RelJugadorEdificio relacion);
         void bajarNivel(int id);
-        void subirNivel(int id);
+        RelJugadorEdificio subirNivel(int id);
         RelJugadorEdificio getRelJugadorEdificio(int id);
         List<RelJugadorEdificio> getEdificiosByColonia(int id);
 
@@ -21,7 +21,7 @@ namespace BLayer.Interfaces
         void deleteRelJugadorInvestigacion(int id);
         void updateRelJugadorInvestigacion(RelJugadorInvestigacion relacion);
         void bajarNivelI(int id);
-        void subirNivelI(int id);
+        RelJugadorInvestigacion subirNivelI(int id);
         RelJugadorInvestigacion getRelJugadorInvestigacion(int id);
         List<RelJugadorInvestigacion> getInvestigacionesByColonia(int id);
 

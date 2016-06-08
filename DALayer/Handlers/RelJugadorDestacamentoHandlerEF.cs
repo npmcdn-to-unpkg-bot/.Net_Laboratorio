@@ -99,6 +99,7 @@ namespace DALayer.Handlers
 
         public void updateRelJugadorDestacamento(RelJugadorDestacamento rje)
         {
+            RelJugadorRecursoHandlerEF jrHandler = new RelJugadorRecursoHandlerEF(ctx);
             try
             {
                 var r = ctx.RelJugadorDestacamento
@@ -107,6 +108,8 @@ namespace DALayer.Handlers
 
                 if (r != null)
                 {
+                    List<Entities.Costo> costos = r.destacamento.calCostoXNivel(0, rje.cantidad - r.cantidad);
+                    jrHandler.restarCompra(r.colonia.id, costos);
                     r.cantidad = rje.cantidad;
                     ctx.SaveChangesAsync().Wait();
                 }
@@ -141,6 +144,7 @@ namespace DALayer.Handlers
 
         public void subirCantidadDestacamento(int id, int sube)
         {
+            RelJugadorRecursoHandlerEF jrHandler = new RelJugadorRecursoHandlerEF(ctx);
             try
             {
                 var r = ctx.RelJugadorDestacamento
@@ -149,6 +153,8 @@ namespace DALayer.Handlers
 
                 if (r != null)
                 {
+                    List<Entities.Costo> costos = r.destacamento.calCostoXNivel(0, sube);
+                    jrHandler.restarCompra(r.colonia.id, costos);
                     r.cantidad += sube;
                     ctx.SaveChangesAsync().Wait();
                 }
