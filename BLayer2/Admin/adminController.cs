@@ -176,7 +176,7 @@ namespace BLayer.Admin
 
         public void deleteAlianza(int id)
         {
-//            builder.getAlianzaHandler().deleteAlianza(id);
+            builder.getAlianzaHandler().deleteAlianza(id);
         }
 
         //DEPENDENCIA
