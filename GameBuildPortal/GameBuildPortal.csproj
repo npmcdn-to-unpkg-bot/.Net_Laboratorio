@@ -233,6 +233,7 @@
     <Compile Include="ControllersAdminApi\InteraccionController.cs" />
     <Compile Include="ControllersAdminApi\InvestigacionController.cs" />
     <Compile Include="ControllersAdminApi\MapaController.cs" />
+    <Compile Include="ControllersAdminApi\ProduceController.cs" />
     <Compile Include="ControllersAdminApi\ProductoController.cs" />
     <Compile Include="ControllersAdminApi\RecursoController.cs" />
     <Compile Include="ControllersAdminApi\ReporteRegistroController.cs" />
@@ -1474,6 +1475,7 @@
     <Content Include="SPA\admin\services\cantidad.js" />
     <Content Include="SPA\admin\services\capacidad.js" />
     <Content Include="SPA\admin\services\costo.js" />
+    <Content Include="SPA\admin\services\produce.js" />
     <Content Include="SPA\admin\services\producto.js" />
     <Content Include="SPA\admin\services\ui.js" />
     <Content Include="SPA\admin\services\dependencia.js" />
@@ -1574,6 +1576,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Produce\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
