@@ -17,9 +17,7 @@ Comercio/bin/
 Comercio/obj/
 InterationSdk/bin/
 Interaction/obj/
-InteractionSdk/bin/Debug/InteractionSdk.exe
-InteractionSdk/obj/Debug/InteractionSdk.csproj.FileListAbsolute.txt
-InteractionSdk/obj/Debug/InteractionSdk.exe
-packages/Common.Logging.Core.3.0.0/lib/net35/Common.Logging.Core.pdb
-packages/Common.Logging.Core.3.0.0/lib/net40/Common.Logging.Core.pdb
-packages/Common.Logging.Core.3.0.0/lib/portable-win+net40+sl40+wp7/Common.Logging.Core.pdb
+Interaction/bin/
+InteractionSdk/obj/
+Ataque/obj/
+Ataque/bin/
