@@ -15,5 +15,6 @@ namespace SharedEntities.Entities
         public object[] recursos { get; set; }
         public int capacidad { get; set; }
         public bool returnToBase { get; set; }
+        public bool send { get; set; }
     }
 }

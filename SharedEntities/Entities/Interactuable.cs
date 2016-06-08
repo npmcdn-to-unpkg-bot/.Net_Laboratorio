@@ -56,8 +56,7 @@ namespace SharedEntities.Entities
         public void Return()
         {
             returnTobase = true;
-        }
-
+        } 
         public void Send()
         {
             send = true;
@@ -95,6 +94,20 @@ namespace SharedEntities.Entities
         public bool getReturn()
         {
             return returnTobase;
+        }
+        public void Clean() {
+            recursos.ForEach((rec) =>
+            {
+                rec.SetAmount(0);
+            });
+            flota.ForEach((rec) =>
+            {
+                rec.SetAmount(0);
+            });
+            defensa.ForEach((rec) =>
+            {
+                rec.SetAmount(0);
+            });
         }
     }
 }

@@ -4,6 +4,6 @@
     {
         int GetId();
         int GetAmount();
-
+        void SetAmount(int i);
     }
 }

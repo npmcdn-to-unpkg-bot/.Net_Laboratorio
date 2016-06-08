@@ -9,6 +9,7 @@
         float GetVida();
         float GetVelocidad();
         string GetName();
-        double GetAmount();
+        int GetAmount();
+        void SetAmount(int i);
     }
 }

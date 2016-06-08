@@ -8,6 +8,7 @@ namespace DALayer.Entities
 {
     public class IneractuableMetadata
     {
+        public bool send { get; set; }
         public object[] flota { get; set; }
         public object[] defensa { get; set; }
         public object[] recursos { get; set; }

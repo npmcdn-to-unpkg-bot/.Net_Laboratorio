@@ -21,9 +21,13 @@ namespace Comercio.Clases
         }
         public List<IInteractionable> exec(IInteractionable requester, IInteractionable receiver)
         {
+            receiver.Clean();
             receiver.SetRecursos(requester.GetRecursos());
-            requester.Return();
+            requester.GetRecursos().ForEach((rec) => {
+                rec.SetAmount(0);
+            });
             receiver.SetMustUpdate(true);
+            requester.Return();
             return new List<IInteractionable> { requester, receiver };
         }
 

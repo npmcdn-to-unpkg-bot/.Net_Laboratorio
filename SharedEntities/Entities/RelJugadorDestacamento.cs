@@ -52,11 +52,14 @@ namespace SharedEntities.Entities
             return destacamento.nombre;
         }
 
-        public double GetAmount()
+        public int GetAmount()
         {
             return cantidad;
         }
-
+        public void SetAmount(int i)
+        {
+            cantidad = i;
+        }
         public int GetId()
         {
             return destacamento.id;

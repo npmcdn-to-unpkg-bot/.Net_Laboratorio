@@ -25,5 +25,9 @@ namespace InteractionSdk.Interfaces
         void Send();
         bool mustSend(); 
         bool getReturn();
+        /// <summary>
+        /// You can call this function to clean all the state in the current instance. before assign new values
+        /// </summary>
+        void Clean();
     }
 }

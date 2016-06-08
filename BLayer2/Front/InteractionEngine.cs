@@ -96,6 +96,10 @@ namespace BLayer.Front
                 IntState state = GetIntState(interactionId, receiver, requester);
                 state.state = SharedEntities.Enum.InteractionState.FINISHING;
                 api.getIntStateHandler().SaveIntState(state);
+                int time = 0;
+                if (list.Where(c => c.mustSend() || c.getReturn()).Count() > 0) {
+                    //calculo tiempo
+                }
                 //Scheduler.Scheduler.ScheduleInteraction(interactionId, time, tenantId);
                 testExec(interactionId);
 
@@ -109,6 +113,8 @@ namespace BLayer.Front
             }
 
 
+            System.Diagnostics.Debug.WriteLine("REquester----->" + requester.GetRecursos().First().GetAmount());
+            System.Diagnostics.Debug.WriteLine("Receiver----->" + receiver.GetRecursos().First().GetAmount());
         }
 
         
@@ -126,12 +132,19 @@ namespace BLayer.Front
         internal void start()
         {
             List<IInteractionable> list = current.initialize(requester, receiver);
+
+            System.Diagnostics.Debug.WriteLine("REquester----->"+requester.GetRecursos().First().GetAmount());
+            System.Diagnostics.Debug.WriteLine("Receiver----->" + receiver.GetRecursos().First().GetAmount());
             int interactionId = InsertInteraction(requester.GetID(), receiver.GetID());
             ApplyChanges(list);
             IntState state = GetIntState(interactionId, receiver, requester);
             api.getIntStateHandler().SaveIntState(state);
-            
-            int time = 2;
+
+            int time = 0;
+            if (list.Where(c => c.mustSend()).Count() > 0)
+            {
+                /// calculo tiempos
+            }
             Scheduler.Scheduler.ScheduleInteraction(interactionId, time, tenantId);
             testExec(interactionId);
         }
@@ -155,6 +168,22 @@ namespace BLayer.Front
 
         private void ApplyChanges(List<IInteractionable> list)
         {
+            list.Where(c => c.mustSend()).ToList().ForEach((Interactionable) => {
+                var recursos = api.getRelJugadorRecursoHandler().getRecursosByColonia(Interactionable.GetID());
+                var destacamento = api.getRelJugadorDestacamentoHandler().getDestacamentosByColonia(Interactionable.GetID());
+                Interactionable.GetRecursos().ForEach((rec) =>
+                 {
+                     RelJugadorRecurso r = recursos.Where(c => c.recurso.id == rec.GetId()).First();
+                     r.cantidadR = r.cantidadR - rec.GetAmount();
+                     api.getRelJugadorRecursoHandler().updateRelJugadorRecurso(r);
+                 });
+                Interactionable.GetFlota().ForEach((rec) =>
+                {
+                    RelJugadorDestacamento r = destacamento.Where(c => c.destacamento.id == rec.GetId()).First();
+                    r.cantidad = r.cantidad - rec.GetAmount();
+                    api.getRelJugadorDestacamentoHandler().updateRelJugadorDestacamento(r);
+                });
+            });
             list.Where(c => c.GetMustUpdate()).ToList().ForEach((Interactionable) =>
             {
                 bool isrequester = requester.GetID() == Interactionable.GetID();
@@ -163,16 +192,20 @@ namespace BLayer.Front
                 var destacamento = api.getRelJugadorDestacamentoHandler().getDestacamentosByColonia(Interactionable.GetID());
                 Interactionable.GetDefensas().ForEach((rec) =>
                 {
-
+                    RelJugadorDestacamento r = destacamento.Where(c => c.destacamento.id == rec.GetId()).First();
+                    r.cantidad = r.cantidad + rec.GetAmount();
+                    api.getRelJugadorDestacamentoHandler().updateRelJugadorDestacamento(r);
                 });
                 Interactionable.GetFlota().ForEach((rec) =>
                 {
-
+                    RelJugadorDestacamento r = destacamento.Where(c => c.destacamento.id == rec.GetId()).First();
+                    r.cantidad = r.cantidad + rec.GetAmount();
+                    api.getRelJugadorDestacamentoHandler().updateRelJugadorDestacamento(r);
                 });
                 Interactionable.GetRecursos().ForEach((rec) =>
                 {
                     RelJugadorRecurso r = recursos.Where(c => c.recurso.id == rec.GetId()).First();
-                    r.cantidadR = (isrequester) ? r.cantidadR + rec.GetAmount(): r.GetAmount();
+                    r.cantidadR = r.cantidadR + rec.GetAmount();
                     api.getRelJugadorRecursoHandler().updateRelJugadorRecurso(r);
                 });
             });

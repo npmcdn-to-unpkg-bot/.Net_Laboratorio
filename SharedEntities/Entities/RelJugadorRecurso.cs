@@ -37,5 +37,9 @@ namespace SharedEntities.Entities
         {
             return cantidadR;
         }
+        public void SetAmount(int cant)
+        {
+            cantidadR = cant;
+        }
     }
 }

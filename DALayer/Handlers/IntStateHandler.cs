@@ -36,7 +36,8 @@ namespace DALayer.Handlers
             shared.flota = data.flota;
             shared.recursos = data.recursos;
             shared.returnToBase = data.returnToBase; 
-            shared.interactuableID = data.interactuableID;  
+            shared.interactuableID = data.interactuableID;
+            shared.send = data.send;
             return shared;
         }
         public static IntState DataToShared(DALayer.Entities.IntState data)
@@ -69,6 +70,7 @@ namespace DALayer.Handlers
             data.recursos = shared.recursos;
             data.returnToBase = shared.returnToBase;
             data.interactuableID = shared.interactuableID;
+            data.send = shared.send;
             return data;
         }
         public static DALayer.Entities.IntState SharedToData(SharedEntities.Entities.IntState shared)
