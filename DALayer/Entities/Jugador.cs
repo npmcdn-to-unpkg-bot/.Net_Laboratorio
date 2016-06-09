@@ -35,5 +35,11 @@ namespace DALayer.Entities
         public Jugador()
         {
         }
+
+        public SharedEntities.Entities.Jugador getShared()
+        {
+            var jugador = new SharedEntities.Entities.Jugador(Id, nombre, apellido, Email, UserName, foto, nickname, nivel, experiencia);
+            return jugador;
+        }
     }
 }

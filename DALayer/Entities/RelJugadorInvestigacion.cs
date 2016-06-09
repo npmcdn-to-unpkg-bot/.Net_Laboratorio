@@ -26,5 +26,19 @@ namespace DALayer.Entities
             this.investigacion = i;
             this.nivel = nivel;
         }
+
+        public SharedEntities.Entities.RelJugadorInvestigacion getShared()
+        {
+            var rel = new SharedEntities.Entities.RelJugadorInvestigacion(id, colonia.getShared(), investigacion.getShared(), nivel);
+            foreach (var c in rel.investigacion.costos)
+            {
+                c.incrementoNivel = c.incrementoNivel / 100 + 1;
+                for (int i = 0; i < rel.nivel; i++)
+                {
+                    c.valor = Convert.ToInt32(c.valor * c.incrementoNivel);
+                }
+            }
+            return rel;
+        }
     }
 }

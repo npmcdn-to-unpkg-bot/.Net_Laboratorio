@@ -55,8 +55,7 @@ namespace DALayer.Handlers
                 var mapasE = ctx.MapaNode.ToList();
                 foreach (var item in mapasE)
                 {
-                    MapaNode map = new MapaNode(item.id, item.nombre, item.nivel, item.cantidad);
-                    mapasS.Add(map);
+                    mapasS.Add(item.getShared());
                 }
                 return mapasS;
             }
@@ -73,9 +72,8 @@ namespace DALayer.Handlers
                 var map = (from c in ctx.MapaNode
                            where c.id == id
                            select c).SingleOrDefault();
-
-                MapaNode mapa = new MapaNode(map.id, map.nombre, map.nivel, map.cantidad);
-                return mapa;
+                
+                return map.getShared();
             }
             catch (Exception ex)
             {

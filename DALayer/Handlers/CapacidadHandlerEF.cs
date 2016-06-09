@@ -53,18 +53,13 @@ namespace DALayer.Handlers
 
         public Capacidad getCapacidad(int id)
         {
-            DependenciaHandlerEF depHandler = new DependenciaHandlerEF(ctx);
             try
             {
                 var c = (from cap in ctx.Capacidad
                             where cap.Id == id
                             select cap).SingleOrDefault();
 
-                Recurso rec = new Recurso(c.recurso.id, c.recurso.nombre, c.recurso.descripcion, c.recurso.cantInicial,
-                    c.recurso.capacidadInicial, c.recurso.produccionXTiempo, c.recurso.foto);
-                var prod = ctx.Producto.Where(w => w.id == c.producto.id).SingleOrDefault();
-                Capacidad capacidad = new Capacidad(c.Id, rec, prod.id, c.valor, c.incrementoNivel);
-                return capacidad;
+                return c.getShared();
             }
             catch (Exception ex)
             {

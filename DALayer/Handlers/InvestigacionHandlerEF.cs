@@ -60,8 +60,7 @@ namespace DALayer.Handlers
                 var investigacionesE = ctx.Investigacion.ToList();
                 foreach (var i in investigacionesE)
                 {
-                    var inv = getInvestigacion(i.id);
-                    investigacionesS.Add(inv);
+                    investigacionesS.Add(i.getShared());
                 }
                 return investigacionesS;
             }
@@ -79,15 +78,8 @@ namespace DALayer.Handlers
                 var inv = (from c in ctx.Investigacion
                            where c.id == id
                            select c).SingleOrDefault();
-
-                var costos = new List<Costo>();
-                foreach (var c in inv.getCosto())
-                {
-                    var cos = costoHandler.getCosto(c.Id);
-                    costos.Add(cos);
-                }
-                Investigacion investigacion = new Investigacion(inv.id, inv.nombre, inv.descripcion, inv.foto, costos);
-                return investigacion;
+                
+                return inv.getShared();
             }
             catch (Exception ex)
             {

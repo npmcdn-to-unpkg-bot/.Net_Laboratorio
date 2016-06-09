@@ -25,5 +25,21 @@ namespace DALayer.Entities
             this.velocidad = velocidad;
             this.enMision = enMision;
         }
+
+        public SharedEntities.Entities.Destacamento getShared()
+        {
+            var costosS = new List<SharedEntities.Entities.Costo>();
+            foreach (var item in costos)
+            {
+                costosS.Add(item.getShared());
+            }
+            var capacidadS = new List<SharedEntities.Entities.Capacidad>();
+            foreach (var item in capacidad)
+            {
+                capacidadS.Add(item.getShared());
+            }
+            return new SharedEntities.Entities.Destacamento(id, descripcion, foto, ataque, escudo, efectividadAtaque, vida, velocidad,
+                enMision, nombre, costosS, capacidadS);
+        }
     }
 }

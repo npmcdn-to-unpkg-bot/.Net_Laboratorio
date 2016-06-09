@@ -58,9 +58,7 @@ namespace DALayer.Handlers
                 ctx.Database.Connection.Close();
                 foreach (Entities.Recurso item in recursosTmp)
                 {
-                    Recurso rec = new Recurso(item.id, item.nombre, item.descripcion, item.cantInicial, item.capacidadInicial,
-                        item.produccionXTiempo, item.foto);
-                    recursos.Add(rec);
+                    recursos.Add(item.getShared());
                 }
 
                 return recursos;
@@ -78,9 +76,8 @@ namespace DALayer.Handlers
                 var rec = (from c in ctx.Recurso
                            where c.id == id
                            select c).SingleOrDefault();
-
-                Recurso recurso = new Recurso(rec.id, rec.nombre, rec.descripcion, rec.cantInicial, rec.capacidadInicial, rec.produccionXTiempo, rec.foto);
-                return recurso;
+                
+                return rec.getShared();
             }
             catch (Exception ex)
             {

@@ -27,5 +27,10 @@ namespace DALayer.Entities
             this.valor = valor;
             this.incrementoNivel = incrementoNivel;
         }
+
+        public SharedEntities.Entities.Produce getShared()
+        {
+            return new SharedEntities.Entities.Produce(Id, recurso.getShared(), producto.id, valor, incrementoNivel);
+        }
     }
 }

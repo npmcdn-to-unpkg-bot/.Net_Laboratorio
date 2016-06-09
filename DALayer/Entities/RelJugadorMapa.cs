@@ -34,5 +34,11 @@ namespace DALayer.Entities
             this.coord = coord;
             this.j = j;
         }
+
+        public SharedEntities.Entities.RelJugadorMapa getShared()
+        {
+            var rel = new SharedEntities.Entities.RelJugadorMapa(id, nivel1, nivel2, nivel3, nivel4, nivel5, coord, j.getShared());
+            return rel;
+        }
     }
 }

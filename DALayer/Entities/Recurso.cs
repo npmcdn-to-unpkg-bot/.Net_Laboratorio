@@ -27,5 +27,10 @@ namespace DALayer.Entities
             this.produccionXTiempo = produccionXTiempo;
             this.foto = foto;
         }
+
+        public SharedEntities.Entities.Recurso getShared()
+        {
+            return new SharedEntities.Entities.Recurso(id, nombre, descripcion, cantInicial, capacidadInicial, produccionXTiempo, foto);
+        }
     }
 }

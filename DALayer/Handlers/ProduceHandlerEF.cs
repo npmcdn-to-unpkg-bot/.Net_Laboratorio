@@ -59,10 +59,7 @@ namespace DALayer.Handlers
                             where c.Id == id
                             select c).SingleOrDefault();
 
-                var rec = recHandler.getRecurso(produce.recurso.id);
-                var prod = ctx.Producto.Where(w => w.id == produce.producto.id).SingleOrDefault();
-                Produce produceS = new Produce(produce.Id, rec, depHandler.prodEntToSha(prod), prod.id, produce.valor, produce.incrementoNivel);
-                return produceS;
+                return produce.getShared();
             }
             catch (Exception ex)
             {
@@ -81,7 +78,7 @@ namespace DALayer.Handlers
                 if (produce != null)
                 {
                     var rec = ctx.Recurso.Where(w => w.id == p.recurso.id).SingleOrDefault();
-                    var prod = ctx.Producto.Where(w => w.id == p.producto.id).SingleOrDefault();
+                    var prod = ctx.Producto.Where(w => w.id == p.idProducto).SingleOrDefault();
                     produce.recurso = rec;
                     produce.producto = prod;
                     produce.valor = p.valor;

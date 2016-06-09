@@ -21,5 +21,21 @@ namespace DALayer.Entities
             this.efectividadAtaque = efectividadAtaque;
             this.vida = vida;
         }
+
+        public SharedEntities.Entities.Edificio getShared()
+        {
+            var costosS = new List<SharedEntities.Entities.Costo>();
+            foreach (var c in costos)
+            {
+                costosS.Add(c.getShared());
+            }
+            var capacidadS = new List<SharedEntities.Entities.Capacidad>();
+            foreach (var cap in capacidad)
+            {
+                capacidadS.Add(cap.getShared());
+            }
+            return new SharedEntities.Entities.Edificio(id, descripcion, foto, ataque, escudo, efectividadAtaque, vida, nombre,
+                costosS, capacidadS);
+        }
     }
 }

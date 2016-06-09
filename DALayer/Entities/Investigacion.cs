@@ -18,5 +18,17 @@ namespace DALayer.Entities
             this.descripcion = descripcion;
             this.foto = foto;
         }
+
+        public SharedEntities.Entities.Investigacion getShared()
+        {
+            var costosS = new List<SharedEntities.Entities.Costo>();
+            foreach (var c in costos)
+            {
+                var cS = new SharedEntities.Entities.Costo(c.Id, c.recurso.getShared(), c.recurso.id, c.valor, c.incrementoNivel);
+                costosS.Add(cS);
+            } 
+            var investigacion = new SharedEntities.Entities.Investigacion(id, nombre, descripcion, foto, costosS);
+            return investigacion;
+        }
     }
 }

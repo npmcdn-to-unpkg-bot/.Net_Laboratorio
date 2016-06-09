@@ -26,6 +26,9 @@ namespace DALayer.Entities
             this.cantidad = cantidad;
         }
 
-        
+        public SharedEntities.Entities.MapaNode getShared()
+        {
+            return new SharedEntities.Entities.MapaNode(id, nombre, nivel, cantidad);
+        }
     }
 }

@@ -53,18 +53,13 @@ namespace DALayer.Handlers
 
         public Costo getCosto(int id)
         {
-            RecursosHandlerEF recHandler = new RecursosHandlerEF(ctx);
-            DependenciaHandlerEF depHandler = new DependenciaHandlerEF(ctx);
             try
             {
                 var cost = (from c in ctx.Costo
                            where c.Id == id
                            select c).SingleOrDefault();
-
-                var rec = recHandler.getRecurso(cost.recurso.id);
-                var prod = ctx.Producto.Where(w => w.id == cost.producto.id).SingleOrDefault();
-                Costo costo = new Costo(cost.Id, rec, prod.id, cost.valor, cost.incrementoNivel);
-                return costo;
+                
+                return cost.getShared();
             }
             catch (Exception ex)
             {

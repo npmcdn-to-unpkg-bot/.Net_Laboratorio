@@ -81,44 +81,6 @@ namespace DALayer.Handlers
             }
         }
 
-        public RelJugadorInvestigacion getRelJugadorInvestigacion(int id)
-        {
-            CostoHandlerEF costoH = new CostoHandlerEF(ctx);
-            try
-            {
-                var invE = (from c in ctx.RelJugadorInvestigacion
-                         where c.id == id
-                         select c).SingleOrDefault();
-                
-                Jugador jug = new Jugador(invE.colonia.j.Id, invE.colonia.j.nombre, invE.colonia.j.apellido,
-                                            invE.colonia.j.Email, invE.colonia.j.UserName, invE.colonia.j.PasswordHash,
-                                            invE.colonia.j.foto, invE.colonia.j.nickname,
-                                            invE.colonia.j.nivel, invE.colonia.j.experiencia);
-                RelJugadorMapa col = new RelJugadorMapa(invE.colonia.id, invE.colonia.nivel1, invE.colonia.nivel2, invE.colonia.nivel3,
-                                                        invE.colonia.nivel4, invE.colonia.nivel5, invE.colonia.coord, jug);
-                var costos = new List<Costo>();
-                foreach (var item in invE.investigacion.costos)
-                {
-                    var c = costoH.getCosto(item.Id);
-                    c.incrementoNivel = item.incrementoNivel / 100 + 1;
-                    for (int i = 0; i < invE.nivel; i++)
-                    {
-                        c.valor = Convert.ToInt32(c.valor * c.incrementoNivel);
-                    }
-                    costos.Add(c);
-                }
-                Investigacion inv = new Investigacion(invE.investigacion.id, invE.investigacion.nombre, invE.investigacion.descripcion,
-                    invE.investigacion.foto,costos);
-
-                RelJugadorInvestigacion investigacion = new RelJugadorInvestigacion(invE.id, col, inv, invE.nivel);
-                return investigacion;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
         public List<RelJugadorInvestigacion> getInvestigacionesByColonia(int id)
         {
             var investigaciones = new List<RelJugadorInvestigacion>();
@@ -129,10 +91,8 @@ namespace DALayer.Handlers
                 ctx.Database.Connection.Close();
                 foreach (var item in invE)
                 {
-                    var rel = getRelJugadorInvestigacion(item.id);
-                    investigaciones.Add(rel);
+                    investigaciones.Add(item.getShared());
                 }
-
                 return investigaciones;
             }
             catch (Exception ex)
@@ -157,7 +117,7 @@ namespace DALayer.Handlers
                     r.nivel += 1;
                     ctx.SaveChangesAsync().Wait();
                 }
-                return getRelJugadorInvestigacion(r.id);
+                return r.getShared();
             }
             catch (Exception ex)
             {
@@ -183,6 +143,12 @@ namespace DALayer.Handlers
             {
                 throw ex;
             }
+        }
+
+        public RelJugadorInvestigacion getRelJugadorInvestigacion(int id)
+        {
+            var rel = ctx.RelJugadorInvestigacion.Where(w => w.id == id).FirstOrDefault();
+            return rel.getShared();
         }
     }
 }

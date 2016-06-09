@@ -26,5 +26,19 @@ namespace DALayer.Entities
             this.edificio = e;
             this.nivelE = nivelE;
         }
+
+        public SharedEntities.Entities.RelJugadorEdificio getShared()
+        {
+            var rel = new SharedEntities.Entities.RelJugadorEdificio(id, colonia.getShared(), edificio.getShared(), nivelE);
+            foreach (var c in rel.edificio.costos)
+            {
+                c.incrementoNivel = c.incrementoNivel / 100 + 1;
+                for (int i = 0; i < rel.nivelE; i++)
+                {
+                    c.valor = Convert.ToInt32(c.valor * c.incrementoNivel);
+                }
+            }
+            return rel;
+        }
     }
 }
