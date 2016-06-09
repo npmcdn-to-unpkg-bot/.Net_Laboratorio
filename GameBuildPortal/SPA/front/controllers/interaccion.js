@@ -16,19 +16,19 @@
 
         var initialize = function () {
             destacamentoByColonia(currentMapa.id).then(function (destacamentos) {
-                $scope.destacamentos = destacamentos
+                $scope.destacamentos = destacamentos;
             });
 
             recursoByColonia(currentMapa.id).then(function (recursos) {
-                $scope.recursos = recursos
+                $scope.recursos = recursos;
             });
 
             destacamentoByColonia(receiverId).then(function (destacamentos) {
-                $scope.destacamentosReceiver = destacamentos
+                $scope.destacamentosReceiver = destacamentos;
             });
 
             recursoByColonia(receiverId).then(function (recursos) {
-                $scope.recursosReceiver = recursos
+                $scope.recursosReceiver = recursos;
             });
 
             jugadorMapaService.getColoniaById(receiverId).then(function (colonia) {
