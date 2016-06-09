@@ -42,7 +42,6 @@ namespace BLayer.Front
             Interaction interaction = api.getInteractionHandler().GetInteraction(interactionId);
             IntState intState = api.getIntStateHandler().GetIntStateByInteraction(interactionId);
             requester = GetIntFromMeta(intState.requester);
- 
             if (intState.receiverId == -1)
             {
                 receiver = GetIntFromMeta(intState.receiver);
@@ -59,6 +58,11 @@ namespace BLayer.Front
                 IntState state = GetIntState(interactionId, receiver, requester);
                 state.state = SharedEntities.Enum.InteractionState.FINISHING;
                 api.getIntStateHandler().SaveIntState(state);
+                int time = 0;
+                if (list.Where(c => c.mustSend() || c.getReturn()).Count() > 0)
+                {
+                    //calculo tiempo
+                }
                 //Scheduler.Scheduler.ScheduleInteraction(interactionId, time, tenantId);
                 testExec(interactionId);
 
