@@ -25,7 +25,7 @@ namespace Ataque.Clases
             if (des.GetAmount() >= 100)
             {
 
-                ataquesEfectivos = Convert.ToInt32(Math.Truncate(des.GetAmount() * des.GetEfectividad()));
+                ataquesEfectivos = Convert.ToInt32(Math.Truncate(des.GetAmount() * des.GetEfectividad()/100));
             }
             else {
                 for (var i = 0; i < des.GetAmount(); i++) {
@@ -37,7 +37,7 @@ namespace Ataque.Clases
                     }
                 }
             }
-            return des.GetAmount();
+            return ataquesEfectivos;
         }
         private float GetInitiative(IInteractionable i) {
             Random rdm = new Random();
@@ -159,7 +159,10 @@ namespace Ataque.Clases
          
 
             bool requesterWin = false;
+            float round = 0;
             while (!requesterWin && FlotaAmount(requester) >0) {
+                System.Diagnostics.Debug.WriteLine("####Round" + round);
+                round++;
                 float receiverDice = GetInitiative(receiver);
                 float requesterDice = GetInitiative(requester);
                 //restore shield 
