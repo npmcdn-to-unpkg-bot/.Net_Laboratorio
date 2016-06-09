@@ -1515,6 +1515,7 @@
     <Content Include="SPA\front\controllers\home.js" />
     <Content Include="SPA\front\controllers\investigacion.js" />
     <Content Include="SPA\front\controllers\app.js" />
+    <Content Include="SPA\front\controllers\interaccion.js" />
     <Content Include="SPA\front\controllers\zona.js" />
     <Content Include="SPA\front\directives\recurso.js" />
     <Content Include="SPA\front\directives\unidad-construccion.js" />
@@ -1522,6 +1523,7 @@
     <Content Include="SPA\front\services\jugador-destacamento.js" />
     <Content Include="SPA\front\services\jugador-edificio.js" />
     <Content Include="SPA\front\services\jugador-investigacion.js" />
+    <Content Include="SPA\front\services\interaccion.js" />
     <Content Include="SPA\front\services\jugador-mapa.js" />
     <Content Include="SPA\front\services\jugador-recurso.js" />
     <Content Include="SPA\front\views\destacamento.html" />
@@ -1531,6 +1533,7 @@
     <Content Include="SPA\front\views\partials\construccion.html" />
     <Content Include="SPA\front\views\partials\recurso.html" />
     <Content Include="SPA\front\views\partials\unidad.html" />
+    <Content Include="SPA\front\views\interaccion.html" />
     <Content Include="SPA\front\views\zona.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
