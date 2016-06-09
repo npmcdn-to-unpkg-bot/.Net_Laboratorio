@@ -18,15 +18,22 @@ namespace GameBuildPortal.ControllersFrontApi
             blHandler = WebApiConfig.FrontService(null);
         }
 
-        [HttpGet]
-        public Alianza Get(int id)
-        {
-            Alianza alianza = blHandler.getAlianza(id);
-            if (alianza == null)
-            {
-                throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.NotFound));
-            }
+        //[HttpGet]
+        //public Alianza Get(int id)
+        //{
+        //    Alianza alianza = blHandler.getAlianza(id);
+        //    if (alianza == null)
+        //    {
+        //        throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.NotFound));
+        //    }
 
+        //    return alianza;
+        //}
+
+        [HttpGet] // busscar por usuario
+        public Alianza Get(string id)
+        {
+            Alianza alianza = blHandler.getAlianzaByAdministrador(id);
             return alianza;
         }
 

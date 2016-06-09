@@ -133,5 +133,26 @@ namespace DALayer.Handlers
                 throw e;
             }
         }
+
+        public Alianza getAlianzaByMiembro(string id)
+        {
+            try
+            {
+                var rja = (from c in ctx.RelJugadorAlianza
+                           where c.miembro.Id == id
+                           select c).SingleOrDefault();
+
+                if(rja != null)
+                {
+                    return rja.getShared().alianza;
+                }
+
+                return null;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

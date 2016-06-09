@@ -7,23 +7,26 @@
           <h4>Usted no se encuentra en ninguna alianza</h4>
       </div>
 
-      <div class="direct-chat-messages" ng-if="hasAlianza">
+      <div class="direct-chat-messages" ng-if="hasAlianza" id="chat-box">
 
-          <div ng-repeat="chat in chats" class="direct-chat-msg {{chat.sentido}}">
+          <div ng-repeat="chat in mensajes" on-finish-render="ngRepeatFinished" class="direct-chat-msg" ng-class="{'right': chat.usuario == me.email}">
               <div class="direct-chat-info clearfix">
-                  <span class="direct-chat-name pull-{{chat.sentido}}">{{chat.usuario}}</span>
+                  <span class="direct-chat-name" ng-class="{'pull-right': chat.usuario == me.email}">{{chat.usuario}}</span>
               </div>
+              <img class="direct-chat-img" src="/Content/front/img/avatar5.png" alt="Message User Image">
               <div class="direct-chat-text">{{chat.mensaje}}</div>
           </div>
 
       </div>
   </div>
     <div class="box-footer" ng-if="hasAlianza">
-        <div class="input-group">
-            <input type="text" name="message" placeholder="Escribe un mensaje..." class="form-control">
-            <span class="input-group-btn">
-                <button type="submit" class="btn btn-primary btn-flat">Enviar</button>
-            </span>
-        </div>
+        <form role="form" name="formChat" ng-submit="formChat.$valid && addMensaje()">
+            <div class="input-group">
+                <input type="text" name="message" required placeholder="Escribe un mensaje..." class="form-control" ng-model="mensaje">
+                <span class="input-group-btn">
+                    <button type="submit" class="btn btn-primary btn-flat">Enviar</button>
+                </span>
+            </div>
+        </form>
     </div>
 </div>

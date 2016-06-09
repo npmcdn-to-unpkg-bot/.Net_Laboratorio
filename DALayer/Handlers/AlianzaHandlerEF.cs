@@ -21,8 +21,6 @@ namespace DALayer.Handlers
         public void createAlianza(Alianza a)
         {
             var admin = ctx.Jugador.Where(w => w.Id == a.administrador.id).SingleOrDefault();
-            //Entities.Jugador admin = new Entities.Jugador(a.administrador.nombre, a.administrador.apellido, a.administrador.foto, a.administrador.nickname,
-            //                                               a.administrador.nivel, a.administrador.experiencia);
             Entities.Alianza alli = new Entities.Alianza(a.nombre, a.descripcion, a.foto, admin);
 
             try
@@ -104,6 +102,27 @@ namespace DALayer.Handlers
                            select c).SingleOrDefault();
 
                 return ali.getShared();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public Alianza getAlianzaByAdministrador(string id)
+        {
+            try
+            {
+                var ali = (from c in ctx.Alianza
+                           where c.administrador.Id == id
+                           select c).SingleOrDefault();
+
+                if (ali != null)
+                {
+                    return ali.getShared();
+                }
+
+                return null;
             }
             catch (Exception ex)
             {

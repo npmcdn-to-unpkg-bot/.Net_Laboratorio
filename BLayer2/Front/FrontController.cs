@@ -211,6 +211,17 @@ namespace BLayer.Front
             return builder.getAlianzaHandler().getAlianza(id);
         }
 
+        public Alianza getAlianzaByAdministrador(string id)
+        {
+            Alianza alianza = builder.getAlianzaHandler().getAlianzaByAdministrador(id);
+            if(alianza == null)
+            {
+                return builder.getRelJugadorAlianzaHandler().getAlianzaByMiembro(id);
+            }
+
+            return alianza;
+        }
+
         public void createAlianza(Alianza alianza)
         {
             builder.getAlianzaHandler().createAlianza(alianza);

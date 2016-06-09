@@ -15,5 +15,6 @@ namespace DALayer.Interfaces
         RelJugadorAlianza getRelJugadorAlianza(int id);
         List<RelJugadorAlianza> getAllRelJugadorAlianza();
         List<RelJugadorAlianza> getMiembrosByAlianza(int alianzaId);
+        Alianza getAlianzaByMiembro(string id);
     }
 }

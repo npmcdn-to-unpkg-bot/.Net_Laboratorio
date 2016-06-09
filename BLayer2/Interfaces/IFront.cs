@@ -62,6 +62,7 @@ namespace BLayer.Interfaces
         void deleteAlianza(int id);
         void updateAlianza(Alianza alianza);
         Alianza getAlianza(int id);
+        Alianza getAlianzaByAdministrador(string id);
 
         //Jugador logueado
         Jugador getJugador(string id);

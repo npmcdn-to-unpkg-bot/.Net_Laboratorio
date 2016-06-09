@@ -14,5 +14,6 @@ namespace DALayer.Interfaces
         void updateAlianza(Alianza ali);
         Alianza getAlianza(int id);
         List<Alianza> getAllAlianzas();
+        Alianza getAlianzaByAdministrador(string id);
     }
 }
