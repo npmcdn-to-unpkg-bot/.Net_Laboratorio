@@ -210,7 +210,7 @@ namespace BLayer.Admin
             return builder.getDependenciaHandler().getAllProductos();
         }
 
-        //ESTADO INICIAL JUADOR
+        //ESTADO INICIAL JUGADOR
 
         public void inicializarJugador(Jugador j)
         {

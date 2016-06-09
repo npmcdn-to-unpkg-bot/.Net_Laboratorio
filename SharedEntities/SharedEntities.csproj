@@ -60,6 +60,7 @@
     <Compile Include="Entities\Produce.cs" />
     <Compile Include="Entities\Producto.cs" />
     <Compile Include="Entities\Recurso.cs" />
+    <Compile Include="Entities\RelJugadorAlianza.cs" />
     <Compile Include="Entities\RelJugadorDestacamento.cs" />
     <Compile Include="Entities\RelJugadorEdificio.cs" />
     <Compile Include="Entities\RelJugadorInvestigacion.cs" />

@@ -29,6 +29,7 @@ namespace DALayer.Api
         private RelJugadorMapaHandlerEF relJugadorMapaHandler;
         private RelJugadorRecursoHandlerEF relJugadorRecursoHandler;
         private RelJugadorDestacamentoHandlerEF relJugadorDestacamentoHandler;
+        private RelJugadorAlianzaHandlerEF relJugadorAlianzaHandler;
         private UiHandlerEF uiHandler;
         private CostoHandlerEF costoHandler;
         private CapacidadHandlerEF capacidadHandler;
@@ -273,6 +274,19 @@ namespace DALayer.Api
                 relJugadorDestacamentoHandler = new RelJugadorDestacamentoHandlerEF(ctx);
             }
             return relJugadorDestacamentoHandler;
+        }
+
+        public IRelJugadorAlianzaHandler getRelJugadorAlianzaHandler()
+        {
+            if (ctx == null)
+            {
+                throw new Exception("Tenes que llamar a la funcion setTenant despues de inicializar esta clase");
+            }
+            if (relJugadorAlianzaHandler == null)
+            {
+                relJugadorAlianzaHandler = new RelJugadorAlianzaHandlerEF(ctx);
+            }
+            return relJugadorAlianzaHandler;
         }
 
         public IUiHandler getUiHandler()

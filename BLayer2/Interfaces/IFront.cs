@@ -47,5 +47,13 @@ namespace BLayer.Interfaces
         List<RelJugadorDestacamento> getDestacamentosByColonia(int id);
         void bajarCantidadDestacamento(int id, int baja);
         void subirCantidadDestacamento(int id, int sube);
+
+        //RELJUGADORALIANZA
+        void createRelJugadorAlianza(RelJugadorAlianza relacion);
+        void deleteRelJugadorAlianza(int id);
+        void updateRelJugadorAlianza(RelJugadorAlianza relacion);
+        RelJugadorAlianza getRelJugadorAlianza(int id);
+        List<RelJugadorAlianza> getAllRelJugadorAlianza();
+        List<RelJugadorAlianza> getMiembrosByAlianza(int id);
     }
 }

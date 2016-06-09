@@ -10,19 +10,19 @@ namespace SharedEntities.Entities
     {
         public int id;
         public String nombre;
-        public List<Jugador> miembros;
-        public Jugador admin;
         public String descripcion;
         public byte[] foto;
+        public Jugador administrador;
 
-        public Alianza(int id, string name, List<Jugador> members, Jugador adm, string description, byte[] photo)
+        public Alianza(int id, string nombre, string descripcion, byte[] foto, Jugador administrador)
         {
             this.id = id;
-            this.nombre = name;
-            this.miembros = members;
-            this.admin = adm;
-            this.descripcion = description;
-            this.foto = photo;
+            this.nombre = nombre;
+            this.descripcion = descripcion;
+            this.foto = foto;
+            this.administrador= administrador;
         }
+
+        public Alianza() { }
     }
 }
