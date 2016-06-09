@@ -12,7 +12,7 @@ namespace SharedEntities.Entities
         public Boolean enMision;
 
         public Destacamento(int id, string description, byte[] photo, float ataque, float escudo, float efectividadAtaque, float vida, float velocidad, 
-                            Boolean enMission, string name, List<Costo> costos, List<Capacidad> capacidad, List<Produce> produce, string tInicial, int incrementoT)
+                            Boolean enMission, string name, List<Costo> costos, List<Capacidad> capacidad, List<Produce> produce, int tInicial, int incrementoT)
         {
             this.id = id;
             this.descripcion = description;

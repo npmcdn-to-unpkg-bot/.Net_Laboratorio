@@ -8,7 +8,8 @@ namespace SharedEntities.Entities
 {
     public class Investigacion : Producto
     {
-        public Investigacion(int id, string name, string description, byte[] photo, List<Costo> cost, List<Capacidad> capacidad, List<Produce> produce, string tInicial, int incrementoT)
+        public Investigacion(int id, string name, string description, byte[] photo, List<Costo> cost, List<Capacidad> capacidad,
+            List<Produce> produce, int tInicial, int incrementoT)
         {
             this.id = id;
             this.nombre = name;

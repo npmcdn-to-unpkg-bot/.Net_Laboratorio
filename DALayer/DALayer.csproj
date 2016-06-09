@@ -121,7 +121,7 @@
     <Compile Include="Entities\RelJugadorRecurso.cs" />
     <Compile Include="Entities\RelJugadorInvestigacion.cs" />
     <Compile Include="Entities\RelJugadorMapa.cs" />
-    <Compile Include="Entities\Ui.cs" />
+    <Compile Include="Entities\Configuracion.cs" />
     <Compile Include="Entities\UserLogin.cs" />
     <Compile Include="Enum\InteractionState.cs" />
     <Compile Include="Fatories\AdminFactory.cs" />
@@ -155,7 +155,7 @@
     <Compile Include="Handlers\PaquetePaypalHandlerEF.cs" />
     <Compile Include="Handlers\ProduceHandlerEF.cs" />
     <Compile Include="Handlers\RelJugadorAlianzaHandlerEF.cs" />
-    <Compile Include="Handlers\UiHandlerEF.cs" />
+    <Compile Include="Handlers\ConfiguracionHandlerEF.cs" />
     <Compile Include="Handlers\RecursosHandlerEF.cs" />
     <Compile Include="Handlers\RelJugadorDestacamentoHandlerEF.cs" />
     <Compile Include="Handlers\RelJugadorEdificioHandlerEF.cs" />
@@ -181,7 +181,7 @@
     <Compile Include="Interfaces\IProduceHandler.cs" />
     <Compile Include="Interfaces\IRelJugadorAlianzaHandler.cs" />
     <Compile Include="Interfaces\ISuperAdminApi.cs" />
-    <Compile Include="Interfaces\IUiHandler.cs" />
+    <Compile Include="Interfaces\IConfiguracionHandler.cs" />
     <Compile Include="Interfaces\IRecursoHandler.cs" />
     <Compile Include="Interfaces\IRelJugadorDestacamentoHandler.cs" />
     <Compile Include="Interfaces\IRelJugadorEdificioHandler.cs" />

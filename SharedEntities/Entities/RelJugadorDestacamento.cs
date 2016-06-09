@@ -13,13 +13,15 @@ namespace SharedEntities.Entities
         public RelJugadorMapa colonia;
         public Destacamento destacamento;
         public int cantidad;
+        public DateTime finalizaConstruccion;
 
-        public RelJugadorDestacamento(int ID, RelJugadorMapa col, Destacamento desta, int cant)
+        public RelJugadorDestacamento(int ID, RelJugadorMapa col, Destacamento desta, int cant, DateTime finalizaConstruccion)
         {
             this.id = ID;
             this.colonia = col;
             this.destacamento = desta;
             this.cantidad = cant;
+            this.finalizaConstruccion = finalizaConstruccion;
         }
 
         public float GetAtaque()

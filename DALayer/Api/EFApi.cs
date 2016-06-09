@@ -30,7 +30,7 @@ namespace DALayer.Api
         private RelJugadorRecursoHandlerEF relJugadorRecursoHandler;
         private RelJugadorDestacamentoHandlerEF relJugadorDestacamentoHandler;
         private RelJugadorAlianzaHandlerEF relJugadorAlianzaHandler;
-        private UiHandlerEF uiHandler;
+        private ConfiguracionHandlerEF uiHandler;
         private CostoHandlerEF costoHandler;
         private CapacidadHandlerEF capacidadHandler;
         private ProduceHandlerEF produceHandler;
@@ -289,7 +289,7 @@ namespace DALayer.Api
             return relJugadorAlianzaHandler;
         }
 
-        public IUiHandler getUiHandler()
+        public IConfiguracionHandler getUiHandler()
         {
             if (ctx == null)
             {
@@ -297,7 +297,7 @@ namespace DALayer.Api
             }
             if (uiHandler == null)
             {
-                uiHandler = new UiHandlerEF(ctx);
+                uiHandler = new ConfiguracionHandlerEF(ctx);
             }
             return uiHandler;
         }

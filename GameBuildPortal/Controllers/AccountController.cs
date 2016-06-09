@@ -408,6 +408,9 @@ namespace GameBuildPortal.Controllers
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
+                    var usShared = new SharedEntities.Entities.Jugador();
+                    usShared.id = user.Id;
+                    WebApiConfig.BuilderService(null).inicializarJugador(usShared);
                     result = await UserManager.AddLoginAsync(user.Id, info.Login);
                     if (result.Succeeded)
                     {

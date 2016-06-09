@@ -18,10 +18,10 @@
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
-    <IISExpressSSLPort />
-    <IISExpressAnonymousAuthentication />
-    <IISExpressWindowsAuthentication />
-    <IISExpressUseClassicPipelineMode />
+    <IISExpressSSLPort>44300</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -238,7 +238,7 @@
     <Compile Include="ControllersAdminApi\RecursoController.cs" />
     <Compile Include="ControllersAdminApi\ReporteRegistroController.cs" />
     <Compile Include="ControllersAdminApi\ReporteLoginController.cs" />
-    <Compile Include="ControllersAdminApi\UiController.cs" />
+    <Compile Include="ControllersAdminApi\ConfguracionController.cs" />
     <Compile Include="ControllersFrontApi\AlianzaController.cs" />
     <Compile Include="ControllersFrontApi\JugadorAlianzaController.cs" />
     <Compile Include="ControllersFrontApi\JugadorDestacamentoController.cs" />
@@ -1468,7 +1468,7 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="SPA\admin\app.js" />
-    <Content Include="SPA\admin\controllers\ui.js" />
+    <Content Include="SPA\admin\controllers\configuracion.js" />
     <Content Include="SPA\admin\controllers\dependencia.js" />
     <Content Include="SPA\admin\controllers\destacamento.js" />
     <Content Include="SPA\admin\controllers\edificio.js" />
@@ -1482,7 +1482,7 @@
     <Content Include="SPA\admin\services\costo.js" />
     <Content Include="SPA\admin\services\produce.js" />
     <Content Include="SPA\admin\services\producto.js" />
-    <Content Include="SPA\admin\services\ui.js" />
+    <Content Include="SPA\admin\services\configuracion.js" />
     <Content Include="SPA\admin\services\dependencia.js" />
     <Content Include="SPA\admin\services\destacamento.js" />
     <Content Include="SPA\admin\services\edificio.js" />
@@ -1491,7 +1491,7 @@
     <Content Include="SPA\admin\services\dashboard.js" />
     <Content Include="SPA\admin\services\mapa.js" />
     <Content Include="SPA\admin\services\recurso.js" />
-    <Content Include="SPA\admin\views\ui.html" />
+    <Content Include="SPA\admin\views\configuracion.html" />
     <Content Include="SPA\admin\views\dependencia\add.html" />
     <Content Include="SPA\admin\views\dependencia\edit.html" />
     <Content Include="SPA\admin\views\dependencia\list.html" />
@@ -1632,7 +1632,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>53086</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:53086/</IISUrl>
+          <IISUrl>https://localhost:44300/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

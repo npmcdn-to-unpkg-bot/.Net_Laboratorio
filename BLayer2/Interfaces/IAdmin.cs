@@ -61,11 +61,11 @@ namespace BLayer.Interfaces
         //ESTADO INICIAL JUGADOR
         void inicializarJugador(Jugador j);
 
-        // RECURSO
-        void createUi(Ui ui);
-        void deleteUi(int id);
-        void updateUi(Ui ui);
-        Ui getUi(int id);
+        // CONFIGURACION
+        void createConf(Configuracion conf);
+        void deleteConf(int id);
+        void updateConf(Configuracion conf);
+        Configuracion getConfiguracion(int id);
 
         //COSTO
         void createCosto(Costo costo);

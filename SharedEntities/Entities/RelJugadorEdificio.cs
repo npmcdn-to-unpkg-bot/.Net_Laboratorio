@@ -12,13 +12,15 @@ namespace SharedEntities.Entities
         public RelJugadorMapa colonia;
         public Edificio edificio;
         public int nivelE;
+        public DateTime finalizaConstruccion;
 
-        public RelJugadorEdificio(int ID, RelJugadorMapa col, Edificio edi, int levelB)
+        public RelJugadorEdificio(int ID, RelJugadorMapa col, Edificio edi, int levelB, DateTime finalizaConstruccion)
         {
             this.id = ID;
             this.colonia = col;
             this.edificio = edi;
             this.nivelE = levelB;
+            this.finalizaConstruccion = finalizaConstruccion;
         }
     }
 }

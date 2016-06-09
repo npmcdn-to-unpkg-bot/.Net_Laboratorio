@@ -17,19 +17,21 @@ namespace DALayer.Entities
         public virtual RelJugadorMapa colonia { get; set; }
         public virtual Investigacion investigacion { get; set; }
         public int nivel { get; set; }
+        public DateTime finalizaConstruccion { get; set; }
 
         public RelJugadorInvestigacion() { }
 
-        public RelJugadorInvestigacion(RelJugadorMapa c, Investigacion i, int nivel)
+        public RelJugadorInvestigacion(RelJugadorMapa c, Investigacion i, int nivel, DateTime finalizaConstruccion)
         {
             this.colonia = c;
             this.investigacion = i;
             this.nivel = nivel;
+            this.finalizaConstruccion = finalizaConstruccion;
         }
 
         public SharedEntities.Entities.RelJugadorInvestigacion getShared()
         {
-            var rel = new SharedEntities.Entities.RelJugadorInvestigacion(id, colonia.getShared(), investigacion.getShared(), nivel);
+            var rel = new SharedEntities.Entities.RelJugadorInvestigacion(id, colonia.getShared(), investigacion.getShared(), nivel, finalizaConstruccion);
             foreach (var c in rel.investigacion.costos)
             {
                 c.incrementoNivel = c.incrementoNivel / 100 + 1;

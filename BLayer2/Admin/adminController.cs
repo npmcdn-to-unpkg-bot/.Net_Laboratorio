@@ -217,54 +217,56 @@ namespace BLayer.Admin
             List<RelJugadorMapa> colonias = builder.getRelJugadorMapaHandler().getMapasByJugador(j.id);
             var colonia = colonias.First();
 
+            var ahora = DateTime.Now;
+
             List<Recurso> recursos = builder.getRecursoHandler().getAllRecursos();
             foreach (var rec in recursos)
             {
-                var rel = new RelJugadorRecurso(1, rec, colonia, rec.capacidadInicial, rec.cantInicial, rec.produccionXTiempo, DateTime.Now);
+                var rel = new RelJugadorRecurso(1, rec, colonia, rec.capacidadInicial, rec.cantInicial, rec.produccionXTiempo, ahora);
                 builder.getRelJugadorRecursoHandler().createRelJugadorRecurso(rel);
             }
 
             List<Edificio> edificios = builder.getUnidadHandler().getAllEdificios();
             foreach (var ed in edificios)
             {
-                var rel = new RelJugadorEdificio(1, colonia, ed, 0);
+                var rel = new RelJugadorEdificio(1, colonia, ed, 0, ahora);
                 builder.getRelJugadorEdificioHandler().createRelJugadorEdificio(rel);
             }
 
             List<Destacamento> destacamentos = builder.getUnidadHandler().getAllDestacamentos();
             foreach (var des in destacamentos)
             {
-                var rel = new RelJugadorDestacamento(1, colonia, des, 0);
+                var rel = new RelJugadorDestacamento(1, colonia, des, 0, ahora);
                 builder.getRelJugadorDestacamentoHandler().createRelJugadorDestacamento(rel);
             }
 
             List<Investigacion> investigaciones = builder.getInvestigacionHandler().getAllInvestigaciones();
             foreach (var inv in investigaciones)
             {
-                var rel = new RelJugadorInvestigacion(1, colonia, inv, 0);
+                var rel = new RelJugadorInvestigacion(1, colonia, inv, 0, ahora);
                 builder.getRelJugadorInvestigacionHandler().createRelJugadorInvestigacion(rel);
             }
         }
 
-        //UI
-        public Ui getUi(int id)
+        //CONFIGURACION
+        public Configuracion getConfiguracion(int id)
         {
-            return builder.getUiHandler().getUi(id);
+            return builder.getUiHandler().getConfiguracion(id);
         }
 
-        public void createUi(Ui ui)
+        public void createConf(Configuracion conf)
         {
-            builder.getUiHandler().createUi(ui);
+            builder.getUiHandler().createConf(conf);
         }
 
-        public void updateUi(Ui ui)
+        public void updateConf(Configuracion conf)
         {
-            builder.getUiHandler().updateUi(ui);
+            builder.getUiHandler().updateConf(conf);
         }
 
-        public void deleteUi(int id)
+        public void deleteConf(int id)
         {
-            builder.getUiHandler().deleteUi(id);
+            builder.getUiHandler().deleteConf(id);
         }
 
         public List<object> getReporteRegistro()
