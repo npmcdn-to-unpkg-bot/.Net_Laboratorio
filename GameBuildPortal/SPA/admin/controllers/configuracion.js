@@ -3,20 +3,20 @@
     angular.module('atlas2').controller('confCtrl', ['$scope', 'confService', confCtrl]);
 
     function confCtrl($scope, confService) {
-        $scope.conf = null;
+        $scope.configuracion = null;
 
         $scope.saving = false;
 
         confService.getId('1').then(
             function (data) {
-                $scope.conf = data;
+                $scope.configuracion = data;
             }, function () {
-                $scope.conf = { css: '' , nombre: '', titulo: '', idAppFace: '', claveAppFace: ''};
+                $scope.configuracion = { css: '', nombre: '', titulo: '', idAppFace: '', claveAppFace: '' };
             }
         );
 
         $scope.guardar = function () {
-            var conf = this.conf;
+            var conf = this.configuracion;
 
             if (conf.id) {
                 edit(conf);

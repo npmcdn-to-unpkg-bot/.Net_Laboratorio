@@ -238,7 +238,7 @@
     <Compile Include="ControllersAdminApi\RecursoController.cs" />
     <Compile Include="ControllersAdminApi\ReporteRegistroController.cs" />
     <Compile Include="ControllersAdminApi\ReporteLoginController.cs" />
-    <Compile Include="ControllersAdminApi\ConfguracionController.cs" />
+    <Compile Include="ControllersAdminApi\ConfiguracionController.cs" />
     <Compile Include="ControllersFrontApi\AlianzaController.cs" />
     <Compile Include="ControllersFrontApi\JugadorAlianzaController.cs" />
     <Compile Include="ControllersFrontApi\JugadorDestacamentoController.cs" />

@@ -10,11 +10,11 @@ using System.Web.Http;
 
 namespace GameBuildPortal.ControllersAdminApi
 {
-    public class ConfguracionController : ApiController
+    public class ConfiguracionController : ApiController
     {
         public static IAdmin blHandler;
 
-        public ConfguracionController()
+        public ConfiguracionController()
         {
             blHandler = WebApiConfig.BuilderService(null);
         }

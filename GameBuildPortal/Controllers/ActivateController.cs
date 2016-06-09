@@ -81,6 +81,10 @@ namespace GameBuildPortal.Controllers
             {
                 await SignInManager.SignInAsync(us, isPersistent: false, rememberBrowser: false);
 
+                //agregar configuraciones por defecto
+                Configuracion conf = new Configuracion(0, "", g.nombreJuego, g.nombreJuego, null, null);
+                WebApiConfig.BuilderService(null).createConf(conf);
+
                 return RedirectToAction("Index", "Admin");
             }
 
