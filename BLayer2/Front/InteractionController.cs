@@ -36,7 +36,7 @@ namespace BLayer.Front
         public void LoadInteractionByName(string name)
         {
             ///Due the name selected on AvailableInteraction we must to know which library load trough reflection
-            current = new Comercio.Clases.Comercio();
+            current = new Ataque.Clases.Ataque();
         }
     }
 }

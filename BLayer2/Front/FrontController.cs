@@ -20,22 +20,26 @@ namespace BLayer.Front
             tId = tId.Replace(" ", "_");
             builder.setTenant(tId);
 
-            //testIntearction();
+           // testIntearction();
 
 
         }
         private void testIntearction() {
-            string player1 = "a0d56e00-5eb1-4c1d-a699-058dd1227682";
-            string player2 = "1644ca7c-3592-4459-9c5e-5d315ed4f3ea";
+            string player1 = "f9103cac-7347-45d3-b5ef-4df04a408912";
+            string player2 = "f136d9c4-c0c1-4138-882c-e54784e9035b";
             RelJugadorMapa player1Mapa = builder.getRelJugadorMapaHandler().getMapasByJugador(player1).First();
             RelJugadorMapa player2Mapa =  builder.getRelJugadorMapaHandler().getMapasByJugador(player2).First();
             Interactuable requester = new Interactuable(player1Mapa.id);
             requester.SetFlota(getDestacamentosByColonia(player1Mapa.id).Cast<IDestacamento>().ToList());
-            requester.SetRecursos(getRecursosByColonia(player1Mapa.id).Cast<IResources>().ToList());
+            var rlist = getRecursosByColonia(player1Mapa.id).Cast<IResources>().ToList();
+            rlist.ForEach((c) =>
+            {
+                c.SetAmount(0);
+            });
+            requester.SetRecursos(rlist);
             Interactuable receiver = new Interactuable(player2Mapa.id);
             receiver.SetFlota(getDestacamentosByColonia(player2Mapa.id).Cast<IDestacamento>().ToList());
             receiver.SetRecursos(getRecursosByColonia(player2Mapa.id).Cast<IResources>().ToList());
-
             InteractionController ic = new InteractionController();
             ic.LoadInteractionByName("");
             ic.InitializeInteraction(requester, receiver);

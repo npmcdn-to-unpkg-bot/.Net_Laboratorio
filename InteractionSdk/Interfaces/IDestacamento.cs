@@ -11,5 +11,6 @@
         string GetName();
         int GetAmount();
         void SetAmount(int i);
+        int GetCapacidad();
     }
 }

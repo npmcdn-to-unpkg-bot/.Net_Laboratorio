@@ -11,9 +11,9 @@ namespace SharedEntities.Entities
     {
         private bool MustUpdate;
         private int Id;
-        private List<IDestacamento> flota;
-        private List<IDestacamento> defensa;
-        private List<IResources> recursos;
+        private List<IDestacamento> flota = new List<IDestacamento>();
+        private List<IDestacamento> defensa = new List<IDestacamento>();
+        private List<IResources> recursos = new List<IResources>();
         private int capacidad;
         public bool returnTobase;
         private bool send;

@@ -142,7 +142,7 @@ namespace DALayer.Handlers
                 }
                 rel.ultimaConsulta = ahora;
             }
-            ctx.SaveChangesAsync().Wait();
+       //     ctx.SaveChangesAsync().Wait();
 
         }
 

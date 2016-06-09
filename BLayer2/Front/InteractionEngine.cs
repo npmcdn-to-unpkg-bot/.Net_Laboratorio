@@ -37,7 +37,7 @@ namespace BLayer.Front
             string tenantId = dataMap.GetString("tenantId");
             int interactionId = System.Int32.Parse(dataMap.GetString("interactionId"));
             init(tenantId);//Set Up api tenant 
-            current = new Comercio.Clases.Comercio();//we must do this trought refelection searching by interaction.intName
+            current = new Ataque.Clases.Ataque();//we must do this trought refelection searching by interaction.intName
 
             Interaction interaction = api.getInteractionHandler().GetInteraction(interactionId);
             IntState intState = api.getIntStateHandler().GetIntStateByInteraction(interactionId);
@@ -75,7 +75,7 @@ namespace BLayer.Front
         public void testExec(int interactionId) {
             string tenantId = "newT2";
             init(tenantId);//Set Up api tenant 
-            current = new Comercio.Clases.Comercio();//we must do this trought refelection searching by interaction.intName
+            current = new Ataque.Clases.Ataque();//we must do this trought refelection searching by interaction.intName
 
             Interaction interaction = api.getInteractionHandler().GetInteraction(interactionId);
             IntState intState = api.getIntStateHandler().GetIntStateByInteraction(interactionId);
@@ -113,9 +113,7 @@ namespace BLayer.Front
             }
 
 
-            System.Diagnostics.Debug.WriteLine("REquester----->" + requester.GetRecursos().First().GetAmount());
-            System.Diagnostics.Debug.WriteLine("Receiver----->" + receiver.GetRecursos().First().GetAmount());
-        }
+            }
 
         
         internal void setRequester(IInteractionable _requester)
@@ -133,9 +131,7 @@ namespace BLayer.Front
         {
             List<IInteractionable> list = current.initialize(requester, receiver);
 
-            System.Diagnostics.Debug.WriteLine("REquester----->"+requester.GetRecursos().First().GetAmount());
-            System.Diagnostics.Debug.WriteLine("Receiver----->" + receiver.GetRecursos().First().GetAmount());
-            int interactionId = InsertInteraction(requester.GetID(), receiver.GetID());
+               int interactionId = InsertInteraction(requester.GetID(), receiver.GetID());
             ApplyChanges(list);
             IntState state = GetIntState(interactionId, receiver, requester);
             api.getIntStateHandler().SaveIntState(state);
@@ -145,7 +141,7 @@ namespace BLayer.Front
             {
                 /// calculo tiempos
             }
-            Scheduler.Scheduler.ScheduleInteraction(interactionId, time, tenantId);
+         //   Scheduler.Scheduler.ScheduleInteraction(interactionId, time, tenantId);
             testExec(interactionId);
         }
 
@@ -226,10 +222,10 @@ namespace BLayer.Front
         public InteractuableMetadata GetInteractionableMeta(IInteractionable r)
         {
             InteractuableMetadata meta = new InteractuableMetadata();
-            meta.capacidad = receiver.GetCapacidad();
-            meta.defensa = GetDestacamentoArrays(receiver.GetDefensas());
-            meta.flota = GetDestacamentoArrays(receiver.GetFlota());
-            meta.recursos = GetResourceArrays(receiver.GetRecursos());
+            meta.capacidad = r.GetCapacidad();
+            meta.defensa = GetDestacamentoArrays(r.GetDefensas());
+            meta.flota = GetDestacamentoArrays(r.GetFlota());
+            meta.recursos = GetResourceArrays(r.GetRecursos());
             meta.interactuableID = r.GetID();
             return meta;
         }

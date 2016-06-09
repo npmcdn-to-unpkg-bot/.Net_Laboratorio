@@ -64,5 +64,13 @@ namespace SharedEntities.Entities
         {
             return destacamento.id;
         }
+        public int GetCapacidad() {
+            int capacidadTotal = 0;
+            destacamento.capacidad.ForEach((c) =>
+            {
+                capacidadTotal = +c.valor;
+            });
+            return capacidadTotal * cantidad;
+        }
     }
 }

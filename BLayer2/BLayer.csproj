@@ -114,6 +114,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Ataque\Ataque.csproj">
+      <Project>{fbf01de8-81d5-4154-b457-fca931bfcd3f}</Project>
+      <Name>Ataque</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Comercio\Comercio.csproj">
       <Project>{9c9e3508-db32-4e1b-a495-9c4b435d19ba}</Project>
       <Name>Comercio</Name>
