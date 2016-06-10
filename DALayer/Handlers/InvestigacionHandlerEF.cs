@@ -19,7 +19,7 @@ namespace DALayer.Handlers
 
         public int createInvestigacion(Investigacion i)
         {
-            var inv = new Entities.Investigacion(i.nombre, i.descripcion, i.foto);
+            var inv = new Entities.Investigacion(i.nombre, i.descripcion, i.foto, i.tiempoInicial, i.incrementoTiempo);
             
             try
             {
@@ -106,6 +106,8 @@ namespace DALayer.Handlers
                     invTmp.descripcion = inv.descripcion;
                     invTmp.foto = inv.foto;
                     invTmp.costos = costos;
+                    invTmp.tiempoInicial = inv.tiempoInicial;
+                    invTmp.incrementoTiempo = inv.incrementoTiempo;
                     ctx.SaveChangesAsync().Wait();
                 }
             }

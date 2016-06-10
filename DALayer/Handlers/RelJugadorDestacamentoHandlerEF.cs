@@ -81,7 +81,8 @@ namespace DALayer.Handlers
 
                 Destacamento des = new Destacamento(rjd.destacamento.id, rjd.destacamento.descripcion, rjd.destacamento.foto, rjd.destacamento.ataque,
                                             rjd.destacamento.escudo, rjd.destacamento.efectividadAtaque, rjd.destacamento.vida,rjd.destacamento.velocidad,
-                                            rjd.destacamento.enMision, rjd.destacamento.nombre, cos, capa);
+                                            rjd.destacamento.enMision, rjd.destacamento.nombre, cos, capa, rjd.destacamento.tiempoInicial, 
+                                            rjd.destacamento.incrementoTiempo);
                 Jugador jug = new Jugador(rjd.colonia.j.Id, rjd.colonia.j.nombre, rjd.colonia.j.apellido,
                                             rjd.colonia.j.Email, rjd.colonia.j.UserName, rjd.colonia.j.PasswordHash,
                                             rjd.colonia.j.foto, rjd.colonia.j.nickname,

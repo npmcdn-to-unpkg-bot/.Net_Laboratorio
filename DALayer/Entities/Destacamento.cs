@@ -13,7 +13,8 @@ namespace DALayer.Entities
 
         public Destacamento() { }
 
-        public Destacamento(string nombre, string descripcion, byte[] foto, float ataque, float escudo, float efectividadAtaque, float vida, float velocidad, bool enMision)
+        public Destacamento(string nombre, string descripcion, byte[] foto, float ataque, float escudo, float efectividadAtaque, float vida, float velocidad, 
+                            bool enMision, string tInicial, int incrementoT)
         {
             this.nombre = nombre;
             this.descripcion = descripcion;
@@ -24,6 +25,8 @@ namespace DALayer.Entities
             this.vida = vida;
             this.velocidad = velocidad;
             this.enMision = enMision;
+            this.tiempoInicial = tInicial;
+            this.incrementoTiempo = incrementoT;
         }
 
         public SharedEntities.Entities.Destacamento getShared()
@@ -39,7 +42,7 @@ namespace DALayer.Entities
                 capacidadS.Add(item.getShared());
             }
             return new SharedEntities.Entities.Destacamento(id, descripcion, foto, ataque, escudo, efectividadAtaque, vida, velocidad,
-                enMision, nombre, costosS, capacidadS);
+                enMision, nombre, costosS, capacidadS, tiempoInicial, incrementoTiempo);
         }
     }
 }
