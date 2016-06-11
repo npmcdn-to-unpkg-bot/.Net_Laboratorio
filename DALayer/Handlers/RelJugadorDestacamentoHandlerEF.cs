@@ -62,9 +62,9 @@ namespace DALayer.Handlers
                 var rjd = (from c in ctx.RelJugadorDestacamento
                            where c.id == id
                            select c).SingleOrDefault();
-                
+
                 return rjd.getShared();
-            }
+                }
             catch (Exception ex)
             {
                 throw ex;

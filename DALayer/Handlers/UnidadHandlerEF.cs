@@ -21,7 +21,7 @@ namespace DALayer.Handlers
         public int createDestacamento(Destacamento d)
         {
             Entities.Destacamento desE = new Entities.Destacamento(d.nombre, d.descripcion, d.foto, d.ataque, d.escudo,
-                d.efectividadAtaque, d.vida, d.velocidad, d.enMision);
+                d.efectividadAtaque, d.vida, d.velocidad, d.enMision, d.tiempoInicial, d.incrementoTiempo);
             try
             {
                 ctx.Destacamento.Add(desE);
@@ -40,7 +40,7 @@ namespace DALayer.Handlers
         public int createEdificio(Edificio edificio)
         {
             Entities.Edificio EdificioE = new Entities.Edificio(edificio.nombre, edificio.descripcion, edificio.foto, edificio.ataque,
-                edificio.escudo, edificio.efectividadAtaque, edificio.vida);
+                edificio.escudo, edificio.efectividadAtaque, edificio.vida, edificio.tiempoInicial, edificio.incrementoTiempo);
 
             try
             {
@@ -179,6 +179,8 @@ namespace DALayer.Handlers
                     destE.vida = destacamento.vida;
                     destE.velocidad = destacamento.velocidad; 
                     destE.nombre = destacamento.nombre;
+                    destE.tiempoInicial = destacamento.tiempoInicial;
+                    destE.incrementoTiempo = destacamento.incrementoTiempo;
                     ctx.SaveChangesAsync().Wait();
                 }
             }
@@ -206,6 +208,8 @@ namespace DALayer.Handlers
                     ediE.efectividadAtaque = edificio.efectividadAtaque;
                     ediE.vida = edificio.vida; 
                     ediE.nombre = edificio.nombre;
+                    ediE.tiempoInicial = edificio.tiempoInicial;
+                    ediE.incrementoTiempo = edificio.incrementoTiempo;
 
                     ctx.SaveChangesAsync().Wait();
                 }

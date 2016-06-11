@@ -10,6 +10,8 @@ namespace SharedEntities.Entities
         public byte[] foto;
         public List<Costo> costos;
         public List<Capacidad> capacidad;
+        public string tiempoInicial;
+        public int incrementoTiempo;
         public List<Produce> produce;
 
         public void addCosto(Costo c)

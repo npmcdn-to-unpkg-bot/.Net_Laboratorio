@@ -12,11 +12,13 @@ namespace DALayer.Entities
     {
         public Investigacion() { }
 
-        public Investigacion(string nombre, string descripcion, byte[] foto)
+        public Investigacion(string nombre, string descripcion, byte[] foto, string tInicial, int incrementoT)
         {
             this.nombre = nombre;
             this.descripcion = descripcion;
             this.foto = foto;
+            this.tiempoInicial = tInicial;
+            this.incrementoTiempo = incrementoT;
         }
 
         public SharedEntities.Entities.Investigacion getShared()
@@ -26,7 +28,7 @@ namespace DALayer.Entities
             {
                 var cS = new SharedEntities.Entities.Costo(c.Id, c.recurso.getShared(), c.recurso.id, c.valor, c.incrementoNivel);
                 costosS.Add(cS);
-            }
+            } 
             var capacidadS = new List<SharedEntities.Entities.Capacidad>();
             foreach (var item in capacidad)
             {
@@ -37,7 +39,7 @@ namespace DALayer.Entities
             {
                 produceS.Add(item.getShared());
             }
-            var investigacion = new SharedEntities.Entities.Investigacion(id, nombre, descripcion, foto, costosS, capacidadS, produceS);
+            var investigacion = new SharedEntities.Entities.Investigacion(id, nombre, descripcion, foto, costosS, capacidadS, produceS, tiempoInicial, incrementoTiempo);
             return investigacion;
         }
     }

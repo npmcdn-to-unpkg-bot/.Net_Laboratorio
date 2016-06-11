@@ -11,7 +11,8 @@ namespace DALayer.Entities
     {
         public Edificio() { }
 
-        public Edificio(string nombre, string descripcion, byte[] foto, float ataque, float escudo, float efectividadAtaque, float vida)
+        public Edificio(string nombre, string descripcion, byte[] foto, float ataque, float escudo, float efectividadAtaque, float vida,
+            string tInicial, int incrementoT)
         {
             this.nombre = nombre;
             this.descripcion = descripcion;
@@ -20,6 +21,8 @@ namespace DALayer.Entities
             this.escudo = escudo;
             this.efectividadAtaque = efectividadAtaque;
             this.vida = vida;
+            this.tiempoInicial = tInicial;
+            this.incrementoTiempo = incrementoT;
         }
 
         public SharedEntities.Entities.Edificio getShared()
@@ -40,7 +43,7 @@ namespace DALayer.Entities
                 produceS.Add(item.getShared());
             }
             return new SharedEntities.Entities.Edificio(id, descripcion, foto, ataque, escudo, efectividadAtaque, vida, nombre,
-                costosS, capacidadS, produceS);
+                costosS, capacidadS, produceS, tiempoInicial, incrementoTiempo);
         }
     }
 }
