@@ -25,5 +25,10 @@ namespace DALayer.Entities
             this.destacamento = des;
             this.cantidad = cant;
         }
+
+        public SharedEntities.Entities.RelJugadorDestacamento getShared()
+        {
+            return new SharedEntities.Entities.RelJugadorDestacamento(id, colonia.getShared(), destacamento.getShared(), cantidad);
+        }
     }
 }

@@ -57,39 +57,13 @@ namespace DALayer.Handlers
 
         public RelJugadorDestacamento getRelJugadorDestacamento(int id)
         {
-            CostoHandlerEF costoH = new CostoHandlerEF(ctx);
-            CapacidadHandlerEF capaH = new CapacidadHandlerEF(ctx);
             try
             {
                 var rjd = (from c in ctx.RelJugadorDestacamento
                            where c.id == id
                            select c).SingleOrDefault();
-
-                List<Costo> cos = new List<Costo>();
-                foreach (var item2 in rjd.destacamento.costos)
-                {
-                    var c = costoH.getCosto(item2.Id);
-                    cos.Add(c);
-                }
-
-                List<Capacidad> capa = new List<Capacidad>();
-                foreach (var item3 in rjd.destacamento.capacidad)
-                {
-                    var c2 = capaH.getCapacidad(item3.Id);
-                    capa.Add(c2);
-                }
-
-                Destacamento des = new Destacamento(rjd.destacamento.id, rjd.destacamento.descripcion, rjd.destacamento.foto, rjd.destacamento.ataque,
-                                            rjd.destacamento.escudo, rjd.destacamento.efectividadAtaque, rjd.destacamento.vida,rjd.destacamento.velocidad,
-                                            rjd.destacamento.enMision, rjd.destacamento.nombre, cos, capa);
-                Jugador jug = new Jugador(rjd.colonia.j.Id, rjd.colonia.j.nombre, rjd.colonia.j.apellido,
-                                            rjd.colonia.j.Email, rjd.colonia.j.UserName, rjd.colonia.j.PasswordHash,
-                                            rjd.colonia.j.foto, rjd.colonia.j.nickname,
-                                            rjd.colonia.j.nivel, rjd.colonia.j.experiencia);
-                RelJugadorMapa col = new RelJugadorMapa(rjd.colonia.id, rjd.colonia.nivel1, rjd.colonia.nivel2, rjd.colonia.nivel3,
-                                                        rjd.colonia.nivel4, rjd.colonia.nivel5, rjd.colonia.coord, jug);
-                RelJugadorDestacamento destacamento = new RelJugadorDestacamento(rjd.id, col, des, rjd.cantidad);
-                return destacamento;
+                
+                return rjd.getShared();
             }
             catch (Exception ex)
             {
@@ -130,8 +104,7 @@ namespace DALayer.Handlers
                 ctx.Database.Connection.Close();
                 foreach (var item in destacamentosD)
                 {
-                    var des = getRelJugadorDestacamento(item.id);
-                    destacamentos.Add(des);
+                    destacamentos.Add(item.getShared());
                 }
 
                 return destacamentos;

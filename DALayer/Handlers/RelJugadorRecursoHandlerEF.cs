@@ -58,17 +58,8 @@ namespace DALayer.Handlers
                 var r = (from c in ctx.RelJugadorRecurso
                            where c.id == id
                            select c).SingleOrDefault();
-
-                Recurso rec = new Recurso(r.recurso.id, r.recurso.nombre, r.recurso.descripcion, r.recurso.cantInicial,
-                    r.recurso.capacidadInicial, r.recurso.produccionXTiempo, r.recurso.foto);
-                Jugador jug = new Jugador(r.colonia.j.Id, r.colonia.j.nombre, r.colonia.j.apellido,
-                                            r.colonia.j.Email, r.colonia.j.UserName, r.colonia.j.PasswordHash,
-                                            r.colonia.j.foto, r.colonia.j.nickname,
-                                            r.colonia.j.nivel, r.colonia.j.experiencia);
-                RelJugadorMapa col = new RelJugadorMapa(r.colonia.id, r.colonia.nivel1, r.colonia.nivel2, r.colonia.nivel3,
-                                                        r.colonia.nivel4, r.colonia.nivel5, r.colonia.coord, jug);
-                RelJugadorRecurso relacion = new RelJugadorRecurso(r.id, rec, col, r.capacidad, r.cantidadR, r.produccionXTiempo, r.ultimaConsulta);
-                return relacion;
+                
+                return r.getShared();
             }
             catch (Exception ex)
             {
@@ -110,8 +101,7 @@ namespace DALayer.Handlers
                 ctx.Database.Connection.Close();
                 foreach (var item in recursosE)
                 {
-                    var rel = getRelJugadorRecurso(item.id);
-                    recursos.Add(rel);
+                    recursos.Add(item.getShared());
                 }
 
                 return recursos;

@@ -34,8 +34,13 @@ namespace DALayer.Entities
             {
                 capacidadS.Add(cap.getShared());
             }
+            var produceS = new List<SharedEntities.Entities.Produce>();
+            foreach (var item in produce)
+            {
+                produceS.Add(item.getShared());
+            }
             return new SharedEntities.Entities.Edificio(id, descripcion, foto, ataque, escudo, efectividadAtaque, vida, nombre,
-                costosS, capacidadS);
+                costosS, capacidadS, produceS);
         }
     }
 }

@@ -26,8 +26,18 @@ namespace DALayer.Entities
             {
                 var cS = new SharedEntities.Entities.Costo(c.Id, c.recurso.getShared(), c.recurso.id, c.valor, c.incrementoNivel);
                 costosS.Add(cS);
-            } 
-            var investigacion = new SharedEntities.Entities.Investigacion(id, nombre, descripcion, foto, costosS);
+            }
+            var capacidadS = new List<SharedEntities.Entities.Capacidad>();
+            foreach (var item in capacidad)
+            {
+                capacidadS.Add(item.getShared());
+            }
+            var produceS = new List<SharedEntities.Entities.Produce>();
+            foreach (var item in produce)
+            {
+                produceS.Add(item.getShared());
+            }
+            var investigacion = new SharedEntities.Entities.Investigacion(id, nombre, descripcion, foto, costosS, capacidadS, produceS);
             return investigacion;
         }
     }

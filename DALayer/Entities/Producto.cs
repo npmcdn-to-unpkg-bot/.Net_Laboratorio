@@ -15,6 +15,7 @@ namespace DALayer.Entities
         public byte[] foto { get; set; }
         public virtual List<Costo> costos { get; set; }
         public virtual List<Capacidad> capacidad { get; set; }
+        public virtual List<Produce> produce { get; set; }
 
         public void addCosto(Costo c)
         {

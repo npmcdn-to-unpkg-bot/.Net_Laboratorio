@@ -32,6 +32,12 @@ namespace DALayer.Entities
             this.produccionXTiempo = produccionXTiempo;
             this.ultimaConsulta = ultimaConsulta;
         }
+
+        public SharedEntities.Entities.RelJugadorRecurso getShared()
+        {
+            return new SharedEntities.Entities.RelJugadorRecurso(id, recurso.getShared(), colonia.getShared(), capacidad, cantidadR,
+                produccionXTiempo, ultimaConsulta);
+        }
     }
 
 }

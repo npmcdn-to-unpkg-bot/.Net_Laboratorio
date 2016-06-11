@@ -29,17 +29,22 @@ namespace DALayer.Entities
         public SharedEntities.Entities.Destacamento getShared()
         {
             var costosS = new List<SharedEntities.Entities.Costo>();
-            foreach (var item in costos)
+            foreach (var c in costos)
             {
-                costosS.Add(item.getShared());
+                costosS.Add(c.getShared());
             }
             var capacidadS = new List<SharedEntities.Entities.Capacidad>();
-            foreach (var item in capacidad)
+            foreach (var cap in capacidad)
             {
-                capacidadS.Add(item.getShared());
+                capacidadS.Add(cap.getShared());
+            }
+            var produceS = new List<SharedEntities.Entities.Produce>();
+            foreach (var item in produce)
+            {
+                produceS.Add(item.getShared());
             }
             return new SharedEntities.Entities.Destacamento(id, descripcion, foto, ataque, escudo, efectividadAtaque, vida, velocidad,
-                enMision, nombre, costosS, capacidadS);
+                enMision, nombre, costosS, capacidadS, produceS);
         }
     }
 }

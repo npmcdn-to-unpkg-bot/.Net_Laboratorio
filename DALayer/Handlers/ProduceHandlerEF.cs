@@ -51,8 +51,6 @@ namespace DALayer.Handlers
 
         public Produce getProduce(int id)
         {
-            RecursosHandlerEF recHandler = new RecursosHandlerEF(ctx);
-            DependenciaHandlerEF depHandler = new DependenciaHandlerEF(ctx);
             try
             {
                 var produce = (from c in ctx.Produce
