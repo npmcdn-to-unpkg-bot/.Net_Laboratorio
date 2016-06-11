@@ -11,21 +11,24 @@ namespace DALayer.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id { get; set; }
         public String nombre { get; set; }
-        public List<Jugador> miembros{get; set;}
-        public Jugador admin{get; set;}
         public String descripcion{get; set;}
         public byte[] foto{get; set;}
+        public virtual Jugador administrador { get; set; }
 
         public Alianza() { }
 
-        public Alianza(int ide, string name, List<Jugador> ljug, Jugador adm, string desc, byte[] photo)
+        public Alianza( string nombre, string descripcion, byte[] foto, Jugador administrador)
         {
-            this.id = ide;
-            this.nombre = name;
-            this.miembros = ljug;
-            this.admin = adm;
-            this.descripcion = desc;
-            this.foto = photo;
+            this.nombre = nombre;
+            this.descripcion = descripcion;
+            this.foto = foto;
+            this.administrador = administrador;
+        }
+
+        public SharedEntities.Entities.Alianza getShared()
+        {
+            var alianza = new SharedEntities.Entities.Alianza(id, nombre, descripcion, foto, administrador.getShared());
+            return alianza;
         }
     }
 }

@@ -24,6 +24,7 @@ namespace DALayer.Interfaces
         IRelJugadorMapaHandler getRelJugadorMapaHandler();
         IRelJugadorRecursoHandler getRelJugadorRecursoHandler();
         IRelJugadorDestacamentoHandler getRelJugadorDestacamentoHandler();
+        IRelJugadorAlianzaHandler getRelJugadorAlianzaHandler();
         IUiHandler getUiHandler(); 
         ICostoHandler getCostoHandler();
         ICapacidadHandler getCapacidadHandler();

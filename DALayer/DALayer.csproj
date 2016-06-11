@@ -107,6 +107,7 @@
     <Compile Include="Contexts\MongoCtx.cs" />
     <Compile Include="Entities\InteractuableMetadata.cs" />
     <Compile Include="Entities\IntState.cs" />
+    <Compile Include="Entities\RelJugadorAlianza.cs" />
     <Compile Include="Handlers\InteractionHandler.cs" />
     <Compile Include="Api\SuperAdminApi.cs" />
     <Compile Include="Entities\ActividadJugador.cs" />
@@ -153,6 +154,7 @@
     <Compile Include="Handlers\MapaNodeHandlerEF.cs" />
     <Compile Include="Handlers\PaquetePaypalHandlerEF.cs" />
     <Compile Include="Handlers\ProduceHandlerEF.cs" />
+    <Compile Include="Handlers\RelJugadorAlianzaHandlerEF.cs" />
     <Compile Include="Handlers\UiHandlerEF.cs" />
     <Compile Include="Handlers\RecursosHandlerEF.cs" />
     <Compile Include="Handlers\RelJugadorDestacamentoHandlerEF.cs" />
@@ -177,6 +179,7 @@
     <Compile Include="Interfaces\IAlianzaHandler.cs" />
     <Compile Include="Interfaces\IPaquetePayPalHandler.cs" />
     <Compile Include="Interfaces\IProduceHandler.cs" />
+    <Compile Include="Interfaces\IRelJugadorAlianzaHandler.cs" />
     <Compile Include="Interfaces\ISuperAdminApi.cs" />
     <Compile Include="Interfaces\IUiHandler.cs" />
     <Compile Include="Interfaces\IRecursoHandler.cs" />

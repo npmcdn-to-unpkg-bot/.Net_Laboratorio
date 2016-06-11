@@ -199,5 +199,36 @@ namespace BLayer.Front
         {
             builder.getRelJugadorDestacamentoHandler().bajarCantidadDestacamento(id, baja);
         }
+
+        //RELJUGADORALIANZA
+        public RelJugadorAlianza getRelJugadorAlianza(int id)
+        {
+            return builder.getRelJugadorAlianzaHandler().getRelJugadorAlianza(id);
+        }
+
+        public void createRelJugadorAlianza(RelJugadorAlianza reljugadoralianza)
+        {
+            builder.getRelJugadorAlianzaHandler().createRelJugadorAlianza(reljugadoralianza);
+        }
+
+        public void updateRelJugadorAlianza(RelJugadorAlianza reljugadoralianza)
+        {
+            builder.getRelJugadorAlianzaHandler().updateRelJugadorAlianza(reljugadoralianza);
+        }
+
+        public void deleteRelJugadorAlianza(int id)
+        {
+            builder.getRelJugadorAlianzaHandler().deleteRelJugadorAlianza(id);
+        }
+
+        public List<RelJugadorAlianza> getallRelJugadorAlianza()
+        {
+            return builder.getRelJugadorAlianzaHandler().getAllRelJugadorAlianza();
+        }
+
+        public List<RelJugadorAlianza> getMiembrosByAlianza(int id)
+        {
+            return builder.getRelJugadorAlianzaHandler().getMiembrosByAlianza(id);
+        }
     }
 }

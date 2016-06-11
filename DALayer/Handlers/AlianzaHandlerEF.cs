@@ -18,31 +18,15 @@ namespace DALayer.Handlers
             ctx = tc;
         }
 
-        public void createAlianza(Alianza alliTmp)
+        public void createAlianza(Alianza a)
         {
-            Entities.Alianza alli = new Entities.Alianza();
-
-            alli.nombre = alliTmp.nombre;
-
-            alli.miembros = new List<Entities.Jugador>();
-            foreach (Jugador item in alliTmp.miembros)
-            {
-                Entities.Jugador jug = new Entities.Jugador(item.nombre, item.apellido, item.foto, item.nickname,
-                    item.nivel, item.experiencia);
-                alli.miembros.Add(jug);
-            }
-
-            alli.admin = new Entities.Jugador(alliTmp.admin.nombre, alliTmp.admin.apellido, alliTmp.admin.foto,
-                alliTmp.admin.nickname, alliTmp.admin.nivel, alliTmp.admin.experiencia);
-
-            alli.descripcion = alliTmp.descripcion;
-            alli.foto = alliTmp.foto;
-
-            ctx.Alianza.Add(alli);
+            Entities.Jugador admin = new Entities.Jugador(a.administrador.nombre, a.administrador.apellido, a.administrador.foto, a.administrador.nickname,
+                                                           a.administrador.nivel, a.administrador.experiencia);
+            Entities.Alianza alli = new Entities.Alianza(a.nombre, a.descripcion, a.foto, admin);
 
             try
             {
-
+                ctx.Alianza.Add(alli);
                 ctx.SaveChanges();
             }
             catch (Exception ex)
@@ -78,19 +62,11 @@ namespace DALayer.Handlers
 
                 if (alliTmp != null)
                 {
+                    alliTmp.nombre = alli.nombre;
                     alliTmp.descripcion = alli.descripcion;
                     alliTmp.foto = alli.foto;
-
-                    alliTmp.miembros = new List<Entities.Jugador>();
-                    foreach (Jugador item in alli.miembros)
-                    {
-                        Entities.Jugador jug = new Entities.Jugador(item.nombre, item.apellido, item.foto, item.nickname,
-                    item.nivel, item.experiencia);
-                        alliTmp.miembros.Add(jug);
-                    }
-
-                    ctx.SaveChangesAsync().Wait();
                 }
+                    ctx.SaveChangesAsync().Wait();
             }
             catch (Exception ex)
             {
@@ -126,18 +102,7 @@ namespace DALayer.Handlers
                            where c.id == id
                            select c).SingleOrDefault();
 
-                List<Jugador> ljug = new List<Jugador>();
-                foreach (var item in ali.miembros)
-                {
-                    var c = new SharedEntities.Entities.Jugador(item.Id, item.nombre, item.apellido, item.Email, item.UserName,
-                                                       item.PasswordHash, item.foto, item.nickname, item.nivel, item.experiencia);
-                    ljug.Add(c);
-                }
-                var adm = new SharedEntities.Entities.Jugador(ali.admin.Id, ali.admin.nombre, ali.admin.apellido, ali.admin.Email, ali.admin.UserName,
-                                                       ali.admin.PasswordHash, ali.admin.foto, ali.admin.nickname, ali.admin.nivel, ali.admin.experiencia);
-                                                
-                Alianza alianza = new Alianza(ali.id, ali.nombre, ljug, adm, ali.descripcion, ali.foto);
-                return alianza;
+                return ali.getShared();
             }
             catch (Exception ex)
             {

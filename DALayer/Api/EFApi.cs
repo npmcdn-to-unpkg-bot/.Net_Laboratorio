@@ -29,6 +29,7 @@ namespace DALayer.Api
         private RelJugadorMapaHandlerEF relJugadorMapaHandler;
         private RelJugadorRecursoHandlerEF relJugadorRecursoHandler;
         private RelJugadorDestacamentoHandlerEF relJugadorDestacamentoHandler;
+        private RelJugadorAlianzaHandlerEF relJugadorAlianzaHandler;
         private UiHandlerEF uiHandler;
         private CostoHandlerEF costoHandler;
         private CapacidadHandlerEF capacidadHandler;
