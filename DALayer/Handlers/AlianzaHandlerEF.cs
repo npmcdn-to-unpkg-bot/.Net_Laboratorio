@@ -20,8 +20,9 @@ namespace DALayer.Handlers
 
         public void createAlianza(Alianza a)
         {
-            Entities.Jugador admin = new Entities.Jugador(a.administrador.nombre, a.administrador.apellido, a.administrador.foto, a.administrador.nickname,
-                                                           a.administrador.nivel, a.administrador.experiencia);
+            var admin = ctx.Jugador.Where(w => w.Id == a.administrador.id).SingleOrDefault();
+            //Entities.Jugador admin = new Entities.Jugador(a.administrador.nombre, a.administrador.apellido, a.administrador.foto, a.administrador.nickname,
+            //                                               a.administrador.nivel, a.administrador.experiencia);
             Entities.Alianza alli = new Entities.Alianza(a.nombre, a.descripcion, a.foto, admin);
 
             try
