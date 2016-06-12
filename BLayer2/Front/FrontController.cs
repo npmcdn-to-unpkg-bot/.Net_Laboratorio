@@ -221,7 +221,7 @@ namespace BLayer.Front
             builder.getRelJugadorAlianzaHandler().deleteRelJugadorAlianza(id);
         }
 
-        public List<RelJugadorAlianza> getallRelJugadorAlianza()
+        public List<RelJugadorAlianza> getAllRelJugadorAlianza()
         {
             return builder.getRelJugadorAlianzaHandler().getAllRelJugadorAlianza();
         }
