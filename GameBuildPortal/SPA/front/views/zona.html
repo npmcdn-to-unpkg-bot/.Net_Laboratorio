@@ -37,10 +37,14 @@
             <td><a>{{row.jugador.usuario}}</a></td>
             <td>{{row.alianza}}</td>
             <td>
-              <div class="btn-group">
+              <div class="btn-group" ng-if="!row.classRow && row.jugador">
                 <button type="button" class="btn btn-default btn-sm"><i class="fa fa-comments"></i></button>
                 <button type="button" class="btn btn-default btn-sm"><i class="fa fa-user"></i></button>
-                  <button type="button" class="btn btn-default btn-sm" ng-click="mostrarIteraccion()"><i class="fa fa-money"></i></button>
+                <button type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-transfer"></i></button>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="#/interaccion/comercializar/{{row.coloniaId}}">Comercializar</a></li>
+                    <li><a href="#/interaccion/atacar/{{row.coloniaId}}">Atacar</a></li>
+                </ul>
               </div>
             </td>
           </tr>

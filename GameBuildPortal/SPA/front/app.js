@@ -37,6 +37,12 @@
             templateUrl : '/SPA/front/views/zona.html',
             controller  : 'zonaCtrl'
         });
+
+        // ruta de interacciones
+        $routeProvider.when('/interaccion/:interaccion/:receiverId', {
+            templateUrl: '/SPA/front/views/interaccion.html',
+            controller: 'interaccionCtrl'
+        });
     }
 
     angular.module('atlas2-juego').factory('coloniaFactory', ['$rootScope', function ($rootScope) {
