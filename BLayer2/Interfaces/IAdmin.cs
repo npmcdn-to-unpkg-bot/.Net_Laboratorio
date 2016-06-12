@@ -50,13 +50,6 @@ namespace BLayer.Interfaces
         void updateEdificio(Edificio edificio);
         Edificio getEdificio(int id);
 
-        // ALIANZA
-        List<Alianza> getAllAlianzas();
-        void createAlianza(Alianza alianza);
-        void deleteAlianza(int id);
-        void updateAlianza(Alianza alianza);
-        Alianza getAlianza(int id);
-
         // DEPENDENCIA
         List<Dependencia> getAllDependencias();
         void createDependencia(Dependencia dependencia);

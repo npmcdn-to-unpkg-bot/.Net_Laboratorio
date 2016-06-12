@@ -11,11 +11,11 @@ namespace GameBuildPortal.ControllersFrontApi
 {
     public class AlianzaController : ApiController
     {        
-        public static IAdmin blHandler;
+        public static IFront blHandler;
         
         public AlianzaController()
         {
-            blHandler = WebApiConfig.BuilderService(null);
+            blHandler = WebApiConfig.FrontService(null);
         }
 
         [HttpGet]

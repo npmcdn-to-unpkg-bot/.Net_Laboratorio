@@ -200,6 +200,32 @@ namespace BLayer.Front
             builder.getRelJugadorDestacamentoHandler().bajarCantidadDestacamento(id, baja);
         }
 
+        //ALIANZA
+        public List<Alianza> getAllAlianzas()
+        {
+            return builder.getAlianzaHandler().getAllAlianzas();
+        }
+
+        public Alianza getAlianza(int id)
+        {
+            return builder.getAlianzaHandler().getAlianza(id);
+        }
+
+        public void createAlianza(Alianza alianza)
+        {
+            builder.getAlianzaHandler().createAlianza(alianza);
+        }
+
+        public void updateAlianza(Alianza alianza)
+        {
+            builder.getAlianzaHandler().updateAlianza(alianza);
+        }
+
+        public void deleteAlianza(int id)
+        {
+            builder.getAlianzaHandler().deleteAlianza(id);
+        }
+
         //RELJUGADORALIANZA
         public RelJugadorAlianza getRelJugadorAlianza(int id)
         {

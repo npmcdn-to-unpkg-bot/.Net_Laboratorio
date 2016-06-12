@@ -29,5 +29,35 @@ namespace GameBuildPortal.ControllersFrontApi
 
             return miembros;
         }
+
+        [HttpPost]
+        public HttpResponseMessage Post(RelJugadorAlianza rja)
+        {
+            if (ModelState.IsValid)
+            {
+                blHandler.createRelJugadorAlianza(rja);
+
+                HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, rja);
+                return response;
+            }
+            else
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+            }
+        }
+
+        [HttpDelete]
+        public HttpResponseMessage DeleteRelJugadorAlianza (int id)
+        {
+            try
+            {
+                blHandler.deleteRelJugadorAlianza(id);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, ex);
+            };
+            return Request.CreateResponse(HttpStatusCode.OK);
+        }
     }
 }

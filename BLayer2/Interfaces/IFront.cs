@@ -55,5 +55,12 @@ namespace BLayer.Interfaces
         RelJugadorAlianza getRelJugadorAlianza(int id);
         List<RelJugadorAlianza> getAllRelJugadorAlianza();
         List<RelJugadorAlianza> getMiembrosByAlianza(int id);
+
+        // ALIANZA
+        List<Alianza> getAllAlianzas();
+        void createAlianza(Alianza alianza);
+        void deleteAlianza(int id);
+        void updateAlianza(Alianza alianza);
+        Alianza getAlianza(int id);
     }
 }
