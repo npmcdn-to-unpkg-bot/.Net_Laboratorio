@@ -16,6 +16,7 @@ using System.Web.Mvc;
 
 namespace GameBuildPortal.Controllers
 {
+    [RequireHttps]
     public class HomeController : Controller
     {
         public ActionResult Index()
@@ -29,7 +30,7 @@ namespace GameBuildPortal.Controllers
                 {
                    
                     WebApiConfig.BuilderService(null).registerLogin(id);
-                    SharedEntities.Entities.Ui ui = WebApiConfig.BuilderService(null).getUi(1);
+                    SharedEntities.Entities.Configuracion ui = WebApiConfig.BuilderService(null).getUi(1);
 
                     return View(ui);
                 }

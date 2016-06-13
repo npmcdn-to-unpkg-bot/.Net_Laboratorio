@@ -62,7 +62,7 @@ namespace DALayer
         public virtual DbSet<RelJugadorRecurso> RelJugadorRecurso { get; set; }
         public virtual DbSet<RelJugadorMapa> RelJugadorMapa { get; set; }
         public virtual DbSet<RelJugadorAlianza> RelJugadorAlianza { get; set; }
-        public virtual DbSet<Ui> Ui { get; set; }
+        public virtual DbSet<Configuracion> Configuracion { get; set; }
 
         public virtual DbSet<Interaction> Interaction{get; set;}
         public string CacheKey

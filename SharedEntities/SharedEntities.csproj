@@ -68,7 +68,7 @@
     <Compile Include="Entities\RelJugadorRecurso.cs" />
     <Compile Include="Entities\SolicitudJuego.cs" />
     <Compile Include="Entities\Dependencia.cs" />
-    <Compile Include="Entities\Ui.cs" />
+    <Compile Include="Entities\Configuracion.cs" />
     <Compile Include="Entities\Unidad.cs" />
     <Compile Include="Entities\Usuario.cs" />
     <Compile Include="Enum\InteractionState.cs" />

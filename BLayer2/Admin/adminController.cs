@@ -246,25 +246,25 @@ namespace BLayer.Admin
             }
         }
 
-        //UI
-        public Ui getUi(int id)
+        //CONFIGURACION
+        public Configuracion getConfiguracion(int id)
         {
-            return builder.getUiHandler().getUi(id);
+            return builder.getUiHandler().getConfiguracion(id);
         }
 
-        public void createUi(Ui ui)
+        public void createConf(Configuracion conf)
         {
-            builder.getUiHandler().createUi(ui);
+            builder.getUiHandler().createConf(conf);
         }
 
-        public void updateUi(Ui ui)
+        public void updateConf(Configuracion conf)
         {
-            builder.getUiHandler().updateUi(ui);
+            builder.getUiHandler().updateConf(conf);
         }
 
-        public void deleteUi(int id)
+        public void deleteConf(int id)
         {
-            builder.getUiHandler().deleteUi(id);
+            builder.getUiHandler().deleteConf(id);
         }
 
         public List<object> getReporteRegistro()

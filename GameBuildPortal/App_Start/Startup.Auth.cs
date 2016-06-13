@@ -56,9 +56,9 @@ namespace GameBuildPortal
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "1733725280219721",
+               appSecret: "1c4f42bb63ce8022f714b2dd84676959");
 
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             //{
