@@ -256,5 +256,11 @@ namespace BLayer.Front
         {
             return builder.getRelJugadorAlianzaHandler().getMiembrosByAlianza(id);
         }
+
+        //Jugador logueado
+        public Jugador getJugador(string id)
+        {
+            return builder.getUsuarioHandler().getJugador(id);
+        }
     }
 }
