@@ -12,7 +12,7 @@ namespace DALayer.Entities
     {
         public Investigacion() { }
 
-        public Investigacion(string nombre, string descripcion, byte[] foto, string tInicial, int incrementoT)
+        public Investigacion(string nombre, string descripcion, byte[] foto, int tInicial, int incrementoT)
         {
             this.nombre = nombre;
             this.descripcion = descripcion;

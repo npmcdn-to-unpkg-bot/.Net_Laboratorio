@@ -22,7 +22,7 @@ namespace DALayer.Handlers
             var col = ctx.RelJugadorMapa.Where(w => w.id == r.colonia.id).SingleOrDefault();
             var ed = ctx.Edificio.Where(w => w.id == r.edificio.id).SingleOrDefault();
             
-            var rje = new Entities.RelJugadorEdificio(col, ed, r.nivelE);
+            var rje = new Entities.RelJugadorEdificio(col, ed, r.nivelE, r.finalizaConstruccion);
 
             try
             {

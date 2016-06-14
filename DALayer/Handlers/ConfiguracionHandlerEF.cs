@@ -73,9 +73,7 @@ namespace DALayer.Handlers
         {
             try
             {
-                var c = ctx.Configuracion
-                    .Where(w => w.id == conf.id)
-                    .SingleOrDefault();
+                var c = ctx.Configuracion.First();
 
                 if (c != null)
                 {
@@ -85,6 +83,10 @@ namespace DALayer.Handlers
                     c.idAppFace = conf.idAppFace;
                     c.claveAppFace = conf.claveAppFace;
                     ctx.SaveChangesAsync().Wait();
+                }
+                else
+                {
+                    createConf(conf);
                 }
                 
             }

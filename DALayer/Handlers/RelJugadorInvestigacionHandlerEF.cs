@@ -31,7 +31,7 @@ namespace DALayer.Handlers
                 cos.Add(c);
             }
 
-            Entities.RelJugadorInvestigacion rji = new Entities.RelJugadorInvestigacion(col, inv, r.nivel);
+            Entities.RelJugadorInvestigacion rji = new Entities.RelJugadorInvestigacion(col, inv, r.nivel, r.finalizaConstruccion);
             
             try
             {

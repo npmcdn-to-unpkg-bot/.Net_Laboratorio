@@ -40,7 +40,7 @@ namespace DALayer.Handlers
                 cap.Add(c);
             }
 
-            var rje = new Entities.RelJugadorDestacamento(col, des, r.cantidad);
+            var rje = new Entities.RelJugadorDestacamento(col, des, r.cantidad, r.finalizaConstruccion);
 
             try
             {
