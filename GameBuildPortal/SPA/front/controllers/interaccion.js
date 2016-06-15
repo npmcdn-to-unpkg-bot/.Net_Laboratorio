@@ -4,35 +4,53 @@
 
     function interaccionCtrl($scope, $q, $routeParams, coloniaFactory, interaccionService, jugadorDestacamentoService, jugadorRecursoService, jugadorMapaService) {
         var receiverId = $routeParams && $routeParams['receiverId'] ? $routeParams['receiverId'] : null;
-        var interaccion = $routeParams && $routeParams['interaccion'] ? $routeParams['interaccion'].charAt(0).toUpperCase() + $routeParams['interaccion'].slice(1) : null;
+        var interaccion = $routeParams && $routeParams['interaccion'] ? $routeParams['interaccion'] : null;
 
-        $scope.interaccion = { nombre: interaccion };
+        $scope.interaccionNombre = interaccion ? interaccion.charAt(0).toUpperCase() + $routeParams['interaccion'].slice(1) : null;
+
         $scope.destacamentos = null;
         $scope.recursos = null;
         $scope.destacamentosReceiver = null;
         $scope.recursosReceiver = null;
+        $scope.receiverUsuario = null;
+
+        $scope.requester = null;
+        $scope.receiver = null;
 
         var currentMapa = coloniaFactory.getCurrent();
 
         var initialize = function () {
-            destacamentoByColonia(currentMapa.id).then(function (destacamentos) {
-                $scope.destacamentos = destacamentos;
-            });
-
-            recursoByColonia(currentMapa.id).then(function (recursos) {
-                $scope.recursos = recursos;
-            });
-
-            destacamentoByColonia(receiverId).then(function (destacamentos) {
-                $scope.destacamentosReceiver = destacamentos;
-            });
-
-            recursoByColonia(receiverId).then(function (recursos) {
-                $scope.recursosReceiver = recursos;
-            });
+            $scope.requester = { id: currentMapa.id, flota: [], recurso: [] };
+            $scope.receiver = { id: parseInt(receiverId), flota: [], recurso: [] };
 
             jugadorMapaService.getColoniaById(receiverId).then(function (colonia) {
-                $scope.interaccion['receiver'] = colonia.jugador;
+                $scope.receiverUsuario = colonia.jugador;
+            });
+
+            interaccionService.getConfig(interaccion).then(function (config) {
+                if (config.reqFlota){
+                    destacamentoByColonia(currentMapa.id).then(function (destacamentos) {
+                        $scope.destacamentos = destacamentos;
+                    });
+                }
+                
+                if (config.reqRec) {
+                    recursoByColonia(currentMapa.id).then(function (recursos) {
+                        $scope.recursos = recursos;
+                    });
+                }
+                
+                if (config.recFlota) {
+                    destacamentoByColonia(receiverId).then(function (destacamentos) {
+                        $scope.destacamentosReceiver = destacamentos;
+                    });
+                }
+
+                if (config.recRec) {
+                    recursoByColonia(receiverId).then(function (recursos) {
+                        $scope.recursosReceiver = recursos;
+                    });
+                }
             });
         };
 
@@ -90,6 +108,69 @@
 
         if (currentMapa) {
             initialize();
+        }
+
+        $scope.ejecutarInteraccion = function () {
+            var requester = this.requester;
+            var receiver = this.receiver;
+
+            var reqFlota = [];
+            for (var a in requester.flota) {
+                var flota = requester.flota[a];
+                reqFlota.push({
+                    id: parseInt(a),
+                    value : flota
+                });
+            }
+
+            var reqRecurso = [];
+            for (var b in requester.recurso) {
+                var recurso = requester.recurso[b];
+                reqRecurso.push({
+                    id: parseInt(b),
+                    value: recurso
+                });
+            }
+
+            var recFlota = [];
+            for (var c in receiver.flota) {
+                var flota = receiver.flota[c];
+                recFlota.push({
+                    id: parseInt(c),
+                    value: flota
+                });
+            }
+
+            var recRecurso = [];
+            for (var d in receiver.recurso) {
+                var recurso = receiver.recurso[d];
+                recRecurso.push({
+                    id: parseInt(d),
+                    value: recurso
+                });
+            }
+
+            var int = {
+                tipo: interaccion,
+                requester: {
+                    id : requester.id,
+                    flota: reqFlota,
+                    recurso: reqRecurso
+                }, 
+                receiver: {
+                    id : receiver.id,
+                    flota : recFlota,
+                    recurso: recRecurso
+                }
+            }
+
+            interaccionService.ejecutar(int).then(
+                function (data) {
+
+                }, function () {
+                    
+                }
+            );
         }
     }
 

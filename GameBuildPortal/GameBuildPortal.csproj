@@ -240,6 +240,7 @@
     <Compile Include="ControllersAdminApi\ReporteLoginController.cs" />
     <Compile Include="ControllersAdminApi\ConfiguracionController.cs" />
     <Compile Include="ControllersFrontApi\AlianzaController.cs" />
+    <Compile Include="ControllersFrontApi\InteraccionesController.cs" />
     <Compile Include="ControllersFrontApi\JugadorAlianzaController.cs" />
     <Compile Include="ControllersFrontApi\JugadorDestacamentoController.cs" />
     <Compile Include="ControllersFrontApi\MeController.cs" />
@@ -1608,6 +1609,10 @@
     <ProjectReference Include="..\DALayer\DALayer.csproj">
       <Project>{1771106e-4b5f-421d-96f1-a07436f59a56}</Project>
       <Name>DALayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\InteractionSdk\InteractionSdk.csproj">
+      <Project>{5C46A822-8D88-45A2-A418-2220E28F833D}</Project>
+      <Name>InteractionSdk</Name>
     </ProjectReference>
     <ProjectReference Include="..\SharedEntities\SharedEntities.csproj">
       <Project>{730C64C0-B03B-4706-9116-058C34F66C42}</Project>

@@ -7,7 +7,9 @@ using System.Threading.Tasks;
 using InteractionSdk.Interfaces;
 using DALayer.Api;
 using SharedEntities.Entities;
-using MongoDB.Bson;  
+using MongoDB.Bson;
+using Ataque.Clases;
+
 namespace BLayer.Front
 {
     public class InteractionEngine : IJob

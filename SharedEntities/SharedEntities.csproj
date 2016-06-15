@@ -48,6 +48,7 @@
     <Compile Include="Entities\Edificio.cs" />
     <Compile Include="Entities\Flota.cs" />
     <Compile Include="Entities\HistorialVentas.cs" />
+    <Compile Include="Entities\InteracccionConfig.cs" />
     <Compile Include="Entities\Interaction.cs" />
     <Compile Include="Entities\Interactuable.cs" />
     <Compile Include="Entities\InteractuableMetadata.cs" />

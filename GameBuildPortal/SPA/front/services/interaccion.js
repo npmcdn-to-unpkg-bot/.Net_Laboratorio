@@ -4,12 +4,12 @@
 
     function interaccionService($http, $q) {
 
-        var getAllMapas = function () {
+        var getConfig = function (interaccion) {
             var defer = $q.defer();
 
-            $http.get('/api/mapa')
-            .success(function (mapas) {
-                defer.resolve(mapas);
+            $http.get('/api/interacciones?nombre=' + interaccion)
+            .success(function (config) {
+                defer.resolve(config);
             })
             .error(function () {
                 defer.reject('server error')
@@ -18,26 +18,12 @@
             return defer.promise;
         };
 
-        var getColonias = function () {
+        var ejecutar = function (interaccion) {
             var defer = $q.defer();
 
-            $http.get('/api/jugadorMapa')
-            .success(function (jugadorMapas) {
-                defer.resolve(jugadorMapas);
-            })
-            .error(function () {
-                defer.reject('server error')
-            });
-
-            return defer.promise;
-        };
-
-        var getByCoordenadas = function (coordenadas) {
-            var defer = $q.defer();
-
-            $http.post('/api/jugadorMapa/ByCoordenadas', coordenadas)
-            .success(function (jugadorMapas) {
-                defer.resolve(jugadorMapas);
+            $http.post('/api/interacciones', interaccion)
+            .success(function (interaccion) {
+                defer.resolve(interaccion);
             })
             .error(function () {
                 defer.reject('server error')
@@ -47,9 +33,8 @@
         };
 
         return {
-            getAllMapas: getAllMapas,
-            getColonias: getColonias,
-            getByCoordenadas : getByCoordenadas
+            getConfig: getConfig,
+            ejecutar: ejecutar
         }
 
     }

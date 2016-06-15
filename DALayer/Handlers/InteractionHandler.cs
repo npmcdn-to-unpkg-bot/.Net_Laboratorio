@@ -32,6 +32,16 @@ namespace DALayer.Handlers
             return ret;
         }
 
+        public List<Interaction> GetAllInteractionsByColonia(int coloniaId)
+        {
+            List<Interaction> ret = new List<Interaction>();
+
+            ctx.Interaction.Where(c => c.receiverId == coloniaId).ToList().ForEach((data) => {
+                ret.Add(InteractionHandler.DataToShared(data));
+            });
+            return ret;
+        }
+
         public Interaction GetInteraction(int id)
         {
             DALayer.Entities.Interaction data = ctx.Interaction.Where(c => c.Id == id).First();

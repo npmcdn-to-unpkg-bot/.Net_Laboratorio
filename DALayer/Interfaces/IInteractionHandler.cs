@@ -13,5 +13,6 @@ namespace DALayer.Interfaces
         SharedEntities.Entities.Interaction GetInteraction(int id);
         int CreateInteraction(SharedEntities.Entities.Interaction i);
         void UpdateInteraction(SharedEntities.Entities.Interaction i);
+        List<Interaction> GetAllInteractionsByColonia(int coloniaId);
     }
 }
