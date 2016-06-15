@@ -67,6 +67,11 @@ namespace DALayer.Handlers
 
                 if (r != null)
                 {
+                    var edi = r.getShared();
+                    DateTime ahora = DateTime.Now;
+                    TimeSpan tConstruccion = TimeSpan.FromMinutes(edi.edificio.tiempoInicial);
+                    r.finalizaConstruccion = ahora.Add(tConstruccion);
+
                     List<Entities.Costo> costos = r.edificio.calCostoXNivel(r.nivelE, 1);
                     jrHandler.restarCompra(r.colonia.id, costos);
                     r.nivelE += 1;

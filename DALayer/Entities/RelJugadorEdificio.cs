@@ -40,6 +40,11 @@ namespace DALayer.Entities
                     c.valor = Convert.ToInt32(c.valor * c.incrementoNivel);
                 }
             }
+            rel.edificio.incrementoTiempo = rel.edificio.incrementoTiempo / 100 + 1;
+            for (int i = 0; i < nivelE; i++)
+            {
+                rel.edificio.tiempoInicial = Convert.ToInt32(rel.edificio.tiempoInicial * rel.edificio.incrementoTiempo);
+            }
             return rel;
         }
     }

@@ -11,7 +11,7 @@ namespace SharedEntities.Entities
         public List<Costo> costos;
         public List<Capacidad> capacidad;
         public int tiempoInicial;
-        public int incrementoTiempo;
+        public float incrementoTiempo;
         public List<Produce> produce;
 
         public void addCosto(Costo c)

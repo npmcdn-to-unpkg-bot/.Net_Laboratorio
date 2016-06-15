@@ -82,7 +82,13 @@ namespace DALayer.Handlers
 
                 if (r != null)
                 {
-                    List<Entities.Costo> costos = r.destacamento.calCostoXNivel(0, rje.cantidad - r.cantidad);
+                    var dest = r.getShared();
+                    var cant = rje.cantidad - r.cantidad;
+                    DateTime ahora = DateTime.Now;
+                    TimeSpan tConstruccion = TimeSpan.FromMinutes(dest.destacamento.tiempoInicial * cant);
+                    r.finalizaConstruccion = ahora.Add(tConstruccion);
+
+                    List<Entities.Costo> costos = r.destacamento.calCostoXNivel(0, cant);
                     jrHandler.restarCompra(r.colonia.id, costos);
                     r.cantidad = rje.cantidad;
                     ctx.SaveChangesAsync().Wait();
@@ -126,6 +132,11 @@ namespace DALayer.Handlers
 
                 if (r != null)
                 {
+                    var dest = r.getShared();
+                    DateTime ahora = DateTime.Now;
+                    TimeSpan tConstruccion = TimeSpan.FromMinutes(dest.destacamento.tiempoInicial * sube);
+                    r.finalizaConstruccion = ahora.Add(tConstruccion);
+
                     List<Entities.Costo> costos = r.destacamento.calCostoXNivel(0, sube);
                     jrHandler.restarCompra(r.colonia.id, costos);
                     r.cantidad += sube;

@@ -12,7 +12,7 @@ namespace DALayer.Entities
         public Edificio() { }
 
         public Edificio(string nombre, string descripcion, byte[] foto, float ataque, float escudo, float efectividadAtaque, float vida,
-            int tInicial, int incrementoT)
+            int tInicial, float incrementoT)
         {
             this.nombre = nombre;
             this.descripcion = descripcion;
