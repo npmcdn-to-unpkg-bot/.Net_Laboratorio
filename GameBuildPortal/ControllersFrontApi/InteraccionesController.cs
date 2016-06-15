@@ -57,8 +57,6 @@ namespace GameBuildPortal.ControllersFrontApi
             {
                 
                 interactionHandler.LoadInteractionByName(intera.tipo);
- 
-                //blHandler.createRelJugadorAlianza(rja);
 
                 Interactuable requester = new Interactuable(intera.requester.id);
                 Interactuable receiver = new Interactuable(intera.receiver.id);

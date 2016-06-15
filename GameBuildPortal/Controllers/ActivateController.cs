@@ -40,6 +40,7 @@ namespace GameBuildPortal.Controllers
                 return RedirectToAction("Expired");
             }
         }
+
         public ApplicationSignInManager SignInManager
         {
             get
@@ -63,6 +64,7 @@ namespace GameBuildPortal.Controllers
                 _userManager = value;
             }
         }
+
         public ActionResult Expired()
         {
             return View();

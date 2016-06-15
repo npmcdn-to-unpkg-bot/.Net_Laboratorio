@@ -2,6 +2,7 @@
 using DALayer;
 using DALayer.Entities;
 using DALayer.Interfaces;
+using GameBuildPortal.Models;
 using GameBuildPortal.Modules;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -32,7 +33,10 @@ namespace GameBuildPortal.Controllers
                     WebApiConfig.BuilderService(null).registerLogin(id);
                     SharedEntities.Entities.Configuracion conf = WebApiConfig.BuilderService(null).getConfiguracion(1);
 
-                    return View(conf);
+                    LayoutViewModel model = new LayoutViewModel();
+                    model.Configuracion = conf;
+
+                    return View(model);
                 }
             }
 
@@ -57,7 +61,12 @@ namespace GameBuildPortal.Controllers
             //    }
             //}
 
-            return View();
+            SharedEntities.Entities.Configuracion conf = WebApiConfig.BuilderService(null).getConfiguracion(1);
+
+            LayoutViewModel model = new LayoutViewModel();
+            model.Configuracion = conf;
+
+            return View(model);
         }
     }
 }

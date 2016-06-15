@@ -8,7 +8,6 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Orgame</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.6 -->
@@ -29,7 +28,7 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <title>Orgame</title>
+    <title>@Model.titulo</title>
 
     <style type="text/css">
         .direct-chat-messages{
@@ -40,7 +39,7 @@
     </style>
 </head>
 
-<body class="hold-transition skin-blue sidebar-mini layout-boxed sidebar-collapse" ng-app="atlas2-juego">
+<body class="hold-transition skin sidebar-mini layout-boxed sidebar-collapse" ng-app="atlas2-juego">
     <!-- Site wrapper -->
     <div class="wrapper">
 
@@ -50,7 +49,7 @@
                 <!-- mini logo for sidebar mini 50x50 pixels -->
                 <span class="logo-mini"><b>O</b></span>
                 <!-- logo for regular state and mobile devices -->
-                <span class="logo-lg"><b>O</b>rgame</span>
+                <span class="logo-lg">@Model.nombre</span>
             </a>
 
             <!-- Header Navbar: style can be found in header.less -->

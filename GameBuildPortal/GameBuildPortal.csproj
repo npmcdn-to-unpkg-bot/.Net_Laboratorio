@@ -256,6 +256,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\LayoutViewModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ActivateGame.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -1583,12 +1584,12 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
-    <Content Include="Views\Activate\Create22.cshtml" />
     <Content Include="Views\Account\RegisterJugador.cshtml" />
     <Content Include="Views\Admin\Login.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Activate\Expired.cshtml" />
     <Content Include="Views\Activate\Create.cshtml" />
+    <Content Include="Views\Shared\_LayoutActive.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

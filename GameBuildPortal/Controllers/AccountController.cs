@@ -54,22 +54,29 @@ namespace GameBuildPortal.Controllers
             }
         }
 
-        //
         // GET: /Account/Login
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
-            return View();
+
+            SharedEntities.Entities.Configuracion conf = WebApiConfig.BuilderService(null).getConfiguracion(1);
+            LoginViewModel log = new LoginViewModel();
+            LayoutViewModel model = new LayoutViewModel();
+            model.Configuracion = conf;
+            model.LoginViewModel = log;
+
+            return View(model);
         }
 
-        
         // POST: /Account/Login
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
+        public async Task<ActionResult> Login(LayoutViewModel layoutModel, string returnUrl)
         {
+            LoginViewModel model = layoutModel.LoginViewModel;
+
             if (!ModelState.IsValid)
             {
                 return View(model);
@@ -90,12 +97,16 @@ namespace GameBuildPortal.Controllers
                     return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
                 case SignInStatus.Failure:
                 default:
-                    ModelState.AddModelError("", "Invalid login attempt.");
+                    ModelState.AddModelError("", "Login invalido.");
+                    SharedEntities.Entities.Configuracion conf = WebApiConfig.BuilderService(null).getConfiguracion(1);
+                    LayoutViewModel data = new LayoutViewModel();
+                    data.Configuracion = conf;
+                    data.LoginViewModel = model;
+
                     return View(model);
             }
         }
 
-        //
         // GET: /Account/VerifyCode
         [AllowAnonymous]
         public async Task<ActionResult> VerifyCode(string provider, string returnUrl, bool rememberMe)
@@ -108,7 +119,6 @@ namespace GameBuildPortal.Controllers
             return View(new VerifyCodeViewModel { Provider = provider, ReturnUrl = returnUrl, RememberMe = rememberMe });
         }
 
-        //
         // POST: /Account/VerifyCode
         [HttpPost]
         [AllowAnonymous]
@@ -138,24 +148,33 @@ namespace GameBuildPortal.Controllers
             }
         }
 
-        //
         // GET: /Account/Register
         [AllowAnonymous]
         public ActionResult Register()
         {
             return View();
         }
+
         [AllowAnonymous]
         public ActionResult RegisterJugador()
         {
-            return View();
+            SharedEntities.Entities.Configuracion conf = WebApiConfig.BuilderService(null).getConfiguracion(1);
+            RegisterViewModel reg = new RegisterViewModel();
+            LayoutViewModel model = new LayoutViewModel();
+            model.Configuracion = conf;
+            model.RegisterViewModel = reg;
+
+            return View(model);
         }
+
         // POST: /Account/Register
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> RegisterJugador(RegisterViewModel model)
+        public async Task<ActionResult> RegisterJugador(LayoutViewModel layoutModel)
         {
+            RegisterViewModel model = layoutModel.RegisterViewModel;
+
             if (ModelState.IsValid)
             { 
                 Usuario us = new Jugador { UserName = model.Email, Email = model.Email , CreatedDate = DateTime.Now };
@@ -178,9 +197,15 @@ namespace GameBuildPortal.Controllers
                 AddErrors(result);
             }
 
+            SharedEntities.Entities.Configuracion conf = WebApiConfig.BuilderService(null).getConfiguracion(1);
+            LayoutViewModel data = new LayoutViewModel();
+            data.Configuracion = conf;
+            data.RegisterViewModel = model;
+
             // If we got this far, something failed, redisplay form
-            return View(model);
+            return View(data);
         }
+
         // POST: /Account/Register
         [HttpPost]
         [AllowAnonymous]
@@ -209,7 +234,7 @@ namespace GameBuildPortal.Controllers
             // If we got this far, something failed, redisplay form
             return View(model);
         }
-        //
+        
         // GET: /Account/ConfirmEmail
         [AllowAnonymous]
         public async Task<ActionResult> ConfirmEmail(string userId, string code)
@@ -222,7 +247,6 @@ namespace GameBuildPortal.Controllers
             return View(result.Succeeded ? "ConfirmEmail" : "Error");
         }
 
-        //
         // GET: /Account/ForgotPassword
         [AllowAnonymous]
         public ActionResult ForgotPassword()
@@ -230,7 +254,6 @@ namespace GameBuildPortal.Controllers
             return View();
         }
 
-        //
         // POST: /Account/ForgotPassword
         [HttpPost]
         [AllowAnonymous]
@@ -265,16 +288,14 @@ namespace GameBuildPortal.Controllers
         {
             return View();
         }
-
-        //
+        
         // GET: /Account/ResetPassword
         [AllowAnonymous]
         public ActionResult ResetPassword(string code)
         {
             return code == null ? View("Error") : View();
         }
-
-        //
+        
         // POST: /Account/ResetPassword
         [HttpPost]
         [AllowAnonymous]
@@ -299,8 +320,7 @@ namespace GameBuildPortal.Controllers
             AddErrors(result);
             return View();
         }
-
-        //
+        
         // GET: /Account/ResetPasswordConfirmation
         [AllowAnonymous]
         public ActionResult ResetPasswordConfirmation()
@@ -308,7 +328,6 @@ namespace GameBuildPortal.Controllers
             return View();
         }
 
-        //
         // POST: /Account/ExternalLogin
         [HttpPost]
         [AllowAnonymous]
@@ -353,8 +372,7 @@ namespace GameBuildPortal.Controllers
             }
             return RedirectToAction("VerifyCode", new { Provider = model.SelectedProvider, ReturnUrl = model.ReturnUrl, RememberMe = model.RememberMe });
         }
-
-        //
+        
         // GET: /Account/ExternalLoginCallback
         [AllowAnonymous]
         public async Task<ActionResult> ExternalLoginCallback(string returnUrl)
@@ -380,17 +398,25 @@ namespace GameBuildPortal.Controllers
                     // If the user does not have an account, then prompt the user to create an account
                     ViewBag.ReturnUrl = returnUrl;
                     ViewBag.LoginProvider = loginInfo.Login.LoginProvider;
-                    return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { Email = loginInfo.Email });
+
+                    SharedEntities.Entities.Configuracion conf = WebApiConfig.BuilderService(null).getConfiguracion(1);
+
+                    LayoutViewModel layout = new LayoutViewModel();
+                    layout.ExternalLoginConfirmationViewModel = new ExternalLoginConfirmationViewModel { Email = loginInfo.Email };
+                    layout.Configuracion = conf;
+
+                    return View("ExternalLoginConfirmation", layout);
             }
         }
-
-        //
+        
         // POST: /Account/ExternalLoginConfirmation
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> ExternalLoginConfirmation(ExternalLoginConfirmationViewModel model, string returnUrl)
+        public async Task<ActionResult> ExternalLoginConfirmation(LayoutViewModel layoutModel, string returnUrl)
         {
+            ExternalLoginConfirmationViewModel model = layoutModel.ExternalLoginConfirmationViewModel;
+
             if (User.Identity.IsAuthenticated)
             {
                 return RedirectToAction("Index", "Manage");
@@ -421,11 +447,15 @@ namespace GameBuildPortal.Controllers
                 AddErrors(result);
             }
 
+            SharedEntities.Entities.Configuracion conf = WebApiConfig.BuilderService(null).getConfiguracion(1);
+            LayoutViewModel data = new LayoutViewModel();
+            data.Configuracion = conf;
+            data.ExternalLoginConfirmationViewModel = model;
+
             ViewBag.ReturnUrl = returnUrl;
             return View(model);
         }
-
-        //
+        
         // POST: /Account/LogOff
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -434,13 +464,16 @@ namespace GameBuildPortal.Controllers
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
             return RedirectToAction("Home", "Home");
         }
-
-        //
+        
         // GET: /Account/ExternalLoginFailure
         [AllowAnonymous]
         public ActionResult ExternalLoginFailure()
         {
-            return View();
+            SharedEntities.Entities.Configuracion conf = WebApiConfig.BuilderService(null).getConfiguracion(1);
+            LayoutViewModel data = new LayoutViewModel();
+            data.Configuracion = conf;
+
+            return View(data);
         }
 
         protected override void Dispose(bool disposing)
