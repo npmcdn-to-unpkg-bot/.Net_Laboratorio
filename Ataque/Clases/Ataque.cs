@@ -195,7 +195,8 @@ namespace Ataque.Clases
                 {
                     var capacidad= des.GetCapacidad() / receiver.GetRecursos().Count;
                     receiver.GetRecursos().ForEach((rec) => {
-                        var setter = requester.GetRecursos().Where(c => c.GetId() == rec.GetId()).First();
+                        var setter = requester.GetRecursos().Where(c => c.GetId() == rec.GetId()).FirstOrDefault();
+                        if (setter == null) return;
                         if (rec.GetAmount() < capacidad)
                         {
                             setter.SetAmount(setter.GetAmount() + rec.GetAmount());

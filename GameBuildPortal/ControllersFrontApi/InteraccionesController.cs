@@ -55,8 +55,76 @@ namespace GameBuildPortal.ControllersFrontApi
 
             if (ModelState.IsValid)
             {
+                
+                interactionHandler.LoadInteractionByName(intera.tipo);
+ 
                 //blHandler.createRelJugadorAlianza(rja);
 
+                Interactuable requester = new Interactuable(intera.requester.id);
+                Interactuable receiver = new Interactuable(intera.receiver.id);
+
+                if (interactionHandler.GetConfig().isReqNeedFloat())
+                {
+                    List<IDestacamento> flota = new List<IDestacamento>();
+                    List<IDestacamento> current = blHandler.getDestacamentosByColonia(intera.requester.id).Cast<IDestacamento>().ToList();
+                    intera.requester.flota.ToList<Tupla>().ForEach((f) =>
+                    {
+                        var dest = current.Where(c => c.GetId() == f.id).FirstOrDefault();
+                        if (dest != null)
+                        {
+                            flota.Add(dest);
+                        }
+                    });
+                    requester.SetFlota(flota);
+                }
+                List<IResources> recurso = new List<IResources>();
+                List<IResources> rlist = blHandler.getRecursosByColonia(intera.requester.id).Cast<IResources>().ToList();
+
+                rlist.ForEach((f) =>
+                {
+                    var dest = intera.requester.recurso.ToList<Tupla>().Where(c => c.id == f.GetId()).FirstOrDefault();
+                    if (dest != null && interactionHandler.GetConfig().isReqNeedRecursos())
+                    {
+                        f.SetAmount(dest.value);
+                    }
+
+                    recurso.Add(f);
+                });
+                requester.SetRecursos(recurso);
+
+                if (interactionHandler.GetConfig().isRecNeedFloat())
+                {
+                    List<IDestacamento> flotaRec = new List<IDestacamento>();
+                    List<IDestacamento> currentRec = blHandler.getDestacamentosByColonia(intera.receiver.id).Cast<IDestacamento>().ToList();
+                    intera.receiver.flota.ToList<Tupla>().ForEach((f) =>
+                    {
+                        var dest = currentRec.Where(c => c.GetId() == f.id).FirstOrDefault();
+                        if (dest != null)
+                        {
+                            flotaRec.Add(dest);
+                        }
+                    });
+                    receiver.SetFlota(flotaRec);
+                }
+                if (interactionHandler.GetConfig().isRecNeedRecursos())
+                {
+                    List<IResources> recursoRec = new List<IResources>();
+                    List<IResources> rlistRec = blHandler.getRecursosByColonia(intera.requester.id).Cast<IResources>().ToList();
+
+
+                    rlistRec.ForEach((f) =>
+                    {
+                        var dest = intera.receiver.recurso.ToList<Tupla>().Where(c => c.id == f.GetId()).FirstOrDefault();
+                        if (dest != null && interactionHandler.GetConfig().isRecNeedRecursos())
+                        {
+                            f.SetAmount(dest.value);
+                        }
+
+                        recursoRec.Add(f);
+                    });
+                    receiver.SetRecursos(recursoRec);
+                }
+                interactionHandler.InitializeInteraction(requester, receiver);
                 HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created);
                 return response;
             }

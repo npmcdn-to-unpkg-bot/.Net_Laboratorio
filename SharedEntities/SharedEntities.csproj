@@ -51,6 +51,7 @@
     <Compile Include="Entities\InteracccionConfig.cs" />
     <Compile Include="Entities\Interaction.cs" />
     <Compile Include="Entities\Interactuable.cs" />
+    <Compile Include="Entities\InteractuableDT.cs" />
     <Compile Include="Entities\InteractuableMetadata.cs" />
     <Compile Include="Entities\IntState.cs" />
     <Compile Include="Entities\Investigacion.cs" />
@@ -70,6 +71,7 @@
     <Compile Include="Entities\SolicitudJuego.cs" />
     <Compile Include="Entities\Dependencia.cs" />
     <Compile Include="Entities\Configuracion.cs" />
+    <Compile Include="Entities\Tupla.cs" />
     <Compile Include="Entities\Unidad.cs" />
     <Compile Include="Entities\Usuario.cs" />
     <Compile Include="Enum\InteractionState.cs" />
