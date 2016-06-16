@@ -217,6 +217,7 @@ namespace BLayer.Front
                 state.receiver = GetInteractionableMeta(receiver);
                 state.receiverId = -1;
             }
+            state.winnerId = requester.Won() ? requester.GetID() : (receiver.Won() ? receiver.GetID() : -1);
             state.requester = GetInteractionableMeta(requester);
             return state;
         }

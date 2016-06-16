@@ -17,7 +17,7 @@ namespace SharedEntities.Entities
         private int capacidad;
         public bool returnTobase;
         private bool send;
-
+        private bool won = false;
         public Interactuable(int _Id)
         {
             Id = _Id;
@@ -108,6 +108,16 @@ namespace SharedEntities.Entities
             {
                 rec.SetAmount(0);
             });
+        }
+
+        public void Win()
+        {
+            won = true;
+        }
+
+        public bool Won()
+        {
+            return won;
         }
     }
 }

@@ -29,5 +29,8 @@ namespace InteractionSdk.Interfaces
         /// You can call this function to clean all the state in the current instance. before assign new values
         /// </summary>
         void Clean();
+
+        void Win();
+        bool Won();
     }
 }

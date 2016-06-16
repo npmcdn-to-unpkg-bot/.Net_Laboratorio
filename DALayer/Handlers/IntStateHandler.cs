@@ -47,6 +47,7 @@ namespace DALayer.Handlers
             shared.receiver = data.receiver != null ? DataToShared(data.receiver) : null;
             shared.receiverId = data.receiverId;
             shared.requester = DataToShared(data.requester);
+            shared.winnerId = data.winnerId;
             switch (data.state)
             {
                 case DALayer.Enum.InteractionState.EXECUTING:
@@ -79,7 +80,8 @@ namespace DALayer.Handlers
             data.interactionId = shared.interactionId;
             data.receiver = shared.receiver != null ? SharedToData(shared.receiver) : null;
             data.receiverId = shared.receiverId;
-            data.requester = SharedToData(shared.requester); 
+            data.requester = SharedToData(shared.requester);
+            data.winnerId = shared.winnerId;
             switch (shared.state) {
                 case SharedEntities.Enum.InteractionState.EXECUTING:
                     data.state = DALayer.Enum.InteractionState.EXECUTING;

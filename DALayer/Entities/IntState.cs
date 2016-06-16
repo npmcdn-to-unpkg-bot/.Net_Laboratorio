@@ -16,5 +16,6 @@ namespace DALayer.Entities
         public IneractuableMetadata requester { get; set; }
         public IneractuableMetadata receiver { get; set; }
         public InteractionState state { get; set; }
+        public int winnerId { get; set; }
     }
 }

@@ -190,11 +190,14 @@ namespace Ataque.Clases
                 }
                 requesterWin = FlotaAmount(receiver) == 0;
             }
-            if (requesterWin) {
+            if (requesterWin)
+            {
+                requester.Win();
                 requester.GetFlota().ForEach((des) =>
                 {
-                    var capacidad= des.GetCapacidad() / receiver.GetRecursos().Count;
-                    receiver.GetRecursos().ForEach((rec) => {
+                    var capacidad = des.GetCapacidad() / receiver.GetRecursos().Count;
+                    receiver.GetRecursos().ForEach((rec) =>
+                    {
                         var setter = requester.GetRecursos().Where(c => c.GetId() == rec.GetId()).FirstOrDefault();
                         if (setter == null) return;
                         if (rec.GetAmount() < capacidad)
@@ -202,12 +205,15 @@ namespace Ataque.Clases
                             setter.SetAmount(setter.GetAmount() + rec.GetAmount());
                         }
                         else {
-                            setter.SetAmount(setter.GetAmount() + capacidad); 
+                            setter.SetAmount(setter.GetAmount() + capacidad);
                         }
                     });
 
                 });
                 requester.Return();
+            }
+            else {
+                receiver.Win();
             }
             destacamento.ToList().ForEach((r)=>{
                IDestacamento defensa = receiver.GetDefensas().Where(c => c.GetId() == r.Key).FirstOrDefault();
