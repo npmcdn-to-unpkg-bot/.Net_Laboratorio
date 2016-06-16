@@ -12,13 +12,15 @@ namespace SharedEntities.Entities
         public string nombre;
         public int nivel;
         public int cantidad;
+        public int distance;
 
-        public MapaNode(int id, string name, int nivel, int cantidad)
+        public MapaNode(int id, string name, int nivel, int cantidad, int distance)
         {
             this.id = id;
             this.nombre = name;
             this.nivel = nivel;
             this.cantidad = cantidad;
+            this.distance = distance;
         }
     }
 }

@@ -25,7 +25,7 @@ namespace BLayer.Front
             tenantId = _tenantId;
             api.setTenant(tenantId);
         }
-
+        public InteractionEngine() { }
         public InteractionEngine(IInteraction current, string tenant)
         {
             this.current = current;
@@ -54,19 +54,23 @@ namespace BLayer.Front
 
             if (intState.state == SharedEntities.Enum.InteractionState.EXECUTING)//look for interaction state
             {
-
+                int round = 1;
                 List<IInteractionable> list = current.exec(requester, receiver);
                 ApplyChanges(list);
                 IntState state = GetIntState(interactionId, receiver, requester);
                 state.state = SharedEntities.Enum.InteractionState.FINISHING;
                 api.getIntStateHandler().SaveIntState(state);
-                int time = 0;
-                if (list.Where(c => c.mustSend() || c.getReturn()).Count() > 0)
+                float time = 1;
+                IInteractionable i = list.Where(c => c.mustSend() || c.getReturn()).OrderByDescending(c=> c.getReturn()).FirstOrDefault();
+                if (i != null)
                 {
-                    //calculo tiempo
+                    IDestacamento des = i.GetFlota().OrderByDescending(c => c.GetVelocidad()).FirstOrDefault();
+                    time = GetDistanceBetweenColony(requester.GetID(), receiver.GetID()) / des.GetVelocidad();
                 }
-                //Scheduler.Scheduler.ScheduleInteraction(interactionId, time, tenantId);
-                testExec(interactionId);
+
+
+                Scheduler.Scheduler.ScheduleInteraction(interactionId, time, tenantId, round);
+               // testExec(interactionId);
 
             }
             else {
@@ -117,9 +121,7 @@ namespace BLayer.Front
                 api.getIntStateHandler().SaveIntState(state);
                 ApplyChanges(list);
             }
-
-
-            }
+        }
 
         
         internal void setRequester(IInteractionable _requester)
@@ -142,15 +144,66 @@ namespace BLayer.Front
             IntState state = GetIntState(interactionId, receiver, requester);
             api.getIntStateHandler().SaveIntState(state);
 
-            int time = 0;
-            if (list.Where(c => c.mustSend()).Count() > 0)
+            float time = 1;
+            IInteractionable i = list.Where(c => c.mustSend()).FirstOrDefault();
+            if (i != null)
             {
                 /// calculo tiempos
+                IDestacamento des = i.GetFlota().OrderByDescending(c => c.GetVelocidad()).FirstOrDefault();
+                time = GetDistanceBetweenColony(requester.GetID(), receiver.GetID()) / des.GetVelocidad();
             }
-         //   Scheduler.Scheduler.ScheduleInteraction(interactionId, time, tenantId);
-            testExec(interactionId);
+            int round = 0;
+            Scheduler.Scheduler.ScheduleInteraction(interactionId, time, tenantId, round);
         }
 
+        private int GetDistanceBetweenColony(int requester, int receiver) {
+            int distance = 0;
+            RelJugadorMapa from = api.getRelJugadorMapaHandler().getRelJugadorMapa(requester);
+            RelJugadorMapa to = api.getRelJugadorMapaHandler().getRelJugadorMapa(receiver);
+            List<MapaNode> mapas = api.getMapaNodeHandler().getAllMapas();
+
+            if(from.nivel1 != -1 && to.nivel1 != -1 && from.nivel1 != to.nivel1)
+            {
+                MapaNode sect = mapas.Where(c => c.nivel == 1).FirstOrDefault();
+                if (sect != null && sect.cantidad > 1) {
+                    distance += sect.distance * 2;
+                }
+
+            }
+            if (from.nivel2 != -1 && to.nivel2 != -1 && from.nivel2 != to.nivel2)
+            {
+                MapaNode sect = mapas.Where(c => c.nivel == 2).FirstOrDefault();
+                if (sect != null && sect.cantidad > 1)
+                {
+                    distance += sect.distance * 2;
+                }
+            }
+            if (from.nivel3 != -1 && to.nivel3 != -1 && from.nivel3 != to.nivel3)
+            {
+                MapaNode sect = mapas.Where(c => c.nivel == 3).FirstOrDefault();
+                if (sect != null && sect.cantidad > 1)
+                {
+                    distance += sect.distance * 2;
+                }
+            }
+            if (from.nivel4 != -1 && to.nivel4 != -1 && from.nivel4 != to.nivel4)
+            {
+                MapaNode sect = mapas.Where(c => c.nivel == 4).FirstOrDefault();
+                if (sect != null && sect.cantidad > 1)
+                {
+                    distance += sect.distance * 2;
+                }
+            }
+            if (from.nivel5 != -1 && to.nivel5 != -1 && from.nivel5 != to.nivel5)
+            {
+                MapaNode sect = mapas.Where(c => c.nivel == 5).FirstOrDefault();
+                if (sect != null && sect.cantidad > 1)
+                {
+                    distance += sect.distance * 2;
+                }
+            }
+            return distance;
+        }
         private IntState GetIntState(int interactionId, IInteractionable receiver, IInteractionable requester)
         {
             IntState state = new IntState();

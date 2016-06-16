@@ -11,21 +11,19 @@ namespace BLayer.Scheduler
 {
     public class Scheduler
     {
-        static ISchedulerFactory schedFact;
         static IScheduler sched;
         public static IScheduler GetScheduler() {
 
             if (sched == null) {
-                schedFact = new StdSchedulerFactory();
                 // get a scheduler, start the schedular before triggers or anything else
-                sched = schedFact.GetScheduler();
+                sched = new StdSchedulerFactory().GetScheduler();
                 sched.Start();
             }
             return sched;
         }
 
-        public static void ScheduleInteraction(int interactionId, int time, string tenantId) {
-            String jobId = interactionId.ToString();
+        public static void ScheduleInteraction(int interactionId, float time, string tenantId, int round) {
+            String jobId = String.Format("{0}-{1}-{2}", tenantId,interactionId.ToString(), round);
             // create job
             IJobDetail job = JobBuilder.Create<InteractionEngine>()
                     .WithIdentity(jobId, jobId)

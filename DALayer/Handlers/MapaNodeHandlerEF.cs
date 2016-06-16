@@ -18,7 +18,7 @@ namespace DALayer.Handlers
         }
         public void CreateMapa(MapaNode m)
         {
-            var mapaE = new Entities.MapaNode(m.nombre, m.nivel, m.cantidad);
+            var mapaE = new Entities.MapaNode(m.nombre, m.nivel, m.cantidad, m.distance);
 
             try
             {
@@ -94,6 +94,7 @@ namespace DALayer.Handlers
                     mapaE.nombre = mapa.nombre;
                     mapaE.nivel = mapa.nivel;
                     mapaE.cantidad = mapa.cantidad;
+                    mapaE.distance = mapa.distance;
                     ctx.SaveChangesAsync().Wait();
                 }
             }

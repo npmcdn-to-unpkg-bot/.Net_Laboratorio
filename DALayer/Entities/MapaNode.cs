@@ -16,19 +16,21 @@ namespace DALayer.Entities
         public string nombre { get; set; }
         public int nivel { get; set; }
         public int cantidad { get; set; }
+        public int distance { get; set; }
 
         public MapaNode() { }
 
-        public MapaNode(string nombre, int nivel, int cantidad)
+        public MapaNode(string nombre, int nivel, int cantidad, int distance)
         {
             this.nombre = nombre;
             this.nivel = nivel;
             this.cantidad = cantidad;
+            this.distance = distance;
         }
 
         public SharedEntities.Entities.MapaNode getShared()
         {
-            return new SharedEntities.Entities.MapaNode(id, nombre, nivel, cantidad);
+            return new SharedEntities.Entities.MapaNode(id, nombre, nivel, cantidad, distance);
         }
     }
 }

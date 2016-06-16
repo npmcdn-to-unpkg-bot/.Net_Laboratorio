@@ -158,7 +158,7 @@ namespace Ataque.Clases
             }); 
          
 
-            bool requesterWin = false;
+            bool requesterWin = FlotaAmount(receiver) == 0;
             float round = 0;
             while (!requesterWin && FlotaAmount(requester) >0) {
                 System.Diagnostics.Debug.WriteLine("####Round" + round);
