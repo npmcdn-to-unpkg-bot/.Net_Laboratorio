@@ -1,4 +1,4 @@
-﻿@model SharedEntities.Entities.Configuracion
+﻿@model GameBuildPortal.Models.LayoutViewModel
 @{
     Layout = "";
 }
@@ -28,14 +28,14 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <title>@Model.titulo</title>
+    <title>@Model.Configuracion.titulo</title>
 
     <style type="text/css">
         .direct-chat-messages{
             height : 500px;
         }
 
-       @Model.css
+       @Model.Configuracion.css
     </style>
 </head>
 
@@ -47,9 +47,9 @@
             <!-- Logo -->
             <a href="#/" class="logo">
                 <!-- mini logo for sidebar mini 50x50 pixels -->
-                <span class="logo-mini"><b>O</b></span>
+                <span class="logo-mini"><b>@Model.Configuracion.nombre.Substring(0, 1)</b></span>
                 <!-- logo for regular state and mobile devices -->
-                <span class="logo-lg">@Model.nombre</span>
+                <span class="logo-lg">@Model.Configuracion.nombre</span>
             </a>
 
             <!-- Header Navbar: style can be found in header.less -->

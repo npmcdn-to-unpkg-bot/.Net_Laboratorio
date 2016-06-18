@@ -1,4 +1,5 @@
 ﻿using DALayer.Entities;
+using GameBuildPortal.Models;
 using GameBuildPortal.Modules;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
@@ -14,7 +15,12 @@ namespace GameBuildPortal.Controllers
     {
         public ActionResult Login()
         {
-            return View();
+            SharedEntities.Entities.Configuracion conf = WebApiConfig.BuilderService(null).getConfiguracion(1);
+
+            LayoutViewModel model = new LayoutViewModel();
+            model.Configuracion = conf;
+
+            return View(model);
         }
 
         public ActionResult Index()
@@ -25,7 +31,12 @@ namespace GameBuildPortal.Controllers
 
             if (UHelper.isAdmin)
             {
-                return View();
+                SharedEntities.Entities.Configuracion conf = WebApiConfig.BuilderService(null).getConfiguracion(1);
+
+                LayoutViewModel model = new LayoutViewModel();
+                model.Configuracion = conf;
+
+                return View(model);
             }
 
             return RedirectToAction("Login", "Admin");
