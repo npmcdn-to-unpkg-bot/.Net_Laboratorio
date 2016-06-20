@@ -1522,6 +1522,7 @@
     <Content Include="SPA\front\controllers\edificio.js" />
     <Content Include="SPA\front\controllers\home.js" />
     <Content Include="SPA\front\controllers\alianza.js" />
+    <Content Include="SPA\front\controllers\interaccion-historial.js" />
     <Content Include="SPA\front\controllers\investigacion.js" />
     <Content Include="SPA\front\controllers\app.js" />
     <Content Include="SPA\front\controllers\interaccion.js" />
@@ -1542,6 +1543,7 @@
     <Content Include="SPA\front\views\destacamento.html" />
     <Content Include="SPA\front\views\edificio.html" />
     <Content Include="SPA\front\views\home.html" />
+    <Content Include="SPA\front\views\crear-interaccion.html" />
     <Content Include="SPA\front\views\investigacion.html" />
     <Content Include="SPA\front\views\partials\construccion.html" />
     <Content Include="SPA\front\views\partials\recurso.html" />

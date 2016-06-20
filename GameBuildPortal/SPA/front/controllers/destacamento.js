@@ -70,6 +70,15 @@
                 );
             }, 3000);
         }
+
+        $scope.mostrarInfo = function (destacamento) {
+            $scope.destacamento = destacamento;
+            $('#modal-info-destacamento').modal('show');
+        }
+
+        $('#modal-info-destacamento').on('hidden.bs.modal', function (e) {
+            $scope.destacamento = null;
+        });
     }
 
 })();

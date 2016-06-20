@@ -45,7 +45,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <div class="row">
+                <div class="row" ng-if="edificio.produce.length">
                     <div class="col-sm-12">
                         <h5 class="text-center">Producci&oacuten actual por hora</h5>
                     </div>
@@ -55,9 +55,8 @@
                             <span class="description-text">{{produce.recurso.nombre}}</span>
                         </div>
                     </div>
-
                 </div>
-                <div class="row">
+                <div class="row" ng-if="edificio.capacidad.length">
                     <div class="col-sm-12">
                         <h5 class="text-center">Capacidad de almacenamiento actual</h5>
                     </div>
@@ -67,9 +66,8 @@
                             <span class="description-text">{{capacidad.recurso.nombre}}</span>
                         </div>
                     </div>
-
                 </div>
-                <div class="row">
+                <div class="row" ng-if="edificio.costos.length">
                     <div class="col-sm-12">
                         <h5 class="text-center">Costo siguiente nivel</h5>
                     </div>
@@ -79,7 +77,6 @@
                             <span class="description-text">{{costo.recurso.nombre}}</span>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>

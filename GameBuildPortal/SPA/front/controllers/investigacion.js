@@ -73,7 +73,7 @@
 
         $('#modal-info-investigacion').on('hidden.bs.modal', function (e) {
             $scope.investigacion = null;
-        })
+        });
     }
 
 })();

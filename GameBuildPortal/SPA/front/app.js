@@ -39,8 +39,11 @@
         });
 
         // ruta de interacciones
-        $routeProvider.when('/interaccion/:interaccion/:receiverId', {
+        $routeProvider.when('/interaccion', {
             templateUrl: '/SPA/front/views/interaccion.html',
+            controller: 'interaccionHistorialCtrl'
+        }).when('/interaccion/:interaccion/:receiverId', {
+            templateUrl: '/SPA/front/views/crear-interaccion.html',
             controller: 'interaccionCtrl'
         });
 

@@ -32,9 +32,24 @@
             return defer.promise;
         };
 
+        var getInteraccionByColonia = function (colonia) {
+            var defer = $q.defer();
+
+            $http.get('/api/interacciones/' + colonia)
+            .success(function (jugadorInteracciones) {
+                defer.resolve(jugadorInteracciones);
+            })
+            .error(function () {
+                defer.reject('server error')
+            });
+
+            return defer.promise;
+        };
+
         return {
             getConfig: getConfig,
-            ejecutar: ejecutar
+            ejecutar: ejecutar,
+            getInteraccionByColonia: getInteraccionByColonia
         }
 
     }

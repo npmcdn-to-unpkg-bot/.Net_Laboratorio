@@ -73,7 +73,7 @@
 
         $('#modal-info-edificio').on('hidden.bs.modal', function (e) {
             $scope.edificio = null;
-        })
+        });
     }
 
 })();
