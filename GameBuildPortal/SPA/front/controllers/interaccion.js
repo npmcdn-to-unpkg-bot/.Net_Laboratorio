@@ -166,7 +166,7 @@
 
             interaccionService.ejecutar(int).then(
                 function (data) {
-
+                    window.location = '#interaccion';
                 }, function () {
                     
                 }
