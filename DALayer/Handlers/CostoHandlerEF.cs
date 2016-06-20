@@ -19,15 +19,14 @@ namespace DALayer.Handlers
 
         public void createCosto(Costo c)
         {
-            Entities.Recurso rec = ctx.Recurso.Where(w => w.id == c.recurso.id).SingleOrDefault();
-            var prod = ctx.Producto.Where(w => w.id == c.idProducto).SingleOrDefault();
-            var cost = new Entities.Costo(rec, prod, c.valor, c.incrementoNivel);
-
             try
             {
+                Entities.Recurso rec = ctx.Recurso.Where(w => w.id == c.recurso.id).SingleOrDefault();
+                var prod = ctx.Producto.Where(w => w.id == c.idProducto).SingleOrDefault();
+                var cost = new Entities.Costo(rec, prod, c.valor, c.incrementoNivel);
                 ctx.Costo.Add(cost);
-
                 ctx.SaveChanges();
+                ctx.Database.Connection.Close();
             }
             catch (Exception e)
             {

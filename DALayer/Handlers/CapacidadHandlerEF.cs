@@ -19,15 +19,16 @@ namespace DALayer.Handlers
 
         public void createCapacidad(Capacidad c)
         {
-            var recurso = ctx.Recurso.Where(w => w.id == c.recurso.id).SingleOrDefault();
-            var producto = ctx.Producto.Where(w => w.id == c.idProducto).SingleOrDefault();
-            var capacity = new Entities.Capacidad(recurso, producto, c.valor, c.incrementoNivel);
 
             try
             {
+                ctx.Database.Connection.Open();
+                Entities.Recurso recurso = ctx.Recurso.Where(w => w.id == c.recurso.id).SingleOrDefault();
+                var producto = ctx.Producto.Where(w => w.id == c.idProducto).SingleOrDefault();
+                var capacity = new Entities.Capacidad(recurso, producto, c.valor, c.incrementoNivel);
                 ctx.Capacidad.Add(capacity);
-
                 ctx.SaveChanges();
+                ctx.Database.Connection.Close();
             }
             catch (Exception e)
             {

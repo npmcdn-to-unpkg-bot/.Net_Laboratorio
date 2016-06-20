@@ -59,6 +59,7 @@ namespace DALayer.Handlers
         public RelJugadorEdificio subirNivel(int id)
         {
             RelJugadorRecursoHandlerEF jrHandler = new RelJugadorRecursoHandlerEF(ctx);
+            var relJMHandler = new RelJugadorMapaHandlerEF(ctx);
             try
             {
                 var r = ctx.RelJugadorEdificio
@@ -75,7 +76,10 @@ namespace DALayer.Handlers
                     List<Entities.Costo> costos = r.edificio.calCostoXNivel(r.nivelE, 1);
                     jrHandler.restarCompra(r.colonia.id, costos);
                     r.nivelE += 1;
+
                     ctx.SaveChangesAsync().Wait();
+
+                    relJMHandler.actualizarProduccionCapacidad(r.colonia.id);
                 }
                 return r.getShared();
             }

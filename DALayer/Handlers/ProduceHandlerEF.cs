@@ -18,14 +18,15 @@ namespace DALayer.Handlers
 
         public void createProduce(Produce p)
         {
-            Entities.Recurso rec = ctx.Recurso.Where(w => w.id == p.recurso.id).SingleOrDefault();
-            var prod = ctx.Producto.Where(w => w.id == p.idProducto).SingleOrDefault();
-            var produce = new Entities.Produce(rec, prod, p.valor, p.incrementoNivel);
-
             try
             {
+                ctx.Database.Connection.Open();
+                Entities.Recurso rec = ctx.Recurso.Where(w => w.id == p.recurso.id).SingleOrDefault();
+                var prod = ctx.Producto.Where(w => w.id == p.idProducto).SingleOrDefault();
+                var produce = new Entities.Produce(rec, prod, p.valor, p.incrementoNivel);
                 ctx.Produce.Add(produce);
                 ctx.SaveChanges();
+                ctx.Database.Connection.Close();
             }
             catch (Exception e)
             {

@@ -24,10 +24,13 @@ namespace DALayer.Handlers
                 d.efectividadAtaque, d.vida, d.velocidad, d.enMision, d.tiempoInicial, d.incrementoTiempo);
             try
             {
+                ctx.Database.Connection.Open();
                 ctx.Destacamento.Add(desE);
                 ctx.SaveChanges();
 
                 Entities.Destacamento des = ctx.Destacamento.ToList().LastOrDefault();
+
+                ctx.Database.Connection.Close();
 
                 return des.id;
             }
@@ -44,10 +47,12 @@ namespace DALayer.Handlers
 
             try
             {
+                ctx.Database.Connection.Open();
                 ctx.Edificio.Add(EdificioE);
                 ctx.SaveChanges();
                 
                 Entities.Edificio edi = ctx.Edificio.ToList().LastOrDefault();
+                ctx.Database.Connection.Close();
 
                 return edi.id;
             }

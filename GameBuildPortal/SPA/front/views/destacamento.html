@@ -35,6 +35,28 @@
                        
                         <div class="row">
                             <div class="col-sm-12">
+                                <h5 class="text-center">Producci&oacuten unitaria por hora</h5>
+                            </div>
+                            <div ng-repeat="produce in unidad.produce" class="col-sm-{{12 / unidad.produce.length | number}}">
+                                <div class="description-block">
+                                    <h5 class="description-header">{{produce.valor}}</h5>
+                                    <span class="description-text">{{produce.recurso.nombre}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h5 class="text-center">Capacidad de carga por unidad</h5>
+                            </div>
+                            <div ng-repeat="capacidad in unidad.capacidad" class="col-sm-{{12 / unidad.capacidad.length | number}}">
+                                <div class="description-block">
+                                    <h5 class="description-header">{{capacidad.valor}}</h5>
+                                    <span class="description-text">{{capacidad.recurso.nombre}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
                                 <h5 class="text-center">Costos por unidad</h5>
                             </div>
                             <div ng-repeat="costo in unidad.costos" class="col-sm-{{12 / unidad.costos.length | number}}">
