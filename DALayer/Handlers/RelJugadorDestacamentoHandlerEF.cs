@@ -74,6 +74,7 @@ namespace DALayer.Handlers
         public void updateRelJugadorDestacamento(RelJugadorDestacamento rje)
         {
             RelJugadorRecursoHandlerEF jrHandler = new RelJugadorRecursoHandlerEF(ctx);
+            var relJMHandler = new RelJugadorMapaHandlerEF(ctx);
             try
             {
                 var r = ctx.RelJugadorDestacamento
@@ -92,6 +93,8 @@ namespace DALayer.Handlers
                     jrHandler.restarCompra(r.colonia.id, costos);
                     r.cantidad = rje.cantidad;
                     ctx.SaveChangesAsync().Wait();
+
+                    relJMHandler.actualizarProduccionCapacidad(r.colonia.id);
                 }
             }
             catch (Exception ex)
@@ -124,6 +127,7 @@ namespace DALayer.Handlers
         public void subirCantidadDestacamento(int id, int sube)
         {
             RelJugadorRecursoHandlerEF jrHandler = new RelJugadorRecursoHandlerEF(ctx);
+            var relJMHandler = new RelJugadorMapaHandlerEF(ctx);
             try
             {
                 var r = ctx.RelJugadorDestacamento
@@ -141,6 +145,8 @@ namespace DALayer.Handlers
                     jrHandler.restarCompra(r.colonia.id, costos);
                     r.cantidad += sube;
                     ctx.SaveChangesAsync().Wait();
+
+                    relJMHandler.actualizarProduccionCapacidad(r.colonia.id);
                 }
             }
             catch (Exception ex)

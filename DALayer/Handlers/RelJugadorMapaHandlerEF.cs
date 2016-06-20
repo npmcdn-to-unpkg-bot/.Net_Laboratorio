@@ -143,5 +143,62 @@ namespace DALayer.Handlers
 
             return colonias;
         }
+
+        public void actualizarProduccionCapacidad(int idColonia)
+        {
+            var recHandler = new RecursosHandlerEF(ctx);
+            var relJRHandler = new RelJugadorRecursoHandlerEF(ctx);
+            var relJEHandler = new RelJugadorEdificioHandlerEF(ctx);
+            var relJDHandler = new RelJugadorDestacamentoHandlerEF(ctx);
+
+            var recursosColonia = relJRHandler.getRecursosByColonia(idColonia);
+            var recursos = recHandler.getAllRecursos();
+            var edificios = relJEHandler.getEdificiosByColonia(idColonia);
+            var destacamentos = relJDHandler.getDestacamentosByColonia(idColonia);
+
+            foreach (var rc in recursosColonia)
+            {
+                var r = recursos.First(w => w.id == rc.recurso.id);
+                rc.produccionXTiempo = r.produccionXTiempo;
+                rc.capacidad = r.capacidadInicial;
+
+                foreach (var ed in edificios)
+                {
+                    if (ed.nivelE > 0)
+                    {
+                        var produce = ed.edificio.produce.FirstOrDefault(w => w.recurso.id == rc.recurso.id);
+                        if (produce != null)
+                        {
+                            rc.produccionXTiempo += produce.valor;
+                        }
+
+                        var capacidad = ed.edificio.capacidad.FirstOrDefault(w => w.recurso.id == rc.recurso.id);
+                        if (capacidad != null)
+                        {
+                            rc.capacidad += capacidad.valor;
+                        }
+                    }
+                }
+
+                foreach (var relJD in destacamentos)
+                {
+                    if (relJD.cantidad > 0)
+                    {
+                        var produce = relJD.destacamento.produce.FirstOrDefault(w => w.recurso.id == rc.recurso.id);
+                        if (produce != null)
+                        {
+                            rc.produccionXTiempo += (produce.valor * relJD.cantidad);
+                        }
+                        var almacena = relJD.destacamento.capacidad.FirstOrDefault(w => w.recurso.id == rc.recurso.id);
+                        if (almacena != null)
+                        {
+                            rc.capacidad += (almacena.valor * relJD.cantidad);
+                        }
+                    }
+                }
+
+                relJRHandler.updateRelJugadorRecurso(rc);
+            }
+        }
     }
 }

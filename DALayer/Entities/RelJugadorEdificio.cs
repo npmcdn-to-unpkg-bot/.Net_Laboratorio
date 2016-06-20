@@ -32,6 +32,7 @@ namespace DALayer.Entities
         public SharedEntities.Entities.RelJugadorEdificio getShared()
         {
             var rel = new SharedEntities.Entities.RelJugadorEdificio(id, colonia.getShared(), edificio.getShared(), nivelE, finalizaConstruccion);
+            // COSTOS
             foreach (var c in rel.edificio.costos)
             {
                 c.incrementoNivel = c.incrementoNivel / 100 + 1;
@@ -40,6 +41,39 @@ namespace DALayer.Entities
                     c.valor = Convert.ToInt32(c.valor * c.incrementoNivel);
                 }
             }
+            // CAPACIDAD
+            foreach (var c in rel.edificio.capacidad)
+            {
+                if (nivelE == 0)
+                {
+                    c.valor = 0;
+                }
+                else
+                {
+                    c.incrementoNivel = c.incrementoNivel / 100 + 1;
+                    for (int i = 1; i < rel.nivelE; i++)
+                    {
+                        c.valor = Convert.ToInt32(c.valor * c.incrementoNivel);
+                    }
+                }
+            }
+            // PRODUCCION
+            foreach (var p in rel.edificio.produce)
+            {
+                if (nivelE == 0)
+                {
+                    p.valor = 0;
+                }
+                else
+                {
+                    p.incrementoNivel = p.incrementoNivel / 100 + 1;
+                    for (int i = 1; i < rel.nivelE; i++)
+                    {
+                        p.valor = Convert.ToInt32(p.valor * p.incrementoNivel);
+                    }
+                }
+            }
+            // TIEMPO DE CONSTRUCCION SIGUIENTE NIVEL
             rel.edificio.incrementoTiempo = rel.edificio.incrementoTiempo / 100 + 1;
             for (int i = 0; i < nivelE; i++)
             {
