@@ -150,11 +150,13 @@ namespace DALayer.Handlers
             var relJRHandler = new RelJugadorRecursoHandlerEF(ctx);
             var relJEHandler = new RelJugadorEdificioHandlerEF(ctx);
             var relJDHandler = new RelJugadorDestacamentoHandlerEF(ctx);
+            var relJIHandler = new RelJugadorInvestigacionHandlerEF(ctx);
 
             var recursosColonia = relJRHandler.getRecursosByColonia(idColonia);
             var recursos = recHandler.getAllRecursos();
             var edificios = relJEHandler.getEdificiosByColonia(idColonia);
             var destacamentos = relJDHandler.getDestacamentosByColonia(idColonia);
+            var investigaciones = relJIHandler.getInvestigacionesByColonia(idColonia);
 
             foreach (var rc in recursosColonia)
             {
@@ -193,6 +195,23 @@ namespace DALayer.Handlers
                         if (almacena != null)
                         {
                             rc.capacidad += (almacena.valor * relJD.cantidad);
+                        }
+                    }
+                }
+
+                foreach (var relJI in investigaciones)
+                {
+                    if (relJI.nivel > 0)
+                    {
+                        var produce = relJI.investigacion.produce.FirstOrDefault(w => w.recurso.id == rc.recurso.id);
+                        if (produce != null)
+                        {
+                            rc.produccionXTiempo *= produce.incrementoNivel;
+                        }
+                        var capacidad = relJI.investigacion.capacidad.FirstOrDefault(w => w.recurso.id == rc.recurso.id);
+                        if (capacidad != null)
+                        {
+                            rc.capacidad = Convert.ToInt32(rc.capacidad * capacidad.incrementoNivel);
                         }
                     }
                 }

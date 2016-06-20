@@ -104,6 +104,7 @@ namespace DALayer.Handlers
         public RelJugadorInvestigacion subirNivelI(int id)
         {
             RelJugadorRecursoHandlerEF jrHandler = new RelJugadorRecursoHandlerEF(ctx);
+            var relJMHandler = new RelJugadorMapaHandlerEF(ctx);
             try
             {
                 var r = ctx.RelJugadorInvestigacion
@@ -121,6 +122,8 @@ namespace DALayer.Handlers
                     jrHandler.restarCompra(r.colonia.id, costos);
                     r.nivel += 1;
                     ctx.SaveChangesAsync().Wait();
+
+                    relJMHandler.actualizarProduccionCapacidad(r.colonia.id);
                 }
                 return r.getShared();
             }

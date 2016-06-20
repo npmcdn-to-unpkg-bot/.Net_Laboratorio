@@ -32,12 +32,45 @@ namespace DALayer.Entities
         public SharedEntities.Entities.RelJugadorInvestigacion getShared()
         {
             var rel = new SharedEntities.Entities.RelJugadorInvestigacion(id, colonia.getShared(), investigacion.getShared(), nivel, finalizaConstruccion);
+            // COSTOS
             foreach (var c in rel.investigacion.costos)
             {
                 c.incrementoNivel = c.incrementoNivel / 100 + 1;
                 for (int i = 0; i < rel.nivel; i++)
                 {
                     c.valor = Convert.ToInt32(c.valor * c.incrementoNivel);
+                }
+            }
+            // CAPACIDAD
+            foreach (var c in rel.investigacion.capacidad)
+            {
+                if (nivel == 0)
+                {
+                    c.incrementoNivel = 0;
+                }
+                else
+                {
+                    c.incrementoNivel = c.incrementoNivel / 100 + 1;
+                    for (int i = 1; i < rel.nivel; i++)
+                    {
+                        c.incrementoNivel *= c.incrementoNivel;
+                    }
+                }
+            }
+            // PRODUCCION
+            foreach (var p in rel.investigacion.produce)
+            {
+                if (nivel == 0)
+                {
+                    p.incrementoNivel = 0;
+                }
+                else
+                {
+                    p.incrementoNivel = p.incrementoNivel / 100 + 1;
+                    for (int i = 1; i < rel.nivel; i++)
+                    {
+                        p.incrementoNivel *= p.incrementoNivel;
+                    }
                 }
             }
             rel.investigacion.incrementoTiempo = rel.investigacion.incrementoTiempo / 100 + 1;
