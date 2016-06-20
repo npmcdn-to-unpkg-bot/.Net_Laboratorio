@@ -67,6 +67,7 @@ namespace DALayer.Handlers
             shared.Fecha = data.Fecha;
             shared.receiverId = data.receiverId;
             shared.requesterId = data.requesterId;
+            shared.intName = data.intName;
             return shared;
         }
         public static DALayer.Entities.Interaction SharedToData(Interaction shared)
@@ -76,6 +77,7 @@ namespace DALayer.Handlers
             data.Fecha = shared.Fecha;
             data.receiverId = shared.receiverId;
             data.requesterId = shared.requesterId;
+            data.intName = shared.intName;
             return data;
         }
        

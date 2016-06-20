@@ -39,9 +39,17 @@ namespace BLayer.Front
             string tenantId = dataMap.GetString("tenantId");
             int interactionId = System.Int32.Parse(dataMap.GetString("interactionId"));
             init(tenantId);//Set Up api tenant 
-            current = new Ataque.Clases.Ataque();//we must do this trought refelection searching by interaction.intName
+            //current = new Ataque.Clases.Ataque();//we must do this trought refelection searching by interaction.intName
 
             Interaction interaction = api.getInteractionHandler().GetInteraction(interactionId);
+            if (interaction.intName.Equals("Atacar"))
+            {
+                current = new Ataque.Clases.Ataque();
+            }
+            else if (interaction.intName.Equals("Comercio"))
+            {
+                current = new Comercio.Clases.Comercio();
+            }
             IntState intState = api.getIntStateHandler().GetIntStateByInteraction(interactionId);
             requester = GetIntFromMeta(intState.requester);
             if (intState.receiverId == -1)
@@ -82,46 +90,57 @@ namespace BLayer.Front
             }
         }
       
-        public void testExec(int interactionId) {
-            string tenantId = "newT2";
-            init(tenantId);//Set Up api tenant 
-            current = new Ataque.Clases.Ataque();//we must do this trought refelection searching by interaction.intName
+        //public void testExec(int interactionId) {
+        //    string tenantId = "newT2";
+        //    init(tenantId);//Set Up api tenant 
+        //    current = new Ataque.Clases.Ataque();//we must do this trought refelection searching by interaction.intName
 
-            Interaction interaction = api.getInteractionHandler().GetInteraction(interactionId);
-            IntState intState = api.getIntStateHandler().GetIntStateByInteraction(interactionId);
-            requester = GetIntFromMeta(intState.requester);
-            if (intState.receiverId == -1)
-            {
-                receiver = GetIntFromMeta(intState.receiver);
-            }
-            else {
-                receiver = GetIntFromId(intState.receiverId);
-            }
+        //    Interaction interaction = api.getInteractionHandler().GetInteraction(interactionId);
 
-            if (intState.state == SharedEntities.Enum.InteractionState.EXECUTING)//look for interaction state
-            {
+        //    //Aca agregue
+        //    if (interaction.intName.Equals("atacar"))
+        //    {
+        //        current = new Ataque.Clases.Ataque();
+        //    }
+        //    else if (interaction.intName.Equals("comercializar"))
+        //    {
+        //        current = new Comercio.Clases.Comercio();
+        //    }
+        //    //Aca termina el agregado
 
-                List<IInteractionable> list = current.exec(requester, receiver);
-                ApplyChanges(list);
-                IntState state = GetIntState(interactionId, receiver, requester);
-                state.state = SharedEntities.Enum.InteractionState.FINISHING;
-                api.getIntStateHandler().SaveIntState(state);
-                int time = 0;
-                if (list.Where(c => c.mustSend() || c.getReturn()).Count() > 0) {
-                    //calculo tiempo
-                }
-                //Scheduler.Scheduler.ScheduleInteraction(interactionId, time, tenantId);
-                testExec(interactionId);
+        //    IntState intState = api.getIntStateHandler().GetIntStateByInteraction(interactionId);
+        //    requester = GetIntFromMeta(intState.requester);
+        //    if (intState.receiverId == -1)
+        //    {
+        //        receiver = GetIntFromMeta(intState.receiver);
+        //    }
+        //    else {
+        //        receiver = GetIntFromId(intState.receiverId);
+        //    }
 
-            }
-            else {
-                List<IInteractionable> list = current.finalize(requester, receiver);
-                IntState state = GetIntState(interactionId, receiver, requester);
-                state.state = SharedEntities.Enum.InteractionState.FINISH;
-                api.getIntStateHandler().SaveIntState(state);
-                ApplyChanges(list);
-            }
-        }
+        //    if (intState.state == SharedEntities.Enum.InteractionState.EXECUTING)//look for interaction state
+        //    {
+        //        List<IInteractionable> list = current.exec(requester, receiver);
+        //        ApplyChanges(list);
+        //        IntState state = GetIntState(interactionId, receiver, requester);
+        //        state.state = SharedEntities.Enum.InteractionState.FINISHING;
+        //        api.getIntStateHandler().SaveIntState(state);
+        //        int time = 0;
+        //        if (list.Where(c => c.mustSend() || c.getReturn()).Count() > 0) {
+        //            //calculo tiempo
+        //        }
+        //        //Scheduler.Scheduler.ScheduleInteraction(interactionId, time, tenantId);
+        //        testExec(interactionId);
+
+        //    }
+        //    else {
+        //        List<IInteractionable> list = current.finalize(requester, receiver);
+        //        IntState state = GetIntState(interactionId, receiver, requester);
+        //        state.state = SharedEntities.Enum.InteractionState.FINISH;
+        //        api.getIntStateHandler().SaveIntState(state);
+        //        ApplyChanges(list);
+        //    }
+        //}
 
         
         internal void setRequester(IInteractionable _requester)
