@@ -42,7 +42,9 @@ namespace GameBuildPortal.ControllersFrontApi
             try
             {
                 var rel = blHandler.getRelJugadorEdificio(id);
-                Scheduler.ScheduleUpload<EdificioUpload>(WebApiConfig.tenant, DateTime.Now.ToString(), id, rel.nivelE + 1, rel.edificio.tiempoInicial * 60);
+                int tiempo = Convert.ToInt32(rel.edificio.tiempoInicial +  rel.edificio.incrementoTiempo * (rel.nivelE + 1));
+                tiempo = tiempo > 0 ? tiempo : 1;
+                Scheduler.ScheduleUpload<EdificioUpload>(WebApiConfig.tenant, DateTime.Now.ToString(), id, rel.nivelE + 1, tiempo);
                 blHandler.subirNivel(id);
             }
             catch (Exception ex)

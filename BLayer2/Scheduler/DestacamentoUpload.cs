@@ -29,7 +29,7 @@ namespace BLayer.Scheduler
             init(tenantId);
 
             var rel = api.getRelJugadorDestacamentoHandler().getRelJugadorDestacamento(relJugDestId);
-            rel.cantidad = cantidad;
+            rel.cantidad += cantidad;
             api.getRelJugadorDestacamentoHandler().executeUpdate(rel);
         }
     }
