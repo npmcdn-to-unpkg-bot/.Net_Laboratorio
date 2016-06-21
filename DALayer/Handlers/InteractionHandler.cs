@@ -36,7 +36,7 @@ namespace DALayer.Handlers
         {
             List<Interaction> ret = new List<Interaction>();
 
-            ctx.Interaction.Where(c => c.requesterId == coloniaId).ToList().ForEach((data) => {
+            ctx.Interaction.Where(c => c.requesterId == coloniaId).OrderByDescending(c => c.Fecha).ToList().ForEach((data) => {
                 ret.Add(InteractionHandler.DataToShared(data));
             });
             return ret;
