@@ -79,7 +79,12 @@ namespace GameBuildPortal.Controllers
 
             if (!ModelState.IsValid)
             {
-                return View(model);
+                SharedEntities.Entities.Configuracion conf = WebApiConfig.BuilderService(null).getConfiguracion(1);
+                LayoutViewModel data = new LayoutViewModel();
+                data.Configuracion = conf;
+                data.LoginViewModel = model;
+
+                return View(data);
             }
            
             //var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
@@ -103,7 +108,7 @@ namespace GameBuildPortal.Controllers
                     data.Configuracion = conf;
                     data.LoginViewModel = model;
 
-                    return View(model);
+                    return View(data);
             }
         }
 
