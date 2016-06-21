@@ -91,16 +91,25 @@ namespace DALayer.Handlers
 
                     List<Entities.Costo> costos = r.destacamento.calCostoXNivel(0, cant);
                     jrHandler.restarCompra(r.colonia.id, costos);
-                    r.cantidad = rje.cantidad;
                     ctx.SaveChangesAsync().Wait();
-
-                    relJMHandler.actualizarProduccionCapacidad(r.colonia.id);
                 }
             }
             catch (Exception ex)
             {
                 throw ex;
             }
+        }
+
+        public void executeUpdate (RelJugadorDestacamento rel)
+        {
+            var relJMHandler = new RelJugadorMapaHandlerEF(ctx);
+            var r = ctx.RelJugadorDestacamento
+                    .Where(w => w.id == rel.id)
+                    .SingleOrDefault();
+
+            r.cantidad = rel.cantidad;
+            ctx.SaveChangesAsync().Wait();
+            relJMHandler.actualizarProduccionCapacidad(r.colonia.id);
         }
 
         public List<RelJugadorDestacamento> getDestacamentosByColonia(int id)

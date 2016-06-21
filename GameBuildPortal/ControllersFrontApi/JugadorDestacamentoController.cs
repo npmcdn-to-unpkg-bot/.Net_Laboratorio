@@ -6,18 +6,19 @@ using System.Net.Http;
 using System.Web.Http;
 using BLayer.Interfaces;
 using SharedEntities.Entities;
+using BLayer.Scheduler;
 
 namespace GameBuildPortal.ControllersFrontApi
 {
     public class JugadorDestacamentoController : ApiController
     {
         public static IFront blHandler;
-
+        
         public JugadorDestacamentoController()
         {
             blHandler = WebApiConfig.FrontService(null);
         }
-
+        
         [HttpGet]
         public IEnumerable<RelJugadorDestacamento> GetByColonia(int id)
         {
@@ -40,6 +41,8 @@ namespace GameBuildPortal.ControllersFrontApi
 
             try
             {
+                var rel = blHandler.getRelJugadorDestacamento(rjd.id);
+                Scheduler.ScheduleUpload<DestacamentoUpload>(WebApiConfig.tenant, DateTime.Now.ToString(), rjd.id, rjd.cantidad, (rjd.cantidad - rel.cantidad) * rel.destacamento.tiempoInicial * 60);
                 blHandler.updateRelJugadorDestacamento(rjd);
             }
             catch (Exception ex)

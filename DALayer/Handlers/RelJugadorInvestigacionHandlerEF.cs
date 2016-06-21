@@ -104,7 +104,6 @@ namespace DALayer.Handlers
         public RelJugadorInvestigacion subirNivelI(int id)
         {
             RelJugadorRecursoHandlerEF jrHandler = new RelJugadorRecursoHandlerEF(ctx);
-            var relJMHandler = new RelJugadorMapaHandlerEF(ctx);
             try
             {
                 var r = ctx.RelJugadorInvestigacion
@@ -120,10 +119,8 @@ namespace DALayer.Handlers
 
                     List<Entities.Costo> costos = r.investigacion.calCostoXNivel(r.nivel, 1);
                     jrHandler.restarCompra(r.colonia.id, costos);
-                    r.nivel += 1;
                     ctx.SaveChangesAsync().Wait();
-
-                    relJMHandler.actualizarProduccionCapacidad(r.colonia.id);
+                   
                 }
                 return r.getShared();
             }
@@ -131,6 +128,19 @@ namespace DALayer.Handlers
             {
                 throw ex;
             }
+        }
+
+        public void executeSubir(int idRel)
+        {
+            var relJMHandler = new RelJugadorMapaHandlerEF(ctx);
+            var r = ctx.RelJugadorInvestigacion
+                    .Where(w => w.id == idRel)
+                    .SingleOrDefault();
+
+            r.nivel += 1;
+            ctx.SaveChangesAsync().Wait();
+
+            relJMHandler.actualizarProduccionCapacidad(r.colonia.id);
         }
 
         public void bajarNivelI(int id)

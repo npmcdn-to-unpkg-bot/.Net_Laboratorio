@@ -16,5 +16,6 @@ namespace DALayer.Interfaces
         List<RelJugadorInvestigacion> getInvestigacionesByColonia(int id);
         void bajarNivelI(int id);
         RelJugadorInvestigacion subirNivelI(int id);
+        void executeSubir(int idRel);
     }
 }

@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using BLayer.Interfaces;
 using SharedEntities.Entities;
+using BLayer.Scheduler;
 
 namespace GameBuildPortal.ControllersFrontApi
 {
@@ -40,6 +41,8 @@ namespace GameBuildPortal.ControllersFrontApi
 
             try
             {
+                var rel = blHandler.getRelJugadorInvestigacion(id);
+                Scheduler.ScheduleUpload<InvestigacionUpload>(WebApiConfig.tenant, DateTime.Now.ToString(), id, rel.nivel + 1, rel.investigacion.tiempoInicial * 60);
                 blHandler.subirNivelI(id);
             }
             catch (Exception ex)

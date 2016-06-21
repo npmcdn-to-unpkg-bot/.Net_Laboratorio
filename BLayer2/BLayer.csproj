@@ -103,6 +103,9 @@
     <Compile Include="Interfaces\ISuperAdmin.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scheduler\InvestigacionUpload.cs" />
+    <Compile Include="Scheduler\EdificioUpload.cs" />
+    <Compile Include="Scheduler\DestacamentoUpload.cs" />
     <Compile Include="Scheduler\Scheduler.cs" />
     <Compile Include="SuperAdmin\SuperAdminController.cs" />
   </ItemGroup>

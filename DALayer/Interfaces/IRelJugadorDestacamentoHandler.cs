@@ -11,6 +11,7 @@ namespace DALayer.Interfaces
     {
         void createRelJugadorDestacamento(RelJugadorDestacamento destacamento);
         void updateRelJugadorDestacamento(RelJugadorDestacamento destacamento);
+        void executeUpdate(RelJugadorDestacamento rel);
         RelJugadorDestacamento getRelJugadorDestacamento(int id);
         List<RelJugadorDestacamento> getDestacamentosByColonia(int id);
         void bajarCantidadDestacamento(int id, int baja);

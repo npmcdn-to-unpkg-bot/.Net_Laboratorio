@@ -206,7 +206,7 @@ namespace DALayer.Handlers
                         var produce = relJI.investigacion.produce.FirstOrDefault(w => w.recurso.id == rc.recurso.id);
                         if (produce != null)
                         {
-                            rc.produccionXTiempo *= produce.incrementoNivel;
+                            rc.produccionXTiempo = Convert.ToInt32(rc.produccionXTiempo * produce.incrementoNivel);
                         }
                         var capacidad = relJI.investigacion.capacidad.FirstOrDefault(w => w.recurso.id == rc.recurso.id);
                         if (capacidad != null)

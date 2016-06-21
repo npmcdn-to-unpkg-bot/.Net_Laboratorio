@@ -25,22 +25,22 @@
             <div class="modal-footer">
                 <div class="row" ng-if="investigacion.produce.length">
                     <div class="col-sm-12">
-                        <h5 class="text-center">Producci&oacute;n actual por hora</h5>
+                        <h5 class="text-center">Incremento actual de producci&oacute;n</h5>
                     </div>
                     <div ng-repeat="produce in investigacion.produce" class="col-sm-{{12 / investigacion.produce.length | number}}">
                         <div class="description-block">
-                            <h5 class="description-header">{{produce.valor}}</h5>
+                            <h5 class="description-header">{{produce.incrementoNivel}} %</h5>
                             <span class="description-text">{{produce.recurso.nombre}}</span>
                         </div>
                     </div>
                 </div>
                 <div class="row" ng-if="investigacion.capacidad.length">
                     <div class="col-sm-12">
-                        <h5 class="text-center">Capacidad de almacenamiento actual</h5>
+                        <h5 class="text-center">Incremento actual de almacenaje</h5>
                     </div>
                     <div ng-repeat="capacidad in investigacion.capacidad" class="col-sm-{{12 / investigacion.capacidad.length | number}}">
                         <div class="description-block">
-                            <h5 class="description-header">{{capacidad.valor}}</h5>
+                            <h5 class="description-header">{{capacidad.incrementoNivel}} %</h5>
                             <span class="description-text">{{capacidad.recurso.nombre}}</span>
                         </div>
                     </div>
