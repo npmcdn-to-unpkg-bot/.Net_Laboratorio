@@ -52,7 +52,7 @@
 
                     setTimeout(function () {
                         $('#mensaje-union').fadeOut();
-                    }, 3000);
+                    }, 2000);
                 });
             });
         }
@@ -67,7 +67,7 @@
 
                     setTimeout(function () {
                         $('#mensaje-salida').fadeOut();
-                    }, 3000);
+                    }, 2000);
                 });
             });
         }
@@ -82,7 +82,7 @@
 
                 setTimeout(function () {
                     $('#mensaje-borrar').fadeOut();
-                }, 3000);
+                }, 2000);
             });
         }
     }

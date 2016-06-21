@@ -625,6 +625,7 @@
     <Content Include="Content\front\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Scripts\front\js\angularfire.min.js" />
     <Content Include="Scripts\front\js\firebase.js" />
+    <Content Include="Scripts\front\js\moment.js" />
     <Content Include="Scripts\front\plugins\ckeditor\CHANGES.md" />
     <Content Include="Scripts\front\plugins\ckeditor\LICENSE.md" />
     <Content Include="Scripts\front\plugins\ckeditor\plugins\scayt\CHANGELOG.md" />
@@ -1539,6 +1540,7 @@
     <Content Include="SPA\front\services\interaccion.js" />
     <Content Include="SPA\front\services\jugador-mapa.js" />
     <Content Include="SPA\front\services\jugador-recurso.js" />
+    <Content Include="SPA\front\services\me.js" />
     <Content Include="SPA\front\views\chat.html" />
     <Content Include="SPA\front\views\crear-alianza.html" />
     <Content Include="SPA\front\views\destacamento.html" />

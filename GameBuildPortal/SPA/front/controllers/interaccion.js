@@ -166,7 +166,12 @@
 
             interaccionService.ejecutar(int).then(
                 function (data) {
+                    $('#mensaje-interaccion').fadeIn();
 
+                    setTimeout(function () {
+                        $('#mensaje-interaccion').fadeOut();
+                        window.location = '#interaccion';
+                    }, 1500);
                 }, function () {
                     
                 }
