@@ -9,6 +9,7 @@
                     <tr>
                         <th>Fecha</th>
                         <th>Jugador</th>
+                        <th>Interaccion</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -16,6 +17,7 @@
                     <tr ng-repeat="interaccion in interacciones">
                         <td>{{interaccion.Fecha | date:"dd/MM/yyyy h:mma"}}</td>
                         <td>{{interaccion.receiverId}}</td>
+                        <td>{{interaccion.intName}}</td>
                         <td>
                             <button type="button" class="btn btn-default btn-sm" ng-click="detalle(interaccion)"><i class="fa fa-search"></i></button>
                         </td>

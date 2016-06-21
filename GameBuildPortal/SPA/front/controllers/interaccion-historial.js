@@ -23,7 +23,7 @@
             initialize();
         }
 
-        $scope.mostrarInfo = function (interaccion) {
+        $scope.detalle = function (interaccion) {
             $scope.interaccion = interaccion;
             $('#modal-info-interaccion').modal('show');
         }
