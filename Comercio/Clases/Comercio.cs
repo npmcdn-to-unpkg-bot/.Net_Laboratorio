@@ -23,9 +23,6 @@ namespace Comercio.Clases
         {
             receiver.Clean();
             receiver.SetRecursos(requester.GetRecursos());
-            requester.GetRecursos().ForEach((rec) => {
-                rec.SetAmount(0);
-            });
             receiver.SetMustUpdate(true);
             requester.Return();
             return new List<IInteractionable> { requester, receiver };
@@ -33,6 +30,9 @@ namespace Comercio.Clases
 
         public List<IInteractionable> finalize(IInteractionable requester, IInteractionable receiver)
         {
+            requester.GetRecursos().ForEach((rec) => {
+                rec.SetAmount(0);
+            });
             requester.SetMustUpdate(true); 
             return new List<IInteractionable> { requester, receiver };
         }

@@ -70,6 +70,7 @@ namespace GameBuildPortal.ControllersFrontApi
                         var dest = current.Where(c => c.GetId() == f.id).FirstOrDefault();
                         if (dest != null)
                         {
+                            dest.SetAmount(f.value);
                             flota.Add(dest);
                         }
                     });
@@ -81,11 +82,11 @@ namespace GameBuildPortal.ControllersFrontApi
                 rlist.ForEach((f) =>
                 {
                     var dest = intera.requester.recurso.ToList<Tupla>().Where(c => c.id == f.GetId()).FirstOrDefault();
+                    f.SetAmount(0);
                     if (dest != null && interactionHandler.GetConfig().isReqNeedRecursos())
                     {
                         f.SetAmount(dest.value);
                     }
-
                     recurso.Add(f);
                 });
                 requester.SetRecursos(recurso);
@@ -99,6 +100,7 @@ namespace GameBuildPortal.ControllersFrontApi
                         var dest = currentRec.Where(c => c.GetId() == f.id).FirstOrDefault();
                         if (dest != null)
                         {
+                            dest.SetAmount(f.value);
                             flotaRec.Add(dest);
                         }
                     });
@@ -113,6 +115,7 @@ namespace GameBuildPortal.ControllersFrontApi
                     rlistRec.ForEach((f) =>
                     {
                         var dest = intera.receiver.recurso.ToList<Tupla>().Where(c => c.id == f.GetId()).FirstOrDefault();
+                        f.SetAmount(0);
                         if (dest != null && interactionHandler.GetConfig().isRecNeedRecursos())
                         {
                             f.SetAmount(dest.value);
