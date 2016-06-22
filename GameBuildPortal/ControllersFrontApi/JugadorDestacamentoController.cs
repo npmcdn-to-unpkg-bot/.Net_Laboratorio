@@ -42,8 +42,10 @@ namespace GameBuildPortal.ControllersFrontApi
             try
             {
                 var rel = blHandler.getRelJugadorDestacamento(rjd.id);
-                Scheduler.ScheduleUpload<DestacamentoUpload>(WebApiConfig.tenant, DateTime.Now.ToString(), rjd.id, rjd.cantidad, rjd.cantidad * rel.destacamento.tiempoInicial);
+                var cant = rjd.cantidad - rel.cantidad;
+                Scheduler.ScheduleUpload<DestacamentoUpload>(WebApiConfig.tenant, DateTime.Now.ToString(), rjd.id, cant, cant * rel.destacamento.tiempoInicial);
                 blHandler.updateRelJugadorDestacamento(rjd);
+                //blHandler.executeUpdateRelJD(rjd);
             }
             catch (Exception ex)
             {

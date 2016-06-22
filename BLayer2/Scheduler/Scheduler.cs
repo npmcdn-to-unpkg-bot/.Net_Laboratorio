@@ -46,9 +46,9 @@ namespace BLayer.Scheduler
             // create job
             IJobDetail job = JobBuilder.Create<T>()
                     .WithIdentity(jobId, jobId)
-                    .UsingJobData("relJugId", relId.ToString())
+                    .UsingJobData("relId", relId.ToString())
                     .UsingJobData("tenantId", tenantId)
-                    .UsingJobData("cantidad", newlevel.ToString())
+                    .UsingJobData("newlevel", newlevel.ToString())
                     .Build();
 
             ISimpleTrigger trigger = (ISimpleTrigger)TriggerBuilder.Create()

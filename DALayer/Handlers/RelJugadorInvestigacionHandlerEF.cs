@@ -114,7 +114,7 @@ namespace DALayer.Handlers
                 {
                     var inv = r.getShared();
                     DateTime ahora = DateTime.Now;
-                    TimeSpan tConstruccion = TimeSpan.FromMinutes(inv.investigacion.tiempoInicial);
+                    TimeSpan tConstruccion = TimeSpan.FromSeconds(inv.investigacion.tiempoInicial);
                     r.finalizaConstruccion = ahora.Add(tConstruccion);
 
                     List<Entities.Costo> costos = r.investigacion.calCostoXNivel(r.nivel, 1);

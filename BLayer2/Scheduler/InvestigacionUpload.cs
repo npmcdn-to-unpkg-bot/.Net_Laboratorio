@@ -24,10 +24,10 @@ namespace BLayer.Scheduler
         {
             JobDataMap dataMap = context.JobDetail.JobDataMap;
             string tenantId = dataMap.GetString("tenantId");
-            int idRel = System.Int32.Parse(dataMap.GetString("relJugId"));
+            int relId = System.Int32.Parse(dataMap.GetString("relId"));
             init(tenantId);
 
-            api.getRelJugadorInvestigacionHandler().executeSubir(idRel);
+            api.getRelJugadorInvestigacionHandler().executeSubir(relId);
         }
     }
 }

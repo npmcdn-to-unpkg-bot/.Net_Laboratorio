@@ -24,13 +24,13 @@ namespace BLayer.Scheduler
         {
             JobDataMap dataMap = context.JobDetail.JobDataMap;
             string tenantId = dataMap.GetString("tenantId");
-            int relJugDestId = System.Int32.Parse(dataMap.GetString("relJugId"));
-            int cantidad = System.Int32.Parse(dataMap.GetString("cantidad"));
+            int relId = System.Int32.Parse(dataMap.GetString("relId"));
+            int cantidad = System.Int32.Parse(dataMap.GetString("newlevel"));
             init(tenantId);
 
-            var rel = api.getRelJugadorDestacamentoHandler().getRelJugadorDestacamento(relJugDestId);
-            rel.cantidad += cantidad;
-            api.getRelJugadorDestacamentoHandler().executeUpdate(rel);
+            var rel = api.getRelJugadorDestacamentoHandler().getRelJugadorDestacamento(relId);
+            rel.cantidad = cantidad;
+            api.getRelJugadorDestacamentoHandler().executeUpdateRelJD(rel);
         }
     }
 }

@@ -69,7 +69,7 @@ namespace DALayer.Handlers
                 {
                     var edi = r.getShared();
                     DateTime ahora = DateTime.Now;
-                    TimeSpan tConstruccion = TimeSpan.FromMinutes(edi.edificio.tiempoInicial);
+                    TimeSpan tConstruccion = TimeSpan.FromSeconds(edi.edificio.tiempoInicial);
                     r.finalizaConstruccion = ahora.Add(tConstruccion);
 
                     List<Entities.Costo> costos = r.edificio.calCostoXNivel(r.nivelE, 1);
@@ -85,7 +85,7 @@ namespace DALayer.Handlers
             }
         }
 
-        public void executeSubir (int idRel)
+        public void executeSubirRelJE (int idRel)
         {
             var relJMHandler = new RelJugadorMapaHandlerEF(ctx);
 

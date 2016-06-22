@@ -50,11 +50,7 @@ namespace DALayer.Entities
                 }
                 else
                 {
-                    c.incrementoNivel = c.incrementoNivel / 100 + 1;
-                    for (int i = 1; i < rel.nivel; i++)
-                    {
-                        c.incrementoNivel *= c.incrementoNivel;
-                    }
+                    c.incrementoNivel *= rel.nivel;
                 }
             }
             // PRODUCCION
@@ -66,11 +62,7 @@ namespace DALayer.Entities
                 }
                 else
                 {
-                    p.incrementoNivel = p.incrementoNivel / 100 + 1;
-                    for (int i = 1; i < rel.nivel; i++)
-                    {
-                        p.incrementoNivel *= p.incrementoNivel;
-                    }
+                    p.incrementoNivel *= rel.nivel;
                 }
             }
             rel.investigacion.incrementoTiempo = rel.investigacion.incrementoTiempo / 100 + 1;

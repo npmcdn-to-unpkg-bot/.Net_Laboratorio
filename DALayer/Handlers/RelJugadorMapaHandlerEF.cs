@@ -206,12 +206,12 @@ namespace DALayer.Handlers
                         var produce = relJI.investigacion.produce.FirstOrDefault(w => w.recurso.id == rc.recurso.id);
                         if (produce != null)
                         {
-                            rc.produccionXTiempo = Convert.ToInt32(rc.produccionXTiempo * produce.incrementoNivel);
+                            rc.produccionXTiempo = Convert.ToInt32(rc.produccionXTiempo * (produce.incrementoNivel / 100 +1));
                         }
                         var capacidad = relJI.investigacion.capacidad.FirstOrDefault(w => w.recurso.id == rc.recurso.id);
                         if (capacidad != null)
                         {
-                            rc.capacidad = Convert.ToInt32(rc.capacidad * capacidad.incrementoNivel);
+                            rc.capacidad = Convert.ToInt32(rc.capacidad * (capacidad.incrementoNivel / 100 +1));
                         }
                     }
                 }

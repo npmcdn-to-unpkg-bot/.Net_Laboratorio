@@ -89,9 +89,14 @@ namespace BLayer.Front
             builder.getRelJugadorEdificioHandler().createRelJugadorEdificio(reljugadoredificio);
         }
 
-        public RelJugadorEdificio subirNivel(int id)
+        public RelJugadorEdificio subirNivelRelJE(int id)
         {
             return builder.getRelJugadorEdificioHandler().subirNivel(id);
+        }
+
+        public void executeSubirRelJE(int idRel)
+        {
+            builder.getRelJugadorEdificioHandler().executeSubirRelJE(idRel);
         }
 
         public void bajarNivel(int id)
@@ -133,6 +138,11 @@ namespace BLayer.Front
         public RelJugadorInvestigacion subirNivelI(int id)
         {
             return builder.getRelJugadorInvestigacionHandler().subirNivelI(id);
+        }
+
+        public void executeSubirRelJI(int idRel)
+        {
+            builder.getRelJugadorInvestigacionHandler().executeSubir(idRel);
         }
 
         public void bajarNivelI(int id)
@@ -195,6 +205,11 @@ namespace BLayer.Front
         public void subirCantidadDestacamento(int id, int sube)
         {
             builder.getRelJugadorDestacamentoHandler().subirCantidadDestacamento(id, sube);
+        }
+
+        public void executeUpdateRelJD(RelJugadorDestacamento rel)
+        {
+            builder.getRelJugadorDestacamentoHandler().executeUpdateRelJD(rel);
         }
 
         public void bajarCantidadDestacamento(int id, int baja)
@@ -275,5 +290,6 @@ namespace BLayer.Front
         {
             return builder.getUsuarioHandler().getJugador(id);
         }
+
     }
 }

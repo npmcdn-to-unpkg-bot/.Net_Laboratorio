@@ -86,7 +86,7 @@ namespace DALayer.Handlers
                     var dest = r.getShared();
                     var cant = rje.cantidad - r.cantidad;
                     DateTime ahora = DateTime.Now;
-                    TimeSpan tConstruccion = TimeSpan.FromMinutes(dest.destacamento.tiempoInicial * cant);
+                    TimeSpan tConstruccion = TimeSpan.FromSeconds(dest.destacamento.tiempoInicial * cant);
                     r.finalizaConstruccion = ahora.Add(tConstruccion);
 
                     List<Entities.Costo> costos = r.destacamento.calCostoXNivel(0, cant);
@@ -100,14 +100,14 @@ namespace DALayer.Handlers
             }
         }
 
-        public void executeUpdate (RelJugadorDestacamento rel)
+        public void executeUpdateRelJD (RelJugadorDestacamento rel)
         {
             var relJMHandler = new RelJugadorMapaHandlerEF(ctx);
             var r = ctx.RelJugadorDestacamento
                     .Where(w => w.id == rel.id)
                     .SingleOrDefault();
 
-            r.cantidad = rel.cantidad;
+            r.cantidad += rel.cantidad;
             ctx.SaveChangesAsync().Wait();
             relJMHandler.actualizarProduccionCapacidad(r.colonia.id);
         }
