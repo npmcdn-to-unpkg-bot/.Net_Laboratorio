@@ -41,7 +41,7 @@ namespace DALayer
                 first = false;
 
             }
-            tenant = "newT2";
+            tenant = tenant ==null?"newT2":tenant;
             string connectionStr = SchemaHandler.getTenantConnectionString(tenant);
 
             TenantContext t;
@@ -59,10 +59,6 @@ namespace DALayer
                         Juego newJuego = new Juego();
                         //newJuego.id = Guid.NewGuid();
                         newJuego.dominio = "domino" + tenant;
-                        using (StreamWriter w = File.AppendText(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System), "drivers/etc/hosts")))
-                        {
-                            w.WriteLine("127.0.0.1 "+tenant+".atlas2.com");
-                        }
                         newJuego.nombreJuego = tenant;
                         ctx.Juego.Add(newJuego);
                         ctx.SaveChangesAsync().Wait();

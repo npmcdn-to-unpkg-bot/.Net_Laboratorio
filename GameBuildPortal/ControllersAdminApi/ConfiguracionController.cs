@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using GameBuildPortal.Controllers;
 
 namespace GameBuildPortal.ControllersAdminApi
 {
@@ -16,7 +17,7 @@ namespace GameBuildPortal.ControllersAdminApi
 
         public ConfiguracionController()
         {
-            blHandler = WebApiConfig.BuilderService(null);
+            blHandler = WebApiConfig.BuilderService(Tenantcontroller.tenant);
         }
 
         [HttpGet]

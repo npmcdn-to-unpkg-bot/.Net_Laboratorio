@@ -30,8 +30,9 @@ namespace GameBuildPortal.Controllers
                 if (!UHelper.isAdmin)
                 {
                    
-                    WebApiConfig.BuilderService(null).registerLogin(id);
-                    SharedEntities.Entities.Configuracion conf = WebApiConfig.BuilderService(null).getConfiguracion(1);
+                    WebApiConfig.BuilderService(Tenantcontroller.tenant).registerLogin(id);
+                    SharedEntities.Entities.Ui ui = WebApiConfig.BuilderService(Tenantcontroller.tenant).getUi(1);
+
 
                     LayoutViewModel model = new LayoutViewModel();
                     model.Configuracion = conf;

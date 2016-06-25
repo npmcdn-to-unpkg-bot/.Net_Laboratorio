@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using BLayer.Interfaces;
 using SharedEntities.Entities;
+using GameBuildPortal.Controllers;
 
 namespace GameBuildPortal.ControllersApi
 {
@@ -15,7 +16,7 @@ namespace GameBuildPortal.ControllersApi
 
         public MapaController()
         {
-            blHandler = WebApiConfig.BuilderService(null);
+            blHandler = WebApiConfig.BuilderService(Tenantcontroller.tenant);
         }
 
         [HttpGet]

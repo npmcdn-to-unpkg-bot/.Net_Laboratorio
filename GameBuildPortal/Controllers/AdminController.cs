@@ -1,6 +1,7 @@
 ﻿using DALayer.Entities;
 using GameBuildPortal.Models;
 using GameBuildPortal.Modules;
+using GameBuildPortal.Filters;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using System;

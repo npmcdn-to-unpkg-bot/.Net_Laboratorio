@@ -65,7 +65,7 @@ namespace DALayer
             string loginName = getTenantPass(tenantID);
             string userName = getTenantUser(tenantID);
 
-            string loginSql = String.Format("CREATE LOGIN {0} WITH PASSWORD = '{1}', DEFAULT_DATABASE=[{2}]", tenantID, loginName, DATA_BASE_NAME);
+            string loginSql = String.Format("CREATE LOGIN {0} WITH PASSWORD = '{1}', CHECK_POLICY = OFF, DEFAULT_DATABASE=[{2}]", tenantID, loginName, DATA_BASE_NAME);
             string userSql = String.Format("CREATE USER {0} for login {1}", userName, tenantID);
             string grantRoleSql = String.Format("ALTER ROLE[db_owner] ADD MEMBER[{0}]", userName);
             string tenantSql = String.Format("CREATE SCHEMA {0} AUTHORIZATION {1}", tenantID, userName);

@@ -188,7 +188,7 @@ namespace GameBuildPortal.Controllers
                 {
                     var usShared  = new SharedEntities.Entities.Jugador();
                     usShared.id = us.Id;
-                    WebApiConfig.BuilderService(null).inicializarJugador(usShared);
+                    WebApiConfig.BuilderService(Tenantcontroller.tenant).inicializarJugador(usShared);
                     await SignInManager.SignInAsync(us, isPersistent: false, rememberBrowser: false);
 
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
