@@ -11,6 +11,7 @@ using Newtonsoft.Json;
 using InteractionSdk.Interfaces;
 using SharedEntities.Entities;
 using Microsoft.AspNet.Identity;
+using GameBuildPortal.Controllers;
 
 namespace GameBuildPortal.ControllersFrontApi
 {
@@ -21,8 +22,8 @@ namespace GameBuildPortal.ControllersFrontApi
 
         public InteraccionesController()
         {
-            blHandler = WebApiConfig.FrontService(null);
-            interactionHandler = WebApiConfig.InteractionService(null);
+            blHandler = WebApiConfig.FrontService(Tenantcontroller.tenant);
+            interactionHandler = WebApiConfig.InteractionService(Tenantcontroller.tenant);
         }
 
         [HttpGet]

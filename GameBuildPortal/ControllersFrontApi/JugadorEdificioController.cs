@@ -7,6 +7,7 @@ using System.Web.Http;
 using BLayer.Interfaces;
 using SharedEntities.Entities;
 using BLayer.Scheduler;
+using GameBuildPortal.Controllers;
 
 namespace GameBuildPortal.ControllersFrontApi
 {
@@ -16,7 +17,7 @@ namespace GameBuildPortal.ControllersFrontApi
 
         public JugadorEdificioController()
         {
-            blHandler = WebApiConfig.FrontService(null);
+            blHandler = WebApiConfig.FrontService(Tenantcontroller.tenant);
         }
 
         [HttpGet]
@@ -42,7 +43,7 @@ namespace GameBuildPortal.ControllersFrontApi
             try
             {
                 var rel = blHandler.getRelJugadorEdificio(id);
-                Scheduler.ScheduleUpload<EdificioUpload>(WebApiConfig.tenant, DateTime.Now.ToString(), id, rel.nivelE + 1, rel.edificio.tiempoInicial);
+                Scheduler.ScheduleUpload<EdificioUpload>(Tenantcontroller.tenant, DateTime.Now.ToString(), id, rel.nivelE + 1, rel.edificio.tiempoInicial);
                 blHandler.subirNivelRelJE(id);
                 //blHandler.executeSubirRelJE(id);
             }

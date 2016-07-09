@@ -17,7 +17,6 @@ using System.Web.Mvc;
 
 namespace GameBuildPortal.Controllers
 {
-    [RequireHttps]
     public class HomeController : Controller
     {
         public ActionResult Index()
@@ -30,8 +29,8 @@ namespace GameBuildPortal.Controllers
                 if (!UHelper.isAdmin)
                 {
                    
-                    WebApiConfig.BuilderService(null).registerLogin(id);
-                    SharedEntities.Entities.Configuracion conf = WebApiConfig.BuilderService(null).getConfiguracion(1);
+                    WebApiConfig.BuilderService(Tenantcontroller.tenant).registerLogin(id);
+                    SharedEntities.Entities.Configuracion conf = WebApiConfig.BuilderService(Tenantcontroller.tenant).getConfiguracion(1);
 
                     LayoutViewModel model = new LayoutViewModel();
                     model.Configuracion = conf;
@@ -61,7 +60,7 @@ namespace GameBuildPortal.Controllers
             //    }
             //}
 
-            SharedEntities.Entities.Configuracion conf = WebApiConfig.BuilderService(null).getConfiguracion(1);
+            SharedEntities.Entities.Configuracion conf = WebApiConfig.BuilderService(Tenantcontroller.tenant).getConfiguracion(1);
 
             LayoutViewModel model = new LayoutViewModel();
             model.Configuracion = conf;

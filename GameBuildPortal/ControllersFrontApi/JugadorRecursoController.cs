@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using BLayer.Interfaces;
 using SharedEntities.Entities;
+using GameBuildPortal.Controllers;
 
 namespace GameBuildPortal.ControllersFrontApi
 {
@@ -15,7 +16,7 @@ namespace GameBuildPortal.ControllersFrontApi
 
         public JugadorRecursoController()
         {
-            blHandler = WebApiConfig.FrontService(null);
+            blHandler = WebApiConfig.FrontService(Tenantcontroller.tenant);
         }
 
         [HttpGet]

@@ -15,7 +15,7 @@ namespace GameBuildPortal.Controllers
     {
         public ActionResult Login()
         {
-            SharedEntities.Entities.Configuracion conf = WebApiConfig.BuilderService(null).getConfiguracion(1);
+            SharedEntities.Entities.Configuracion conf = WebApiConfig.BuilderService(Tenantcontroller.tenant).getConfiguracion(1);
 
             LayoutViewModel model = new LayoutViewModel();
             model.Configuracion = conf;
@@ -31,7 +31,7 @@ namespace GameBuildPortal.Controllers
 
             if (UHelper.isAdmin)
             {
-                SharedEntities.Entities.Configuracion conf = WebApiConfig.BuilderService(null).getConfiguracion(1);
+                SharedEntities.Entities.Configuracion conf = WebApiConfig.BuilderService(Tenantcontroller.tenant).getConfiguracion(1);
 
                 LayoutViewModel model = new LayoutViewModel();
                 model.Configuracion = conf;

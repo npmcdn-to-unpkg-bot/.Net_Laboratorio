@@ -36,7 +36,7 @@ namespace SuperAdmin.Controllers
             
         }
         public void sendEmail(string email, string content){
-            String body = String.Format("<a href='atlas2.com{0}'>click here</a>", content);
+            String body = String.Format("<a href='moskters.com{0}'>click here</a>", content);
 
             SmtpClient client = new SmtpClient();
             client.Port = 587;

@@ -42,7 +42,7 @@ namespace BLayer.Front
             //current = new Ataque.Clases.Ataque();//we must do this trought refelection searching by interaction.intName
 
             Interaction interaction = api.getInteractionHandler().GetInteraction(interactionId);
-            if (interaction.intName.Equals("Atacar"))
+            if (interaction.intName.Equals("Ataque"))
             {
                 current = new Ataque.Clases.Ataque();
             }

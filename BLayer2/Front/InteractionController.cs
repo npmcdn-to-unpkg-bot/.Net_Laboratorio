@@ -12,12 +12,14 @@ namespace BLayer.Front
     {
         private IApi builder;
         private IInteraction current;
+        private String tenantName;
 
         public InteractionController(string tId, IApi gc)
         {
             builder = gc;
             tId = tId.Replace(" ", "_");
             builder.setTenant(tId);
+            tenantName = tId;
 
             // testIntearction();
 
@@ -42,7 +44,7 @@ namespace BLayer.Front
 
         public void InitializeInteraction(IInteractionable requester, IInteractionable receiver)
         {
-            InteractionEngine engine = new InteractionEngine(current, "newT2");
+            InteractionEngine engine = new InteractionEngine(current, tenantName);
             engine.setRequester(requester);
             engine.setReceiver(receiver);
             engine.start();

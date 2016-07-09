@@ -6,6 +6,7 @@ using SharedEntities.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -71,23 +72,35 @@ namespace GameBuildPortal.Controllers
         }
 
         [HttpPost]
-        public async System.Threading.Tasks.Task<ActionResult> Create(ActivateGame g)
+        public RedirectToRouteResult Create(ActivateGame g)
         {
             //validar si juego existe
             //si juego no existe 
             //creo el tenant
             WebApiConfig.BuilderService(g.nombreJuego);
-            DALayer.Entities.Usuario us = new DALayer.Entities.Admin { UserName = g.Email, Email = g.Email, apellido = g.apellido, telefono = g.teléfono, CreatedDate = DateTime.Now};
+            Tenantcontroller.tenant = g.nombreJuego;
+            Tenantcontroller.game = g;
+            return RedirectToAction("ProcessUser", "Activate");
+}
+
+        public ActionResult ProcessUser()
+        {
+            return Task.Run(RedirectToRealAction).Result;
+        }
+
+        public async Task<ActionResult> RedirectToRealAction()
+        {
+            ActivateGame g = Tenantcontroller.game;
+            DALayer.Entities.Usuario us = new DALayer.Entities.Admin { UserName = g.Email, Email = g.Email, apellido = g.apellido, telefono = g.teléfono, CreatedDate = DateTime.Now };
+            HttpContext.GetOwinContext().Get<ActivateController>();
             var result = await UserManager.CreateAsync(us, g.Password);
             if (result.Succeeded)
             {
-                await SignInManager.SignInAsync(us, isPersistent: false, rememberBrowser: false);
-
-                //agregar configuraciones por defecto
                 Configuracion conf = new Configuracion(0, "", g.nombreJuego, g.nombreJuego, null, null);
-                WebApiConfig.BuilderService(null).createConf(conf);
+                WebApiConfig.BuilderService(Tenantcontroller.tenant).createConf(conf);
+                Response.BufferOutput = true;
+                return Redirect("http://"+Tenantcontroller.tenant + ".moskters.com/admin/index");
 
-                return RedirectToAction("Index", "Admin");
             }
 
             AddErrors(result);

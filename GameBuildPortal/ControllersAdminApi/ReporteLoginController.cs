@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using GameBuildPortal.Controllers;
 
 namespace GameBuildPortal.ControllersAdminApi
 {
@@ -13,7 +14,7 @@ namespace GameBuildPortal.ControllersAdminApi
         // GET: api/ReporteLogin
         public IEnumerable<object> Get()
         {
-            IAdmin builder = WebApiConfig.BuilderService(null);
+            IAdmin builder = WebApiConfig.BuilderService(Tenantcontroller.tenant);
             List<object> res = builder.getReporteLogin();
             return res;
         }
