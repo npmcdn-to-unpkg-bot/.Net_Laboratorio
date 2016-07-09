@@ -91,7 +91,7 @@ namespace GameBuildPortal.Controllers
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            var result = await SignInManager.PasswordSignInAsync(model.Usuario, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -182,7 +182,7 @@ namespace GameBuildPortal.Controllers
 
             if (ModelState.IsValid)
             { 
-                Usuario us = new Jugador { UserName = model.Email, Email = model.Email , CreatedDate = DateTime.Now };
+                Usuario us = new Jugador { UserName = model.Usuario, Email = model.Email , CreatedDate = DateTime.Now };
                 var result = await UserManager.CreateAsync(us, model.Password);
                 if (result.Succeeded)
                 {
