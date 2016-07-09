@@ -152,6 +152,8 @@ namespace DALayer.Handlers
             var relJDHandler = new RelJugadorDestacamentoHandlerEF(ctx);
             var relJIHandler = new RelJugadorInvestigacionHandlerEF(ctx);
 
+            relJRHandler.calcularRecursosByIdCol(idColonia);
+
             var recursosColonia = relJRHandler.getRecursosByColonia(idColonia);
             var recursos = recHandler.getAllRecursos();
             var edificios = relJEHandler.getEdificiosByColonia(idColonia);

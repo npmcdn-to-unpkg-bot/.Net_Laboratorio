@@ -67,13 +67,19 @@ namespace DALayer.Handlers
 
                 if (r != null)
                 {
+                    Boolean compro;
                     var edi = r.getShared();
+
+                    List<Entities.Costo> costos = r.edificio.calCostoXNivel(r.nivelE, 1);
+                    compro = jrHandler.restarCompra(r.colonia.id, costos);
+                    if (compro == false)
+                    {
+                        return null;
+                    }
+
                     DateTime ahora = DateTime.Now;
                     TimeSpan tConstruccion = TimeSpan.FromSeconds(edi.edificio.tiempoInicial);
                     r.finalizaConstruccion = ahora.Add(tConstruccion);
-
-                    List<Entities.Costo> costos = r.edificio.calCostoXNivel(r.nivelE, 1);
-                    jrHandler.restarCompra(r.colonia.id, costos);
                     
                     ctx.SaveChangesAsync().Wait();
                 }

@@ -192,9 +192,9 @@ namespace BLayer.Front
             builder.getRelJugadorDestacamentoHandler().createRelJugadorDestacamento(reljugadordestacamento);
         }
 
-        public void updateRelJugadorDestacamento(RelJugadorDestacamento reljugadoredificio)
+        public Boolean updateRelJugadorDestacamento(RelJugadorDestacamento reljugadoredificio)
         {
-            builder.getRelJugadorDestacamentoHandler().updateRelJugadorDestacamento(reljugadoredificio);
+            return builder.getRelJugadorDestacamentoHandler().updateRelJugadorDestacamento(reljugadoredificio);
         }
 
         public List<RelJugadorDestacamento> getDestacamentosByColonia(int id)

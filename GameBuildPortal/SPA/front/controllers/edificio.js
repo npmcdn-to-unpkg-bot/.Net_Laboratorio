@@ -53,6 +53,7 @@
                         edificio.enConstruccion = true;
                     }, function () {
                         $scope.showLoading = null;
+                        alert("Recursos insuficientes");
                     }
                 );
             }, 2000);

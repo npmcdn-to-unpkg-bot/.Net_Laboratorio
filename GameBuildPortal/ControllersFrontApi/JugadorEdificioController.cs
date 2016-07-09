@@ -41,9 +41,16 @@ namespace GameBuildPortal.ControllersFrontApi
             
             try
             {
-                var rel = blHandler.getRelJugadorEdificio(id);
-                Scheduler.ScheduleUpload<EdificioUpload>(WebApiConfig.tenant, DateTime.Now.ToString(), id, rel.nivelE + 1, rel.edificio.tiempoInicial);
-                blHandler.subirNivelRelJE(id);
+                var compro = blHandler.subirNivelRelJE(id);
+                if (compro != null)
+                {
+                    var rel = blHandler.getRelJugadorEdificio(id);
+                    Scheduler.ScheduleUpload<EdificioUpload>(WebApiConfig.tenant, DateTime.Now.ToString(), id, rel.nivelE + 1, rel.edificio.tiempoInicial);
+                }
+                else
+                {
+                    return Request.CreateErrorResponse(HttpStatusCode.NotAcceptable, "Recursos insuficientes");
+                }
                 //blHandler.executeSubirRelJE(id);
             }
             catch (Exception ex)
