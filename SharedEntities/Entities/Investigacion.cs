@@ -8,13 +8,13 @@ namespace SharedEntities.Entities
 {
     public class Investigacion : Producto
     {
-        public Investigacion(int id, string name, string description, byte[] photo, List<Costo> cost, List<Capacidad> capacidad,
+        public Investigacion(int id, string name, string description, string foto, List<Costo> cost, List<Capacidad> capacidad,
             List<Produce> produce, int tInicial, float incrementoT)
         {
             this.id = id;
             this.nombre = name;
             this.descripcion = description;
-            this.foto = photo;
+            this.foto = foto;
             this.costos = cost;
             this.tiempoInicial = tInicial;
             this.incrementoTiempo = incrementoT;
