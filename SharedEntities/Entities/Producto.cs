@@ -7,7 +7,7 @@ namespace SharedEntities.Entities
         public int id;
         public string nombre;
         public string descripcion;
-        public byte[] foto;
+        public string foto;
         public List<Costo> costos;
         public List<Capacidad> capacidad;
         public int tiempoInicial;

@@ -11,12 +11,12 @@ namespace SharedEntities.Entities
         public float velocidad;
         public Boolean enMision;
 
-        public Destacamento(int id, string description, byte[] photo, float ataque, float escudo, float efectividadAtaque, float vida, float velocidad, 
+        public Destacamento(int id, string description, string foto, float ataque, float escudo, float efectividadAtaque, float vida, float velocidad, 
                             Boolean enMission, string name, List<Costo> costos, List<Capacidad> capacidad, List<Produce> produce, int tInicial, float incrementoT)
         {
             this.id = id;
             this.descripcion = description;
-            this.foto = photo; 
+            this.foto = foto; 
             this.ataque = ataque;
             this.escudo = escudo;
             this.efectividadAtaque = efectividadAtaque;

@@ -239,6 +239,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="ControllersAdminApi\CapacidadController.cs" />
+    <Compile Include="ControllersAdminApi\ImagenesController.cs" />
     <Compile Include="ControllersAdminApi\CostoController.cs" />
     <Compile Include="ControllersAdminApi\DependenciaController.cs" />
     <Compile Include="ControllersAdminApi\DestacamentoController.cs" />

@@ -8,7 +8,7 @@ namespace SharedEntities.Entities
 {
     public class Edificio: Unidad
     {
-        public Edificio(int id, string descripcion, byte[] foto, float ataque, float escudo, float efectividadAtaque, float vida,
+        public Edificio(int id, string descripcion, string foto, float ataque, float escudo, float efectividadAtaque, float vida,
                         string nombre, List<Costo> costos, List<Capacidad> capacidad, List<Produce> produce, int tInicial, float incrementoT)
         {
             this.id = id;

@@ -7,9 +7,9 @@
         public int cantInicial;
         public int capacidadInicial;
         public int produccionXTiempo;
-        public byte[] foto; 
+        public string foto; 
 
-        public Recurso(int id, string nombre, string description, int cantInicial, int capacidadInicial, int produccionXTiempo, byte[] foto)
+        public Recurso(int id, string nombre, string description, int cantInicial, int capacidadInicial, int produccionXTiempo, string foto)
         {
             this.id = id;
             this.nombre = nombre;
