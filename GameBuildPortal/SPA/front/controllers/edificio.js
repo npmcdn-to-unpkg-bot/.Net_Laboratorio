@@ -45,7 +45,7 @@
 
         $scope.subirNivel = function (edificio) {
             $scope.showLoading = edificio.id;
-            toastr.error("Recursos insuficientes");
+
             setTimeout(function () {
                 jugadorEdificioService.subirNivel(edificio.relId).then(
                     function (data) {
