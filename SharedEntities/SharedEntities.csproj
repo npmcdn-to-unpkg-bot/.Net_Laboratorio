@@ -53,6 +53,7 @@
     <Compile Include="Entities\Interactuable.cs" />
     <Compile Include="Entities\InteractuableDT.cs" />
     <Compile Include="Entities\InteractuableMetadata.cs" />
+    <Compile Include="Entities\IntReporte.cs" />
     <Compile Include="Entities\IntState.cs" />
     <Compile Include="Entities\Investigacion.cs" />
     <Compile Include="Entities\Juego.cs" />
@@ -71,6 +72,7 @@
     <Compile Include="Entities\SolicitudJuego.cs" />
     <Compile Include="Entities\Dependencia.cs" />
     <Compile Include="Entities\Configuracion.cs" />
+    <Compile Include="Entities\States.cs" />
     <Compile Include="Entities\Tupla.cs" />
     <Compile Include="Entities\Unidad.cs" />
     <Compile Include="Entities\Usuario.cs" />

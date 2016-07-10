@@ -27,5 +27,10 @@ namespace DALayer.Contexts
             var filter = Builders<BsonDocument>.Filter.Eq("interactionId", interactionId);
             return this.collection.Find(filter).ToList().Last();
         }
+        public List<BsonDocument> GetAllIntState(int interactionId)
+        {
+            var filter = Builders<BsonDocument>.Filter.Eq("interactionId", interactionId);
+            return this.collection.Find(filter).ToList();
+        }
     }
 }

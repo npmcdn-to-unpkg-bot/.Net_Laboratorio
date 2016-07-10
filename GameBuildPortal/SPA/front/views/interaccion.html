@@ -19,7 +19,7 @@
                         <td>{{interaccion.Fecha | date:"dd/MM/yyyy hh:mm"}}</td>
                         <td>{{interaccion.receiverId}}</td>
                         <td>
-                            <button type="button" class="btn btn-default btn-sm" ng-click="detalle(interaccion)"><i class="fa fa-search"></i></button>
+                            <button type="button" class="btn btn-default btn-sm" ng-click="getReporte(interaccion)"><i class="fa fa-search"></i></button>
                         </td>
                     </tr>
                 </tbody>
@@ -36,13 +36,87 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title">Proximamente</h4>
+                <h4 class="modal-title">Interacion fecha {{reporte.Fecha | date:"dd/MM/yyyy hh:mm"}}</h4>
             </div>
             <div class="modal-body">
-                Proximamente se implementaran estas opciones...
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Cerrar</button>
+                <h3>Resumen</h3>
+                <div class="box-body">
+                    <div class="table-responsive mailbox-messages">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Jugador 1</th>
+                                    <th>Jugador 2</th>
+                                    <th>Ganador</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>{{reporte.requester}}</td>
+                                    <td>{{reporte.receiver}}</td>
+                                    <td>{{reporte.winner}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <h3>Informe</h3>
+                <div class="box-body" ng-repeat="state in reporte.states | orderBy: 'state'">
+                    <div>Round: {{state.state}}</div>
+                    <div class="table-responsive mailbox-messages">
+                        <h3>Jugador 1</h3>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Defensa</th>
+                                    <th>Flota</th>
+                                    <th>Recursos</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div ng-repeat="defensa in state.req.defensa">({{defensa.cantidad}} - {{defensa.destacamento.nombre}})</div>
+                                    </td>
+                                    <td>
+                                        <div ng-repeat="flota in state.req.flota">({{flota.cantidad}} - {{flota.destacamento.nombre}})</div>
+                                    </td>
+                                    <td>
+                                        <div ng-repeat="recurso in state.req.recursos">({{recurso.cantidadR}} - {{recurso.recurso.nombre}})</div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="table-responsive mailbox-messages">
+                        <h3>Jugador 2</h3>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Defensa</th>
+                                    <th>Flota</th>
+                                    <th>Recursos</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div ng-repeat="defensa in state.rec.defensa">({{defensa.cantidad}} - {{defensa.destacamento.nombre}})</div>
+                                    </td>
+                                    <td>
+                                        <div ng-repeat="flota in state.rec.flota">({{flota.cantidad}} - {{flota.destacamento.nombre}})</div>
+                                    </td>
+                                    <td>
+                                        <div ng-repeat="recurso in state.rec.recursos">({{recurso.cantidadR}} - {{recurso.recurso.nombre}})</div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Cerrar</button>
+                </div>
             </div>
         </div>
     </div>

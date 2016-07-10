@@ -15,5 +15,6 @@ namespace BLayer.Interfaces
         IConfig GetConfig();
         void InitializeInteraction(IInteractionable requester, IInteractionable receiver);
         IEnumerable<Interaction> GetAllInteractionsByColonia(int id);
+        IntReporte GetReportById(int id);
     }
 }

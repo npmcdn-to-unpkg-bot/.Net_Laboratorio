@@ -48,7 +48,7 @@ namespace GameBuildPortal.ControllersFrontApi
 
             return interactionHandler.GetAllInteractionsByColonia(coloniaId);
         }
-
+       
         [HttpPost]
         public HttpResponseMessage Post([FromBody] InteraccionConfig intera)
         {
