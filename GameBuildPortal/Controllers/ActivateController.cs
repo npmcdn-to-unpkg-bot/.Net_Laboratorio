@@ -101,7 +101,7 @@ namespace GameBuildPortal.Controllers
                 Tenantcontroller.setTenant(null);
                 WebApiConfig.BuilderService(tenant).createConf(conf);
                 Response.BufferOutput = true;
-                return Redirect("http://"+ tenant + ".moskters.com/admin/index");
+                return Redirect("http://"+ tenant + ".moskters.com/account/login");
 
             }
 

@@ -33,6 +33,7 @@ namespace GameBuildPortal.Controllers
             if (nodes[startNode] != "moskters" && nodes[startNode] != "localhost")
             {
                 result = nodes[startNode];
+                Tenantcontroller.setTenant(null);
                 return result;
                 
             }

@@ -17,7 +17,7 @@ namespace GameBuildPortal.ControllersFrontApi
 {
     public class InteraccionesController : ApiController
     {
-        public static IFront blHandler;
+        public IFront blHandler;
         private IInteractionController interactionHandler;
 
         public InteraccionesController()

@@ -12,7 +12,7 @@ namespace GameBuildPortal.ControllersApi
 {
     public class MapaController : ApiController
     {
-        public static IAdmin blHandler;
+        public IAdmin blHandler;
 
         public MapaController()
         {

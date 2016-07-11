@@ -12,7 +12,7 @@ namespace GameBuildPortal.ControllersFrontApi
 {
     public class JugadorRecursoController : ApiController
     {
-        public static IFront blHandler;
+        public IFront blHandler;
 
         public JugadorRecursoController()
         {

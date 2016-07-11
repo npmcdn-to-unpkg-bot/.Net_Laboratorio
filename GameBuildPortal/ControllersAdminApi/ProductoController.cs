@@ -14,7 +14,7 @@ namespace GameBuildPortal.ControllersAdminApi
     public class ProductoController : ApiController
     {
 
-        public static IAdmin blHandler;
+        public IAdmin blHandler;
         // GET: Producto
         public ProductoController()
         {

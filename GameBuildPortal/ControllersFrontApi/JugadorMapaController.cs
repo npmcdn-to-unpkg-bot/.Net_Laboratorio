@@ -13,7 +13,7 @@ namespace GameBuildPortal.ControllersFrontApi
 {
     public class JugadorMapaController : ApiController
     {
-        public static IFront blHandler;
+        public IFront blHandler;
 
         public JugadorMapaController()
         {

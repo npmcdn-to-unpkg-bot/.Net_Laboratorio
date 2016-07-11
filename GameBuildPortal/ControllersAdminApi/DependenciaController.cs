@@ -12,7 +12,7 @@ namespace GameBuildPortal.ControllersApi
 {
     public class DependenciaController : ApiController
     {
-        public static IAdmin blHandler;
+        public IAdmin blHandler;
 
         public DependenciaController()
         {

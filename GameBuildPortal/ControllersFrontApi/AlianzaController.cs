@@ -12,7 +12,7 @@ namespace GameBuildPortal.ControllersFrontApi
 {
     public class AlianzaController : ApiController
     {        
-        public static IFront blHandler;
+        public IFront blHandler;
         
         public AlianzaController()
         {
