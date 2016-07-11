@@ -13,5 +13,6 @@ namespace DALayer.Interfaces
     {
         SharedEntities.Entities.IntState GetIntStateByInteraction(int IntId);
         void SaveIntState(SharedEntities.Entities.IntState state);
+        List<SharedEntities.Entities.IntState> GetAllIntStateByInteraction(int IntId);
     }
 }

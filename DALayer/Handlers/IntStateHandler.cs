@@ -1,8 +1,9 @@
-﻿using DALayer.Contexts; 
+﻿using DALayer.Contexts;
 using DALayer.Interfaces;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using SharedEntities.Entities;
+using System.Collections.Generic;
 
 namespace DALayer.Handlers
 {
@@ -22,6 +23,19 @@ namespace DALayer.Handlers
             DALayer.Entities.IntState intState = BsonSerializer.Deserialize<DALayer.Entities.IntState>(doc);
             return DataToShared(intState);
         }
+        public List<IntState> GetAllIntStateByInteraction(int IntId)
+        {
+            List< BsonDocument> docs = ctx.GetAllIntState(IntId);
+            List<IntState> ret = new List<IntState>();
+            docs.ForEach((doc) =>
+            {
+                DALayer.Entities.IntState intState = BsonSerializer.Deserialize<DALayer.Entities.IntState>(doc);
+                ret.Add(DataToShared(intState));
+            });
+           
+            return ret;
+        }
+        
         public void SaveIntState(IntState state)
         {
 

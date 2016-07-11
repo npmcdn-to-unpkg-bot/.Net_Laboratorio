@@ -262,6 +262,7 @@
     <Compile Include="ControllersFrontApi\JugadorInvestigacionController.cs" />
     <Compile Include="ControllersFrontApi\JugadorMapaController.cs" />
     <Compile Include="ControllersFrontApi\JugadorRecursoController.cs" />
+    <Compile Include="ControllersFrontApi\ReporteController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ActivateController.cs" />
     <Compile Include="Controllers\AdminController.cs" />

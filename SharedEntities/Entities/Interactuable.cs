@@ -11,13 +11,13 @@ namespace SharedEntities.Entities
     {
         private bool MustUpdate;
         private int Id;
-        private List<IDestacamento> flota = new List<IDestacamento>();
-        private List<IDestacamento> defensa = new List<IDestacamento>();
-        private List<IResources> recursos = new List<IResources>();
+        public List<IDestacamento> flota = new List<IDestacamento>();
+        public List<IDestacamento> defensa = new List<IDestacamento>();
+        public List<IResources> recursos = new List<IResources>();
         private int capacidad;
-        public bool returnTobase;
+        private bool returnTobase;
         private bool send;
-        private bool won = false;
+        public bool won = false;
         public Interactuable(int _Id)
         {
             Id = _Id;

@@ -13,6 +13,7 @@ namespace Ataque.Clases
         List<Unidad> FlotaAtacadaRequester = new List<Unidad>();
         List<Unidad> FlotaAtacadaReceiver = new List<Unidad>();
         Dictionary<int, int> destacamento = new Dictionary<int, int>();
+        Dictionary<int, int> destacamentoRequester = new Dictionary<int, int>();
         Dictionary<int, int> recurso = new Dictionary<int, int>();
 
         private int GetAtaquesEfectivos(IDestacamento des) {
@@ -143,7 +144,7 @@ namespace Ataque.Clases
 
         public List<IInteractionable> exec(IInteractionable requester, IInteractionable receiver)
         {
-
+             
             receiver.GetFlota().ForEach((c) =>
             {
                 destacamento.Add(c.GetId(), c.GetAmount());
@@ -203,9 +204,11 @@ namespace Ataque.Clases
                         if (rec.GetAmount() < capacidad)
                         {
                             setter.SetAmount(setter.GetAmount() + rec.GetAmount());
+                            rec.SetAmount(0);
                         }
                         else {
                             setter.SetAmount(setter.GetAmount() + capacidad);
+                            rec.SetAmount(rec.GetAmount()-capacidad);
                         }
                     });
 
@@ -215,6 +218,7 @@ namespace Ataque.Clases
             else {
                 receiver.Win();
             }
+            
             destacamento.ToList().ForEach((r)=>{
                IDestacamento defensa = receiver.GetDefensas().Where(c => c.GetId() == r.Key).FirstOrDefault();
                 if(defensa != null)
