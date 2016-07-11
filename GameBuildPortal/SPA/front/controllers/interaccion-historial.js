@@ -25,7 +25,6 @@
         $scope.getReporte = function (interaccion) {
             interaccionService.getReporte(interaccion.Id).then(
                 function (reporte) {
-                    console.info(reporte);
                     $scope.reporte = reporte;
                     $('#modal-info-interaccion').modal('show');
                 }, function () {

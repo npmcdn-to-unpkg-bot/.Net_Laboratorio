@@ -49,8 +49,8 @@ namespace BLayer.Front
             Interaction interaction = builder.getInteractionHandler().GetInteraction(id);
 
             rep.Fecha = interaction.Fecha;
-            rep.receiver = builder.getRelJugadorMapaHandler().getRelJugadorMapa(interaction.receiverId).jugador.email;
-            rep.requester = builder.getRelJugadorMapaHandler().getRelJugadorMapa(interaction.requesterId).jugador.email;
+            rep.receiver = builder.getRelJugadorMapaHandler().getRelJugadorMapa(interaction.receiverId).jugador.usuario;
+            rep.requester = builder.getRelJugadorMapaHandler().getRelJugadorMapa(interaction.requesterId).jugador.usuario;
 
             List <IntState>  states = builder.getIntStateHandler().GetAllIntStateByInteraction(id);
             states.ForEach((state) => {
