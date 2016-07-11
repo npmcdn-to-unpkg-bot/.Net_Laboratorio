@@ -18,7 +18,7 @@ namespace GameBuildPortal.ControllersAdminApi
 
         public ConfiguracionController()
         {
-            blHandler = WebApiConfig.BuilderService(Tenantcontroller.tenant);
+            blHandler = WebApiConfig.BuilderService(Tenantcontroller.getTenantName());
         }
 
         [HttpGet]

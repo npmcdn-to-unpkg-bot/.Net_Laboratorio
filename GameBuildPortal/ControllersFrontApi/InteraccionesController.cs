@@ -22,8 +22,8 @@ namespace GameBuildPortal.ControllersFrontApi
 
         public InteraccionesController()
         {
-            blHandler = WebApiConfig.FrontService(Tenantcontroller.tenant);
-            interactionHandler = WebApiConfig.InteractionService(Tenantcontroller.tenant);
+            blHandler = WebApiConfig.FrontService(Tenantcontroller.getTenantName());
+            interactionHandler = WebApiConfig.InteractionService(Tenantcontroller.getTenantName());
         }
 
         [HttpGet]

@@ -17,7 +17,7 @@ namespace GameBuildPortal.ControllersFrontApi
 
         public JugadorInvestigacionController()
         {
-            blHandler = WebApiConfig.FrontService(Tenantcontroller.tenant);
+            blHandler = WebApiConfig.FrontService(Tenantcontroller.getTenantName());
         }
 
         [HttpGet]
@@ -46,7 +46,7 @@ namespace GameBuildPortal.ControllersFrontApi
                 if (compro != null)
                 {
                     var rel = blHandler.getRelJugadorInvestigacion(id);
-                    Scheduler.ScheduleUpload<InvestigacionUpload>(Tenantcontroller.tenant, DateTime.Now.ToString(), id, rel.nivel + 1, rel.investigacion.tiempoInicial);
+                    Scheduler.ScheduleUpload<InvestigacionUpload>(Tenantcontroller.getTenantName(), DateTime.Now.ToString(), id, rel.nivel + 1, rel.investigacion.tiempoInicial);
                 }
                 else
                 {

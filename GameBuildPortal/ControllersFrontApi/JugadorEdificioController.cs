@@ -17,7 +17,7 @@ namespace GameBuildPortal.ControllersFrontApi
 
         public JugadorEdificioController()
         {
-            blHandler = WebApiConfig.FrontService(Tenantcontroller.tenant);
+            blHandler = WebApiConfig.FrontService(Tenantcontroller.getTenantName());
         }
 
         [HttpGet]
@@ -46,7 +46,7 @@ namespace GameBuildPortal.ControllersFrontApi
                 if (compro != null)
                 {
                     var rel = blHandler.getRelJugadorEdificio(id);
-                    Scheduler.ScheduleUpload<EdificioUpload>(Tenantcontroller.tenant, DateTime.Now.ToString(), id, rel.nivelE + 1, rel.edificio.tiempoInicial);
+                    Scheduler.ScheduleUpload<EdificioUpload>(Tenantcontroller.getTenantName(), DateTime.Now.ToString(), id, rel.nivelE + 1, rel.edificio.tiempoInicial);
                 }
                 else
                 {

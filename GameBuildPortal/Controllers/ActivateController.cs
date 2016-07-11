@@ -78,7 +78,7 @@ namespace GameBuildPortal.Controllers
             //si juego no existe 
             //creo el tenant
             WebApiConfig.BuilderService(g.nombreJuego);
-            Tenantcontroller.tenant = g.nombreJuego;
+            Tenantcontroller.setTenant(g.nombreJuego);
             Tenantcontroller.game = g;
             return RedirectToAction("ProcessUser", "Activate");
 }
@@ -97,9 +97,11 @@ namespace GameBuildPortal.Controllers
             if (result.Succeeded)
             {
                 Configuracion conf = new Configuracion(0, "", g.nombreJuego, g.nombreJuego, null, null);
-                WebApiConfig.BuilderService(Tenantcontroller.tenant).createConf(conf);
+                String tenant = Tenantcontroller.getTenantName();
+                Tenantcontroller.setTenant(null);
+                WebApiConfig.BuilderService(tenant).createConf(conf);
                 Response.BufferOutput = true;
-                return Redirect("http://"+Tenantcontroller.tenant + ".moskters.com/admin/index");
+                return Redirect("http://"+ tenant + ".moskters.com/admin/index");
 
             }
 

@@ -16,7 +16,7 @@ namespace GameBuildPortal.ControllersFrontApi
 
         public JugadorRecursoController()
         {
-            blHandler = WebApiConfig.FrontService(Tenantcontroller.tenant);
+            blHandler = WebApiConfig.FrontService(Tenantcontroller.getTenantName());
         }
 
         [HttpGet]

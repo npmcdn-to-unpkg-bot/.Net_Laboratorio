@@ -17,7 +17,7 @@ namespace GameBuildPortal.ControllersFrontApi
         
         public JugadorDestacamentoController()
         {
-            blHandler = WebApiConfig.FrontService(Tenantcontroller.tenant);
+            blHandler = WebApiConfig.FrontService(Tenantcontroller.getTenantName());
         }
         
         [HttpGet]
@@ -47,7 +47,7 @@ namespace GameBuildPortal.ControllersFrontApi
                 {
                     var rel = blHandler.getRelJugadorDestacamento(rjd.id);
                     var cant = rjd.cantidad - rel.cantidad;
-                    Scheduler.ScheduleUpload<DestacamentoUpload>(Tenantcontroller.tenant, DateTime.Now.ToString(), rjd.id, cant, cant * rel.destacamento.tiempoInicial);
+                    Scheduler.ScheduleUpload<DestacamentoUpload>(Tenantcontroller.getTenantName(), DateTime.Now.ToString(), rjd.id, cant, cant * rel.destacamento.tiempoInicial);
                 }
                 else
                 {

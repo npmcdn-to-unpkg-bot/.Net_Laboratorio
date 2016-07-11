@@ -60,7 +60,7 @@ namespace GameBuildPortal.Controllers
         {
             ViewBag.ReturnUrl = returnUrl;
 
-            SharedEntities.Entities.Configuracion conf = WebApiConfig.BuilderService(Tenantcontroller.tenant).getConfiguracion(1);
+            SharedEntities.Entities.Configuracion conf = WebApiConfig.BuilderService(Tenantcontroller.getTenantName()).getConfiguracion(1);
             LoginViewModel log = new LoginViewModel();
             LayoutViewModel model = new LayoutViewModel();
             model.Configuracion = conf;
@@ -79,7 +79,7 @@ namespace GameBuildPortal.Controllers
 
             if (!ModelState.IsValid)
             {
-                SharedEntities.Entities.Configuracion conf = WebApiConfig.BuilderService(Tenantcontroller.tenant).getConfiguracion(1);
+                SharedEntities.Entities.Configuracion conf = WebApiConfig.BuilderService(Tenantcontroller.getTenantName()).getConfiguracion(1);
                 LayoutViewModel data = new LayoutViewModel();
                 data.Configuracion = conf;
                 data.LoginViewModel = model;
@@ -103,7 +103,7 @@ namespace GameBuildPortal.Controllers
                 case SignInStatus.Failure:
                 default:
                     ModelState.AddModelError("", "Login invalido.");
-                    SharedEntities.Entities.Configuracion conf = WebApiConfig.BuilderService(Tenantcontroller.tenant).getConfiguracion(1);
+                    SharedEntities.Entities.Configuracion conf = WebApiConfig.BuilderService(Tenantcontroller.getTenantName()).getConfiguracion(1);
                     LayoutViewModel data = new LayoutViewModel();
                     data.Configuracion = conf;
                     data.LoginViewModel = model;
@@ -163,7 +163,8 @@ namespace GameBuildPortal.Controllers
         [AllowAnonymous]
         public ActionResult RegisterJugador()
         {
-            SharedEntities.Entities.Configuracion conf = WebApiConfig.BuilderService(Tenantcontroller.tenant).getConfiguracion(1);
+            SharedEntities.Entities.Configuracion conf = WebApiConfig.BuilderService(Tenantcontroller.getTenantName()).getConfiguracion(1);
+            Tenantcontroller.setTenant(Tenantcontroller.getTenantName());
             RegisterViewModel reg = new RegisterViewModel();
             LayoutViewModel model = new LayoutViewModel();
             model.Configuracion = conf;
@@ -188,7 +189,8 @@ namespace GameBuildPortal.Controllers
                 {
                     var usShared  = new SharedEntities.Entities.Jugador();
                     usShared.id = us.Id;
-                    WebApiConfig.BuilderService(Tenantcontroller.tenant).inicializarJugador(usShared);
+                    WebApiConfig.BuilderService(Tenantcontroller.getTenantName()).inicializarJugador(usShared);
+                    Tenantcontroller.setTenant(null);
                     await SignInManager.SignInAsync(us, isPersistent: false, rememberBrowser: false);
 
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
@@ -202,7 +204,7 @@ namespace GameBuildPortal.Controllers
                 AddErrors(result);
             }
 
-            SharedEntities.Entities.Configuracion conf = WebApiConfig.BuilderService(Tenantcontroller.tenant).getConfiguracion(1);
+            SharedEntities.Entities.Configuracion conf = WebApiConfig.BuilderService(Tenantcontroller.getTenantName()).getConfiguracion(1);
             LayoutViewModel data = new LayoutViewModel();
             data.Configuracion = conf;
             data.RegisterViewModel = model;
@@ -404,7 +406,7 @@ namespace GameBuildPortal.Controllers
                     ViewBag.ReturnUrl = returnUrl;
                     ViewBag.LoginProvider = loginInfo.Login.LoginProvider;
 
-                    SharedEntities.Entities.Configuracion conf = WebApiConfig.BuilderService(Tenantcontroller.tenant).getConfiguracion(1);
+                    SharedEntities.Entities.Configuracion conf = WebApiConfig.BuilderService(Tenantcontroller.getTenantName()).getConfiguracion(1);
 
                     LayoutViewModel layout = new LayoutViewModel();
                     layout.ExternalLoginConfirmationViewModel = new ExternalLoginConfirmationViewModel { Email = loginInfo.Email };
@@ -441,7 +443,7 @@ namespace GameBuildPortal.Controllers
                 {
                     var usShared = new SharedEntities.Entities.Jugador();
                     usShared.id = user.Id;
-                    WebApiConfig.BuilderService(Tenantcontroller.tenant).inicializarJugador(usShared);
+                    WebApiConfig.BuilderService(Tenantcontroller.getTenantName()).inicializarJugador(usShared);
                     result = await UserManager.AddLoginAsync(user.Id, info.Login);
                     if (result.Succeeded)
                     {
@@ -452,7 +454,7 @@ namespace GameBuildPortal.Controllers
                 AddErrors(result);
             }
 
-            SharedEntities.Entities.Configuracion conf = WebApiConfig.BuilderService(Tenantcontroller.tenant).getConfiguracion(1);
+            SharedEntities.Entities.Configuracion conf = WebApiConfig.BuilderService(Tenantcontroller.getTenantName()).getConfiguracion(1);
             LayoutViewModel data = new LayoutViewModel();
             data.Configuracion = conf;
             data.ExternalLoginConfirmationViewModel = model;
@@ -474,7 +476,7 @@ namespace GameBuildPortal.Controllers
         [AllowAnonymous]
         public ActionResult ExternalLoginFailure()
         {
-            SharedEntities.Entities.Configuracion conf = WebApiConfig.BuilderService(Tenantcontroller.tenant).getConfiguracion(1);
+            SharedEntities.Entities.Configuracion conf = WebApiConfig.BuilderService(Tenantcontroller.getTenantName()).getConfiguracion(1);
             LayoutViewModel data = new LayoutViewModel();
             data.Configuracion = conf;
 

@@ -14,7 +14,7 @@ namespace GameBuildPortal.ControllersAdminApi
         // GET: api/ReporteRegistro
         public IEnumerable<object> Get()
         {
-            IAdmin builder = WebApiConfig.BuilderService(Tenantcontroller.tenant);
+            IAdmin builder = WebApiConfig.BuilderService(Tenantcontroller.getTenantName());
             List<object> res = builder.getReporteRegistro();
             return res;
         }

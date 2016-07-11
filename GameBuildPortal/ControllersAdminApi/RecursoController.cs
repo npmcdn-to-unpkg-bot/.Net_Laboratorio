@@ -16,7 +16,7 @@ namespace GameBuildPortal.ControllersApi
 
         public RecursoController()
         {
-            blHandler = WebApiConfig.BuilderService(Tenantcontroller.tenant);
+            blHandler = WebApiConfig.BuilderService(Tenantcontroller.getTenantName());
         }
 
         [HttpGet]

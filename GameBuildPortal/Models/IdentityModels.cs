@@ -15,7 +15,7 @@ namespace GameBuildPortal.Models
     public class ApplicationDbContext : TenantContext
     { 
         public ApplicationDbContext(){
-            this.SchemaName = Tenantcontroller.tenant;
+            this.SchemaName = Tenantcontroller.getTenantName();
         }
         public static ApplicationDbContext Create()
         {
