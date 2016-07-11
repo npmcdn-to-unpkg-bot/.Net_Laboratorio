@@ -1,10 +1,10 @@
 ﻿@model SuperAdmin.Models.SolicitudJuegoModel
 
 @{
-    ViewBag.Title = "View";
+    ViewBag.Title = "Solicitud de juego";
 }
 
-<h2>View</h2>
+<h2>Solcitud de juego</h2>
 
 
 @using (Html.BeginForm()) 
@@ -12,7 +12,7 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>SolicitudJuegoModel</h4>
+        <h4>Crear una solicitud de juego</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -40,7 +40,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Volver", "Index")
 </div>
 
 @section Scripts {
