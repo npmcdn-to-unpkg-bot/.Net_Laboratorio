@@ -62,9 +62,9 @@
                 </div>
                 <h3>Informe</h3>
                 <div class="box-body" ng-repeat="state in reporte.states | orderBy: 'state'">
-                    <div>Round: {{state.state}}</div>
+                    <div>Round: {{$index}}</div>
                     <div class="table-responsive mailbox-messages">
-                        <h3>Jugador 1</h3>
+                        <div>Jugador 1</div>
                         <table class="table">
                             <thead>
                                 <tr>
@@ -88,8 +88,8 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="table-responsive mailbox-messages">
-                        <h3>Jugador 2</h3>
+                    <div class="table-responsive mailbox-messages" ng-if="!$last">
+                        <div>Jugador 2</div>
                         <table class="table">
                             <thead>
                                 <tr>

@@ -256,6 +256,7 @@ namespace BLayer.Front
                 {
                     RelJugadorDestacamento r = destacamento.Where(c => c.destacamento.id == rec.GetId()).First();
                     r.cantidad = r.cantidad - rec.GetAmount();
+                    r.setForceUpdate(true);
                     api.getRelJugadorDestacamentoHandler().updateRelJugadorDestacamento(r);
                 });
             });
@@ -269,12 +270,14 @@ namespace BLayer.Front
                 {
                     RelJugadorDestacamento r = destacamento.Where(c => c.destacamento.id == rec.GetId()).First();
                     r.cantidad = r.cantidad + rec.GetAmount();
+                    r.setForceUpdate(true);
                     api.getRelJugadorDestacamentoHandler().updateRelJugadorDestacamento(r);
                 });
                 Interactionable.GetFlota().ForEach((rec) =>
                 {
                     RelJugadorDestacamento r = destacamento.Where(c => c.destacamento.id == rec.GetId()).First();
                     r.cantidad = r.cantidad + rec.GetAmount();
+                    r.setForceUpdate(true);
                     api.getRelJugadorDestacamentoHandler().updateRelJugadorDestacamento(r);
                 });
                 Interactionable.GetRecursos().ForEach((rec) =>
