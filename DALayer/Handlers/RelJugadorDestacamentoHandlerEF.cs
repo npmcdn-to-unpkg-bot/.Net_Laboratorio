@@ -85,17 +85,22 @@ namespace DALayer.Handlers
                 {
                     var dest = r.getShared();
                     var cant = rje.cantidad - r.cantidad;
-                    List<Entities.Costo> costos = r.destacamento.calCostoXNivel(0, cant);
-                    Boolean compro = jrHandler.restarCompra(r.colonia.id, costos);
-                    if (compro == false)
+                    if (!rje.getForceUpdate())
                     {
-                        return false;
+                        List<Entities.Costo> costos = r.destacamento.calCostoXNivel(0, cant);
+                        Boolean compro = jrHandler.restarCompra(r.colonia.id, costos);
+                        if (compro == false)
+                        {
+                            return false;
+                        }
+                        DateTime ahora = DateTime.Now;
+                        TimeSpan tConstruccion = TimeSpan.FromSeconds(dest.destacamento.tiempoInicial * cant);
+                        r.finalizaConstruccion = ahora.Add(tConstruccion);
                     }
-
-                    DateTime ahora = DateTime.Now;
-                    TimeSpan tConstruccion = TimeSpan.FromSeconds(dest.destacamento.tiempoInicial * cant);
-                    r.finalizaConstruccion = ahora.Add(tConstruccion);
-
+                    else {
+                        r.cantidad = rje.cantidad;
+                    }
+                     
                     ctx.SaveChangesAsync().Wait();
                 }
                 return true;

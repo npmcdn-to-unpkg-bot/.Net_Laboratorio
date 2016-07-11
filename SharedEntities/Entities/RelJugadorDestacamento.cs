@@ -14,7 +14,7 @@ namespace SharedEntities.Entities
         public Destacamento destacamento;
         public int cantidad;
         public DateTime finalizaConstruccion;
-
+        private bool forceUpdate = false;
         public RelJugadorDestacamento(int ID, RelJugadorMapa col, Destacamento desta, int cant, DateTime finalizaConstruccion)
         {
             this.id = ID;
@@ -23,7 +23,14 @@ namespace SharedEntities.Entities
             this.cantidad = cant;
             this.finalizaConstruccion = finalizaConstruccion;
         }
-
+        public void setForceUpdate(bool forceUpdate)
+        {
+            this.forceUpdate = forceUpdate;
+        }
+        public bool getForceUpdate()
+        {
+            return forceUpdate;
+        }
         public float GetAtaque()
         {
             return destacamento.ataque;

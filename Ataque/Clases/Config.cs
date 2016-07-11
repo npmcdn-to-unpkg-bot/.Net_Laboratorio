@@ -32,7 +32,7 @@ namespace Ataque.Clases
 
         public bool isReqNeedRecursos()
         {
-            return true;
+            return false;
         }
 
         public bool NeedConfirmation()
