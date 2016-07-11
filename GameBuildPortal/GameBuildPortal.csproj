@@ -638,6 +638,7 @@
     <Content Include="Content\front\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\front\bootstrap\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\front\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Scripts\front\js\angular-toastr.js" />
     <Content Include="Scripts\front\js\angularfire.min.js" />
     <Content Include="Scripts\front\js\firebase.js" />
     <Content Include="Scripts\front\js\moment.js" />

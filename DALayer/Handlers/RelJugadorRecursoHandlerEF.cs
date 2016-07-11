@@ -136,8 +136,9 @@ namespace DALayer.Handlers
 
         }
 
-        public void restarCompra(int idColonia, List<Entities.Costo> gastos)
+        public Boolean restarCompra(int idColonia, List<Entities.Costo> gastos)
         {
+            calcularRecursosByIdCol(idColonia);
             List<Entities.RelJugadorRecurso> recursos = ctx.RelJugadorRecurso.Where(w => w.colonia.id == idColonia).ToList();
             foreach (var g in gastos)
             {
@@ -145,11 +146,19 @@ namespace DALayer.Handlers
                 {
                     if (g.recurso.id == r.recurso.id)
                     {
-                        r.cantidadR -= g.valor;
+                        if (r.cantidadR >= g.valor)
+                        {
+                            r.cantidadR -= g.valor;
+                        }
+                        else
+                        {
+                            return false;
+                        }
                     }
                 }
             }
             ctx.SaveChangesAsync().Wait();
+            return true;
         }
     }
 }

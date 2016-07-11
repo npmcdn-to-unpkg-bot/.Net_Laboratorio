@@ -71,7 +71,7 @@ namespace DALayer.Handlers
             }
         }
 
-        public void updateRelJugadorDestacamento(RelJugadorDestacamento rje)
+        public Boolean updateRelJugadorDestacamento(RelJugadorDestacamento rje)
         {
             RelJugadorRecursoHandlerEF jrHandler = new RelJugadorRecursoHandlerEF(ctx);
             var relJMHandler = new RelJugadorMapaHandlerEF(ctx);
@@ -85,14 +85,20 @@ namespace DALayer.Handlers
                 {
                     var dest = r.getShared();
                     var cant = rje.cantidad - r.cantidad;
+                    List<Entities.Costo> costos = r.destacamento.calCostoXNivel(0, cant);
+                    Boolean compro = jrHandler.restarCompra(r.colonia.id, costos);
+                    if (compro == false)
+                    {
+                        return false;
+                    }
+
                     DateTime ahora = DateTime.Now;
                     TimeSpan tConstruccion = TimeSpan.FromSeconds(dest.destacamento.tiempoInicial * cant);
                     r.finalizaConstruccion = ahora.Add(tConstruccion);
 
-                    List<Entities.Costo> costos = r.destacamento.calCostoXNivel(0, cant);
-                    jrHandler.restarCompra(r.colonia.id, costos);
                     ctx.SaveChangesAsync().Wait();
                 }
+                return true;
             }
             catch (Exception ex)
             {

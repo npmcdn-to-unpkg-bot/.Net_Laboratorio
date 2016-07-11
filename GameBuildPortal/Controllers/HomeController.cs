@@ -44,21 +44,21 @@ namespace GameBuildPortal.Controllers
 
         public ActionResult Home()
         {
-            //if (User.Identity.IsAuthenticated)
-            //{
-            //    ApplicationUserManager _userManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            //    string id = User.Identity.GetUserId();
-            //    UsuarioHelper UHelper = new UsuarioHelper(_userManager, id);
+            if (User.Identity.IsAuthenticated)
+            {
+                ApplicationUserManager _userManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+                string id = User.Identity.GetUserId();
+                UsuarioHelper UHelper = new UsuarioHelper(_userManager, id);
 
-            //    if (!UHelper.isAdmin)
-            //    {
-            //        return RedirectToAction("Index", "Home");
-            //    }
-            //    else
-            //    {
-            //        return RedirectToAction("Index", "Admin");
-            //    }
-            //}
+                if (!UHelper.isAdmin)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Admin");
+                }
+            }
 
             SharedEntities.Entities.Configuracion conf = WebApiConfig.BuilderService(Tenantcontroller.tenant).getConfiguracion(1);
 

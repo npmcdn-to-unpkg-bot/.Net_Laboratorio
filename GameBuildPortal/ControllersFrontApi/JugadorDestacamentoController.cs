@@ -42,11 +42,17 @@ namespace GameBuildPortal.ControllersFrontApi
 
             try
             {
-                var rel = blHandler.getRelJugadorDestacamento(rjd.id);
-                var cant = rjd.cantidad - rel.cantidad;
-                Scheduler.ScheduleUpload<DestacamentoUpload>(Tenantcontroller.tenant, DateTime.Now.ToString(), rjd.id, cant, cant * rel.destacamento.tiempoInicial);
-                blHandler.updateRelJugadorDestacamento(rjd);
-                //blHandler.executeUpdateRelJD(rjd);
+                Boolean compro = blHandler.updateRelJugadorDestacamento(rjd);
+                if (compro)
+                {
+                    var rel = blHandler.getRelJugadorDestacamento(rjd.id);
+                    var cant = rjd.cantidad - rel.cantidad;
+                    Scheduler.ScheduleUpload<DestacamentoUpload>(Tenantcontroller.tenant, DateTime.Now.ToString(), rjd.id, cant, cant * rel.destacamento.tiempoInicial);
+                }
+                else
+                {
+                    return Request.CreateErrorResponse(HttpStatusCode.NotAcceptable, "Recursos insuficientes");
+                }
             }
             catch (Exception ex)
             {

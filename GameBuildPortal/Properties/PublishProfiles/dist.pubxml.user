@@ -22,7 +22,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/22/2016 14:45:42</publishTime>
     </File>
     <File Include="bin/BLayer.exe">
-      <publishTime>07/09/2016 16:17:34</publishTime>
+      <publishTime>07/10/2016 17:40:52</publishTime>
     </File>
     <File Include="bin/Comercio.exe">
       <publishTime>06/22/2016 14:45:40</publishTime>
@@ -34,7 +34,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/22/2016 14:01:53</publishTime>
     </File>
     <File Include="bin/DALayer.exe">
-      <publishTime>06/22/2016 14:45:41</publishTime>
+      <publishTime>07/10/2016 17:40:51</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>06/22/2016 14:01:54</publishTime>
@@ -43,7 +43,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/22/2016 14:01:54</publishTime>
     </File>
     <File Include="bin/GameBuildPortal.dll">
-      <publishTime>07/09/2016 16:17:44</publishTime>
+      <publishTime>07/10/2016 17:40:59</publishTime>
     </File>
     <File Include="bin/GameBuildPortal.dll">
       <publishTime>07/01/2016 10:56:14</publishTime>
@@ -181,7 +181,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/22/2016 14:01:57</publishTime>
     </File>
     <File Include="bin/SharedEntities.dll">
-      <publishTime>06/22/2016 14:45:40</publishTime>
+      <publishTime>07/09/2016 18:47:11</publishTime>
     </File>
     <File Include="bin/System.Net.Http.Formatting.dll">
       <publishTime>06/22/2016 14:01:56</publishTime>
@@ -1296,6 +1296,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Scripts/front/js/angular-route.min.js">
       <publishTime>06/22/2016 14:01:34</publishTime>
     </File>
+    <File Include="Scripts/front/js/angular-toastr.js">
+      <publishTime>07/10/2016 17:24:44</publishTime>
+    </File>
     <File Include="Scripts/front/js/angular.min.js">
       <publishTime>06/22/2016 14:01:34</publishTime>
     </File>
@@ -1306,7 +1309,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/22/2016 14:01:34</publishTime>
     </File>
     <File Include="Scripts/front/js/custom.js">
-      <publishTime>06/22/2016 14:01:34</publishTime>
+      <publishTime>07/10/2016 17:24:44</publishTime>
     </File>
     <File Include="Scripts/front/js/demo.js">
       <publishTime>06/22/2016 14:01:34</publishTime>
@@ -3844,22 +3847,22 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/22/2016 14:01:34</publishTime>
     </File>
     <File Include="SPA/admin/controllers/destacamento.js">
-      <publishTime>06/22/2016 14:01:34</publishTime>
+      <publishTime>07/09/2016 18:40:13</publishTime>
     </File>
     <File Include="SPA/admin/controllers/edificio.js">
-      <publishTime>06/22/2016 14:01:34</publishTime>
+      <publishTime>07/09/2016 18:40:13</publishTime>
     </File>
     <File Include="SPA/admin/controllers/interaccion.js">
       <publishTime>06/22/2016 14:01:34</publishTime>
     </File>
     <File Include="SPA/admin/controllers/investigacion.js">
-      <publishTime>06/22/2016 14:01:34</publishTime>
+      <publishTime>07/09/2016 18:40:13</publishTime>
     </File>
     <File Include="SPA/admin/controllers/mapa.js">
       <publishTime>06/22/2016 14:01:34</publishTime>
     </File>
     <File Include="SPA/admin/controllers/recurso.js">
-      <publishTime>06/22/2016 14:01:34</publishTime>
+      <publishTime>07/09/2016 18:40:13</publishTime>
     </File>
     <File Include="SPA/admin/controllers/ui.js">
       <publishTime>05/31/2016 19:21:24</publishTime>
@@ -3883,16 +3886,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/22/2016 14:01:34</publishTime>
     </File>
     <File Include="SPA/admin/services/destacamento.js">
-      <publishTime>06/22/2016 14:01:34</publishTime>
+      <publishTime>07/09/2016 18:40:13</publishTime>
     </File>
     <File Include="SPA/admin/services/edificio.js">
-      <publishTime>06/22/2016 14:01:34</publishTime>
+      <publishTime>07/09/2016 18:40:13</publishTime>
     </File>
     <File Include="SPA/admin/services/interaccion.js">
       <publishTime>06/22/2016 14:01:34</publishTime>
     </File>
     <File Include="SPA/admin/services/investigacion.js">
-      <publishTime>06/22/2016 14:01:34</publishTime>
+      <publishTime>07/09/2016 18:40:13</publishTime>
     </File>
     <File Include="SPA/admin/services/mapa.js">
       <publishTime>06/22/2016 14:01:34</publishTime>
@@ -3904,7 +3907,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/22/2016 14:01:34</publishTime>
     </File>
     <File Include="SPA/admin/services/recurso.js">
-      <publishTime>06/22/2016 14:01:34</publishTime>
+      <publishTime>07/09/2016 18:40:13</publishTime>
     </File>
     <File Include="SPA/admin/services/ui.js">
       <publishTime>05/31/2016 19:21:24</publishTime>
@@ -3925,22 +3928,22 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/22/2016 14:01:34</publishTime>
     </File>
     <File Include="SPA/admin/views/destacamento/add.html">
-      <publishTime>06/22/2016 14:01:34</publishTime>
+      <publishTime>07/09/2016 18:40:13</publishTime>
     </File>
     <File Include="SPA/admin/views/destacamento/edit.html">
       <publishTime>06/22/2016 14:01:34</publishTime>
     </File>
     <File Include="SPA/admin/views/destacamento/list.html">
-      <publishTime>06/22/2016 14:01:34</publishTime>
+      <publishTime>07/10/2016 17:24:44</publishTime>
     </File>
     <File Include="SPA/admin/views/edificio/add.html">
-      <publishTime>06/22/2016 14:01:34</publishTime>
+      <publishTime>07/09/2016 18:40:13</publishTime>
     </File>
     <File Include="SPA/admin/views/edificio/edit.html">
       <publishTime>06/22/2016 14:01:34</publishTime>
     </File>
     <File Include="SPA/admin/views/edificio/list.html">
-      <publishTime>06/22/2016 14:01:34</publishTime>
+      <publishTime>07/10/2016 17:24:44</publishTime>
     </File>
     <File Include="SPA/admin/views/interaccion/add.html">
       <publishTime>06/22/2016 14:01:34</publishTime>
@@ -3952,13 +3955,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/22/2016 14:01:34</publishTime>
     </File>
     <File Include="SPA/admin/views/investigacion/add.html">
-      <publishTime>06/22/2016 14:01:34</publishTime>
+      <publishTime>07/09/2016 18:40:13</publishTime>
     </File>
     <File Include="SPA/admin/views/investigacion/edit.html">
       <publishTime>06/22/2016 14:01:34</publishTime>
     </File>
     <File Include="SPA/admin/views/investigacion/list.html">
-      <publishTime>06/22/2016 14:01:34</publishTime>
+      <publishTime>07/10/2016 17:24:44</publishTime>
     </File>
     <File Include="SPA/admin/views/mapa/add.html">
       <publishTime>06/22/2016 14:01:34</publishTime>
@@ -3970,19 +3973,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/22/2016 14:01:34</publishTime>
     </File>
     <File Include="SPA/admin/views/recurso/add.html">
-      <publishTime>06/22/2016 14:01:34</publishTime>
+      <publishTime>07/09/2016 18:40:13</publishTime>
     </File>
     <File Include="SPA/admin/views/recurso/edit.html">
       <publishTime>06/22/2016 14:01:34</publishTime>
     </File>
     <File Include="SPA/admin/views/recurso/list.html">
-      <publishTime>06/22/2016 14:01:34</publishTime>
+      <publishTime>07/10/2016 17:24:44</publishTime>
     </File>
     <File Include="SPA/admin/views/ui.html">
       <publishTime>05/31/2016 19:21:24</publishTime>
     </File>
     <File Include="SPA/front/app.js">
-      <publishTime>06/22/2016 14:01:34</publishTime>
+      <publishTime>07/10/2016 17:24:44</publishTime>
     </File>
     <File Include="SPA/front/controllers/alianza.js">
       <publishTime>06/22/2016 14:01:34</publishTime>
@@ -3994,13 +3997,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/22/2016 14:01:34</publishTime>
     </File>
     <File Include="SPA/front/controllers/destacamento.js">
-      <publishTime>06/22/2016 14:01:34</publishTime>
+      <publishTime>07/10/2016 17:24:44</publishTime>
     </File>
     <File Include="SPA/front/controllers/edificio.js">
-      <publishTime>06/22/2016 14:01:34</publishTime>
+      <publishTime>07/10/2016 17:24:44</publishTime>
     </File>
     <File Include="SPA/front/controllers/home.js">
-      <publishTime>06/22/2016 14:01:34</publishTime>
+      <publishTime>07/10/2016 17:24:44</publishTime>
     </File>
     <File Include="SPA/front/controllers/interaccion-historial.js">
       <publishTime>06/22/2016 14:01:34</publishTime>
@@ -4009,7 +4012,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/22/2016 14:01:34</publishTime>
     </File>
     <File Include="SPA/front/controllers/investigacion.js">
-      <publishTime>06/22/2016 14:01:34</publishTime>
+      <publishTime>07/10/2016 17:24:44</publishTime>
     </File>
     <File Include="SPA/front/controllers/zona.js">
       <publishTime>06/22/2016 14:01:34</publishTime>
@@ -4063,7 +4066,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/22/2016 14:01:34</publishTime>
     </File>
     <File Include="SPA/front/views/destacamento.html">
-      <publishTime>06/22/2016 14:01:34</publishTime>
+      <publishTime>07/10/2016 17:24:44</publishTime>
     </File>
     <File Include="SPA/front/views/edificio.html">
       <publishTime>06/22/2016 14:01:34</publishTime>
@@ -4078,13 +4081,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/22/2016 14:01:34</publishTime>
     </File>
     <File Include="SPA/front/views/partials/construccion.html">
-      <publishTime>06/22/2016 14:01:34</publishTime>
+      <publishTime>07/10/2016 17:24:44</publishTime>
     </File>
     <File Include="SPA/front/views/partials/recurso.html">
-      <publishTime>06/22/2016 14:01:34</publishTime>
+      <publishTime>07/10/2016 17:24:44</publishTime>
     </File>
     <File Include="SPA/front/views/partials/unidad.html">
-      <publishTime>06/22/2016 14:01:34</publishTime>
+      <publishTime>07/10/2016 17:24:44</publishTime>
     </File>
     <File Include="SPA/front/views/zona.html">
       <publishTime>06/22/2016 14:01:34</publishTime>
@@ -4105,13 +4108,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/22/2016 14:01:47</publishTime>
     </File>
     <File Include="Views/Account/Login.cshtml">
-      <publishTime>06/22/2016 14:01:47</publishTime>
+      <publishTime>07/10/2016 17:24:44</publishTime>
     </File>
     <File Include="Views/Account/Register.cshtml">
       <publishTime>06/22/2016 14:01:47</publishTime>
     </File>
     <File Include="Views/Account/RegisterJugador.cshtml">
-      <publishTime>06/22/2016 14:01:47</publishTime>
+      <publishTime>07/10/2016 17:24:44</publishTime>
     </File>
     <File Include="Views/Account/ResetPassword.cshtml">
       <publishTime>06/22/2016 14:01:47</publishTime>
@@ -4126,7 +4129,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/22/2016 14:01:47</publishTime>
     </File>
     <File Include="Views/Account/_ExternalLoginsListPartial.cshtml">
-      <publishTime>06/22/2016 14:01:47</publishTime>
+      <publishTime>07/10/2016 17:24:44</publishTime>
     </File>
     <File Include="Views/Activate/Create.cshtml">
       <publishTime>06/22/2016 14:01:47</publishTime>
@@ -4138,16 +4141,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/22/2016 14:01:47</publishTime>
     </File>
     <File Include="Views/Admin/Index.cshtml">
-      <publishTime>06/22/2016 14:01:47</publishTime>
+      <publishTime>07/10/2016 17:24:44</publishTime>
     </File>
     <File Include="Views/Admin/Login.cshtml">
       <publishTime>06/22/2016 14:01:47</publishTime>
     </File>
     <File Include="Views/Home/Home.cshtml">
-      <publishTime>06/22/2016 14:01:47</publishTime>
+      <publishTime>07/10/2016 17:24:44</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>06/22/2016 14:01:47</publishTime>
+      <publishTime>07/10/2016 17:24:44</publishTime>
     </File>
     <File Include="Views/Manage/AddPhoneNumber.cshtml">
       <publishTime>06/22/2016 14:01:47</publishTime>
@@ -4174,13 +4177,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/22/2016 14:01:47</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>06/22/2016 14:01:47</publishTime>
+      <publishTime>07/10/2016 17:24:44</publishTime>
     </File>
     <File Include="Views/Shared/_LayoutActive.cshtml">
       <publishTime>06/22/2016 14:01:47</publishTime>
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
-      <publishTime>06/22/2016 14:01:47</publishTime>
+      <publishTime>07/10/2016 17:24:44</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>06/22/2016 14:01:47</publishTime>

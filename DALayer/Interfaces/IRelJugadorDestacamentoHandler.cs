@@ -10,7 +10,7 @@ namespace DALayer.Interfaces
     public interface IRelJugadorDestacamentoHandler
     {
         void createRelJugadorDestacamento(RelJugadorDestacamento destacamento);
-        void updateRelJugadorDestacamento(RelJugadorDestacamento destacamento);
+        Boolean updateRelJugadorDestacamento(RelJugadorDestacamento destacamento);
         void executeUpdateRelJD(RelJugadorDestacamento rel);
         RelJugadorDestacamento getRelJugadorDestacamento(int id);
         List<RelJugadorDestacamento> getDestacamentosByColonia(int id);

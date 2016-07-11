@@ -15,6 +15,6 @@ namespace DALayer.Interfaces
         RelJugadorRecurso getRelJugadorRecurso(int id);
         List<RelJugadorRecurso> getRecursosByColonia(int id);
         void calcularRecursosByIdCol(int id);
-        void restarCompra(int idColonia, List<Entities.Costo> gastos);
+        Boolean restarCompra(int idColonia, List<Entities.Costo> gastos);
     }
 }
